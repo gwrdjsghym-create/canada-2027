@@ -1,1 +1,47 @@
+name: Website zu IONOS übertragen
 
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ionos-deployment
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: Upload per SFTP
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Repository laden
+        uses: actions/checkout@v4
+
+      - name: SFTP-Werkzeug installieren
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes sshpass
+
+      - name: Website zu IONOS übertragen
+        env:
+          SSHPASS: ${{ secrets.SFTP_PASSWORD }}
+          SFTP_HOST: ${{ secrets.SFTP_HOST }}
+          SFTP_USERNAME: ${{ secrets.SFTP_USERNAME }}
+        run: |
+          printf '%s\n' \
+            'put index.html' \
+            'put styles.css' \
+            'put app.js' \
+            'bye' > "$RUNNER_TEMP/sftp-commands"
+
+          sshpass -e sftp \
+            -P 22 \
+            -o BatchMode=no \
+            -o StrictHostKeyChecking=accept-new \
+            -b "$RUNNER_TEMP/sftp-commands" \
+            "$SFTP_USERNAME@$SFTP_HOST"
