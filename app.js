@@ -229,4 +229,223 @@ if (activeDestination !== "all") {
   if (comparison) comparison.hidden = activeDestination !== "mauricie";
 }
 
-renderTabs(); renderRoute(); renderIdeas();
+const checklistRoot = document.querySelector("#checklist-root");
+const checklistDialog = document.querySelector("#checklist-dialog");
+const checklistStorageKey = "canada-2027-checklists-v1";
+const checklistAccessKey = "canada-2027-family-key";
+const checklistDefaults = {
+  al: {
+    title: "Andrea & Lars",
+    avatars: '<i class="avatar avatar-andrea"></i><i class="avatar avatar-lars"></i>',
+    lists: [
+      { id: "al-entry", title: "Einreise & Dokumente", icon: "🛂", items: [
+        { id: "al-eta", text: "eTA für beide beantragen", done: false },
+        { id: "al-passports", text: "Reisepässe und Gültigkeit prüfen", done: false },
+        { id: "al-insurance", text: "Auslandsreisekrankenversicherung prüfen", done: false },
+        { id: "al-licence", text: "Führerschein und Mietwagenunterlagen klären", done: false }
+      ]},
+      { id: "al-flight", title: "Flüge & Anreise", icon: "✈️", items: [
+        { id: "al-fra", text: "Anreise Wuppertal/Langen nach Frankfurt festlegen", done: false },
+        { id: "al-flights", text: "Flüge Frankfurt–Montréal buchen", done: false },
+        { id: "al-luggage", text: "Gepäck, Sitzplätze und Transfer prüfen", done: false }
+      ]},
+      { id: "al-pack", title: "Packliste Indian Summer", icon: "🎒", items: [
+        { id: "al-layers", text: "Wärmende Schichten und Regenjacken", done: false },
+        { id: "al-shoes", text: "Wanderschuhe und Tagesrucksäcke", done: false },
+        { id: "al-adapter", text: "Kanada-Adapter und Ladegeräte", done: false }
+      ]}
+    ]
+  },
+  cm: {
+    title: "Christina & Manfred",
+    avatars: '<i class="avatar avatar-christina"></i><i class="avatar avatar-manfred"></i>',
+    lists: [
+      { id: "cm-entry", title: "Einreise & Dokumente", icon: "🛂", items: [
+        { id: "cm-eta", text: "eTA für beide beantragen", done: false },
+        { id: "cm-passports", text: "Reisepässe und Gültigkeit prüfen", done: false },
+        { id: "cm-insurance", text: "Auslandsreisekrankenversicherung prüfen", done: false },
+        { id: "cm-health", text: "Medikamente und ärztliche Unterlagen vorbereiten", done: false }
+      ]},
+      { id: "cm-health-list", title: "Gesundheit & Reiseapotheke", icon: "🩹", items: [
+        { id: "cm-vaccines", text: "Standardimpfungen prüfen", done: false },
+        { id: "cm-medicine", text: "Persönliche Medikamente ausreichend einpacken", done: false },
+        { id: "cm-pharmacy", text: "Kleine Reiseapotheke zusammenstellen", done: false }
+      ]},
+      { id: "cm-pack", title: "Packliste Indian Summer", icon: "🧳", items: [
+        { id: "cm-layers", text: "Zwiebellook für kühle Morgen und Abende", done: false },
+        { id: "cm-shoes", text: "Wanderschuhe und bequeme Stadtschuhe", done: false },
+        { id: "cm-adapter", text: "Kanada-Adapter und Ladegeräte", done: false }
+      ]}
+    ]
+  }
+};
+
+function newId(prefix) {
+  return `${prefix}-${Date.now()}-${Math.random().toString(16).slice(2)}`;
+}
+
+function escapeHtml(value) {
+  return String(value).replace(/[&<>'"]/g, (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" })[character]);
+}
+
+function cloneChecklistDefaults() {
+  return JSON.parse(JSON.stringify(checklistDefaults));
+}
+
+let checklistData = checklistRoot ? cloneChecklistDefaults() : null;
+let checklistUpdatedAt = null;
+
+function setSyncStatus(text, state = "") {
+  const status = document.querySelector("#sync-status");
+  if (!status) return;
+  status.textContent = text;
+  status.dataset.state = state;
+}
+
+async function loadSharedChecklists(silent = false) {
+  if (!checklistRoot) return;
+  try {
+    const response = await fetch(`checklists.php?t=${Date.now()}`, { cache: "no-store" });
+    if (!response.ok) throw new Error("Checklist load failed");
+    const payload = await response.json();
+    if (payload.data?.al && payload.data?.cm) {
+      checklistData = payload.data;
+      checklistUpdatedAt = payload.updatedAt;
+      localStorage.setItem(checklistStorageKey, JSON.stringify(checklistData));
+      renderChecklists();
+    } else {
+      setSyncStatus("Vorlage bereit · beim ersten Ändern entsperren", "syncing");
+    }
+    if (!silent && payload.data?.al && payload.data?.cm) setSyncStatus("Gemeinsam synchronisiert", "ok");
+  } catch {
+    try {
+      const backup = JSON.parse(localStorage.getItem(checklistStorageKey));
+      if (backup?.al && backup?.cm) checklistData = backup;
+    } catch {}
+    renderChecklists();
+    setSyncStatus("Offline · später synchronisieren", "offline");
+  }
+}
+
+async function saveChecklists() {
+  if (!checklistData) return;
+  localStorage.setItem(checklistStorageKey, JSON.stringify(checklistData));
+  let familyKey = localStorage.getItem(checklistAccessKey);
+  if (!familyKey) {
+    familyKey = window.prompt("Familienschlüssel zum gemeinsamen Bearbeiten eingeben:");
+    if (!familyKey) {
+      setSyncStatus("Änderung nur auf diesem Gerät gespeichert", "offline");
+      return;
+    }
+    localStorage.setItem(checklistAccessKey, familyKey);
+  }
+  setSyncStatus("Wird synchronisiert …", "syncing");
+  try {
+    const response = await fetch("checklists.php", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "X-Checklist-Key": familyKey },
+      body: JSON.stringify({ data: checklistData })
+    });
+    if (response.status === 401) {
+      localStorage.removeItem(checklistAccessKey);
+      setSyncStatus("Familienschlüssel nicht erkannt", "offline");
+      window.alert("Der Familienschlüssel war nicht richtig. Beim nächsten Ändern kannst du ihn erneut eingeben.");
+      return;
+    }
+    if (!response.ok) throw new Error("Checklist save failed");
+    const payload = await response.json();
+    checklistData = payload.data;
+    checklistUpdatedAt = payload.updatedAt;
+    localStorage.setItem(checklistStorageKey, JSON.stringify(checklistData));
+    renderChecklists();
+    setSyncStatus("Gemeinsam synchronisiert", "ok");
+  } catch {
+    setSyncStatus("Offline gespeichert", "offline");
+  }
+}
+
+function renderChecklists() {
+  if (!checklistRoot || !checklistData) return;
+  checklistRoot.innerHTML = Object.entries(checklistData).map(([coupleId, couple]) => {
+    const allItems = couple.lists.flatMap((list) => list.items);
+    const done = allItems.filter((item) => item.done).length;
+    const progress = allItems.length ? Math.round(done / allItems.length * 100) : 0;
+    return `<section class="checklist-group" data-couple="${coupleId}">
+      <header class="couple-head"><div class="couple-avatars">${checklistDefaults[coupleId].avatars}</div><div><p>Unsere Vorbereitung</p><h3>${escapeHtml(couple.title)}</h3></div><span class="progress-number">${progress}%</span></header>
+      <div class="progress-track"><i style="width:${progress}%"></i></div>
+      <div class="topic-grid">${couple.lists.map((list) => `
+        <article class="checklist-topic" data-list="${list.id}">
+          <header><span>${list.icon || "🍁"}</span><h4>${escapeHtml(list.title)}</h4><button class="delete-list" data-delete-list="${list.id}" aria-label="Liste ${escapeHtml(list.title)} löschen">×</button></header>
+          <div class="check-items">${list.items.map((item) => `<label class="check-item ${item.done ? "done" : ""}"><input type="checkbox" data-check-item="${item.id}" ${item.done ? "checked" : ""}><span>${escapeHtml(item.text)}</span><button type="button" data-delete-item="${item.id}" aria-label="Punkt löschen">×</button></label>`).join("")}</div>
+          <form class="add-item-form" data-add-item="${list.id}"><input name="item" maxlength="100" required placeholder="Punkt hinzufügen …"><button aria-label="Punkt hinzufügen">+</button></form>
+        </article>`).join("")}</div>
+      <button class="add-list-button" data-add-list="${coupleId}"><span>＋</span> Neue Themenliste</button>
+    </section>`;
+  }).join("");
+}
+
+checklistRoot?.addEventListener("change", (event) => {
+  const input = event.target.closest("[data-check-item]");
+  if (!input) return;
+  const couple = checklistData[event.target.closest("[data-couple]").dataset.couple];
+  const item = couple.lists.flatMap((list) => list.items).find((entry) => entry.id === input.dataset.checkItem);
+  if (item) item.done = input.checked;
+  saveChecklists(); renderChecklists();
+});
+
+checklistRoot?.addEventListener("submit", (event) => {
+  const form = event.target.closest("[data-add-item]");
+  if (!form) return;
+  event.preventDefault();
+  const couple = checklistData[form.closest("[data-couple]").dataset.couple];
+  const list = couple.lists.find((entry) => entry.id === form.dataset.addItem);
+  const input = form.elements.item;
+  if (list && input.value.trim()) list.items.push({ id: newId("item"), text: input.value.trim(), done: false });
+  saveChecklists(); renderChecklists();
+});
+
+checklistRoot?.addEventListener("click", (event) => {
+  const addList = event.target.closest("[data-add-list]");
+  if (addList) {
+    document.querySelector("#new-list-couple").value = addList.dataset.addList;
+    document.querySelector("#new-list-title").value = "";
+    checklistDialog.showModal();
+    setTimeout(() => document.querySelector("#new-list-title").focus(), 50);
+    return;
+  }
+  const coupleId = event.target.closest("[data-couple]")?.dataset.couple;
+  if (!coupleId) return;
+  const deleteList = event.target.closest("[data-delete-list]");
+  if (deleteList) checklistData[coupleId].lists = checklistData[coupleId].lists.filter((list) => list.id !== deleteList.dataset.deleteList);
+  const deleteItem = event.target.closest("[data-delete-item]");
+  if (deleteItem) checklistData[coupleId].lists.forEach((list) => { list.items = list.items.filter((item) => item.id !== deleteItem.dataset.deleteItem); });
+  if (deleteList || deleteItem) { saveChecklists(); renderChecklists(); }
+});
+
+document.querySelector("#new-list-form")?.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const coupleId = event.currentTarget.elements.couple.value;
+  const title = event.currentTarget.elements.title.value.trim();
+  if (checklistData?.[coupleId] && title) checklistData[coupleId].lists.push({ id: newId("list"), title, icon: "🍁", items: [] });
+  saveChecklists(); renderChecklists(); checklistDialog.close();
+});
+
+document.querySelector(".close-checklist-dialog")?.addEventListener("click", () => checklistDialog.close());
+checklistDialog?.addEventListener("click", (event) => { if (event.target === checklistDialog) checklistDialog.close(); });
+
+function updateCountdown() {
+  const days = document.querySelector("#countdown-days");
+  if (!days) return;
+  const remaining = Math.max(0, new Date("2027-09-17T00:00:00+02:00").getTime() - Date.now());
+  document.querySelector("#countdown-days").textContent = Math.floor(remaining / 86400000);
+  document.querySelector("#countdown-hours").textContent = String(Math.floor(remaining / 3600000) % 24).padStart(2, "0");
+  document.querySelector("#countdown-minutes").textContent = String(Math.floor(remaining / 60000) % 60).padStart(2, "0");
+}
+
+renderTabs(); renderRoute(); renderIdeas(); renderChecklists(); updateCountdown();
+if (checklistRoot) {
+  loadSharedChecklists();
+  setInterval(() => { if (!document.hidden) loadSharedChecklists(true); }, 15000);
+  window.addEventListener("focus", () => loadSharedChecklists(true));
+}
+if (document.querySelector("#countdown")) setInterval(updateCountdown, 60000);

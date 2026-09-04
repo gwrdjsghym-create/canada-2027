@@ -32,7 +32,11 @@ jobs:
           SSHPASS: ${{ secrets.SFTP_PASSWORD }}
           SFTP_HOST: ${{ secrets.SFTP_HOST }}
           SFTP_USERNAME: ${{ secrets.SFTP_USERNAME }}
+          CHECKLIST_KEY_HASH: ${{ secrets.CHECKLIST_KEY_HASH }}
         run: |
+          test -n "$CHECKLIST_KEY_HASH"
+          printf "<?php return ['accessKeyHash' => '%s'];\n" "$CHECKLIST_KEY_HASH" > checklists-config.php
+
           printf '%s\n' \
             'put index.html' \
             'put 01-montreal.html' \
@@ -42,6 +46,8 @@ jobs:
             'put 05-orford.html' \
             'put styles.css' \
             'put app.js' \
+            'put checklists.php' \
+            'put checklists-config.php' \
             '-mkdir assets' \
             'put assets/andrea-lars-memoji.png assets/andrea-lars-memoji.png' \
             'put assets/christina-manfred-memoji.png assets/christina-manfred-memoji.png' \

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#143b2b" />
+    <meta name="theme-color" content="#b3262d" />
     <meta name="description" content="Gemeinsame Reiseplanung für Canada 2027" />
     <title>Canada 2027</title>
     <link rel="stylesheet" href="styles.css" />
@@ -11,11 +11,12 @@
   <body>
     <header class="topbar">
         <a class="brand" href="index.html" aria-label="Canada 2027 – Startseite">
-        <span class="brand-mark">CA</span>
+        <span class="brand-mark">🍁</span>
         <span><strong>Canada 2027</strong><small>17. September – 2. Oktober</small></span>
       </a>
       <nav class="desktop-nav" aria-label="Hauptnavigation">
-        <a class="active" href="#route">Reise</a>
+        <a class="active" href="#top">Start</a>
+        <a href="#checklists">Checklisten</a>
         <a href="#route">Destinationen</a>
         <a href="#travellers">Reisende</a>
       </nav>
@@ -23,17 +24,29 @@
 
     <main id="top">
       <section class="hero" aria-labelledby="hero-title">
-        <div>
-          <p class="eyebrow">Unsere Rundreise · Québec</p>
-          <h1 id="hero-title">Von Wuppertal bis<br /><em>in den kanadischen Herbst.</em></h1>
-          <p class="hero-copy">Fünf Aufenthalte, sechs Reisetage und vier Menschen, die gemeinsam auswählen, was unterwegs wirklich auf den Plan kommt.</p>
+        <div class="hero-content">
+          <div class="hero-badges"><span class="flag-badge">🇨🇦 Canada</span><span class="province-badge">⚜ Québec</span></div>
+          <p class="eyebrow">Unsere Rundreise · Indian Summer 2027</p>
+          <h1 id="hero-title">Vier Menschen.<br /><em>Ein kanadischer Herbst.</em></h1>
+          <p class="hero-copy">Von Montréal über den Saguenay bis nach Orford – Wälder in Ahornrot, klare Seen und gemeinsam ausgesuchte Abenteuer.</p>
+          <a class="hero-cta" href="#route">Die Route entdecken <span>↓</span></a>
         </div>
-        <div class="hero-stats" aria-label="Reiseübersicht">
-          <div><strong>16</strong><span>Reisetage</span></div>
-          <div><strong>15</strong><span>Nächte</span></div>
-          <div><strong>5</strong><span>Destinationen</span></div>
-          <div><strong>4</strong><span>Reisende</span></div>
+        <div class="hero-side">
+          <div class="canada-landscape" aria-hidden="true"><span class="sun"></span><span class="mountain mountain-one"></span><span class="mountain mountain-two"></span><span class="forest-line">▲ ▲ ▲ ▲ ▲</span><span class="maple-leaf">🍁</span></div>
+          <div class="countdown-card" aria-label="Countdown bis zum Reisestart">
+            <span class="countdown-kicker">Noch bis zum Abflug</span>
+            <div class="countdown" id="countdown"><span><strong id="countdown-days">–</strong><small>Tage</small></span><span><strong id="countdown-hours">–</strong><small>Std.</small></span><span><strong id="countdown-minutes">–</strong><small>Min.</small></span></div>
+            <p>Freitag, 17. September 2027</p>
+          </div>
         </div>
+      </section>
+
+      <section class="section checklist-section" id="checklists">
+        <div class="section-head checklist-head">
+          <div><p class="eyebrow">Gut vorbereitet</p><h2>Unsere Checklisten</h2><p>Dokumente, Gesundheit, Packen und alles, was Vorfreude macht – getrennt für beide Reisepaare.</p></div>
+          <span class="local-note" id="sync-status">Gemeinsam synchronisiert</span>
+        </div>
+        <div class="checklist-groups" id="checklist-root"></div>
       </section>
 
       <section class="section" id="route">
@@ -58,12 +71,23 @@
     </main>
 
     <nav class="mobile-nav" aria-label="Mobile Navigation">
-      <a href="#route"><span>⌁</span>Reise</a><a href="#route"><span>⌘</span>Ziele</a><a href="#travellers"><span>♙</span>Wir vier</a>
+      <a href="#top"><span>🍁</span>Start</a><a href="#checklists"><span>✓</span>Listen</a><a href="#route"><span>⌘</span>Ziele</a><a href="#travellers"><span>♙</span>Wir vier</a>
     </nav>
 
     <dialog id="details-dialog">
       <button class="close-dialog" aria-label="Detailansicht schließen">×</button>
       <div id="dialog-content"></div>
+    </dialog>
+    <dialog id="checklist-dialog">
+      <button class="close-checklist-dialog" aria-label="Fenster schließen">×</button>
+      <form id="new-list-form">
+        <p class="eyebrow">Neue Themenliste</p>
+        <h2>Was möchtet ihr vorbereiten?</h2>
+        <label for="new-list-title">Name der Liste</label>
+        <input id="new-list-title" name="title" required maxlength="60" placeholder="z. B. Wanderausrüstung" />
+        <input id="new-list-couple" name="couple" type="hidden" />
+        <button class="primary-button" type="submit">Liste hinzufügen</button>
+      </form>
     </dialog>
     <script src="app.js"></script>
   </body>
