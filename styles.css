@@ -67,6 +67,9 @@ h2 { font-family: Georgia, serif; font-size: clamp(2rem, 4vw, 3rem); font-weight
 .open-details { width: 42px; height: 42px; border: 0; border-radius: 50%; background: var(--sky); color: var(--forest); cursor: pointer; font-size: 1.25rem; }
 
 .filters { display: flex; gap: 6px; }
+.ideas { margin-top: 34px; padding-top: 30px; border-top: 1px solid var(--line); scroll-margin-top: 90px; }
+.ideas-head { margin-bottom: 20px; }
+.ideas-head h2 { font-size: clamp(1.75rem, 3.4vw, 2.5rem); }
 .filter { padding: 8px 13px; border: 1px solid var(--line); border-radius: 99px; background: #fff; color: var(--muted); cursor: pointer; font-weight: 750; }
 .filter.active { color: #fff; background: var(--forest); border-color: var(--forest); }
 .idea-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
@@ -88,6 +91,10 @@ h2 { font-family: Georgia, serif; font-size: clamp(2rem, 4vw, 3rem); font-weight
 .vote { padding: 8px 11px; border: 0; border-radius: 99px; background: #fff; color: var(--forest); cursor: pointer; font-weight: 800; }
 .vote.selected { background: var(--forest); color: #fff; }
 .booked .vote.selected { background: #fff; color: #8e3d22; }
+.ideas-empty { grid-column: 1 / -1; display: flex; align-items: center; gap: 14px; padding: 22px; border: 1px dashed #b9c6bd; border-radius: 18px; color: var(--muted); background: var(--cream); }
+.ideas-empty > span { display: grid; place-items: center; flex: 0 0 42px; width: 42px; height: 42px; border-radius: 50%; color: #fff; background: var(--pine); font-size: 1.15rem; }
+.ideas-empty strong { display: block; color: var(--ink); }
+.ideas-empty p { margin: 3px 0 0; }
 
 .travellers { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; align-items: center; background: var(--sky); }
 .travellers p:last-child { max-width: 600px; color: var(--muted); }
