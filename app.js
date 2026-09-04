@@ -1,7 +1,7 @@
 const destinations = [
   { id: "all", label: "Gesamte Reise" },
   { id: "montreal", label: "Montréal", dates: "17.–20.09." },
-  { id: "mauricie", label: "Nature Nature", dates: "20.–23.09." },
+  { id: "mauricie", label: "The Laurentians", dates: "20.–23.09." },
   { id: "sainte-rose", label: "Sainte-Rose-du-Nord", dates: "23.–27.09." },
   { id: "quebec", label: "Québec City", dates: "27.–29.09." },
   { id: "orford", label: "Orford", dates: "29.09.–02.10." }
@@ -25,8 +25,18 @@ const route = [
   },
   {
     id: "mauricie", type: "stay", destination: "mauricie", date: "20.–23. September · 3 Nächte", title: "Nature Nature · Mauricie",
-    text: "Ankunftstag und zwei volle Tage. In der bisherigen Buchungsübersicht als „The Laurentians“ bezeichnet.", tags: ["2 volle Tage", "Selbstversorger"],
-    details: ["Unterkunft: Nature Nature", "Koordinaten: 46.7256101, -72.7707375", "Dienstag und Mittwoch für Aktivitäten vor Ort", "Donnerstag: längerer Wechsel nach Sainte-Rose-du-Nord"]
+    text: "Basis für zwei Naturtage im Nationalpark La Mauricie – mit einer größeren Wanderung am Dienstag und einem flexiblen Mittwoch.", tags: ["2 volle Tage", "Selbstversorger"],
+    details: ["Unterkunft: Nature Nature", "Koordinaten: 46.7256101, -72.7707375", "Dienstag: Lac-Solitaire oder Ruisseau-Bouchard", "Mittwoch: kurze Wanderungen, Kanu-Einstieg oder besondere Wunschoption Waber Falls", "Donnerstag: längerer Wechsel nach Sainte-Rose-du-Nord"]
+  },
+  {
+    id: "mauricie-tuesday", type: "stay", destination: "mauricie", date: "Dienstag · 21. September", title: "Großer Wandertag",
+    text: "Je nach Wetter und Tagesform: Lac-Solitaire als kompakte Runde oder Ruisseau-Bouchard mit mehr Strecke und Höhenmetern.", tags: ["6,1 oder 9,1 km", "396 oder 528 Hm", "2,5–3,5 Std."],
+    details: ["Lac-Solitaire: 6,1 km Rundweg · 396 Hm · ca. 2,5 Std. · mittelschwer", "Ruisseau-Bouchard: 9,1 km Rundweg · 528 Hm · ca. 3,5 Std. · mittelschwer", "Beide starten am Rivière à la Pêche Service Centre", "<a href=\"https://parks.canada.ca/pn-np/qc/mauricie/activ/sentiers-trails\" target=\"_blank\" rel=\"noopener\">Offizielle Wegbeschreibung von Parks Canada ↗</a>"]
+  },
+  {
+    id: "mauricie-wednesday", type: "stay", destination: "mauricie", date: "Mittwoch · 22. September", title: "Wasserfälle, Aussicht & Kanu",
+    text: "Flexibler Tag: Les Cascades und Les Falaises kombinieren oder erstmals in ruhigem Rahmen Kanu fahren. Waber Falls nur als anspruchsvolle Wunschoption.", tags: ["2,4 + 4,0 km", "103 + 268 Hm", "Kanu 60–90 Min."],
+    details: ["Les Cascades: 2,4 km · 103 Hm · ca. 1 Std. · leicht", "Les Falaises: 4,0 km · 268 Hm · ca. 1,5 Std. · mittelschwer", "Kanu: möglichst geführte Einführung; alternativ kurze Ufertour mit zwei Zweierkanus oder Doppelkajaks", "Waber Falls: 9,2 km paddeln + 7,2 km wandern · 349 Hm · 6–8 Std. · noch nicht eingeplant", "Sicherheit: Waber Falls nur mit Guide oder nach vorheriger Einführung, bei stabilem Wetter und ausdrücklicher Empfehlung vor Ort."]
   },
   {
     id: "to-sainte-rose", type: "transfer", destination: "sainte-rose", date: "Donnerstag · 23. September", title: "Nature Nature → Sainte-Rose-du-Nord",
@@ -68,7 +78,38 @@ const route = [
 const ideas = [
   { id: "whale-tour", type: "booked", icon: "🐋", place: "Tadoussac · 27. September", title: "Walbeobachtung per Schiff", text: "Fester Bestandteil des Wechsels nach Québec City. Anbieter und genaue Abfahrtszeit werden ergänzt." },
   { id: "montreal-ideas", type: "idea", icon: "🏙️", place: "Montréal", title: "Zwei volle Tage gestalten", text: "Stadtviertel, Kulinarik und mögliche Tageskombinationen sammeln wir im Montréal-Chat." },
-  { id: "transfer-stop", type: "idea", icon: "🛒", place: "Montréal → Nature Nature", title: "Fahrt mit Einkauf aufwerten", text: "Ein sinnvoller Stopp für Lebensmittel oder ein Abendessen soll ohne großen Umweg auf die Route passen." }
+  { id: "transfer-stop", type: "idea", icon: "🛒", place: "Montréal → Nature Nature", title: "Fahrt mit Einkauf aufwerten", text: "Ein sinnvoller Stopp für Lebensmittel oder ein Abendessen soll ohne großen Umweg auf die Route passen." },
+  {
+    id: "lac-solitaire", type: "idea", icon: "🥾", place: "The Laurentians · Dienstag", title: "Lac-Solitaire",
+    text: "Kompakter, aber höhenreicher Rundweg durch regenerierenden Wald und um den See – unsere bevorzugte kürzere Variante.",
+    facts: ["6,1 km", "396 Hm", "ca. 2,5 Std.", "mittelschwer"],
+    links: [{ label: "Parks Canada", url: "https://parks.canada.ca/pn-np/qc/mauricie/activ/sentiers-trails" }]
+  },
+  {
+    id: "ruisseau-bouchard", type: "idea", icon: "⛰️", place: "The Laurentians · Dienstag", title: "Ruisseau-Bouchard",
+    text: "Die längere Alternative mit Aussicht am Lac aux Chevaux und einem schönen Rückweg entlang des Bouchard Creek.",
+    facts: ["9,1 km", "528 Hm", "ca. 3,5 Std.", "mittelschwer"],
+    links: [{ label: "Parks Canada", url: "https://parks.canada.ca/pn-np/qc/mauricie/activ/sentiers-trails" }]
+  },
+  {
+    id: "cascades-falaises", type: "idea", icon: "💦", place: "The Laurentians · Mittwoch", title: "Les Cascades & Les Falaises",
+    text: "Zwei kurze Wege, die sich flexibel verbinden lassen: Wasserfälle und schwimmende Brücke sowie Aussicht über den Lac Wapizagonke.",
+    facts: ["2,4 km · 103 Hm", "4,0 km · 268 Hm", "ca. 2,5 Std. gesamt"],
+    links: [{ label: "Wege", url: "https://parks.canada.ca/pn-np/qc/mauricie/activ/sentiers-trails" }, { label: "Karte & Höhenprofil", url: "https://publications.gc.ca/collections/collection_2018/pc/R64-517-2017.pdf" }]
+  },
+  {
+    id: "canoe-intro", type: "idea", icon: "🛶", place: "The Laurentians · Mittwoch", title: "Kanu-Einführung",
+    text: "Da wir noch nie Kanu gefahren sind, bevorzugen wir eine geführte Einführung. Alternativ 60–90 Minuten in Ufernähe mit zwei Zweierkanus oder Doppelkajaks.",
+    facts: ["anfängergeeignet", "60–90 Min.", "Saison 2027 prüfen"],
+    links: [{ label: "Paddeln & Verleih", url: "https://parks.canada.ca/pn-np/qc/mauricie/activ/nautique-nautical" }]
+  },
+  {
+    id: "waber-falls", type: "idea", icon: "🌊", place: "Besondere Wunschoption", title: "Waber Falls",
+    text: "Eine komplette Tagesexpedition zu den 27 Meter hohen Wasserfällen – eindrucksvoll, aber noch nicht fest eingeplant.",
+    facts: ["9,2 km paddeln", "7,2 km wandern", "349 Hm", "6–8 Std."],
+    warning: "Die Waber-Tour ist keine Kanueinführung. Nur mit Guide oder nach vorheriger Einführung, bei stabiler Wetterlage und nach ausdrücklicher Empfehlung der Mitarbeiter vor Ort. Andernfalls bleibt es bei einer kurzen Kanutour in Ufernähe.",
+    links: [{ label: "Parks Canada", url: "https://parks.canada.ca/pn-np/qc/mauricie/activ/nautique-nautical/waber" }, { label: "Höhenprofil & Wege", url: "https://parks.canada.ca/pn-np/qc/mauricie/activ/sentiers-trails" }]
+  }
 ];
 
 const tabs = document.querySelector("#destination-tabs");
@@ -99,7 +140,10 @@ function renderIdeas(filter = "all") {
   const filtered = filter === "all" ? ideas : ideas.filter((idea) => idea.type === filter);
   ideaGrid.innerHTML = filtered.map((idea) => {
     const selected = localStorage.getItem(`canada-vote-${idea.id}`) === "1";
-    return `<article class="idea-card ${idea.type}"><span class="idea-icon">${idea.icon}</span><h3>${idea.title}</h3><p>${idea.text}</p><footer><span class="status-label">${idea.type === "booked" ? "Fest gebucht" : idea.place}</span><button class="vote ${selected ? "selected" : ""}" data-vote="${idea.id}" aria-pressed="${selected}">${selected ? "♥ Interessiert" : "♡ Interesse"}</button></footer></article>`;
+    const facts = idea.facts ? `<div class="idea-facts">${idea.facts.map((fact) => `<span>${fact}</span>`).join("")}</div>` : "";
+    const warning = idea.warning ? `<aside class="safety-note"><strong>Sicherheitshinweis</strong>${idea.warning}</aside>` : "";
+    const links = idea.links ? `<div class="source-links">${idea.links.map((link) => `<a href="${link.url}" target="_blank" rel="noopener">${link.label} ↗</a>`).join("")}</div>` : "";
+    return `<article class="idea-card ${idea.type} ${idea.warning ? "featured-option" : ""}"><span class="idea-icon">${idea.icon}</span><h3>${idea.title}</h3><p>${idea.text}</p>${facts}${warning}${links}<footer><span class="status-label">${idea.type === "booked" ? "Fest gebucht" : idea.place}</span><button class="vote ${selected ? "selected" : ""}" data-vote="${idea.id}" aria-pressed="${selected}">${selected ? "♥ Interessiert" : "♡ Interesse"}</button></footer></article>`;
   }).join("");
 }
 
