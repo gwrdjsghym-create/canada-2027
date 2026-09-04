@@ -35,6 +35,11 @@ jobs:
         run: |
           printf '%s\n' \
             'put index.html' \
+            'put 01-montreal.html' \
+            'put 02-the-laurentians.html' \
+            'put 03-sainte-rose-du-nord.html' \
+            'put 04-quebec-city.html' \
+            'put 05-orford.html' \
             'put styles.css' \
             'put app.js' \
             '-mkdir assets' \

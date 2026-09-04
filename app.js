@@ -1,10 +1,10 @@
 const destinations = [
-  { id: "all", label: "Gesamte Reise", sectionTitle: "Alle Reiseideen" },
-  { id: "montreal", label: "Montréal", dates: "17.–20.09.", sectionTitle: "01 – Montréal | 17.–20.09.2027" },
-  { id: "mauricie", label: "Nature Nature", dates: "20.–23.09.", sectionTitle: "02 – The Laurentians | 20.–23.09.2027" },
-  { id: "sainte-rose", label: "Sainte-Rose-du-Nord", dates: "23.–27.09.", sectionTitle: "03 – Sainte-Rose-du-Nord | 23.–27.09.2027" },
-  { id: "quebec", label: "Québec City", dates: "27.–29.09.", sectionTitle: "04 – Québec City | 27.–29.09.2027" },
-  { id: "orford", label: "Orford", dates: "29.09.–02.10.", sectionTitle: "05 – Orford | 29.09.–02.10.2027" }
+  { id: "all", label: "Gesamte Reise", sectionTitle: "Canada 2027", page: "index.html" },
+  { id: "montreal", label: "Montréal", dates: "17.–20.09.", sectionTitle: "01 – Montréal | 17.–20.09.2027", page: "01-montreal.html", summary: "Anreise aus Wuppertal und zwei volle Tage in Montréal." },
+  { id: "mauricie", label: "Nature Nature", dates: "20.–23.09.", sectionTitle: "02 – The Laurentians | 20.–23.09.2027", page: "02-the-laurentians.html", summary: "Anreise aus Montréal und zwei Naturtage rund um den Nationalpark La Mauricie." },
+  { id: "sainte-rose", label: "Sainte-Rose-du-Nord", dates: "23.–27.09.", sectionTitle: "03 – Sainte-Rose-du-Nord | 23.–27.09.2027", page: "03-sainte-rose-du-nord.html", summary: "Anreise von Nature Nature und drei volle Tage am Saguenay." },
+  { id: "quebec", label: "Québec City", dates: "27.–29.09.", sectionTitle: "04 – Québec City | 27.–29.09.2027", page: "04-quebec-city.html", summary: "Anreise über Tadoussac mit der gebuchten Walbeobachtung und ein voller Tag in Québec City." },
+  { id: "orford", label: "Orford", dates: "29.09.–02.10.", sectionTitle: "05 – Orford | 29.09.–02.10.2027", page: "05-orford.html", summary: "Anreise aus Québec City, zwei volle Tage und anschließend die Heimreise." }
 ];
 
 const route = [
@@ -83,38 +83,38 @@ const ideas = [
     id: "lac-solitaire", destination: "mauricie", type: "idea", icon: "🥾", place: "The Laurentians · Dienstag", title: "Lac-Solitaire",
     text: "Kompakter, aber höhenreicher Rundweg durch regenerierenden Wald und um den See – unsere bevorzugte kürzere Variante.",
     facts: ["6,1 km", "396 Hm", "ca. 2,5 Std.", "mittelschwer"],
-    links: [{ label: "PDF-Steckbrief", url: "pdfs/01_Lac-Solitaire.pdf", pdf: true }, { label: "Parks Canada", url: "https://parks.canada.ca/pn-np/qc/mauricie/activ/sentiers-trails" }]
+    links: [{ label: "Parks Canada", url: "https://parks.canada.ca/pn-np/qc/mauricie/activ/sentiers-trails" }, { label: "Touren-PDF", url: "pdfs/01_Lac-Solitaire.pdf", pdf: true }]
   },
   {
     id: "ruisseau-bouchard", destination: "mauricie", type: "idea", icon: "⛰️", place: "The Laurentians · Dienstag", title: "Ruisseau-Bouchard",
     text: "Die längere Alternative mit Aussicht am Lac aux Chevaux und einem schönen Rückweg entlang des Bouchard Creek.",
     facts: ["9,1 km", "528 Hm", "ca. 3,5 Std.", "mittelschwer"],
-    links: [{ label: "PDF-Steckbrief", url: "pdfs/02_Ruisseau-Bouchard.pdf", pdf: true }, { label: "Parks Canada", url: "https://parks.canada.ca/pn-np/qc/mauricie/activ/sentiers-trails" }]
+    links: [{ label: "Parks Canada", url: "https://parks.canada.ca/pn-np/qc/mauricie/activ/sentiers-trails" }, { label: "Touren-PDF", url: "pdfs/02_Ruisseau-Bouchard.pdf", pdf: true }]
   },
   {
     id: "cascades-falaises", destination: "mauricie", type: "idea", icon: "💦", place: "The Laurentians · Mittwoch", title: "Les Cascades & Les Falaises",
     text: "Zwei kurze Wege, die sich flexibel verbinden lassen: Wasserfälle und schwimmende Brücke sowie Aussicht über den Lac Wapizagonke.",
     facts: ["2,4 km · 103 Hm", "4,0 km · 268 Hm", "ca. 2,5 Std. gesamt"],
-    links: [{ label: "PDF-Steckbrief", url: "pdfs/03_Cascades-und-Falaises.pdf", pdf: true }, { label: "Wege", url: "https://parks.canada.ca/pn-np/qc/mauricie/activ/sentiers-trails" }, { label: "Karte & Höhenprofil", url: "https://publications.gc.ca/collections/collection_2018/pc/R64-517-2017.pdf" }]
+    links: [{ label: "Wege", url: "https://parks.canada.ca/pn-np/qc/mauricie/activ/sentiers-trails" }, { label: "Karte & Höhenprofil", url: "https://publications.gc.ca/collections/collection_2018/pc/R64-517-2017.pdf" }, { label: "Touren-PDF", url: "pdfs/03_Cascades-und-Falaises.pdf", pdf: true }]
   },
   {
     id: "canoe-intro", destination: "mauricie", type: "idea", icon: "🛶", place: "The Laurentians · Mittwoch", title: "Kanu-Einführung",
     text: "Da wir noch nie Kanu gefahren sind, bevorzugen wir eine geführte Einführung. Alternativ 60–90 Minuten in Ufernähe mit zwei Zweierkanus oder Doppelkajaks.",
     facts: ["anfängergeeignet", "60–90 Min.", "Saison 2027 prüfen"],
-    links: [{ label: "PDF-Steckbrief", url: "pdfs/04_Kanu-Einfuehrung.pdf", pdf: true }, { label: "Paddeln & Verleih", url: "https://parks.canada.ca/pn-np/qc/mauricie/activ/nautique-nautical" }]
+    links: [{ label: "Paddeln & Verleih", url: "https://parks.canada.ca/pn-np/qc/mauricie/activ/nautique-nautical" }, { label: "Info-PDF", url: "pdfs/04_Kanu-Einfuehrung.pdf", pdf: true }]
   },
   {
     id: "waber-falls", destination: "mauricie", type: "idea", icon: "🌊", place: "Besondere Wunschoption", title: "Waber Falls",
     text: "Eine komplette Tagesexpedition zu den 27 Meter hohen Wasserfällen – eindrucksvoll, aber noch nicht fest eingeplant.",
     facts: ["9,2 km paddeln", "7,2 km wandern", "349 Hm", "6–8 Std."],
     warning: "Die Waber-Tour ist keine Kanueinführung. Nur mit Guide oder nach vorheriger Einführung, bei stabiler Wetterlage und nach ausdrücklicher Empfehlung der Mitarbeiter vor Ort. Andernfalls bleibt es bei einer kurzen Kanutour in Ufernähe.",
-    links: [{ label: "PDF-Steckbrief", url: "pdfs/05_Chutes-Waber.pdf", pdf: true }, { label: "Parks Canada", url: "https://parks.canada.ca/pn-np/qc/mauricie/activ/nautique-nautical/waber" }, { label: "Höhenprofil & Wege", url: "https://parks.canada.ca/pn-np/qc/mauricie/activ/sentiers-trails" }]
+    links: [{ label: "Parks Canada", url: "https://parks.canada.ca/pn-np/qc/mauricie/activ/nautique-nautical/waber" }, { label: "Höhenprofil & Wege", url: "https://parks.canada.ca/pn-np/qc/mauricie/activ/sentiers-trails" }, { label: "Touren-PDF", url: "pdfs/05_Chutes-Waber.pdf", pdf: true }]
   },
   {
-    id: "shawinigan", destination: "mauricie", type: "idea", icon: "🏛️", place: "The Laurentians · Schlechtwetteroption", title: "Shawinigan & Cité de l’énergie",
-    text: "Die Stadt- und Kulturvariante für einen Regentag: Shawinigan erkunden und die Cité de l’énergie als wetterunabhängigen Programmpunkt einplanen.",
-    facts: ["Regenalternative", "Kultur & Technik", "flexibel planbar"],
-    links: [{ label: "PDF-Steckbrief", url: "pdfs/06_Shawinigan-und-Cite-de-lEnergie.pdf", pdf: true }]
+    id: "shawinigan", destination: "mauricie", type: "idea", icon: "🏭", place: "Schlechtwetter-Option", title: "Shawinigan & Cité de l’énergie",
+    text: "Eine flexible Kultur- und Technikoption für einen ruhigeren oder regnerischen Tag in der Region.",
+    facts: ["Shawinigan", "Museum & Aussicht", "Öffnung 2027 prüfen"],
+    links: [{ label: "Info-PDF", url: "pdfs/06_Shawinigan-und-Cite-de-lEnergie.pdf", pdf: true }]
   }
 ];
 
@@ -124,76 +124,107 @@ const ideaGrid = document.querySelector("#idea-grid");
 const ideaTitle = document.querySelector("#ideas-title");
 const dialog = document.querySelector("#details-dialog");
 const dialogContent = document.querySelector("#dialog-content");
-let activeDestination = "all";
+const activeDestination = document.body.dataset.destination || "all";
+const activeData = destinations.find((item) => item.id === activeDestination) || destinations[0];
 
 function renderTabs() {
-  tabs.innerHTML = destinations.map((d) => `<button role="tab" aria-selected="${d.id === activeDestination}" class="${d.id === activeDestination ? "active" : ""}" data-destination="${d.id}">${d.label}${d.dates ? `<small> · ${d.dates}</small>` : ""}</button>`).join("");
+  if (!tabs) return;
+  tabs.innerHTML = destinations.map((d) => `<a href="${d.page}" role="tab" aria-selected="${d.id === activeDestination}" class="${d.id === activeDestination ? "active" : ""}"><span>${d.label}</span>${d.dates ? `<small>${d.dates}</small>` : ""}</a>`).join("");
 }
 
 function renderRoute() {
+  if (!routeList) return;
   const items = activeDestination === "all" ? route : route.filter((item) => item.destination === activeDestination);
   routeList.innerHTML = items.map((item) => `
     <article class="route-card ${item.type}">
-      <div class="date"><span class="day-type ${item.type}">${item.type === "transfer" ? "Fahrtag" : "Tag vor Ort"}</span>${item.date}</div>
+      <div class="date">${item.date}</div>
       <div>
         <h3>${item.title}</h3><p>${item.text}</p>
         <div class="meta">${item.tags.map((tag, index) => `<span class="chip ${item.confirmed && index === 0 ? "confirmed" : ""}">${tag}</span>`).join("")}</div>
       </div>
-      <button class="open-details" data-details="${item.id}" aria-label="Details zu ${item.title}">→</button>
+      <button class="open-details" data-details="${item.id}" aria-label="${activeDestination === "all" ? "Destination öffnen" : "Details öffnen"}: ${item.title}">→</button>
     </article>`).join("");
 }
 
 function renderIdeas(filter = "all") {
-  const destinationIdeas = activeDestination === "all" ? ideas : ideas.filter((idea) => idea.destination === activeDestination);
+  if (!ideaGrid || !ideaTitle) return;
+  const destinationIdeas = ideas.filter((idea) => idea.destination === activeDestination);
   const filtered = filter === "all" ? destinationIdeas : destinationIdeas.filter((idea) => idea.type === filter);
-  const destination = destinations.find((item) => item.id === activeDestination);
-  ideaTitle.textContent = destination.sectionTitle;
-  document.querySelector("#ideas-overview").hidden = activeDestination !== "mauricie";
+  ideaTitle.textContent = `Ideen für ${activeData.label}`;
   if (!filtered.length) {
-    ideaGrid.innerHTML = `<div class="ideas-empty"><span>✦</span><div><strong>Noch keine ${filter === "booked" ? "Buchungen" : "Ideen"} für ${destination.label}</strong><p>Neue Vorschläge aus dem zugehörigen Projektchat erscheinen später genau hier.</p></div></div>`;
+    ideaGrid.innerHTML = `<div class="ideas-empty"><span>✦</span><div><strong>Noch keine ${filter === "booked" ? "Buchungen" : "Ideen"} für ${activeData.label}</strong><p>Neue Vorschläge aus dem zugehörigen Projektchat erscheinen später genau hier.</p></div></div>`;
     return;
   }
   ideaGrid.innerHTML = filtered.map((idea) => {
     const selected = localStorage.getItem(`canada-vote-${idea.id}`) === "1";
-    const facts = idea.facts ? `<div class="idea-facts">${idea.facts.map((fact) => `<span>${fact}</span>`).join("")}</div>` : "";
-    const warning = idea.warning ? `<aside class="safety-note"><strong>Sicherheitshinweis</strong>${idea.warning}</aside>` : "";
-    const links = idea.links ? `<div class="source-links">${idea.links.map((link) => `<a class="${link.pdf ? "pdf-link" : ""}" href="${link.url}" target="_blank" rel="noopener">${link.pdf ? "PDF · " : ""}${link.label} ↗</a>`).join("")}</div>` : "";
-    return `<article class="idea-card ${idea.type} ${idea.warning ? "featured-option" : ""}"><span class="idea-icon">${idea.icon}</span><h3>${idea.title}</h3><p>${idea.text}</p>${facts}${warning}${links}<footer><span class="status-label">${idea.type === "booked" ? "Fest gebucht" : idea.place}</span><button class="vote ${selected ? "selected" : ""}" data-vote="${idea.id}" aria-pressed="${selected}">${selected ? "♥ Interessiert" : "♡ Interesse"}</button></footer></article>`;
+    const facts = (idea.facts || []).slice(0, 2).map((fact) => `<span>${fact}</span>`).join("");
+    return `<article class="idea-tile ${idea.type}" data-idea="${idea.id}" tabindex="0" role="button" aria-label="${idea.title} öffnen">
+      <div class="tile-top"><span class="idea-icon">${idea.icon}</span><span class="tile-more">Details →</span></div>
+      <p class="idea-place">${idea.type === "booked" ? "Fest gebucht" : idea.place}</p><h3>${idea.title}</h3>
+      <div class="idea-facts">${facts}${idea.warning ? `<span class="warning-chip">Sicherheit</span>` : ""}</div>
+      <button class="tile-vote ${selected ? "selected" : ""}" data-vote="${idea.id}" aria-pressed="${selected}" aria-label="Interesse an ${idea.title}">${selected ? "♥" : "♡"}</button>
+    </article>`;
   }).join("");
 }
 
-tabs.addEventListener("click", (event) => {
-  const button = event.target.closest("[data-destination]");
-  if (!button) return;
-  activeDestination = button.dataset.destination;
-  renderTabs(); renderRoute();
-  document.querySelectorAll(".filter").forEach((el) => el.classList.toggle("active", el.dataset.filter === "all"));
-  renderIdeas("all");
-});
-
-routeList.addEventListener("click", (event) => {
+routeList?.addEventListener("click", (event) => {
   const button = event.target.closest("[data-details]");
   if (!button) return;
   const item = route.find((entry) => entry.id === button.dataset.details);
+  if (activeDestination === "all") {
+    window.location.href = destinations.find((entry) => entry.id === item.destination).page;
+    return;
+  }
   dialogContent.innerHTML = `<p class="eyebrow">${item.date}</p><h2>${item.title}</h2><p>${item.text}</p><ul>${item.details.map((detail) => `<li>${detail}</li>`).join("")}</ul>`;
   dialog.showModal();
 });
 
-document.querySelector(".close-dialog").addEventListener("click", () => dialog.close());
-dialog.addEventListener("click", (event) => { if (event.target === dialog) dialog.close(); });
+document.querySelector(".close-dialog")?.addEventListener("click", () => dialog.close());
+dialog?.addEventListener("click", (event) => { if (event.target === dialog) dialog.close(); });
 
-document.querySelector(".filters").addEventListener("click", (event) => {
+document.querySelector(".filters")?.addEventListener("click", (event) => {
   const button = event.target.closest("[data-filter]"); if (!button) return;
   document.querySelectorAll(".filter").forEach((el) => el.classList.toggle("active", el === button));
   renderIdeas(button.dataset.filter);
 });
 
-ideaGrid.addEventListener("click", (event) => {
-  const button = event.target.closest("[data-vote]"); if (!button) return;
-  const key = `canada-vote-${button.dataset.vote}`;
-  const selected = localStorage.getItem(key) === "1";
-  localStorage.setItem(key, selected ? "0" : "1");
-  renderIdeas(document.querySelector(".filter.active").dataset.filter);
+function openIdea(id) {
+  const idea = ideas.find((entry) => entry.id === id);
+  if (!idea || !dialogContent) return;
+  const facts = idea.facts?.length ? `<div class="dialog-facts">${idea.facts.map((fact) => `<span>${fact}</span>`).join("")}</div>` : "";
+  const warning = idea.warning ? `<aside class="safety-note"><strong>Sicherheitshinweis</strong>${idea.warning}</aside>` : "";
+  const links = idea.links?.length ? `<div class="source-links">${idea.links.map((link) => `<a href="${link.url}" target="_blank" rel="noopener">${link.pdf ? "PDF · " : ""}${link.label} ↗</a>`).join("")}</div>` : "";
+  dialogContent.innerHTML = `<p class="eyebrow">${idea.place}</p><h2>${idea.icon} ${idea.title}</h2><p>${idea.text}</p>${facts}${warning}${links}`;
+  dialog.showModal();
+}
+
+ideaGrid?.addEventListener("click", (event) => {
+  const vote = event.target.closest("[data-vote]");
+  if (vote) {
+    event.stopPropagation();
+    const key = `canada-vote-${vote.dataset.vote}`;
+    localStorage.setItem(key, localStorage.getItem(key) === "1" ? "0" : "1");
+    renderIdeas(document.querySelector(".filter.active")?.dataset.filter || "all");
+    return;
+  }
+  const tile = event.target.closest("[data-idea]");
+  if (tile) openIdea(tile.dataset.idea);
 });
+
+ideaGrid?.addEventListener("keydown", (event) => {
+  if ((event.key === "Enter" || event.key === " ") && event.target.matches("[data-idea]")) {
+    event.preventDefault(); openIdea(event.target.dataset.idea);
+  }
+});
+
+if (activeDestination !== "all") {
+  document.title = `${activeData.sectionTitle} · Canada 2027`;
+  const title = document.querySelector("#destination-title");
+  const summary = document.querySelector("#destination-summary");
+  if (title) title.textContent = activeData.sectionTitle;
+  if (summary) summary.textContent = activeData.summary;
+  const comparison = document.querySelector("#comparison-link");
+  if (comparison) comparison.hidden = activeDestination !== "mauricie";
+}
 
 renderTabs(); renderRoute(); renderIdeas();

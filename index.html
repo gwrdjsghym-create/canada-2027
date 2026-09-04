@@ -10,13 +10,13 @@
   </head>
   <body>
     <header class="topbar">
-      <a class="brand" href="#top" aria-label="Canada 2027 – Startseite">
+        <a class="brand" href="index.html" aria-label="Canada 2027 – Startseite">
         <span class="brand-mark">CA</span>
         <span><strong>Canada 2027</strong><small>17. September – 2. Oktober</small></span>
       </a>
       <nav class="desktop-nav" aria-label="Hauptnavigation">
         <a class="active" href="#route">Reise</a>
-        <a href="#ideas">Ideen</a>
+        <a href="#route">Destinationen</a>
         <a href="#travellers">Reisende</a>
       </nav>
     </header>
@@ -39,23 +39,11 @@
       <section class="section" id="route">
         <div class="section-head">
           <div><p class="eyebrow">Reiseverlauf</p><h2>Etappe für Etappe</h2></div>
-          <div class="legend"><span><i class="dot stay"></i> Tag vor Ort</span><span><i class="dot move"></i> Fahrtag</span><span><i class="dot booked"></i> Gebucht</span></div>
+          <div class="legend"><span><i class="dot stay"></i> Aufenthalt</span><span><i class="dot move"></i> Fahrtag</span><span><i class="dot booked"></i> Gebucht</span></div>
         </div>
 
         <div class="destination-tabs" id="destination-tabs" role="tablist" aria-label="Destination auswählen"></div>
         <div class="route-list" id="route-list"></div>
-        <div class="ideas" id="ideas">
-        <div class="section-head ideas-head">
-          <div><p class="eyebrow">Gemeinsam planen</p><h2 id="ideas-title">Alle Reiseideen</h2></div>
-          <div class="filters" role="group" aria-label="Ideen filtern">
-            <button class="filter active" data-filter="all">Alle</button>
-            <button class="filter" data-filter="booked">Gebucht</button>
-            <button class="filter" data-filter="idea">Ideen</button>
-          </div>
-        </div>
-        <a class="overview-download" id="ideas-overview" href="pdfs/00_Vergleich_Aktivitaeten_Mauricie.pdf" target="_blank" rel="noopener" hidden><span>PDF</span><strong>Aktivitäten im Vergleich</strong><small>Alle Optionen für The Laurentians auf einen Blick ↗</small></a>
-        <div class="idea-grid" id="idea-grid"></div>
-        </div>
       </section>
 
       <section class="section travellers" id="travellers">
@@ -70,7 +58,7 @@
     </main>
 
     <nav class="mobile-nav" aria-label="Mobile Navigation">
-      <a href="#route"><span>⌁</span>Reise</a><a href="#ideas"><span>♡</span>Ideen</a><a href="#travellers"><span>♙</span>Wir vier</a>
+      <a href="#route"><span>⌁</span>Reise</a><a href="#route"><span>⌘</span>Ziele</a><a href="#travellers"><span>♙</span>Wir vier</a>
     </nav>
 
     <dialog id="details-dialog">
