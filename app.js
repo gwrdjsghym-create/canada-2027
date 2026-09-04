@@ -232,7 +232,6 @@ if (activeDestination !== "all") {
 const checklistRoot = document.querySelector("#checklist-root");
 const checklistDialog = document.querySelector("#checklist-dialog");
 const checklistStorageKey = "canada-2027-checklists-v1";
-const checklistAccessKey = "canada-2027-family-key";
 const checklistDefaults = {
   al: {
     title: "Andrea & Lars",
@@ -294,6 +293,8 @@ function cloneChecklistDefaults() {
 
 let checklistData = checklistRoot ? cloneChecklistDefaults() : null;
 let checklistUpdatedAt = null;
+let activeChecklistCouple = null;
+let checklistSessionKey = null;
 
 function setSyncStatus(text, state = "") {
   const status = document.querySelector("#sync-status");
@@ -330,14 +331,14 @@ async function loadSharedChecklists(silent = false) {
 async function saveChecklists() {
   if (!checklistData) return;
   localStorage.setItem(checklistStorageKey, JSON.stringify(checklistData));
-  let familyKey = localStorage.getItem(checklistAccessKey);
+  let familyKey = checklistSessionKey;
   if (!familyKey) {
     familyKey = window.prompt("Familienschlüssel zum gemeinsamen Bearbeiten eingeben:");
     if (!familyKey) {
       setSyncStatus("Änderung nur auf diesem Gerät gespeichert", "offline");
       return;
     }
-    localStorage.setItem(checklistAccessKey, familyKey);
+    checklistSessionKey = familyKey;
   }
   setSyncStatus("Wird synchronisiert …", "syncing");
   try {
@@ -347,7 +348,7 @@ async function saveChecklists() {
       body: JSON.stringify({ data: checklistData })
     });
     if (response.status === 401) {
-      localStorage.removeItem(checklistAccessKey);
+      checklistSessionKey = null;
       setSyncStatus("Familienschlüssel nicht erkannt", "offline");
       window.alert("Der Familienschlüssel war nicht richtig. Beim nächsten Ändern kannst du ihn erneut eingeben.");
       return;
@@ -366,11 +367,25 @@ async function saveChecklists() {
 
 function renderChecklists() {
   if (!checklistRoot || !checklistData) return;
-  checklistRoot.innerHTML = Object.entries(checklistData).map(([coupleId, couple]) => {
+  const choices = Object.entries(checklistData).map(([coupleId, couple]) => {
     const allItems = couple.lists.flatMap((list) => list.items);
     const done = allItems.filter((item) => item.done).length;
     const progress = allItems.length ? Math.round(done / allItems.length * 100) : 0;
-    return `<section class="checklist-group" data-couple="${coupleId}">
+    return `<button class="checklist-choice ${activeChecklistCouple === coupleId ? "active" : ""}" type="button" data-toggle-couple="${coupleId}" aria-expanded="${activeChecklistCouple === coupleId}">
+      <span class="couple-avatars">${checklistDefaults[coupleId].avatars}</span>
+      <span><strong>${escapeHtml(couple.title)}</strong><small>${done} von ${allItems.length} erledigt</small></span>
+      <b>${progress}%</b>
+    </button>`;
+  }).join("");
+
+  const coupleId = activeChecklistCouple;
+  const couple = coupleId ? checklistData[coupleId] : null;
+  let panel = "";
+  if (couple) {
+    const allItems = couple.lists.flatMap((list) => list.items);
+    const done = allItems.filter((item) => item.done).length;
+    const progress = allItems.length ? Math.round(done / allItems.length * 100) : 0;
+    panel = `<section class="checklist-group" data-couple="${coupleId}">
       <header class="couple-head"><div class="couple-avatars">${checklistDefaults[coupleId].avatars}</div><div><p>Unsere Vorbereitung</p><h3>${escapeHtml(couple.title)}</h3></div><span class="progress-number">${progress}%</span></header>
       <div class="progress-track"><i style="width:${progress}%"></i></div>
       <div class="topic-grid">${couple.lists.map((list) => `
@@ -381,7 +396,8 @@ function renderChecklists() {
         </article>`).join("")}</div>
       <button class="add-list-button" data-add-list="${coupleId}"><span>＋</span> Neue Themenliste</button>
     </section>`;
-  }).join("");
+  }
+  checklistRoot.innerHTML = `<div class="checklist-choices">${choices}</div>${panel}`;
 }
 
 checklistRoot?.addEventListener("change", (event) => {
@@ -405,6 +421,12 @@ checklistRoot?.addEventListener("submit", (event) => {
 });
 
 checklistRoot?.addEventListener("click", (event) => {
+  const toggleCouple = event.target.closest("[data-toggle-couple]");
+  if (toggleCouple) {
+    activeChecklistCouple = activeChecklistCouple === toggleCouple.dataset.toggleCouple ? null : toggleCouple.dataset.toggleCouple;
+    renderChecklists();
+    return;
+  }
   const addList = event.target.closest("[data-add-list]");
   if (addList) {
     document.querySelector("#new-list-couple").value = addList.dataset.addList;
