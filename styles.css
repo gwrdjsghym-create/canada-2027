@@ -85,8 +85,12 @@ h2 { font-family: Georgia, serif; font-size: clamp(2rem, 4vw, 3rem); font-weight
 .travellers { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; align-items: center; background: var(--sky); }
 .travellers p:last-child { max-width: 600px; color: var(--muted); }
 .people { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-.people span { display: flex; align-items: center; gap: 10px; padding: 12px; border-radius: 15px; background: rgba(255,255,255,.65); font-weight: 750; }
-.people b { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; color: #fff; background: var(--forest); font-size: .72rem; }
+.people span { display: flex; align-items: center; gap: 12px; min-width: 0; padding: 10px 12px 10px 10px; border-radius: 18px; background: rgba(255,255,255,.72); font-weight: 750; }
+.avatar { display: block; flex: 0 0 58px; width: 58px; height: 58px; border: 3px solid rgba(255,255,255,.92); border-radius: 50%; background-position: center; background-repeat: no-repeat; box-shadow: 0 5px 14px rgba(17,41,31,.16); }
+.avatar-lars, .avatar-andrea { background-image: url("assets/andrea-lars-memoji.png"); background-size: 200% auto; }
+.avatar-christina, .avatar-manfred { background-image: url("assets/christina-manfred-memoji.png"); background-size: 200% auto; }
+.avatar-andrea, .avatar-christina { background-position: left center; }
+.avatar-lars, .avatar-manfred { background-position: right center; }
 
 .mobile-nav { display: none; }
 dialog { width: min(620px, calc(100% - 30px)); padding: 30px; border: 0; border-radius: 24px; color: var(--ink); background: var(--paper); box-shadow: var(--shadow); }

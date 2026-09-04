@@ -37,6 +37,9 @@ jobs:
             'put index.html' \
             'put styles.css' \
             'put app.js' \
+            '-mkdir assets' \
+            'put assets/andrea-lars-memoji.png assets/andrea-lars-memoji.png' \
+            'put assets/christina-manfred-memoji.png assets/christina-manfred-memoji.png' \
             'bye' > "$RUNNER_TEMP/sftp-commands"
 
           sshpass -e sftp \
