@@ -40,6 +40,14 @@ jobs:
             '-mkdir assets' \
             'put assets/andrea-lars-memoji.png assets/andrea-lars-memoji.png' \
             'put assets/christina-manfred-memoji.png assets/christina-manfred-memoji.png' \
+            '-mkdir pdfs' \
+            'put pdfs/00_Vergleich_Aktivitaeten_Mauricie.pdf pdfs/00_Vergleich_Aktivitaeten_Mauricie.pdf' \
+            'put pdfs/01_Lac-Solitaire.pdf pdfs/01_Lac-Solitaire.pdf' \
+            'put pdfs/02_Ruisseau-Bouchard.pdf pdfs/02_Ruisseau-Bouchard.pdf' \
+            'put pdfs/03_Cascades-und-Falaises.pdf pdfs/03_Cascades-und-Falaises.pdf' \
+            'put pdfs/04_Kanu-Einfuehrung.pdf pdfs/04_Kanu-Einfuehrung.pdf' \
+            'put pdfs/05_Chutes-Waber.pdf pdfs/05_Chutes-Waber.pdf' \
+            'put pdfs/06_Shawinigan-und-Cite-de-lEnergie.pdf pdfs/06_Shawinigan-und-Cite-de-lEnergie.pdf' \
             'bye' > "$RUNNER_TEMP/sftp-commands"
 
           sshpass -e sftp \

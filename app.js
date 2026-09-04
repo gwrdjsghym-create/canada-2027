@@ -1,10 +1,10 @@
 const destinations = [
-  { id: "all", label: "Gesamte Reise" },
-  { id: "montreal", label: "Montréal", dates: "17.–20.09." },
-  { id: "mauricie", label: "The Laurentians", dates: "20.–23.09." },
-  { id: "sainte-rose", label: "Sainte-Rose-du-Nord", dates: "23.–27.09." },
-  { id: "quebec", label: "Québec City", dates: "27.–29.09." },
-  { id: "orford", label: "Orford", dates: "29.09.–02.10." }
+  { id: "all", label: "Gesamte Reise", sectionTitle: "Alle Reiseideen" },
+  { id: "montreal", label: "Montréal", dates: "17.–20.09.", sectionTitle: "01 – Montréal | 17.–20.09.2027" },
+  { id: "mauricie", label: "Nature Nature", dates: "20.–23.09.", sectionTitle: "02 – The Laurentians | 20.–23.09.2027" },
+  { id: "sainte-rose", label: "Sainte-Rose-du-Nord", dates: "23.–27.09.", sectionTitle: "03 – Sainte-Rose-du-Nord | 23.–27.09.2027" },
+  { id: "quebec", label: "Québec City", dates: "27.–29.09.", sectionTitle: "04 – Québec City | 27.–29.09.2027" },
+  { id: "orford", label: "Orford", dates: "29.09.–02.10.", sectionTitle: "05 – Orford | 29.09.–02.10.2027" }
 ];
 
 const route = [
@@ -83,32 +83,38 @@ const ideas = [
     id: "lac-solitaire", destination: "mauricie", type: "idea", icon: "🥾", place: "The Laurentians · Dienstag", title: "Lac-Solitaire",
     text: "Kompakter, aber höhenreicher Rundweg durch regenerierenden Wald und um den See – unsere bevorzugte kürzere Variante.",
     facts: ["6,1 km", "396 Hm", "ca. 2,5 Std.", "mittelschwer"],
-    links: [{ label: "Parks Canada", url: "https://parks.canada.ca/pn-np/qc/mauricie/activ/sentiers-trails" }]
+    links: [{ label: "PDF-Steckbrief", url: "pdfs/01_Lac-Solitaire.pdf", pdf: true }, { label: "Parks Canada", url: "https://parks.canada.ca/pn-np/qc/mauricie/activ/sentiers-trails" }]
   },
   {
     id: "ruisseau-bouchard", destination: "mauricie", type: "idea", icon: "⛰️", place: "The Laurentians · Dienstag", title: "Ruisseau-Bouchard",
     text: "Die längere Alternative mit Aussicht am Lac aux Chevaux und einem schönen Rückweg entlang des Bouchard Creek.",
     facts: ["9,1 km", "528 Hm", "ca. 3,5 Std.", "mittelschwer"],
-    links: [{ label: "Parks Canada", url: "https://parks.canada.ca/pn-np/qc/mauricie/activ/sentiers-trails" }]
+    links: [{ label: "PDF-Steckbrief", url: "pdfs/02_Ruisseau-Bouchard.pdf", pdf: true }, { label: "Parks Canada", url: "https://parks.canada.ca/pn-np/qc/mauricie/activ/sentiers-trails" }]
   },
   {
     id: "cascades-falaises", destination: "mauricie", type: "idea", icon: "💦", place: "The Laurentians · Mittwoch", title: "Les Cascades & Les Falaises",
     text: "Zwei kurze Wege, die sich flexibel verbinden lassen: Wasserfälle und schwimmende Brücke sowie Aussicht über den Lac Wapizagonke.",
     facts: ["2,4 km · 103 Hm", "4,0 km · 268 Hm", "ca. 2,5 Std. gesamt"],
-    links: [{ label: "Wege", url: "https://parks.canada.ca/pn-np/qc/mauricie/activ/sentiers-trails" }, { label: "Karte & Höhenprofil", url: "https://publications.gc.ca/collections/collection_2018/pc/R64-517-2017.pdf" }]
+    links: [{ label: "PDF-Steckbrief", url: "pdfs/03_Cascades-und-Falaises.pdf", pdf: true }, { label: "Wege", url: "https://parks.canada.ca/pn-np/qc/mauricie/activ/sentiers-trails" }, { label: "Karte & Höhenprofil", url: "https://publications.gc.ca/collections/collection_2018/pc/R64-517-2017.pdf" }]
   },
   {
     id: "canoe-intro", destination: "mauricie", type: "idea", icon: "🛶", place: "The Laurentians · Mittwoch", title: "Kanu-Einführung",
     text: "Da wir noch nie Kanu gefahren sind, bevorzugen wir eine geführte Einführung. Alternativ 60–90 Minuten in Ufernähe mit zwei Zweierkanus oder Doppelkajaks.",
     facts: ["anfängergeeignet", "60–90 Min.", "Saison 2027 prüfen"],
-    links: [{ label: "Paddeln & Verleih", url: "https://parks.canada.ca/pn-np/qc/mauricie/activ/nautique-nautical" }]
+    links: [{ label: "PDF-Steckbrief", url: "pdfs/04_Kanu-Einfuehrung.pdf", pdf: true }, { label: "Paddeln & Verleih", url: "https://parks.canada.ca/pn-np/qc/mauricie/activ/nautique-nautical" }]
   },
   {
     id: "waber-falls", destination: "mauricie", type: "idea", icon: "🌊", place: "Besondere Wunschoption", title: "Waber Falls",
     text: "Eine komplette Tagesexpedition zu den 27 Meter hohen Wasserfällen – eindrucksvoll, aber noch nicht fest eingeplant.",
     facts: ["9,2 km paddeln", "7,2 km wandern", "349 Hm", "6–8 Std."],
     warning: "Die Waber-Tour ist keine Kanueinführung. Nur mit Guide oder nach vorheriger Einführung, bei stabiler Wetterlage und nach ausdrücklicher Empfehlung der Mitarbeiter vor Ort. Andernfalls bleibt es bei einer kurzen Kanutour in Ufernähe.",
-    links: [{ label: "Parks Canada", url: "https://parks.canada.ca/pn-np/qc/mauricie/activ/nautique-nautical/waber" }, { label: "Höhenprofil & Wege", url: "https://parks.canada.ca/pn-np/qc/mauricie/activ/sentiers-trails" }]
+    links: [{ label: "PDF-Steckbrief", url: "pdfs/05_Chutes-Waber.pdf", pdf: true }, { label: "Parks Canada", url: "https://parks.canada.ca/pn-np/qc/mauricie/activ/nautique-nautical/waber" }, { label: "Höhenprofil & Wege", url: "https://parks.canada.ca/pn-np/qc/mauricie/activ/sentiers-trails" }]
+  },
+  {
+    id: "shawinigan", destination: "mauricie", type: "idea", icon: "🏛️", place: "The Laurentians · Schlechtwetteroption", title: "Shawinigan & Cité de l’énergie",
+    text: "Die Stadt- und Kulturvariante für einen Regentag: Shawinigan erkunden und die Cité de l’énergie als wetterunabhängigen Programmpunkt einplanen.",
+    facts: ["Regenalternative", "Kultur & Technik", "flexibel planbar"],
+    links: [{ label: "PDF-Steckbrief", url: "pdfs/06_Shawinigan-und-Cite-de-lEnergie.pdf", pdf: true }]
   }
 ];
 
@@ -128,7 +134,7 @@ function renderRoute() {
   const items = activeDestination === "all" ? route : route.filter((item) => item.destination === activeDestination);
   routeList.innerHTML = items.map((item) => `
     <article class="route-card ${item.type}">
-      <div class="date">${item.date}</div>
+      <div class="date"><span class="day-type ${item.type}">${item.type === "transfer" ? "Fahrtag" : "Tag vor Ort"}</span>${item.date}</div>
       <div>
         <h3>${item.title}</h3><p>${item.text}</p>
         <div class="meta">${item.tags.map((tag, index) => `<span class="chip ${item.confirmed && index === 0 ? "confirmed" : ""}">${tag}</span>`).join("")}</div>
@@ -141,7 +147,8 @@ function renderIdeas(filter = "all") {
   const destinationIdeas = activeDestination === "all" ? ideas : ideas.filter((idea) => idea.destination === activeDestination);
   const filtered = filter === "all" ? destinationIdeas : destinationIdeas.filter((idea) => idea.type === filter);
   const destination = destinations.find((item) => item.id === activeDestination);
-  ideaTitle.textContent = activeDestination === "all" ? "Ideen für die gesamte Reise" : `Ideen für ${destination.label}`;
+  ideaTitle.textContent = destination.sectionTitle;
+  document.querySelector("#ideas-overview").hidden = activeDestination !== "mauricie";
   if (!filtered.length) {
     ideaGrid.innerHTML = `<div class="ideas-empty"><span>✦</span><div><strong>Noch keine ${filter === "booked" ? "Buchungen" : "Ideen"} für ${destination.label}</strong><p>Neue Vorschläge aus dem zugehörigen Projektchat erscheinen später genau hier.</p></div></div>`;
     return;
@@ -150,7 +157,7 @@ function renderIdeas(filter = "all") {
     const selected = localStorage.getItem(`canada-vote-${idea.id}`) === "1";
     const facts = idea.facts ? `<div class="idea-facts">${idea.facts.map((fact) => `<span>${fact}</span>`).join("")}</div>` : "";
     const warning = idea.warning ? `<aside class="safety-note"><strong>Sicherheitshinweis</strong>${idea.warning}</aside>` : "";
-    const links = idea.links ? `<div class="source-links">${idea.links.map((link) => `<a href="${link.url}" target="_blank" rel="noopener">${link.label} ↗</a>`).join("")}</div>` : "";
+    const links = idea.links ? `<div class="source-links">${idea.links.map((link) => `<a class="${link.pdf ? "pdf-link" : ""}" href="${link.url}" target="_blank" rel="noopener">${link.pdf ? "PDF · " : ""}${link.label} ↗</a>`).join("")}</div>` : "";
     return `<article class="idea-card ${idea.type} ${idea.warning ? "featured-option" : ""}"><span class="idea-icon">${idea.icon}</span><h3>${idea.title}</h3><p>${idea.text}</p>${facts}${warning}${links}<footer><span class="status-label">${idea.type === "booked" ? "Fest gebucht" : idea.place}</span><button class="vote ${selected ? "selected" : ""}" data-vote="${idea.id}" aria-pressed="${selected}">${selected ? "♥ Interessiert" : "♡ Interesse"}</button></footer></article>`;
   }).join("");
 }

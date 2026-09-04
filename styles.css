@@ -54,11 +54,16 @@ h2 { font-family: Georgia, serif; font-size: clamp(2rem, 4vw, 3rem); font-weight
 .destination-tabs button.active { color: #fff; background: var(--forest); }
 .route-list { position: relative; margin-top: 20px; padding-left: 28px; }
 .route-list::before { content: ""; position: absolute; left: 9px; top: 18px; bottom: 18px; width: 2px; background: var(--line); }
-.route-card { position: relative; display: grid; grid-template-columns: 122px 1fr auto; gap: 20px; align-items: center; padding: 20px; margin-bottom: 12px; border: 1px solid var(--line); border-radius: 20px; background: #fff; transition: transform .2s, border-color .2s; }
+.route-card { position: relative; display: grid; grid-template-columns: 138px 1fr auto; gap: 20px; align-items: center; padding: 20px; margin-bottom: 12px; border: 1px solid var(--line); border-radius: 20px; background: #fff; transition: transform .2s, border-color .2s; }
+.route-card.stay { border-color: #bfd8c8; background: linear-gradient(90deg, #f1f8f3, #fff 42%); }
+.route-card.transfer { border-color: #e4c7b8; background: linear-gradient(90deg, #fff4ed, #fff 42%); }
 .route-card::before { content: ""; position: absolute; left: -24px; width: 12px; height: 12px; border: 4px solid var(--paper); border-radius: 50%; background: var(--pine); }
 .route-card.transfer::before { background: #93a29a; }
 .route-card:hover { transform: translateY(-2px); border-color: #b4c3ba; }
-.route-card .date { color: var(--muted); font-size: .85rem; font-weight: 700; }
+.route-card .date { display: flex; flex-direction: column; align-items: flex-start; gap: 7px; color: var(--muted); font-size: .85rem; font-weight: 700; }
+.day-type { display: inline-flex; padding: 4px 9px; border-radius: 99px; font-size: .7rem; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
+.day-type.stay { color: #155638; background: #dcefe3; }
+.day-type.transfer { color: #913f20; background: #f7ded0; }
 .route-card h3 { margin-bottom: 6px; font-size: 1.15rem; }
 .route-card p { margin: 0; color: var(--muted); }
 .route-card .meta { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
@@ -70,6 +75,11 @@ h2 { font-family: Georgia, serif; font-size: clamp(2rem, 4vw, 3rem); font-weight
 .ideas { margin-top: 34px; padding-top: 30px; border-top: 1px solid var(--line); scroll-margin-top: 90px; }
 .ideas-head { margin-bottom: 20px; }
 .ideas-head h2 { font-size: clamp(1.75rem, 3.4vw, 2.5rem); }
+.overview-download { display: grid; grid-template-columns: auto 1fr; column-gap: 12px; align-items: center; margin: 0 0 20px; padding: 16px 18px; border: 1px solid #c7d9ce; border-radius: 18px; color: var(--forest); background: #eef6f1; }
+.overview-download[hidden] { display: none; }
+.overview-download > span { grid-row: 1 / 3; padding: 7px 9px; border-radius: 9px; color: #fff; background: var(--maple); font-size: .72rem; font-weight: 900; }
+.overview-download strong, .overview-download small { display: block; }
+.overview-download small { color: var(--muted); }
 .filter { padding: 8px 13px; border: 1px solid var(--line); border-radius: 99px; background: #fff; color: var(--muted); cursor: pointer; font-weight: 750; }
 .filter.active { color: #fff; background: var(--forest); border-color: var(--forest); }
 .idea-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
@@ -85,6 +95,7 @@ h2 { font-family: Georgia, serif; font-size: clamp(2rem, 4vw, 3rem); font-weight
 .idea-facts span { padding: 5px 9px; border-radius: 99px; color: var(--forest); background: rgba(255,255,255,.78); font-size: .78rem; font-weight: 800; }
 .source-links { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 18px; }
 .source-links a, #dialog-content a { color: var(--pine); text-decoration: underline; text-decoration-color: rgba(29,96,66,.35); text-underline-offset: 3px; font-size: .85rem; font-weight: 800; }
+.source-links .pdf-link { padding: 6px 9px; border-radius: 8px; color: #fff; background: var(--maple); text-decoration: none; }
 .safety-note { margin: 0 0 16px; padding: 13px 14px; border-left: 4px solid var(--maple); border-radius: 10px; color: #69341f; background: #fff4ec; font-size: .86rem; }
 .safety-note strong { display: block; margin-bottom: 4px; color: #8c3519; }
 .status-label { font-size: .75rem; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; }
