@@ -71,12 +71,19 @@ h2 { font-family: Georgia, serif; font-size: clamp(2rem, 4vw, 3rem); font-weight
 .filter.active { color: #fff; background: var(--forest); border-color: var(--forest); }
 .idea-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
 .idea-card { display: flex; flex-direction: column; min-height: 265px; padding: 22px; border-radius: 22px; background: var(--cream); }
+.idea-card.featured-option { grid-column: span 2; background: linear-gradient(145deg, #eef3ec, #f7efe7); border: 1px solid #d8c6b8; }
 .idea-card.booked { color: #fff; background: linear-gradient(145deg, #8e3d22, #c76538); }
 .idea-card .idea-icon { font-size: 2rem; }
-.idea-card h3 { margin-top: 28px; font-family: Georgia, serif; font-size: 1.5rem; }
-.idea-card p { color: var(--muted); }
+.idea-card h3 { margin-top: 22px; font-family: Georgia, serif; font-size: 1.5rem; }
+.idea-card p { margin-bottom: 14px; color: var(--muted); }
 .idea-card.booked p { color: rgba(255,255,255,.75); }
 .idea-card footer { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-top: auto; }
+.idea-facts { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 14px; }
+.idea-facts span { padding: 5px 9px; border-radius: 99px; color: var(--forest); background: rgba(255,255,255,.78); font-size: .78rem; font-weight: 800; }
+.source-links { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 18px; }
+.source-links a, #dialog-content a { color: var(--pine); text-decoration: underline; text-decoration-color: rgba(29,96,66,.35); text-underline-offset: 3px; font-size: .85rem; font-weight: 800; }
+.safety-note { margin: 0 0 16px; padding: 13px 14px; border-left: 4px solid var(--maple); border-radius: 10px; color: #69341f; background: #fff4ec; font-size: .86rem; }
+.safety-note strong { display: block; margin-bottom: 4px; color: #8c3519; }
 .status-label { font-size: .75rem; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; }
 .vote { padding: 8px 11px; border: 0; border-radius: 99px; background: #fff; color: var(--forest); cursor: pointer; font-weight: 800; }
 .vote.selected { background: var(--forest); color: #fff; }
@@ -115,6 +122,7 @@ dialog::backdrop { background: rgba(10,28,21,.55); backdrop-filter: blur(4px); }
   .route-card::before { left: -21px; }
   .route-card .date { grid-column: 1 / -1; }
   .idea-grid { grid-template-columns: 1fr; }
+  .idea-card.featured-option { grid-column: auto; }
   .travellers { grid-template-columns: 1fr; }
   .mobile-nav { position: fixed; z-index: 30; left: 12px; right: 12px; bottom: 10px; display: grid; grid-template-columns: repeat(3,1fr); padding: 8px; border: 1px solid rgba(255,255,255,.6); border-radius: 22px; background: rgba(255,255,255,.88); box-shadow: var(--shadow); backdrop-filter: blur(18px); }
   .mobile-nav a { display: grid; place-items: center; gap: 2px; color: var(--muted); font-size: .72rem; font-weight: 750; }
