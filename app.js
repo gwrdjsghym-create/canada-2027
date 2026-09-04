@@ -29,12 +29,12 @@ const route = [
     details: ["Unterkunft: Nature Nature", "Koordinaten: 46.7256101, -72.7707375", "Dienstag: Lac-Solitaire oder Ruisseau-Bouchard", "Mittwoch: kurze Wanderungen, Kanu-Einstieg oder besondere Wunschoption Waber Falls", "Donnerstag: längerer Wechsel nach Sainte-Rose-du-Nord"]
   },
   {
-    id: "mauricie-tuesday", type: "stay", destination: "mauricie", date: "Dienstag · 21. September", title: "Großer Wandertag",
+    id: "mauricie-tuesday", type: "stay", destination: "mauricie", level: "day", date: "Dienstag · 21. September", title: "Großer Wandertag",
     text: "Je nach Wetter und Tagesform: Lac-Solitaire als kompakte Runde oder Ruisseau-Bouchard mit mehr Strecke und Höhenmetern.", tags: ["6,1 oder 9,1 km", "396 oder 528 Hm", "2,5–3,5 Std."],
     details: ["Lac-Solitaire: 6,1 km Rundweg · 396 Hm · ca. 2,5 Std. · mittelschwer", "Ruisseau-Bouchard: 9,1 km Rundweg · 528 Hm · ca. 3,5 Std. · mittelschwer", "Beide starten am Rivière à la Pêche Service Centre", "<a href=\"https://parks.canada.ca/pn-np/qc/mauricie/activ/sentiers-trails\" target=\"_blank\" rel=\"noopener\">Offizielle Wegbeschreibung von Parks Canada ↗</a>"]
   },
   {
-    id: "mauricie-wednesday", type: "stay", destination: "mauricie", date: "Mittwoch · 22. September", title: "Wasserfälle, Aussicht & Kanu",
+    id: "mauricie-wednesday", type: "stay", destination: "mauricie", level: "day", date: "Mittwoch · 22. September", title: "Wasserfälle, Aussicht & Kanu",
     text: "Flexibler Tag: Les Cascades und Les Falaises kombinieren oder erstmals in ruhigem Rahmen Kanu fahren. Waber Falls nur als anspruchsvolle Wunschoption.", tags: ["2,4 + 4,0 km", "103 + 268 Hm", "Kanu 60–90 Min."],
     details: ["Les Cascades: 2,4 km · 103 Hm · ca. 1 Std. · leicht", "Les Falaises: 4,0 km · 268 Hm · ca. 1,5 Std. · mittelschwer", "Kanu: möglichst geführte Einführung; alternativ kurze Ufertour mit zwei Zweierkanus oder Doppelkajaks", "Waber Falls: 9,2 km paddeln + 7,2 km wandern · 349 Hm · 6–8 Std. · noch nicht eingeplant", "Sicherheit: Waber Falls nur mit Guide oder nach vorheriger Einführung, bei stabilem Wetter und ausdrücklicher Empfehlung vor Ort."]
   },
@@ -134,7 +134,9 @@ function renderTabs() {
 
 function renderRoute() {
   if (!routeList) return;
-  const items = activeDestination === "all" ? route : route.filter((item) => item.destination === activeDestination);
+  const items = activeDestination === "all"
+    ? route.filter((item) => item.level !== "day")
+    : route.filter((item) => item.destination === activeDestination);
   routeList.innerHTML = items.map((item) => `
     <article class="route-card ${item.type}">
       <div class="date">${item.date}</div>
