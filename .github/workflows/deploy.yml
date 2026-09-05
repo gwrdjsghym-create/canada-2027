@@ -48,6 +48,8 @@ jobs:
             'put 01-montreal.php' \
             'put 02-the-laurentians.html' \
             'put 02-the-laurentians.php' \
+            'put 02-transfer-20-09.php' \
+            'put transfer-vote-20-09.php' \
             'put 03-sainte-rose-du-nord.html' \
             'put 03-sainte-rose-du-nord.php' \
             'put 03-transfer-23-09.php' \
