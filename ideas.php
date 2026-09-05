@@ -53,7 +53,8 @@ if ($method === 'GET' && isset($_GET['summary'])) {
     foreach (IDEA_IDS as $id) {
         $ratings = is_array($data['ratings'][$id] ?? null) ? $data['ratings'][$id] : [];
         $values = array_values(array_filter($ratings, fn($rating) => is_int($rating) && $rating >= 1 && $rating <= 5));
-        $summaries[$id] = ['average' => $values ? round(array_sum($values) / count($values), 1) : null, 'count' => count($values), 'mine' => $ratings[$currentProfile] ?? null, 'comments' => count((array) ($data['comments'][$id] ?? []))];
+        $visibleComments = array_filter((array) ($data['comments'][$id] ?? []), fn($comment) => is_array($comment) && empty($comment['deleted']));
+        $summaries[$id] = ['average' => $values ? round(array_sum($values) / count($values), 1) : null, 'count' => count($values), 'mine' => $ratings[$currentProfile] ?? null, 'comments' => count($visibleComments)];
     }
     idea_respond(200, ['ideas' => $summaries]);
 }
@@ -91,9 +92,30 @@ if ($action === 'rating') {
     if ($parentId !== '') {
         $parent = null;
         foreach ($data['comments'][$ideaId] as $candidate) if (($candidate['id'] ?? '') === $parentId) $parent = $candidate;
-        if (!$parent || !empty($parent['parentId'])) { flock($handle, LOCK_UN); fclose($handle); idea_respond(422, ['error' => 'Antwort nicht möglich']); }
+        if (!$parent || !empty($parent['parentId']) || !empty($parent['deleted'])) { flock($handle, LOCK_UN); fclose($handle); idea_respond(422, ['error' => 'Antwort nicht möglich']); }
     }
     $data['comments'][$ideaId][] = ['id' => bin2hex(random_bytes(12)), 'profile' => $currentProfile, 'text' => $text, 'parentId' => $parentId ?: null, 'createdAt' => gmdate('c')];
+} elseif ($action === 'delete-comment') {
+    $commentId = idea_clean($body['commentId'] ?? '', 80);
+    $comments = isset($data['comments'][$ideaId]) && is_array($data['comments'][$ideaId]) ? $data['comments'][$ideaId] : [];
+    $targetIndex = null;
+    foreach ($comments as $index => $comment) {
+        if (($comment['id'] ?? '') === $commentId) { $targetIndex = $index; break; }
+    }
+    if ($targetIndex === null) { flock($handle, LOCK_UN); fclose($handle); idea_respond(404, ['error' => 'Kommentar nicht gefunden']); }
+    if (($comments[$targetIndex]['profile'] ?? '') !== $currentProfile) { flock($handle, LOCK_UN); fclose($handle); idea_respond(403, ['error' => 'Du kannst nur deinen eigenen Kommentar löschen']); }
+    $isRoot = empty($comments[$targetIndex]['parentId']);
+    $hasReplies = $isRoot && count(array_filter($comments, fn($comment) => ($comment['parentId'] ?? '') === $commentId)) > 0;
+    if ($hasReplies) {
+        $comments[$targetIndex]['deleted'] = true;
+        $comments[$targetIndex]['profile'] = null;
+        $comments[$targetIndex]['text'] = '';
+    } else {
+        array_splice($comments, $targetIndex, 1);
+        $activeParentIds = array_filter(array_map(fn($comment) => $comment['parentId'] ?? null, $comments));
+        $comments = array_values(array_filter($comments, fn($comment) => empty($comment['deleted']) || in_array($comment['id'] ?? '', $activeParentIds, true)));
+    }
+    $data['comments'][$ideaId] = $comments;
 } else {
     flock($handle, LOCK_UN); fclose($handle); idea_respond(422, ['error' => 'Unbekannte Aktion']);
 }

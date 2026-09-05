@@ -271,7 +271,12 @@ dialog::backdrop { background: rgba(10,28,21,.55); backdrop-filter: blur(4px); }
 .comment .avatar { width: 40px; height: 40px; flex-basis: 40px; border-width: 2px; box-shadow: none; }
 .comment header { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
 .comment time { color: var(--muted); font-size: .68rem; }
+.comment-meta { display: inline-flex; align-items: center; gap: 8px; }
+.delete-comment { padding: 2px 0; border: 0; color: #a43832; background: transparent; cursor: pointer; font: inherit; font-size: .68rem; font-weight: 800; }
+.delete-comment:hover, .delete-comment:focus-visible { text-decoration: underline; }
 .comment p { margin: 4px 0 0; white-space: pre-wrap; }
+.comment.is-deleted .avatar { opacity: .3; }
+.deleted-comment { color: var(--muted); font-style: italic; }
 .comment.reply { margin: 14px 0 0 38px; padding: 12px; border-radius: 14px; background: var(--cream); }
 .reply-box { margin-top: 9px; }
 .reply-box summary { color: var(--pine); cursor: pointer; font-size: .78rem; font-weight: 850; }

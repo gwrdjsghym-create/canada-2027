@@ -87,6 +87,6 @@ $profile = CANADA_PROFILES[$profileId];
       <button class="close-checklist-dialog" aria-label="Fenster schließen">×</button>
       <form id="new-list-form"><p class="eyebrow">Neue Themenliste</p><h2>Was möchtet ihr vorbereiten?</h2><label for="new-list-title">Name der Liste</label><input id="new-list-title" name="title" required maxlength="60" placeholder="z. B. Wanderausrüstung" /><input id="new-list-couple" name="couple" type="hidden" /><button class="primary-button" type="submit">Liste hinzufügen</button></form>
     </dialog>
-    <script src="app.js?v=20260905-2"></script>
+    <script src="app.js?v=20260905-3"></script>
   </body>
 </html>

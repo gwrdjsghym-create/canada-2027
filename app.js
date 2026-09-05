@@ -261,12 +261,19 @@ function renderIdeaCommunity(ideaId, data) {
   const allComments = Array.isArray(data.comments) ? data.comments : [];
   const roots = allComments.filter((comment) => !comment.parentId);
   const comments = roots.length ? roots.map((comment) => {
-    const author = profiles[comment.profile] || { name: comment.profile, avatar: "" };
+    const deleted = Boolean(comment.deleted);
+    const author = deleted ? { name: "Gelöscht", avatar: "" } : (profiles[comment.profile] || { name: comment.profile, avatar: "" });
     const replies = allComments.filter((reply) => reply.parentId === comment.id).map((reply) => {
       const replyAuthor = profiles[reply.profile] || { name: reply.profile, avatar: "" };
-      return `<article class="comment reply"><i class="avatar ${replyAuthor.avatar}"></i><div><header><strong>${escapeHtml(replyAuthor.name)}</strong><time>${formatCommentDate(reply.createdAt)}</time></header><p>${escapeHtml(reply.text)}</p></div></article>`;
+      const canDeleteReply = reply.profile === data.currentProfile;
+      return `<article class="comment reply"><i class="avatar ${replyAuthor.avatar}"></i><div><header><strong>${escapeHtml(replyAuthor.name)}</strong><span class="comment-meta"><time>${formatCommentDate(reply.createdAt)}</time>${canDeleteReply ? `<button class="delete-comment" type="button" data-delete-comment="${reply.id}">Löschen</button>` : ""}</span></header><p>${escapeHtml(reply.text)}</p></div></article>`;
     }).join("");
-    return `<article class="comment-thread"><div class="comment"><i class="avatar ${author.avatar}"></i><div><header><strong>${escapeHtml(author.name)}</strong><time>${formatCommentDate(comment.createdAt)}</time></header><p>${escapeHtml(comment.text)}</p><details class="reply-box"><summary>Antworten</summary><form data-comment-form data-parent-id="${comment.id}"><textarea name="text" maxlength="1000" required placeholder="Antwort schreiben …"></textarea><button type="submit">Antwort senden</button></form></details></div></div>${replies}</article>`;
+    const canDeleteRoot = !deleted && comment.profile === data.currentProfile;
+    const rootMeta = `<span class="comment-meta"><time>${formatCommentDate(comment.createdAt)}</time>${canDeleteRoot ? `<button class="delete-comment" type="button" data-delete-comment="${comment.id}">Löschen</button>` : ""}</span>`;
+    const rootBody = deleted
+      ? `<p class="deleted-comment">Kommentar gelöscht</p>`
+      : `<p>${escapeHtml(comment.text)}</p><details class="reply-box"><summary>Antworten</summary><form data-comment-form data-parent-id="${comment.id}"><textarea name="text" maxlength="1000" required placeholder="Antwort schreiben …"></textarea><button type="submit">Antwort senden</button></form></details>`;
+    return `<article class="comment-thread"><div class="comment ${deleted ? "is-deleted" : ""}"><i class="avatar ${author.avatar}"></i><div><header><strong>${escapeHtml(author.name)}</strong>${rootMeta}</header>${rootBody}</div></div>${replies}</article>`;
   }).join("") : `<div class="comments-empty"><span>💬</span><p>Noch kein Kommentar. Startet eure Unterhaltung zu dieser Idee.</p></div>`;
 
   return `<section class="community-panel">
@@ -318,6 +325,15 @@ async function initializeIdeaDetail() {
     const redraw = () => { community.innerHTML = renderIdeaCommunity(ideaId, data); };
     redraw();
     community.addEventListener("click", async (event) => {
+      const deleteButton = event.target.closest("[data-delete-comment]");
+      if (deleteButton) {
+        if (!window.confirm("Möchtest du deinen Kommentar wirklich löschen?")) return;
+        community.classList.add("saving");
+        try { data = await saveIdeaAction(ideaId, { action: "delete-comment", commentId: deleteButton.dataset.deleteComment }); redraw(); }
+        catch (error) { window.alert(error.message); }
+        community.classList.remove("saving");
+        return;
+      }
       const button = event.target.closest("[data-rating]");
       if (!button) return;
       community.classList.add("saving");
