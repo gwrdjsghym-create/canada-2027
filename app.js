@@ -121,7 +121,7 @@ const ideas = [
     text: "Längere Waldwanderung zum Belvédère über dem Tal der Rivière Sainte-Marguerite – besonders reizvoll im Indian Summer.",
     facts: ["12,3 km", "459 Hm", "4–5 Std.", "anspruchsvoll"],
     warning: "Vor der Tour Trailstatus und aktuelle Jagdhinweise prüfen; sichtbare Kleidung ist Ende September sinnvoll.",
-    links: [{ label: "Balise Québec", url: "https://baliseqc.ca/3S/explorer/saguenay-lac-saint-jean/sainte-rose-du-nord-LR0491" }, { label: "Touren-PDF", url: "file.php?name=03-01_Montagne-du-Chapeau_24-09-2027.pdf", pdf: true }]
+    links: [{ label: "Balise Québec", url: "https://baliseqc.ca/3S/explorer/saguenay-lac-saint-jean/sainte-rose-du-nord-LR0491" }, { label: "Touren-PDF · NEU", url: "file.php?name=03-01_Montagne-du-Chapeau_02-Standard_NEU.pdf", pdf: true }]
   },
   {
     id: "fjordtag-varianten", destination: "sainte-rose", type: "idea", icon: "🛶", place: "Sainte-Rose-du-Nord · Samstag", title: "Fjordtag – vier Varianten",
@@ -134,7 +134,7 @@ const ideas = [
     text: "Die zweite Hauptwanderung führt vom Besucherzentrum über den Lac des Pères zu weiten Aussichten im Parc national des Monts-Valin.",
     facts: ["8 km", "340 Hm", "3–4 Std.", "schwierig"],
     warning: "Bei tiefen Wolken, starkem Regen oder Wind nicht erzwingen; dann auf eine kürzere Fjordwanderung ausweichen.",
-    links: [{ label: "Sépaq", url: "https://www.sepaq.com/pq/mva/annexes/randonnee_pedestre.dot?language_id=1" }, { label: "Touren-PDF", url: "file.php?name=03-03_Pic-de-la-Tete-de-Chien_26-09-2027.pdf", pdf: true }]
+    links: [{ label: "Sépaq", url: "https://www.sepaq.com/pq/mva/annexes/randonnee_pedestre.dot?language_id=1" }, { label: "Touren-PDF · NEU", url: "file.php?name=03-03_Pic-de-la-Tete-de-Chien_02-Standard_NEU.pdf", pdf: true }]
   }
 ];
 
