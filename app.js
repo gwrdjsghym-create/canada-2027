@@ -20,8 +20,8 @@ const route = [
   },
   {
     id: "to-mauricie", type: "transfer", destination: "mauricie", date: "Montag · 20. September", title: "Montréal → Nature Nature",
-    text: "Transfer zurück zum Flughafen, Übernahme des Ford Expedition und Fahrt zur Unterkunft.", tags: ["ca. 195 km", "ca. 2 Std. 27 Min.", "Einkauf einplanen"],
-    details: ["Uville Hotel–Flughafen: ca. 19 km / 19 Min.", "Ford Expedition am Flughafen übernehmen", "Fahrt zu Nature Nature", "Check-in voraussichtlich gegen 16 Uhr", "Als Selbstversorger Einkauf oder Abendessen berücksichtigen"]
+    text: "Drei Varianten machen den ersten Mietwagentag zum Erlebnis – vom direkten Plan B bis zum Stadtstopp in Trois-Rivières.", tags: ["3 Varianten", "Einkauf eingeplant", "Abstimmung offen"],
+    details: ["A: direkt mit Großeinkauf und frühem Hüttenabend", "B: Bäckerei und Moulin seigneurial de Pointe-du-Lac – vorläufiger Favorit", "C: historisches Trois-Rivières mit Einkehr", "<a href=\"02-transfer-20-09.php\" class=\"primary-button inline-button\">Varianten vergleichen &amp; abstimmen →</a>"]
   },
   {
     id: "mauricie", type: "stay", destination: "mauricie", date: "20.–23. September · 3 Nächte", title: "Nature Nature · Mauricie",
