@@ -11,4 +11,3 @@ DirectoryIndex index.php index.html
 
 RewriteEngine On
 RewriteRule ^data(?:/|$) - [F,L]
-RewriteRule ^app\.js$ protected-asset.php?file=app.js [L,QSA]
