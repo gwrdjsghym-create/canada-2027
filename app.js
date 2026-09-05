@@ -78,7 +78,12 @@ const route = [
 const ideas = [
   { id: "whale-tour", destination: "quebec", type: "booked", icon: "🐋", place: "Tadoussac · 27. September", title: "Walbeobachtung per Schiff", text: "Fester Bestandteil des Wechsels nach Québec City. Anbieter und genaue Abfahrtszeit werden ergänzt." },
   { id: "montreal-ideas", destination: "montreal", type: "idea", icon: "🏙️", place: "Montréal", title: "Zwei volle Tage gestalten", text: "Stadtviertel, Kulinarik und mögliche Tageskombinationen sammeln wir im Montréal-Chat." },
-  { id: "transfer-stop", destination: "mauricie", type: "idea", icon: "🛒", place: "Montréal → Nature Nature", title: "Fahrt mit Einkauf aufwerten", text: "Ein sinnvoller Stopp für Lebensmittel oder ein Abendessen soll ohne großen Umweg auf die Route passen." },
+  {
+    id: "transfer-20-09", destination: "mauricie", type: "idea", icon: "🚙", featured: true,
+    place: "Transfer · Montag, 20. September", title: "Pointe-du-Lac oder Trois-Rivières?",
+    text: "Drei Varianten für den ersten Mietwagentag – mit Einkauf, realistischen Zeiten, Google-Routen, Entscheidungshilfe sowie gemeinsamer Sterne- und Kommentar-Abstimmung.",
+    href: "02-transfer-20-09.php"
+  },
   {
     id: "lac-solitaire", destination: "mauricie", type: "idea", icon: "🥾", place: "The Laurentians · Dienstag", title: "Lac-Solitaire",
     text: "Kompakter, aber höhenreicher Rundweg durch regenerierenden Wald und um den See – unsere bevorzugte kürzere Variante.",
@@ -199,6 +204,15 @@ function renderIdeas(filter = "all") {
     return;
   }
   ideaGrid.innerHTML = filtered.map((idea) => {
+    if (idea.featured && idea.href) {
+      return `<a class="transfer-decision-card" href="${idea.href}">
+        <p class="eyebrow">${escapeHtml(idea.place)}</p>
+        <h3>${escapeHtml(idea.title)}</h3>
+        <span class="decision-badge">Gemeinsame Entscheidung</span>
+        <p>${escapeHtml(idea.text)}</p>
+        <span class="decision-cta"><b aria-hidden="true">↗</b> Transfervarianten vergleichen &amp; abstimmen</span>
+      </a>`;
+    }
     const facts = (idea.facts || []).slice(0, 2).map((fact) => `<span>${fact}</span>`).join("");
     const summary = ideaSummaries[idea.id] || {};
     const rating = summary.average ? `<span class="tile-rating"><b>★ ${String(summary.average).replace(".", ",")}</b><small>${summary.count} von 4</small></span>` : `<span class="tile-rating empty"><b>☆</b><small>Noch offen</small></span>`;

@@ -156,6 +156,14 @@ h2 { font-family: Georgia, serif; font-size: clamp(2rem, 4vw, 3rem); font-weight
 .comparison-link { display: inline-flex; align-items: center; margin: -4px 0 18px; padding: 11px 15px; border-radius: 12px; color: #fff; background: var(--pine); font-size: .88rem; font-weight: 800; }
 .comparison-link[hidden] { display: none; }
 .idea-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.transfer-decision-card { grid-column: 1 / -1; display: block; padding: clamp(24px,4vw,38px); border: 1px solid rgba(179,38,45,.18); border-radius: 26px; background: linear-gradient(145deg,#fffdf8 0%,#fff8f3 100%); box-shadow: 0 14px 36px rgba(89,44,32,.08); }
+.transfer-decision-card h3 { max-width: 720px; margin: 4px 0 14px; font-family: Georgia,serif; font-size: clamp(2rem,4.5vw,3.7rem); font-weight: 500; letter-spacing: -.035em; }
+.transfer-decision-card > p:not(.eyebrow) { max-width: 820px; margin: 18px 0 24px; color: var(--muted); font-size: 1.05rem; }
+.decision-badge { display: inline-flex; padding: 8px 13px; border-radius: 99px; color: var(--forest); background: var(--sky); font-size: .82rem; font-weight: 850; }
+.decision-cta { display: flex; align-items: center; justify-content: center; gap: 12px; width: 100%; padding: 16px 20px; border-radius: 16px; color: #fff; background: linear-gradient(135deg,var(--maple),#9f3034); font-size: 1rem; font-weight: 850; text-align: center; }
+.decision-cta b { font-size: 1.35rem; }
+.transfer-decision-card:hover .decision-cta, .transfer-decision-card:focus-visible .decision-cta { filter: brightness(1.06); }
+.transfer-decision-card:focus-visible { outline: 3px solid rgba(20,112,92,.25); outline-offset: 3px; }
 .idea-tile { position: relative; min-height: 190px; padding: 18px; overflow: hidden; border: 1px solid #dce4de; border-radius: 20px; background: var(--cream); cursor: pointer; transition: transform .2s, border-color .2s, box-shadow .2s; }
 .idea-tile:hover, .idea-tile:focus-visible { transform: translateY(-3px); border-color: #a9bdb0; box-shadow: 0 12px 30px rgba(15,42,31,.09); outline: none; }
 .idea-tile.booked { color: #fff; border-color: transparent; background: linear-gradient(145deg, #98401f, #cc6535); }
