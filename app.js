@@ -1,10 +1,10 @@
 const destinations = [
-  { id: "all", label: "Gesamte Reise", sectionTitle: "Canada 2027", page: "index.html" },
-  { id: "montreal", label: "Montréal", dates: "17.–20.09.", sectionTitle: "01 – Montréal | 17.–20.09.2027", page: "01-montreal.html", summary: "Anreise aus Wuppertal und zwei volle Tage in Montréal." },
-  { id: "mauricie", label: "Nature Nature", dates: "20.–23.09.", sectionTitle: "02 – The Laurentians | 20.–23.09.2027", page: "02-the-laurentians.html", summary: "Anreise aus Montréal und zwei Naturtage rund um den Nationalpark La Mauricie." },
-  { id: "sainte-rose", label: "Sainte-Rose-du-Nord", dates: "23.–27.09.", sectionTitle: "03 – Sainte-Rose-du-Nord | 23.–27.09.2027", page: "03-sainte-rose-du-nord.html", summary: "Anreise von Nature Nature und drei volle Tage am Saguenay." },
-  { id: "quebec", label: "Québec City", dates: "27.–29.09.", sectionTitle: "04 – Québec City | 27.–29.09.2027", page: "04-quebec-city.html", summary: "Anreise über Tadoussac mit der gebuchten Walbeobachtung und ein voller Tag in Québec City." },
-  { id: "orford", label: "Orford", dates: "29.09.–02.10.", sectionTitle: "05 – Orford | 29.09.–02.10.2027", page: "05-orford.html", summary: "Anreise aus Québec City, zwei volle Tage und anschließend die Heimreise." }
+  { id: "all", label: "Gesamte Reise", sectionTitle: "Canada 2027", page: "index.php" },
+  { id: "montreal", label: "Montréal", dates: "17.–20.09.", sectionTitle: "01 – Montréal | 17.–20.09.2027", page: "01-montreal.php", summary: "Anreise aus Wuppertal und zwei volle Tage in Montréal." },
+  { id: "mauricie", label: "Nature Nature", dates: "20.–23.09.", sectionTitle: "02 – The Laurentians | 20.–23.09.2027", page: "02-the-laurentians.php", summary: "Anreise aus Montréal und zwei Naturtage rund um den Nationalpark La Mauricie." },
+  { id: "sainte-rose", label: "Sainte-Rose-du-Nord", dates: "23.–27.09.", sectionTitle: "03 – Sainte-Rose-du-Nord | 23.–27.09.2027", page: "03-sainte-rose-du-nord.php", summary: "Anreise von Nature Nature und drei volle Tage am Saguenay." },
+  { id: "quebec", label: "Québec City", dates: "27.–29.09.", sectionTitle: "04 – Québec City | 27.–29.09.2027", page: "04-quebec-city.php", summary: "Anreise über Tadoussac mit der gebuchten Walbeobachtung und ein voller Tag in Québec City." },
+  { id: "orford", label: "Orford", dates: "29.09.–02.10.", sectionTitle: "05 – Orford | 29.09.–02.10.2027", page: "05-orford.php", summary: "Anreise aus Québec City, zwei volle Tage und anschließend die Heimreise." }
 ];
 
 const route = [
@@ -83,38 +83,38 @@ const ideas = [
     id: "lac-solitaire", destination: "mauricie", type: "idea", icon: "🥾", place: "The Laurentians · Dienstag", title: "Lac-Solitaire",
     text: "Kompakter, aber höhenreicher Rundweg durch regenerierenden Wald und um den See – unsere bevorzugte kürzere Variante.",
     facts: ["6,1 km", "396 Hm", "ca. 2,5 Std.", "mittelschwer"],
-    links: [{ label: "Parks Canada", url: "https://parks.canada.ca/pn-np/qc/mauricie/activ/sentiers-trails" }, { label: "Touren-PDF", url: "pdfs/01_Lac-Solitaire.pdf", pdf: true }]
+    links: [{ label: "Parks Canada", url: "https://parks.canada.ca/pn-np/qc/mauricie/activ/sentiers-trails" }, { label: "Touren-PDF", url: "file.php?name=01_Lac-Solitaire.pdf", pdf: true }]
   },
   {
     id: "ruisseau-bouchard", destination: "mauricie", type: "idea", icon: "⛰️", place: "The Laurentians · Dienstag", title: "Ruisseau-Bouchard",
     text: "Die längere Alternative mit Aussicht am Lac aux Chevaux und einem schönen Rückweg entlang des Bouchard Creek.",
     facts: ["9,1 km", "528 Hm", "ca. 3,5 Std.", "mittelschwer"],
-    links: [{ label: "Parks Canada", url: "https://parks.canada.ca/pn-np/qc/mauricie/activ/sentiers-trails" }, { label: "Touren-PDF", url: "pdfs/02_Ruisseau-Bouchard.pdf", pdf: true }]
+    links: [{ label: "Parks Canada", url: "https://parks.canada.ca/pn-np/qc/mauricie/activ/sentiers-trails" }, { label: "Touren-PDF", url: "file.php?name=02_Ruisseau-Bouchard.pdf", pdf: true }]
   },
   {
     id: "cascades-falaises", destination: "mauricie", type: "idea", icon: "💦", place: "The Laurentians · Mittwoch", title: "Les Cascades & Les Falaises",
     text: "Zwei kurze Wege, die sich flexibel verbinden lassen: Wasserfälle und schwimmende Brücke sowie Aussicht über den Lac Wapizagonke.",
     facts: ["2,4 km · 103 Hm", "4,0 km · 268 Hm", "ca. 2,5 Std. gesamt"],
-    links: [{ label: "Wege", url: "https://parks.canada.ca/pn-np/qc/mauricie/activ/sentiers-trails" }, { label: "Karte & Höhenprofil", url: "https://publications.gc.ca/collections/collection_2018/pc/R64-517-2017.pdf" }, { label: "Touren-PDF", url: "pdfs/03_Cascades-und-Falaises.pdf", pdf: true }]
+    links: [{ label: "Wege", url: "https://parks.canada.ca/pn-np/qc/mauricie/activ/sentiers-trails" }, { label: "Karte & Höhenprofil", url: "https://publications.gc.ca/collections/collection_2018/pc/R64-517-2017.pdf" }, { label: "Touren-PDF", url: "file.php?name=03_Cascades-und-Falaises.pdf", pdf: true }]
   },
   {
     id: "canoe-intro", destination: "mauricie", type: "idea", icon: "🛶", place: "The Laurentians · Mittwoch", title: "Kanu-Einführung",
     text: "Da wir noch nie Kanu gefahren sind, bevorzugen wir eine geführte Einführung. Alternativ 60–90 Minuten in Ufernähe mit zwei Zweierkanus oder Doppelkajaks.",
     facts: ["anfängergeeignet", "60–90 Min.", "Saison 2027 prüfen"],
-    links: [{ label: "Paddeln & Verleih", url: "https://parks.canada.ca/pn-np/qc/mauricie/activ/nautique-nautical" }, { label: "Info-PDF", url: "pdfs/04_Kanu-Einfuehrung.pdf", pdf: true }]
+    links: [{ label: "Paddeln & Verleih", url: "https://parks.canada.ca/pn-np/qc/mauricie/activ/nautique-nautical" }, { label: "Info-PDF", url: "file.php?name=04_Kanu-Einfuehrung.pdf", pdf: true }]
   },
   {
     id: "waber-falls", destination: "mauricie", type: "idea", icon: "🌊", place: "Besondere Wunschoption", title: "Waber Falls",
     text: "Eine komplette Tagesexpedition zu den 27 Meter hohen Wasserfällen – eindrucksvoll, aber noch nicht fest eingeplant.",
     facts: ["9,2 km paddeln", "7,2 km wandern", "349 Hm", "6–8 Std."],
     warning: "Die Waber-Tour ist keine Kanueinführung. Nur mit Guide oder nach vorheriger Einführung, bei stabiler Wetterlage und nach ausdrücklicher Empfehlung der Mitarbeiter vor Ort. Andernfalls bleibt es bei einer kurzen Kanutour in Ufernähe.",
-    links: [{ label: "Parks Canada", url: "https://parks.canada.ca/pn-np/qc/mauricie/activ/nautique-nautical/waber" }, { label: "Höhenprofil & Wege", url: "https://parks.canada.ca/pn-np/qc/mauricie/activ/sentiers-trails" }, { label: "Touren-PDF", url: "pdfs/05_Chutes-Waber.pdf", pdf: true }]
+    links: [{ label: "Parks Canada", url: "https://parks.canada.ca/pn-np/qc/mauricie/activ/nautique-nautical/waber" }, { label: "Höhenprofil & Wege", url: "https://parks.canada.ca/pn-np/qc/mauricie/activ/sentiers-trails" }, { label: "Touren-PDF", url: "file.php?name=05_Chutes-Waber.pdf", pdf: true }]
   },
   {
     id: "shawinigan", destination: "mauricie", type: "idea", icon: "🏭", place: "Schlechtwetter-Option", title: "Shawinigan & Cité de l’énergie",
     text: "Eine flexible Kultur- und Technikoption für einen ruhigeren oder regnerischen Tag in der Region.",
     facts: ["Shawinigan", "Museum & Aussicht", "Öffnung 2027 prüfen"],
-    links: [{ label: "Info-PDF", url: "pdfs/06_Shawinigan-und-Cite-de-lEnergie.pdf", pdf: true }]
+    links: [{ label: "Info-PDF", url: "file.php?name=06_Shawinigan-und-Cite-de-lEnergie.pdf", pdf: true }]
   }
 ];
 
@@ -126,6 +126,20 @@ const dialog = document.querySelector("#details-dialog");
 const dialogContent = document.querySelector("#dialog-content");
 const activeDestination = document.body.dataset.destination || "all";
 const activeData = destinations.find((item) => item.id === activeDestination) || destinations[0];
+let currentUser = null;
+let ideaSummaries = {};
+
+async function loadCurrentUser() {
+  if (currentUser) return currentUser;
+  const response = await fetch("auth.php", { cache: "no-store" });
+  if (response.status === 401) {
+    window.location.href = `login.php?next=${encodeURIComponent(window.location.pathname + window.location.search)}`;
+    throw new Error("Anmeldung erforderlich");
+  }
+  if (!response.ok) throw new Error("Profil konnte nicht geladen werden");
+  currentUser = await response.json();
+  return currentUser;
+}
 
 function renderTabs() {
   if (!tabs) return;
@@ -158,15 +172,28 @@ function renderIdeas(filter = "all") {
     return;
   }
   ideaGrid.innerHTML = filtered.map((idea) => {
-    const selected = localStorage.getItem(`canada-vote-${idea.id}`) === "1";
     const facts = (idea.facts || []).slice(0, 2).map((fact) => `<span>${fact}</span>`).join("");
-    return `<article class="idea-tile ${idea.type}" data-idea="${idea.id}" tabindex="0" role="button" aria-label="${idea.title} öffnen">
+    const summary = ideaSummaries[idea.id] || {};
+    const rating = summary.average ? `<span class="tile-rating"><b>★ ${String(summary.average).replace(".", ",")}</b><small>${summary.count} von 4</small></span>` : `<span class="tile-rating empty"><b>☆</b><small>Noch offen</small></span>`;
+    const discussion = summary.comments ? `<span class="tile-comments">💬 ${summary.comments}</span>` : "";
+    return `<article class="idea-tile ${idea.type}" data-idea="${idea.id}" tabindex="0" role="link" aria-label="${idea.title} öffnen">
       <div class="tile-top"><span class="idea-icon">${idea.icon}</span><span class="tile-more">Details →</span></div>
       <p class="idea-place">${idea.type === "booked" ? "Fest gebucht" : idea.place}</p><h3>${idea.title}</h3>
       <div class="idea-facts">${facts}${idea.warning ? `<span class="warning-chip">Sicherheit</span>` : ""}</div>
-      <button class="tile-vote ${selected ? "selected" : ""}" data-vote="${idea.id}" aria-pressed="${selected}" aria-label="Interesse an ${idea.title}">${selected ? "♥" : "♡"}</button>
+      <div class="tile-community">${rating}${discussion}</div>
     </article>`;
   }).join("");
+}
+
+async function loadIdeaSummaries() {
+  if (!ideaGrid) return;
+  try {
+    const response = await fetch("ideas.php?summary=1", { cache: "no-store" });
+    if (!response.ok) return;
+    const payload = await response.json();
+    ideaSummaries = payload.ideas || {};
+    renderIdeas(document.querySelector(".filter.active")?.dataset.filter || "all");
+  } catch {}
 }
 
 routeList?.addEventListener("click", (event) => {
@@ -190,32 +217,14 @@ document.querySelector(".filters")?.addEventListener("click", (event) => {
   renderIdeas(button.dataset.filter);
 });
 
-function openIdea(id) {
-  const idea = ideas.find((entry) => entry.id === id);
-  if (!idea || !dialogContent) return;
-  const facts = idea.facts?.length ? `<div class="dialog-facts">${idea.facts.map((fact) => `<span>${fact}</span>`).join("")}</div>` : "";
-  const warning = idea.warning ? `<aside class="safety-note"><strong>Sicherheitshinweis</strong>${idea.warning}</aside>` : "";
-  const links = idea.links?.length ? `<div class="source-links">${idea.links.map((link) => `<a href="${link.url}" target="_blank" rel="noopener">${link.pdf ? "PDF · " : ""}${link.label} ↗</a>`).join("")}</div>` : "";
-  dialogContent.innerHTML = `<p class="eyebrow">${idea.place}</p><h2>${idea.icon} ${idea.title}</h2><p>${idea.text}</p>${facts}${warning}${links}`;
-  dialog.showModal();
-}
-
 ideaGrid?.addEventListener("click", (event) => {
-  const vote = event.target.closest("[data-vote]");
-  if (vote) {
-    event.stopPropagation();
-    const key = `canada-vote-${vote.dataset.vote}`;
-    localStorage.setItem(key, localStorage.getItem(key) === "1" ? "0" : "1");
-    renderIdeas(document.querySelector(".filter.active")?.dataset.filter || "all");
-    return;
-  }
   const tile = event.target.closest("[data-idea]");
-  if (tile) openIdea(tile.dataset.idea);
+  if (tile) window.location.href = `idea.php?id=${encodeURIComponent(tile.dataset.idea)}`;
 });
 
 ideaGrid?.addEventListener("keydown", (event) => {
   if ((event.key === "Enter" || event.key === " ") && event.target.matches("[data-idea]")) {
-    event.preventDefault(); openIdea(event.target.dataset.idea);
+    event.preventDefault(); window.location.href = `idea.php?id=${encodeURIComponent(event.target.dataset.idea)}`;
   }
 });
 
@@ -227,6 +236,109 @@ if (activeDestination !== "all") {
   if (summary) summary.textContent = activeData.summary;
   const comparison = document.querySelector("#comparison-link");
   if (comparison) comparison.hidden = activeDestination !== "mauricie";
+}
+
+function formatCommentDate(value) {
+  try {
+    return new Intl.DateTimeFormat("de-DE", { day: "2-digit", month: "2-digit", year: "numeric", hour: "2-digit", minute: "2-digit" }).format(new Date(value));
+  } catch { return ""; }
+}
+
+function renderStars(value, interactive, profileId) {
+  return `<div class="stars" role="${interactive ? "radiogroup" : "img"}" aria-label="${value ? `${value} von 5 Sternen` : "Noch keine Bewertung"}">${[1,2,3,4,5].map((star) => interactive
+    ? `<button type="button" data-rating="${star}" aria-label="${star} Stern${star === 1 ? "" : "e"}" aria-pressed="${value === star}" class="${star <= value ? "filled" : ""}">★</button>`
+    : `<span class="${star <= value ? "filled" : ""}" aria-hidden="true">★</span>`).join("")}</div>`;
+}
+
+function renderIdeaCommunity(ideaId, data) {
+  const profiles = data.profiles || {};
+  const ratingRows = Object.entries(profiles).map(([id, profile]) => {
+    const rating = Number(data.ratings?.[id] || 0);
+    const isCurrent = id === data.currentProfile;
+    return `<div class="rating-row ${isCurrent ? "current" : ""}"><i class="avatar ${profile.avatar}"></i><div><strong>${escapeHtml(profile.name)}${isCurrent ? " · du" : ""}</strong>${renderStars(rating, isCurrent, id)}</div><span>${rating ? `${rating}/5` : "offen"}</span></div>`;
+  }).join("");
+
+  const allComments = Array.isArray(data.comments) ? data.comments : [];
+  const roots = allComments.filter((comment) => !comment.parentId);
+  const comments = roots.length ? roots.map((comment) => {
+    const author = profiles[comment.profile] || { name: comment.profile, avatar: "" };
+    const replies = allComments.filter((reply) => reply.parentId === comment.id).map((reply) => {
+      const replyAuthor = profiles[reply.profile] || { name: reply.profile, avatar: "" };
+      return `<article class="comment reply"><i class="avatar ${replyAuthor.avatar}"></i><div><header><strong>${escapeHtml(replyAuthor.name)}</strong><time>${formatCommentDate(reply.createdAt)}</time></header><p>${escapeHtml(reply.text)}</p></div></article>`;
+    }).join("");
+    return `<article class="comment-thread"><div class="comment"><i class="avatar ${author.avatar}"></i><div><header><strong>${escapeHtml(author.name)}</strong><time>${formatCommentDate(comment.createdAt)}</time></header><p>${escapeHtml(comment.text)}</p><details class="reply-box"><summary>Antworten</summary><form data-comment-form data-parent-id="${comment.id}"><textarea name="text" maxlength="1000" required placeholder="Antwort schreiben …"></textarea><button type="submit">Antwort senden</button></form></details></div></div>${replies}</article>`;
+  }).join("") : `<div class="comments-empty"><span>💬</span><p>Noch kein Kommentar. Startet eure Unterhaltung zu dieser Idee.</p></div>`;
+
+  return `<section class="community-panel">
+    <div class="community-head"><div><p class="eyebrow">Eure Einschätzung</p><h2>Vier Stimmen, eine Entscheidung</h2></div><div class="average-rating"><strong>${data.average ? `★ ${String(data.average).replace(".", ",")}` : "☆ –"}</strong><small>${data.ratingCount || 0} von 4 bewertet</small></div></div>
+    <div class="rating-grid">${ratingRows}</div>
+    <div class="discussion"><div class="discussion-head"><p class="eyebrow">Im Gespräch</p><h2>Kommentare</h2></div><form class="new-comment" data-comment-form><textarea name="text" maxlength="1000" required placeholder="Was denkst du über diese Idee?"></textarea><button type="submit">Als ${escapeHtml(profiles[data.currentProfile]?.name || "Profil")} kommentieren</button></form><div class="comments-list">${comments}</div></div>
+  </section>`;
+}
+
+async function loadIdeaData(ideaId) {
+  const response = await fetch(`ideas.php?idea=${encodeURIComponent(ideaId)}&t=${Date.now()}`, { cache: "no-store" });
+  if (!response.ok) throw new Error("Beiträge konnten nicht geladen werden");
+  return response.json();
+}
+
+async function saveIdeaAction(ideaId, body) {
+  const user = await loadCurrentUser();
+  const response = await fetch(`ideas.php?idea=${encodeURIComponent(ideaId)}`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json", "X-CSRF-Token": user.csrf },
+    body: JSON.stringify(body)
+  });
+  const payload = await response.json().catch(() => ({}));
+  if (!response.ok) throw new Error(payload.error || "Speichern nicht möglich");
+  return payload;
+}
+
+async function initializeIdeaDetail() {
+  const root = document.querySelector("#idea-detail");
+  if (!root) return;
+  const ideaId = new URLSearchParams(window.location.search).get("id") || "";
+  const idea = ideas.find((entry) => entry.id === ideaId);
+  if (!idea) {
+    root.innerHTML = `<section class="idea-detail-card"><p class="eyebrow">Nicht gefunden</p><h1>Diese Idee gibt es nicht.</h1><a class="primary-button inline-button" href="index.php">Zur Reiseübersicht</a></section>`;
+    return;
+  }
+  const destination = destinations.find((entry) => entry.id === idea.destination);
+  const back = document.querySelector("#idea-back");
+  if (back && destination) back.href = `${destination.page}#ideas`;
+  document.title = `${idea.title} · Canada 2027`;
+  const facts = idea.facts?.length ? `<div class="dialog-facts">${idea.facts.map((fact) => `<span>${escapeHtml(fact)}</span>`).join("")}</div>` : "";
+  const warning = idea.warning ? `<aside class="safety-note"><strong>Sicherheitshinweis</strong>${escapeHtml(idea.warning)}</aside>` : "";
+  const links = idea.links?.length ? `<div class="source-links">${idea.links.map((link) => `<a href="${link.url}" target="_blank" rel="noopener">${link.pdf ? "PDF · " : ""}${escapeHtml(link.label)} ↗</a>`).join("")}</div>` : "";
+  root.innerHTML = `<article class="idea-detail-card"><div class="idea-detail-icon">${idea.icon}</div><p class="eyebrow">${escapeHtml(idea.place)}</p><h1>${escapeHtml(idea.title)}</h1><p class="idea-detail-copy">${escapeHtml(idea.text)}</p>${facts}${warning}${links}</article><div id="idea-community" class="community-loading">Bewertungen und Kommentare werden geladen …</div>`;
+  const community = document.querySelector("#idea-community");
+  try {
+    await loadCurrentUser();
+    let data = await loadIdeaData(ideaId);
+    const redraw = () => { community.innerHTML = renderIdeaCommunity(ideaId, data); };
+    redraw();
+    community.addEventListener("click", async (event) => {
+      const button = event.target.closest("[data-rating]");
+      if (!button) return;
+      community.classList.add("saving");
+      try { data = await saveIdeaAction(ideaId, { action: "rating", rating: Number(button.dataset.rating) }); redraw(); }
+      catch (error) { window.alert(error.message); }
+      community.classList.remove("saving");
+    });
+    community.addEventListener("submit", async (event) => {
+      const form = event.target.closest("[data-comment-form]");
+      if (!form) return;
+      event.preventDefault();
+      const text = form.elements.text.value.trim();
+      if (!text) return;
+      const submit = form.querySelector("button[type=submit]");
+      submit.disabled = true;
+      try { data = await saveIdeaAction(ideaId, { action: "comment", text, parentId: form.dataset.parentId || null }); redraw(); }
+      catch (error) { window.alert(error.message); submit.disabled = false; }
+    });
+  } catch (error) {
+    community.innerHTML = `<div class="community-error"><strong>Nicht geladen</strong><p>${escapeHtml(error.message)}</p><button type="button" onclick="location.reload()">Erneut versuchen</button></div>`;
+  }
 }
 
 const checklistRoot = document.querySelector("#checklist-root");
@@ -294,7 +406,6 @@ function cloneChecklistDefaults() {
 let checklistData = checklistRoot ? cloneChecklistDefaults() : null;
 let checklistUpdatedAt = null;
 let activeChecklistCouple = null;
-let checklistSessionKey = null;
 
 function setSyncStatus(text, state = "") {
   const status = document.querySelector("#sync-status");
@@ -331,26 +442,17 @@ async function loadSharedChecklists(silent = false) {
 async function saveChecklists() {
   if (!checklistData) return;
   localStorage.setItem(checklistStorageKey, JSON.stringify(checklistData));
-  let familyKey = checklistSessionKey;
-  if (!familyKey) {
-    familyKey = window.prompt("Familienschlüssel zum gemeinsamen Bearbeiten eingeben:");
-    if (!familyKey) {
-      setSyncStatus("Änderung nur auf diesem Gerät gespeichert", "offline");
-      return;
-    }
-    checklistSessionKey = familyKey;
-  }
   setSyncStatus("Wird synchronisiert …", "syncing");
   try {
+    const user = await loadCurrentUser();
     const response = await fetch("checklists.php", {
       method: "POST",
-      headers: { "Content-Type": "application/json", "X-Checklist-Key": familyKey },
+      headers: { "Content-Type": "application/json", "X-CSRF-Token": user.csrf },
       body: JSON.stringify({ data: checklistData })
     });
     if (response.status === 401) {
-      checklistSessionKey = null;
-      setSyncStatus("Familienschlüssel nicht erkannt", "offline");
-      window.alert("Der Familienschlüssel war nicht richtig. Beim nächsten Ändern kannst du ihn erneut eingeben.");
+      setSyncStatus("Anmeldung abgelaufen", "offline");
+      window.location.href = `login.php?next=${encodeURIComponent(window.location.pathname)}`;
       return;
     }
     if (!response.ok) throw new Error("Checklist save failed");
@@ -464,7 +566,8 @@ function updateCountdown() {
   document.querySelector("#countdown-minutes").textContent = String(Math.floor(remaining / 60000) % 60).padStart(2, "0");
 }
 
-renderTabs(); renderRoute(); renderIdeas(); renderChecklists(); updateCountdown();
+renderTabs(); renderRoute(); renderIdeas(); renderChecklists(); updateCountdown(); initializeIdeaDetail();
+loadIdeaSummaries();
 if (checklistRoot) {
   loadSharedChecklists();
   setInterval(() => { if (!document.hidden) loadSharedChecklists(true); }, 15000);

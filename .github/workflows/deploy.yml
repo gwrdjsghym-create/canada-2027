@@ -32,22 +32,41 @@ jobs:
           SSHPASS: ${{ secrets.SFTP_PASSWORD }}
           SFTP_HOST: ${{ secrets.SFTP_HOST }}
           SFTP_USERNAME: ${{ secrets.SFTP_USERNAME }}
-          CHECKLIST_KEY_HASH: ${{ secrets.CHECKLIST_KEY_HASH }}
+          SITE_PIN: ${{ secrets.SITE_PIN }}
         run: |
-          test -n "$CHECKLIST_KEY_HASH"
-          printf "<?php return ['accessKeyHash' => '%s'];\n" "$CHECKLIST_KEY_HASH" > checklists-config.php
+          test -n "$SITE_PIN"
+          for file in *.php; do php -l "$file"; done
+          PIN_SALT="$(openssl rand -hex 16)"
+          PIN_HASH="$(PIN_SALT="$PIN_SALT" php -r 'echo hash_pbkdf2("sha256", getenv("SITE_PIN"), getenv("PIN_SALT"), 210000, 64);')"
+          printf "<?php return ['pinSalt' => '%s', 'pinHash' => '%s', 'pinIterations' => 210000];\n" "$PIN_SALT" "$PIN_HASH" > site-config.php
 
           printf '%s\n' \
+            'put .htaccess' \
             'put index.html' \
+            'put index.php' \
             'put 01-montreal.html' \
+            'put 01-montreal.php' \
             'put 02-the-laurentians.html' \
+            'put 02-the-laurentians.php' \
             'put 03-sainte-rose-du-nord.html' \
+            'put 03-sainte-rose-du-nord.php' \
             'put 04-quebec-city.html' \
+            'put 04-quebec-city.php' \
             'put 05-orford.html' \
+            'put 05-orford.php' \
             'put styles.css' \
             'put app.js' \
+            'put auth-lib.php' \
+            'put auth.php' \
+            'put login.php' \
+            'put logout.php' \
+            'put site-config.php' \
+            'put protected-asset.php' \
             'put checklists.php' \
-            'put checklists-config.php' \
+            'put ideas.php' \
+            'put idea.php' \
+            'put file.php' \
+            'put destination-template.php' \
             '-mkdir assets' \
             'put assets/andrea-lars-memoji.png assets/andrea-lars-memoji.png' \
             'put assets/christina-manfred-memoji.png assets/christina-manfred-memoji.png' \

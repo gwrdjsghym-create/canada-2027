@@ -1,5 +1,7 @@
 <?php
 declare(strict_types=1);
+require __DIR__ . '/auth-lib.php';
+$currentProfile = canada_require_api();
 
 header('Content-Type: application/json; charset=utf-8');
 header('Cache-Control: no-store');
@@ -7,9 +9,6 @@ header('Cache-Control: no-store');
 $method = $_SERVER['REQUEST_METHOD'] ?? 'GET';
 $dataDir = __DIR__ . '/data';
 $dataFile = $dataDir . '/checklists.json';
-$configFile = __DIR__ . '/checklists-config.php';
-$config = is_file($configFile) ? require $configFile : [];
-$accessKeyHash = is_array($config) ? (string) ($config['accessKeyHash'] ?? '') : '';
 
 function respond(int $status, array $payload): void {
     http_response_code($status);
@@ -70,14 +69,8 @@ if ($method === 'GET') {
 
 if ($method !== 'POST') respond(405, ['error' => 'Method not allowed']);
 
-$origin = $_SERVER['HTTP_ORIGIN'] ?? '';
-$host = $_SERVER['HTTP_HOST'] ?? '';
-if ($origin !== '' && parse_url($origin, PHP_URL_HOST) !== $host) respond(403, ['error' => 'Invalid origin']);
-
-$providedKey = $_SERVER['HTTP_X_CHECKLIST_KEY'] ?? '';
-if ($accessKeyHash === '' || !is_string($providedKey) || !hash_equals($accessKeyHash, hash('sha256', $providedKey))) {
-    respond(401, ['error' => 'Authentication required']);
-}
+if (!canada_origin_ok()) respond(403, ['error' => 'Invalid origin']);
+canada_require_csrf();
 
 $raw = file_get_contents('php://input');
 if (!is_string($raw) || strlen($raw) > 250000) respond(400, ['error' => 'Invalid payload']);
