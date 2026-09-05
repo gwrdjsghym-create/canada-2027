@@ -5,7 +5,7 @@ $currentProfile = canada_require_api();
 header('Content-Type: application/json; charset=utf-8');
 header('Cache-Control: no-store');
 
-const STATIC_IDEA_IDS = ['whale-tour','montreal-ideas','transfer-stop','lac-solitaire','ruisseau-bouchard','cascades-falaises','canoe-intro','waber-falls','shawinigan'];
+const STATIC_IDEA_IDS = ['whale-tour','montreal-ideas','transfer-stop','lac-solitaire','ruisseau-bouchard','cascades-falaises','canoe-intro','waber-falls','shawinigan','montagne-du-chapeau','fjordtag-varianten','pic-tete-de-chien'];
 const DESTINATION_IDS = ['montreal','mauricie','sainte-rose','quebec','orford'];
 const MAX_UPLOAD_BYTES = 10485760;
 $dataDir = __DIR__ . '/data';

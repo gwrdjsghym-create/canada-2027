@@ -80,6 +80,10 @@ jobs:
             'put pdfs/04_Kanu-Einfuehrung.pdf pdfs/04_Kanu-Einfuehrung.pdf' \
             'put pdfs/05_Chutes-Waber.pdf pdfs/05_Chutes-Waber.pdf' \
             'put pdfs/06_Shawinigan-und-Cite-de-lEnergie.pdf pdfs/06_Shawinigan-und-Cite-de-lEnergie.pdf' \
+            'put pdfs/03-00_Sainte-Rose-du-Nord_Uebersicht.pdf pdfs/03-00_Sainte-Rose-du-Nord_Uebersicht.pdf' \
+            'put pdfs/03-01_Montagne-du-Chapeau_24-09-2027.pdf pdfs/03-01_Montagne-du-Chapeau_24-09-2027.pdf' \
+            'put pdfs/03-02_Fjordtag_25-09-2027_Varianten.pdf pdfs/03-02_Fjordtag_25-09-2027_Varianten.pdf' \
+            'put pdfs/03-03_Pic-de-la-Tete-de-Chien_26-09-2027.pdf pdfs/03-03_Pic-de-la-Tete-de-Chien_26-09-2027.pdf' \
             'bye' > "$RUNNER_TEMP/sftp-commands"
 
           sshpass -e sftp \

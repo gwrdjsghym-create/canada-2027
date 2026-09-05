@@ -115,6 +115,26 @@ const ideas = [
     text: "Eine flexible Kultur- und Technikoption für einen ruhigeren oder regnerischen Tag in der Region.",
     facts: ["Shawinigan", "Museum & Aussicht", "Öffnung 2027 prüfen"],
     links: [{ label: "Info-PDF", url: "file.php?name=06_Shawinigan-und-Cite-de-lEnergie.pdf", pdf: true }]
+  },
+  {
+    id: "montagne-du-chapeau", destination: "sainte-rose", type: "idea", icon: "🥾", place: "Sainte-Rose-du-Nord · Freitag", title: "Montagne du Chapeau",
+    text: "Längere Waldwanderung zum Belvédère über dem Tal der Rivière Sainte-Marguerite – besonders reizvoll im Indian Summer.",
+    facts: ["12,3 km", "459 Hm", "4–5 Std.", "anspruchsvoll"],
+    warning: "Vor der Tour Trailstatus und aktuelle Jagdhinweise prüfen; sichtbare Kleidung ist Ende September sinnvoll.",
+    links: [{ label: "Balise Québec", url: "https://baliseqc.ca/3S/explorer/saguenay-lac-saint-jean/sainte-rose-du-nord-LR0491" }, { label: "Touren-PDF", url: "file.php?name=03-01_Montagne-du-Chapeau_24-09-2027.pdf", pdf: true }]
+  },
+  {
+    id: "fjordtag-varianten", destination: "sainte-rose", type: "idea", icon: "🛶", place: "Sainte-Rose-du-Nord · Samstag", title: "Fjordtag – vier Varianten",
+    text: "Je nach Wetter und Wind wählen wir zwischen Seekajak, La Majestueuse, Elektro-Side-by-Side und einem echten Regenprogramm.",
+    facts: ["Kajak ca. 3 Std.", "Schiff ca. 4 Std.", "wetterflexibel"],
+    links: [{ label: "Seekajak", url: "https://aventurerosedesvents.com/index.php/todo/sortie-courte-en-kayak-de-mer/" }, { label: "Varianten-PDF", url: "file.php?name=03-02_Fjordtag_25-09-2027_Varianten.pdf", pdf: true }]
+  },
+  {
+    id: "pic-tete-de-chien", destination: "sainte-rose", type: "idea", icon: "⛰️", place: "Monts-Valin · Sonntag", title: "Pic-de-la-Tête-de-Chien",
+    text: "Die zweite Hauptwanderung führt vom Besucherzentrum über den Lac des Pères zu weiten Aussichten im Parc national des Monts-Valin.",
+    facts: ["8 km", "340 Hm", "3–4 Std.", "schwierig"],
+    warning: "Bei tiefen Wolken, starkem Regen oder Wind nicht erzwingen; dann auf eine kürzere Fjordwanderung ausweichen.",
+    links: [{ label: "Sépaq", url: "https://www.sepaq.com/pq/mva/annexes/randonnee_pedestre.dot?language_id=1" }, { label: "Touren-PDF", url: "file.php?name=03-03_Pic-de-la-Tete-de-Chien_26-09-2027.pdf", pdf: true }]
   }
 ];
 
@@ -244,7 +264,18 @@ if (activeDestination !== "all") {
   if (title) title.textContent = activeData.sectionTitle;
   if (summary) summary.textContent = activeData.summary;
   const comparison = document.querySelector("#comparison-link");
-  if (comparison) comparison.hidden = activeDestination !== "mauricie";
+  const comparisonPdfs = {
+    mauricie: { file: "00_Vergleich_Aktivitaeten_Mauricie.pdf", label: "PDF · Vergleich aller Aktivitäten ↗" },
+    "sainte-rose": { file: "03-00_Sainte-Rose-du-Nord_Uebersicht.pdf", label: "PDF · Übersicht Sainte-Rose-du-Nord ↗" }
+  };
+  if (comparison) {
+    const pdf = comparisonPdfs[activeDestination];
+    comparison.hidden = !pdf;
+    if (pdf) {
+      comparison.href = `file.php?name=${encodeURIComponent(pdf.file)}`;
+      comparison.textContent = pdf.label;
+    }
+  }
 }
 
 function formatCommentDate(value) {
