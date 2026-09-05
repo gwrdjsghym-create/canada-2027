@@ -128,6 +128,13 @@ const activeDestination = document.body.dataset.destination || "all";
 const activeData = destinations.find((item) => item.id === activeDestination) || destinations[0];
 let currentUser = null;
 let ideaSummaries = {};
+let customIdeas = [];
+const profileDirectory = {
+  andrea: { name: "Andrea", avatar: "avatar-andrea" },
+  lars: { name: "Lars", avatar: "avatar-lars" },
+  christina: { name: "Christina", avatar: "avatar-christina" },
+  manfred: { name: "Manfred", avatar: "avatar-manfred" }
+};
 
 async function loadCurrentUser() {
   if (currentUser) return currentUser;
@@ -164,7 +171,7 @@ function renderRoute() {
 
 function renderIdeas(filter = "all") {
   if (!ideaGrid || !ideaTitle) return;
-  const destinationIdeas = ideas.filter((idea) => idea.destination === activeDestination);
+  const destinationIdeas = [...ideas, ...customIdeas].filter((idea) => idea.destination === activeDestination);
   const filtered = filter === "all" ? destinationIdeas : destinationIdeas.filter((idea) => idea.type === filter);
   ideaTitle.textContent = `Ideen für ${activeData.label}`;
   if (!filtered.length) {
@@ -176,9 +183,10 @@ function renderIdeas(filter = "all") {
     const summary = ideaSummaries[idea.id] || {};
     const rating = summary.average ? `<span class="tile-rating"><b>★ ${String(summary.average).replace(".", ",")}</b><small>${summary.count} von 4</small></span>` : `<span class="tile-rating empty"><b>☆</b><small>Noch offen</small></span>`;
     const discussion = summary.comments ? `<span class="tile-comments">💬 ${summary.comments}</span>` : "";
+    const author = idea.author && profileDirectory[idea.author] ? `<span class="tile-author"><i class="avatar ${profileDirectory[idea.author].avatar}"></i>Von ${escapeHtml(profileDirectory[idea.author].name)}</span>` : "";
     return `<article class="idea-tile ${idea.type}" data-idea="${idea.id}" tabindex="0" role="link" aria-label="${idea.title} öffnen">
       <div class="tile-top"><span class="idea-icon">${idea.icon}</span><span class="tile-more">Details →</span></div>
-      <p class="idea-place">${idea.type === "booked" ? "Fest gebucht" : idea.place}</p><h3>${idea.title}</h3>
+      <p class="idea-place">${idea.type === "booked" ? "Fest gebucht" : (idea.place || activeData.label)}</p><h3>${escapeHtml(idea.title)}</h3>${author}
       <div class="idea-facts">${facts}${idea.warning ? `<span class="warning-chip">Sicherheit</span>` : ""}</div>
       <div class="tile-community">${rating}${discussion}</div>
     </article>`;
@@ -192,6 +200,7 @@ async function loadIdeaSummaries() {
     if (!response.ok) return;
     const payload = await response.json();
     ideaSummaries = payload.ideas || {};
+    customIdeas = Array.isArray(payload.customIdeas) ? payload.customIdeas : [];
     renderIdeas(document.querySelector(".filter.active")?.dataset.filter || "all");
   } catch {}
 }
@@ -252,6 +261,7 @@ function renderStars(value, interactive, profileId) {
 
 function renderIdeaCommunity(ideaId, data) {
   const profiles = data.profiles || {};
+  const canDeleteIdea = data.idea?.author === data.currentProfile;
   const ratingRows = Object.entries(profiles).map(([id, profile]) => {
     const rating = Number(data.ratings?.[id] || 0);
     const isCurrent = id === data.currentProfile;
@@ -280,6 +290,7 @@ function renderIdeaCommunity(ideaId, data) {
     <div class="community-head"><div><p class="eyebrow">Eure Einschätzung</p><h2>Vier Stimmen, eine Entscheidung</h2></div><div class="average-rating"><strong>${data.average ? `★ ${String(data.average).replace(".", ",")}` : "☆ –"}</strong><small>${data.ratingCount || 0} von 4 bewertet</small></div></div>
     <div class="rating-grid">${ratingRows}</div>
     <div class="discussion"><div class="discussion-head"><p class="eyebrow">Im Gespräch</p><h2>Kommentare</h2></div><form class="new-comment" data-comment-form><textarea name="text" maxlength="1000" required placeholder="Was denkst du über diese Idee?"></textarea><button type="submit">Als ${escapeHtml(profiles[data.currentProfile]?.name || "Profil")} kommentieren</button></form><div class="comments-list">${comments}</div></div>
+    ${canDeleteIdea ? `<div class="idea-owner-actions"><button type="button" data-delete-idea>Eigene Idee löschen</button><small>Bewertungen, Kommentare und ein möglicher Anhang werden ebenfalls gelöscht.</small></div>` : ""}
   </section>`;
 }
 
@@ -305,26 +316,35 @@ async function initializeIdeaDetail() {
   const root = document.querySelector("#idea-detail");
   if (!root) return;
   const ideaId = new URLSearchParams(window.location.search).get("id") || "";
-  const idea = ideas.find((entry) => entry.id === ideaId);
-  if (!idea) {
-    root.innerHTML = `<section class="idea-detail-card"><p class="eyebrow">Nicht gefunden</p><h1>Diese Idee gibt es nicht.</h1><a class="primary-button inline-button" href="index.php">Zur Reiseübersicht</a></section>`;
-    return;
-  }
-  const destination = destinations.find((entry) => entry.id === idea.destination);
-  const back = document.querySelector("#idea-back");
-  if (back && destination) back.href = `${destination.page}#ideas`;
-  document.title = `${idea.title} · Canada 2027`;
-  const facts = idea.facts?.length ? `<div class="dialog-facts">${idea.facts.map((fact) => `<span>${escapeHtml(fact)}</span>`).join("")}</div>` : "";
-  const warning = idea.warning ? `<aside class="safety-note"><strong>Sicherheitshinweis</strong>${escapeHtml(idea.warning)}</aside>` : "";
-  const links = idea.links?.length ? `<div class="source-links">${idea.links.map((link) => `<a href="${link.url}" target="_blank" rel="noopener">${link.pdf ? "PDF · " : ""}${escapeHtml(link.label)} ↗</a>`).join("")}</div>` : "";
-  root.innerHTML = `<article class="idea-detail-card"><div class="idea-detail-icon">${idea.icon}</div><p class="eyebrow">${escapeHtml(idea.place)}</p><h1>${escapeHtml(idea.title)}</h1><p class="idea-detail-copy">${escapeHtml(idea.text)}</p>${facts}${warning}${links}</article><div id="idea-community" class="community-loading">Bewertungen und Kommentare werden geladen …</div>`;
-  const community = document.querySelector("#idea-community");
   try {
     await loadCurrentUser();
     let data = await loadIdeaData(ideaId);
+    const idea = ideas.find((entry) => entry.id === ideaId) || data.idea;
+    if (!idea) throw new Error("Diese Idee gibt es nicht.");
+    const destination = destinations.find((entry) => entry.id === idea.destination);
+    const back = document.querySelector("#idea-back");
+    if (back && destination) back.href = `${destination.page}#ideas`;
+    document.title = `${idea.title} · Canada 2027`;
+    const facts = idea.facts?.length ? `<div class="dialog-facts">${idea.facts.map((fact) => `<span>${escapeHtml(fact)}</span>`).join("")}</div>` : "";
+    const warning = idea.warning ? `<aside class="safety-note"><strong>Sicherheitshinweis</strong>${escapeHtml(idea.warning)}</aside>` : "";
+    const links = idea.links?.length ? `<div class="source-links">${idea.links.map((link) => `<a href="${escapeHtml(link.url)}" target="_blank" rel="noopener">${link.pdf ? "PDF · " : ""}${escapeHtml(link.label)} ↗</a>`).join("")}</div>` : "";
+    const attachment = idea.attachment ? `<div class="source-links attachment-link"><a href="idea-file.php?idea=${encodeURIComponent(idea.id)}" target="_blank" rel="noopener">Anhang · ${escapeHtml(idea.attachment.name)} ↗</a></div>` : "";
+    const author = idea.author && profileDirectory[idea.author] ? `<div class="idea-author"><i class="avatar ${profileDirectory[idea.author].avatar}"></i><span><small>Vorgeschlagen von</small><strong>${escapeHtml(profileDirectory[idea.author].name)}</strong></span></div>` : "";
+    root.innerHTML = `<article class="idea-detail-card"><div class="idea-detail-icon">${idea.icon}</div><p class="eyebrow">${escapeHtml(idea.place || destination?.sectionTitle || "Reiseidee")}</p><h1>${escapeHtml(idea.title)}</h1>${author}<p class="idea-detail-copy">${escapeHtml(idea.text)}</p>${facts}${warning}${links}${attachment}</article><div id="idea-community" class="community-loading">Bewertungen und Kommentare werden geladen …</div>`;
+    const community = document.querySelector("#idea-community");
     const redraw = () => { community.innerHTML = renderIdeaCommunity(ideaId, data); };
     redraw();
     community.addEventListener("click", async (event) => {
+      const deleteIdea = event.target.closest("[data-delete-idea]");
+      if (deleteIdea) {
+        if (!window.confirm("Möchtest du deine Idee wirklich löschen? Bewertungen, Kommentare und Anhang werden ebenfalls gelöscht.")) return;
+        community.classList.add("saving");
+        try {
+          await saveIdeaAction(ideaId, { action: "delete-idea" });
+          window.location.href = `${destination?.page || "index.php"}#ideas`;
+        } catch (error) { window.alert(error.message); community.classList.remove("saving"); }
+        return;
+      }
       const deleteButton = event.target.closest("[data-delete-comment]");
       if (deleteButton) {
         if (!window.confirm("Möchtest du deinen Kommentar wirklich löschen?")) return;
@@ -353,8 +373,39 @@ async function initializeIdeaDetail() {
       catch (error) { window.alert(error.message); submit.disabled = false; }
     });
   } catch (error) {
-    community.innerHTML = `<div class="community-error"><strong>Nicht geladen</strong><p>${escapeHtml(error.message)}</p><button type="button" onclick="location.reload()">Erneut versuchen</button></div>`;
+    root.innerHTML = `<section class="idea-detail-card community-error"><strong>Nicht geladen</strong><p>${escapeHtml(error.message)}</p><a class="primary-button inline-button" href="index.php">Zur Reiseübersicht</a></section>`;
   }
+}
+
+async function initializeNewIdea() {
+  const form = document.querySelector("#new-idea-form");
+  if (!form) return;
+  const destination = destinations.find((entry) => entry.id === document.body.dataset.destination) || destinations[1];
+  const label = document.querySelector("#new-idea-destination");
+  const back = document.querySelector("#new-idea-back");
+  if (label) label.textContent = destination.sectionTitle;
+  if (back) back.href = `${destination.page}#ideas`;
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const message = document.querySelector("#new-idea-message");
+    const submit = form.querySelector("button[type=submit]");
+    const file = form.elements.attachment.files?.[0];
+    if (file && file.size > 10485760) { message.textContent = "Die Datei darf höchstens 10 MB groß sein."; message.dataset.state = "error"; return; }
+    submit.disabled = true;
+    message.textContent = "Idee wird veröffentlicht …";
+    message.dataset.state = "saving";
+    try {
+      const user = await loadCurrentUser();
+      const response = await fetch("ideas.php", { method: "POST", headers: { "X-CSRF-Token": user.csrf }, body: new FormData(form) });
+      const payload = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(payload.error || "Die Idee konnte nicht gespeichert werden");
+      window.location.href = `idea.php?id=${encodeURIComponent(payload.idea.id)}`;
+    } catch (error) {
+      message.textContent = error.message;
+      message.dataset.state = "error";
+      submit.disabled = false;
+    }
+  });
 }
 
 const checklistRoot = document.querySelector("#checklist-root");
@@ -583,6 +634,7 @@ function updateCountdown() {
 }
 
 renderTabs(); renderRoute(); renderIdeas(); renderChecklists(); updateCountdown(); initializeIdeaDetail();
+initializeNewIdea();
 loadIdeaSummaries();
 if (checklistRoot) {
   loadSharedChecklists();

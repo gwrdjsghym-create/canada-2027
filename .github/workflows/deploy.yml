@@ -65,6 +65,8 @@ jobs:
             'put checklists.php' \
             'put ideas.php' \
             'put idea.php' \
+            'put new-idea.php' \
+            'put idea-file.php' \
             'put file.php' \
             'put destination-template.php' \
             '-mkdir assets' \
