@@ -5,10 +5,30 @@ canada_require_login();
 $profileId = canada_profile();
 $profile = CANADA_PROFILES[$profileId];
 $destination = $destination ?? 'montreal';
+$heroMeta = [
+  'montreal' => [
+    'number' => '01',
+    'chips' => ['Lars · Andrea · Christina · Manfred', 'Uville Hotel', '2 volle Tage', '3 Abende'],
+  ],
+  'mauricie' => [
+    'number' => '02',
+    'chips' => ['Nature Nature', '3 Nächte', '2 volle Naturtage', 'Selbstversorger'],
+  ],
+  'sainte-rose' => [
+    'number' => '03',
+    'chips' => ['Exode en Nature', '4 Nächte', '3 volle Tage', 'Fjord & Monts-Valin'],
+  ],
+  'orford' => [
+    'number' => '05',
+    'chips' => ['Espace 4 Saisons', '3 Nächte', '2 volle Tage', 'Indian Summer'],
+  ],
+];
+$hero = $heroMeta[$destination] ?? $heroMeta['montreal'];
 ?>
-<!doctype html><html lang="de"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#143b2b"><meta name="description" content="Canada 2027 – Reiseplanung"><meta name="robots" content="noindex,nofollow"><title>Canada 2027</title><link rel="stylesheet" href="styles.css?v=20260906-4"></head><body class="destination-page" data-destination="<?= htmlspecialchars($destination, ENT_QUOTES) ?>">
+<!doctype html><html lang="de"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#143b2b"><meta name="description" content="Canada 2027 – Reiseplanung"><meta name="robots" content="noindex,nofollow"><title>Canada 2027</title><link rel="stylesheet" href="styles.css?v=20260906-5"></head><body class="destination-page" data-destination="<?= htmlspecialchars($destination, ENT_QUOTES) ?>">
 <header class="topbar"><a class="brand" href="index.php"><span class="brand-mark">🍁</span><span><strong>Canada 2027</strong><small>17. September – 2. Oktober</small></span></a><nav class="desktop-nav"><a href="index.php">Übersicht</a><a class="active" href="#ideas">Ideen</a></nav><a class="profile-chip" href="login.php?switch=1&amp;next=<?= rawurlencode($_SERVER['REQUEST_URI'] ?? '/index.php') ?>" aria-label="Profil wechseln"><i class="avatar <?= $profile['avatar'] ?>"></i><span><?= $profile['name'] ?></span></a></header>
-<main id="top"><section class="destination-hero"><a class="back-link" href="index.php">← Reiseübersicht</a><p class="eyebrow">Destination</p><h1 id="destination-title"></h1><p id="destination-summary"></p></section><nav class="destination-tabs destination-switcher" id="destination-tabs" role="tablist" aria-label="Destination auswählen"></nav>
+<section class="destination-hero" id="top"><div class="destination-hero-inner"><a class="back-link" href="index.php">← Reiseübersicht</a><p class="eyebrow"><?= htmlspecialchars($hero['number'], ENT_QUOTES) ?> · Destination</p><h1 id="destination-title"></h1><p id="destination-summary"></p><div class="destination-hero-chips"><?php foreach ($hero['chips'] as $chip): ?><span><?= htmlspecialchars($chip, ENT_QUOTES) ?></span><?php endforeach; ?></div></div></section>
+<main><nav class="destination-tabs destination-switcher" id="destination-tabs" role="tablist" aria-label="Destination auswählen"></nav>
 <section class="section"><div class="section-head"><div><p class="eyebrow">Vom Ankommen bis zur Abreise</p><h2>Anreise &amp; Tage vor Ort</h2></div><div class="legend"><span><i class="dot move"></i> Reisetag</span><span><i class="dot stay"></i> Tag vor Ort</span></div></div><div class="route-list" id="route-list"></div></section>
 <?php if ($destination === 'montreal'): ?>
 <section class="section montreal-planner" aria-labelledby="montreal-planner-title">
