@@ -25,7 +25,7 @@ $heroMeta = [
 ];
 $hero = $heroMeta[$destination] ?? $heroMeta['montreal'];
 ?>
-<!doctype html><html lang="de"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#143b2b"><meta name="description" content="Canada 2027 – Reiseplanung"><meta name="robots" content="noindex,nofollow"><title>Canada 2027</title><link rel="stylesheet" href="styles.css?v=20260906-6"></head><body class="destination-page" data-destination="<?= htmlspecialchars($destination, ENT_QUOTES) ?>">
+<!doctype html><html lang="de"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#143b2b"><meta name="description" content="Canada 2027 – Reiseplanung"><meta name="robots" content="noindex,nofollow"><title>Canada 2027</title><link rel="stylesheet" href="styles.css?v=20260906-7"></head><body class="destination-page" data-destination="<?= htmlspecialchars($destination, ENT_QUOTES) ?>">
 <header class="topbar"><a class="brand" href="index.php"><span class="brand-mark">🍁</span><span><strong>Canada 2027</strong><small>17. September – 2. Oktober</small></span></a><nav class="desktop-nav"><a href="index.php">Übersicht</a><a class="active" href="#ideas">Ideen</a></nav><a class="profile-chip" href="login.php?switch=1&amp;next=<?= rawurlencode($_SERVER['REQUEST_URI'] ?? '/index.php') ?>" aria-label="Profil wechseln"><i class="avatar <?= $profile['avatar'] ?>"></i><span><?= $profile['name'] ?></span></a></header>
 <section class="destination-hero" id="top"><div class="destination-hero-inner"><a class="back-link" href="index.php">← Reiseübersicht</a><p class="eyebrow"><?= htmlspecialchars($hero['number'], ENT_QUOTES) ?> · Destination</p><h1 id="destination-title"></h1><p id="destination-summary"></p><div class="destination-hero-chips"><?php foreach ($hero['chips'] as $chip): ?><span><?= htmlspecialchars($chip, ENT_QUOTES) ?></span><?php endforeach; ?></div></div></section>
 <main><nav class="destination-tabs destination-switcher" id="destination-tabs" role="tablist" aria-label="Destination auswählen"></nav>
@@ -68,6 +68,32 @@ $hero = $heroMeta[$destination] ?? $heroMeta['montreal'];
   </div>
 </section>
 <?php endif; ?>
+<?php if ($destination === 'mauricie'): ?>
+<section class="section mauricie-planner" aria-labelledby="mauricie-planner-title">
+  <div class="section-head">
+    <div><p class="eyebrow">Zwei Naturtage · sechs vorbereitete Ideen</p><h2 id="mauricie-planner-title">Was passt zu Wetter, Kraft und Lust?</h2></div>
+    <a class="comparison-link" href="file.php?name=00_Vergleich_Aktivitaeten_Mauricie.pdf" target="_blank" rel="noopener">PDF-Gesamtvergleich ↗</a>
+  </div>
+  <p class="mauricie-intro">Dienstag entscheiden wir zwischen zwei Wanderungen nahe der Unterkunft. Mittwoch bleibt bewusst flexibel: Parkkombination, Kanu-Einstieg, Waber Falls unter klaren Bedingungen oder Shawinigan als Regenreserve. Jede Karte öffnet die vollständige Planung mit Quellen, Anfahrt, Fotos, Sicherheit und Abstimmung.</p>
+  <div class="mauricie-decision-group">
+    <div class="mauricie-group-head"><span>Di · 21.09.</span><div><h3>Der große Wandertag</h3><p>Gleicher Startbereich, unterschiedliche Belastung – erst am Vorabend gemeinsam festlegen.</p></div></div>
+    <div class="mauricie-option-grid two">
+      <a href="idea.php?id=lac-solitaire"><span class="option-icon">🥾</span><p>Ausgewogener</p><h4>Lac-Solitaire</h4><small>6,1 km · 396 Hm · ca. 2½ Std.</small><b>Planung &amp; Abstimmung →</b></a>
+      <a href="idea.php?id=ruisseau-bouchard"><span class="option-icon">⛰️</span><p>Sportlicher</p><h4>Ruisseau-Bouchard</h4><small>9,1 km · 528 Hm · ca. 3½ Std.</small><b>Planung &amp; Abstimmung →</b></a>
+    </div>
+  </div>
+  <div class="mauricie-decision-group">
+    <div class="mauricie-group-head"><span>Mi · 22.09.</span><div><h3>Der flexible zweite Tag</h3><p>Vier echte Alternativen statt eines überfüllten Tagesplans.</p></div></div>
+    <div class="mauricie-option-grid">
+      <a href="idea.php?id=cascades-falaises"><span class="option-icon">💦</span><p>Flexibler Parktag</p><h4>Cascades &amp; Falaises</h4><small>Wasser + Aussicht · gut kürzbar</small><b>Details öffnen →</b></a>
+      <a href="idea.php?id=canoe-intro"><span class="option-icon">🛶</span><p>Kanada-Moment</p><h4>Kanu-Einführung</h4><small>60–90 Min. · für Anfänger</small><b>Details öffnen →</b></a>
+      <a class="conditional" href="idea.php?id=waber-falls"><span class="option-icon">🌊</span><p>Nur unter Bedingungen</p><h4>Waber Falls</h4><small>6–8 Std. · Kanu + Wanderung</small><b>Sicherheit &amp; Details →</b></a>
+      <a href="idea.php?id=shawinigan"><span class="option-icon">🏭</span><p>Regenreserve</p><h4>Shawinigan</h4><small>Cité de l’énergie + Genuss</small><b>Details öffnen →</b></a>
+    </div>
+  </div>
+  <div class="pdf-archive-note"><span>PDF</span><p><strong>Alle sieben Dokumente bleiben erhalten.</strong> Der Gesamtvergleich steht oben; jedes Einzelprofil ist zusätzlich auf seiner Detailseite verlinkt.</p></div>
+</section>
+<?php endif; ?>
 <?php if ($destination === 'sainte-rose'): ?>
 <section class="section" aria-labelledby="transfer-decision-title">
   <div class="section-head">
@@ -94,4 +120,4 @@ $hero = $heroMeta[$destination] ?? $heroMeta['montreal'];
 <section class="section ideas" id="ideas"><div class="section-head ideas-head"><div><p class="eyebrow">Gemeinsam entscheiden</p><h2 id="ideas-title"></h2></div><a class="new-idea-button" href="new-idea.php?destination=<?= rawurlencode($destination) ?>"><span>＋</span> Neue Idee</a></div>
 <?php if ($destination === 'montreal'): ?><div class="interest-scale"><strong>So stimmen wir ab:</strong><span>★★★★★ unbedingt</span><span>★★★★ gerne</span><span>★★★ neutral</span><span>★★ eher nicht</span><span>★ kann entfallen</span><small>Die Zeitangabe auf jeder Karte enthält auch Wege und kurze Pausen. Details, Links und Kommentare öffnen sich beim Antippen.</small></div><?php endif; ?>
 <div class="idea-toolbar"><div class="filters"><button class="filter active" data-filter="all">Alle</button><button class="filter" data-filter="booked">Gebucht</button><button class="filter" data-filter="idea">Ideen</button></div><a id="comparison-link" class="comparison-link" href="#" target="_blank" hidden>PDF-Übersicht ↗</a></div><div class="idea-grid" id="idea-grid"></div></section></main>
-<nav class="mobile-nav"><a href="index.php"><span>⌁</span>Reise</a><a class="active" href="#ideas"><span>★</span>Ideen</a><a href="index.php#travellers"><span>♙</span>Wir vier</a></nav><dialog id="details-dialog"><button class="close-dialog" aria-label="Schließen">×</button><div id="dialog-content"></div></dialog><script src="app.js?v=20260906-6"></script></body></html>
+<nav class="mobile-nav"><a href="index.php"><span>⌁</span>Reise</a><a class="active" href="#ideas"><span>★</span>Ideen</a><a href="index.php#travellers"><span>♙</span>Wir vier</a></nav><dialog id="details-dialog"><button class="close-dialog" aria-label="Schließen">×</button><div id="dialog-content"></div></dialog><script src="app.js?v=20260906-7"></script></body></html>
