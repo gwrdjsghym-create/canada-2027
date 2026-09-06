@@ -9,7 +9,8 @@ const STATIC_IDEA_IDS = ['whale-tour','montreal-old-city','montreal-basilica','m
 const DESTINATION_IDS = ['montreal','mauricie','sainte-rose','quebec','orford'];
 const IDEA_CHOICE_OPTIONS = [
     'montreal-evening' => ['aura','twilight','night-tour','ghost-walk'],
-    'montreal-dinner' => ['fine-dining','quebec-cuisine','steak-seafood','brasserie','montreal-classics']
+    'montreal-dinner' => ['fine-dining','quebec-cuisine','steak-seafood','brasserie','montreal-classics'],
+    'fjordtag-varianten' => ['kayak','majestueuse','side-by-side','rain']
 ];
 const MAX_UPLOAD_BYTES = 10485760;
 $dataDir = __DIR__ . '/data';
