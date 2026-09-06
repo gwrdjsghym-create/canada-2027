@@ -145,9 +145,9 @@ const ideas = [
   },
   {
     id: "montreal-dinner", destination: "montreal", type: "idea", icon: "🍽️", place: "Drei Abende · eigener Entscheid", title: "Welcher Dinner-Stil passt zu uns?",
-    text: "Fine Dining, Québec-Küche, Steak & Seafood, lebendige Brasserie oder unkompliziert typisch Montréal. Erst den Stil wählen, dann Restaurants passend zur Tagesroute reservieren.",
-    facts: ["3 Abendessen", "Lage folgt Route", "Reservierung später"],
-    links: [{ label: "Monarque", url: "https://restaurantmonarque.ca/en/" }, { label: "Gibbys", url: "https://www.gibbys.com/en/" }, { label: "Restaurants · Tourisme Montréal", url: "https://www.mtl.org/en/what-to-do/food" }]
+    text: "Drei Abende, aber nicht dreimal dasselbe: Zuerst bewerten wir, wie wichtig uns mindestens ein bewusst geplantes besonderes Abendessen ist. Danach wählt jeder den Restaurantstil, den er in Montréal am liebsten erleben möchte. Aus den vier Stimmen stellen wir später eine passende Mischung für die drei Abende zusammen.",
+    facts: ["3 Abendessen", "5 verständlich erklärte Stile", "1 persönlicher Favorit"],
+    links: [{ label: "Monarque · Fine Dining", url: "https://restaurantmonarque.ca/en/" }, { label: "Gibbys · Steak & Seafood", url: "https://www.gibbys.com/en/" }, { label: "Québec-Küche erklärt", url: "https://www.mtl.org/en/experience/traditional-quebecois-cuisine" }, { label: "Montréal-Klassiker erklärt", url: "https://www.mtl.org/en/experience/musts-for-foodies-visiting-montreal" }, { label: "Restaurantübersicht · Tourisme Montréal", url: "https://www.mtl.org/en/what-to-do/food" }]
   },
   {
     id: "transfer-20-09", destination: "mauricie", type: "idea", icon: "🚙", featured: true,
@@ -216,6 +216,8 @@ const ideas = [
 
 const ideaChoiceGroups = {
   "montreal-evening": {
+    ratingTitle: "Möchten wir so einen Abend?",
+    ratingHint: "Bewertet hier nur die grundsätzliche Idee – noch nicht die einzelne Variante.",
     title: "Welche Abendidee bevorzugst du?",
     hint: "Wähle unabhängig von deiner Sternebewertung genau einen persönlichen Favoriten. Du kannst deine Auswahl später jederzeit ändern.",
     options: [
@@ -223,6 +225,19 @@ const ideaChoiceGroups = {
       { id: "twilight", label: "Twilight Walk", text: "Geführter Rundgang durch die Altstadt in der Abendstimmung." },
       { id: "night-tour", label: "Night Tour", text: "Kleingruppen-Nachttour mit Aussicht von der Grande Roue." },
       { id: "ghost-walk", label: "Ghost Walk", text: "Unterhaltsame Geschichten und Legenden bei einem abendlichen Geisterrundgang." }
+    ]
+  },
+  "montreal-dinner": {
+    ratingTitle: "Wie wichtig ist uns ein besonderes Abendessen?",
+    ratingHint: "Die Sterne sagen nur, ob mindestens einer der drei Abende bewusst als besonderes Essen geplant werden soll. Den bevorzugten Stil wählt ihr im zweiten Schritt.",
+    title: "Welchen Dinner-Stil bevorzugst du?",
+    hint: "Wähle deinen persönlichen Favoriten. Die Wahl legt nicht alle drei Abende fest: Aus euren Stimmen entsteht später eine abwechslungsreiche Mischung, passend zur jeweiligen Tagesroute.",
+    options: [
+      { id: "fine-dining", label: "Fine Dining", text: "Ein besonderer Genussabend mit kreativer Küche, sehr aufmerksamem Service und mehreren fein abgestimmten Gängen.", atmosphere: "ruhig, elegant, festlich", food: "Tasting-Menü oder moderne à-la-carte-Gerichte", price: "gehoben · $$$$", example: "Beispiel: Monarque" },
+      { id: "quebec-cuisine", label: "Moderne Québec-Küche", text: "Regionale Zutaten aus Québec werden zeitgemäß gekocht – etwa Wild, Ente, Fisch, Käse, Pilze, Ahorn oder saisonales Gemüse.", atmosphere: "regional, kreativ, authentisch", food: "Québec-Produkte statt Folklore-Menü", price: "mittel bis gehoben · $$$", example: "Beispiel: moderne Terroir-Küche" },
+      { id: "steak-seafood", label: "Steak & Seafood", text: "Ein klassischer nordamerikanischer Restaurantabend mit Steaks, Hummer, Fisch und kräftigen Beilagen – vertraut und feierlich.", atmosphere: "klassisch, gemütlich, großzügig", food: "Steak, Fisch, Meeresfrüchte", price: "gehoben · $$$–$$$$", example: "Beispiel: Gibbys" },
+      { id: "brasserie", label: "Lebendige Brasserie", text: "Eine Brasserie ist ein ungezwungenes französisch geprägtes Restaurant: lebhaft, guter Service, breite Karte und längeres Sitzen ohne steife Fine-Dining-Atmosphäre.", atmosphere: "lebendig, französisch, gesellig", food: "Tatar, Austern, Ente, Steak frites, Fisch", price: "mittel bis gehoben · $$–$$$", example: "Beispiele: Holder oder L’Express" },
+      { id: "montreal-classics", label: "Typisch Montréal & unkompliziert", text: "Keine einzelne Küche, sondern Montréals Mischung aus frankokanadischen, jüdischen und nordamerikanischen Einflüssen – bewusst locker statt festlich.", atmosphere: "casual, lokal, lebhaft", food: "Smoked Meat, Poutine, Bagels oder Deli-Klassiker", price: "günstig bis mittel · $–$$", example: "Beispiele: Schwartz’s oder Reuben’s" }
     ]
   }
 };
@@ -408,7 +423,13 @@ function renderIdeaChoiceGroup(ideaId, data, profiles) {
   const options = group.options.map((option) => {
     const voters = Object.entries(choices).filter(([, choice]) => choice === option.id).map(([profileId]) => profiles[profileId]).filter(Boolean);
     const voterText = voters.length ? voters.map((profile) => profile.name).join(", ") : "Noch keine Stimme";
-    return `<button type="button" class="choice-option ${currentChoice === option.id ? "selected" : ""}" data-choice="${option.id}" aria-pressed="${currentChoice === option.id}"><span class="choice-check">${currentChoice === option.id ? "✓" : ""}</span><strong>${escapeHtml(option.label)}</strong><small>${escapeHtml(option.text)}</small><span class="choice-voters">${escapeHtml(voterText)}</span></button>`;
+    const details = [
+      option.atmosphere ? `<span><b>Atmosphäre</b>${escapeHtml(option.atmosphere)}</span>` : "",
+      option.food ? `<span><b>Typisch</b>${escapeHtml(option.food)}</span>` : "",
+      option.price ? `<span><b>Preisniveau</b>${escapeHtml(option.price)}</span>` : "",
+      option.example ? `<span><b>Orientierung</b>${escapeHtml(option.example)}</span>` : ""
+    ].filter(Boolean).join("");
+    return `<button type="button" class="choice-option ${currentChoice === option.id ? "selected" : ""}" data-choice="${option.id}" aria-pressed="${currentChoice === option.id}"><span class="choice-check">${currentChoice === option.id ? "✓" : ""}</span><strong>${escapeHtml(option.label)}</strong><small>${escapeHtml(option.text)}</small>${details ? `<span class="choice-option-meta">${details}</span>` : ""}<span class="choice-voters">${escapeHtml(voterText)}</span></button>`;
   }).join("");
   const roster = Object.entries(profiles).map(([profileId, profile]) => `<div class="choice-person ${profileId === data.currentProfile ? "current" : ""}"><i class="avatar ${profile.avatar}"></i><span><strong>${escapeHtml(profile.name)}${profileId === data.currentProfile ? " · du" : ""}</strong><small>${choices[profileId] ? escapeHtml(optionLabels[choices[profileId]] || choices[profileId]) : "noch offen"}</small></span></div>`).join("");
   return `<section class="choice-panel"><div class="choice-head"><p class="eyebrow">2 · Variantenentscheidung</p><h2>${escapeHtml(group.title)}</h2><p>${escapeHtml(group.hint)}</p></div><div class="choice-options" role="group" aria-label="${escapeHtml(group.title)}">${options}</div><div class="choice-roster" aria-label="Aktueller Stand">${roster}</div></section>`;
@@ -442,8 +463,9 @@ function renderIdeaCommunity(ideaId, data) {
     return `<article class="comment-thread"><div class="comment ${deleted ? "is-deleted" : ""}"><i class="avatar ${author.avatar}"></i><div><header><strong>${escapeHtml(author.name)}</strong>${rootMeta}</header>${rootBody}</div></div>${replies}</article>`;
   }).join("") : `<div class="comments-empty"><span>💬</span><p>Noch kein Kommentar. Startet eure Unterhaltung zu dieser Idee.</p></div>`;
 
+  const choiceGroup = ideaChoiceGroups[ideaId];
   return `<section class="community-panel">
-    <div class="community-head"><div><p class="eyebrow">${hasChoiceGroup ? "1 · Grundsatzentscheidung" : "Eure Einschätzung"}</p><h2>${hasChoiceGroup ? "Möchten wir so einen Abend?" : "Vier Stimmen, eine Entscheidung"}</h2>${hasChoiceGroup ? "<p class=\"decision-help\">Bewertet hier nur die grundsätzliche Idee – noch nicht die einzelne Variante.</p>" : ""}</div><div class="average-rating"><strong>${data.average ? `★ ${String(data.average).replace(".", ",")}` : "☆ –"}</strong><small>${data.ratingCount || 0} von 4 bewertet</small></div></div>
+    <div class="community-head"><div><p class="eyebrow">${hasChoiceGroup ? "1 · Grundsatzentscheidung" : "Eure Einschätzung"}</p><h2>${hasChoiceGroup ? escapeHtml(choiceGroup.ratingTitle) : "Vier Stimmen, eine Entscheidung"}</h2>${hasChoiceGroup ? `<p class="decision-help">${escapeHtml(choiceGroup.ratingHint)}</p>` : ""}</div><div class="average-rating"><strong>${data.average ? `★ ${String(data.average).replace(".", ",")}` : "☆ –"}</strong><small>${data.ratingCount || 0} von 4 bewertet</small></div></div>
     <div class="rating-grid">${ratingRows}</div>
     ${renderIdeaChoiceGroup(ideaId, data, profiles)}
     <div class="discussion"><div class="discussion-head"><p class="eyebrow">Im Gespräch</p><h2>Kommentare</h2></div><form class="new-comment" data-comment-form><textarea name="text" maxlength="1000" required placeholder="Was denkst du über diese Idee?"></textarea><button type="submit">Als ${escapeHtml(profiles[data.currentProfile]?.name || "Profil")} kommentieren</button></form><div class="comments-list">${comments}</div></div>

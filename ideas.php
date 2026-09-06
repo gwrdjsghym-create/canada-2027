@@ -7,7 +7,10 @@ header('Cache-Control: no-store');
 
 const STATIC_IDEA_IDS = ['whale-tour','montreal-old-city','montreal-basilica','montreal-mountain','montreal-mile-end-food','montreal-jean-talon','montreal-bike','montreal-downtown','montreal-olympic','montreal-canal','montreal-guided-old','montreal-evening','montreal-dinner','transfer-20-09','lac-solitaire','ruisseau-bouchard','cascades-falaises','canoe-intro','waber-falls','shawinigan','montagne-du-chapeau','fjordtag-varianten','pic-tete-de-chien'];
 const DESTINATION_IDS = ['montreal','mauricie','sainte-rose','quebec','orford'];
-const IDEA_CHOICE_OPTIONS = ['montreal-evening' => ['aura','twilight','night-tour','ghost-walk']];
+const IDEA_CHOICE_OPTIONS = [
+    'montreal-evening' => ['aura','twilight','night-tour','ghost-walk'],
+    'montreal-dinner' => ['fine-dining','quebec-cuisine','steak-seafood','brasserie','montreal-classics']
+];
 const MAX_UPLOAD_BYTES = 10485760;
 $dataDir = __DIR__ . '/data';
 $uploadDir = $dataDir . '/uploads';

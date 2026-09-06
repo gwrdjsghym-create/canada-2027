@@ -339,6 +339,9 @@ dialog::backdrop { background: rgba(10,28,21,.55); backdrop-filter: blur(4px); }
 .choice-option.selected { border-color: var(--gold); background: #fff9e9; }
 .choice-option strong { color: var(--forest); font-family: Georgia,serif; font-size: 1.25rem; }
 .choice-option small { color: var(--muted); font-size: .82rem; line-height: 1.45; }
+.choice-option-meta { display: grid; gap: 5px; margin-top: 5px; padding-top: 10px; border-top: 1px solid var(--line); color: var(--muted); font-size: .74rem; line-height: 1.35; }
+.choice-option-meta span { display: grid; grid-template-columns: 86px 1fr; gap: 6px; }
+.choice-option-meta b { color: var(--forest); }
 .choice-check { position: absolute; right: 14px; top: 14px; display: grid; place-items: center; width: 25px; height: 25px; border: 1px solid var(--line); border-radius: 50%; color: #fff; background: var(--cream); font-weight: 900; }
 .choice-option.selected .choice-check { border-color: var(--pine); background: var(--pine); }
 .choice-voters { align-self: end; margin-top: 5px; color: var(--maple); font-size: .72rem; font-weight: 850; }
