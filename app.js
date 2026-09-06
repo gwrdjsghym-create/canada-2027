@@ -197,20 +197,20 @@ const ideas = [
     text: "Längere Waldwanderung zum Belvédère über dem Tal der Rivière Sainte-Marguerite – besonders reizvoll im Indian Summer.",
     facts: ["12,3 km", "459 Hm", "4–5 Std.", "anspruchsvoll"],
     warning: "Vor der Tour Trailstatus und aktuelle Jagdhinweise prüfen; sichtbare Kleidung ist Ende September sinnvoll.",
-    links: [{ label: "Balise Québec", url: "https://baliseqc.ca/3S/explorer/saguenay-lac-saint-jean/sainte-rose-du-nord-LR0491" }, { label: "Touren-PDF · NEU", url: "file.php?name=03-01_Montagne-du-Chapeau_02-Standard_NEU.pdf", pdf: true }]
+    links: [{ label: "Route, Karte & Höhenprofil", url: "https://baliseqc.ca/3S/explorer/saguenay-lac-saint-jean/sainte-rose-du-nord-LR0491" }, { label: "Anfahrt ab Exode", url: "https://www.google.com/maps/dir/?api=1&origin=1516%20Route%20de%20Tadoussac%2C%20Sainte-Rose-du-Nord%2C%20QC%20G0V%201T0%2C%20Canada&destination=48.3997%2C-70.4767&travelmode=driving" }, { label: "Touren-PDF · NEU", url: "file.php?name=03-01_Montagne-du-Chapeau_02-Standard_NEU.pdf", pdf: true }]
   },
   {
     id: "fjordtag-varianten", destination: "sainte-rose", type: "idea", icon: "🛶", place: "Sainte-Rose-du-Nord · Samstag", title: "Fjordtag – vier Varianten",
     text: "Je nach Wetter und Wind wählen wir zwischen Seekajak, La Majestueuse, Elektro-Side-by-Side und einem echten Regenprogramm.",
     facts: ["Kajak ca. 3 Std.", "Schiff ca. 4 Std.", "wetterflexibel"],
-    links: [{ label: "Seekajak", url: "https://aventurerosedesvents.com/index.php/todo/sortie-courte-en-kayak-de-mer/" }, { label: "Varianten-PDF", url: "file.php?name=03-02_Fjordtag_25-09-2027_Varianten.pdf", pdf: true }]
+    links: [{ label: "Seekajak · Fotos & Anbieter", url: "https://aventurerosedesvents.com/index.php/todo/sortie-courte-en-kayak-de-mer/" }, { label: "La Majestueuse · Fotos & Fahrplan", url: "https://navettesdufjord.com/croisieres/croisiere-la-majestueuse-automne/" }, { label: "Elektro-Side-by-Side · Fotos & Anbieter", url: "https://www.nomadequad.com/service-page/d%C3%A9couvrez-le-fjord-du-saguenay-1" }, { label: "Varianten-PDF", url: "file.php?name=03-02_Fjordtag_25-09-2027_Varianten.pdf", pdf: true }]
   },
   {
     id: "pic-tete-de-chien", destination: "sainte-rose", type: "idea", icon: "⛰️", place: "Monts-Valin · Sonntag", title: "Pic-de-la-Tête-de-Chien",
     text: "Die zweite Hauptwanderung führt vom Besucherzentrum über den Lac des Pères zu weiten Aussichten im Parc national des Monts-Valin.",
     facts: ["8 km", "340 Hm", "3–4 Std.", "schwierig"],
     warning: "Bei tiefen Wolken, starkem Regen oder Wind nicht erzwingen; dann auf eine kürzere Fjordwanderung ausweichen.",
-    links: [{ label: "Sépaq", url: "https://www.sepaq.com/pq/mva/annexes/randonnee_pedestre.dot?language_id=1" }, { label: "Touren-PDF · NEU", url: "file.php?name=03-03_Pic-de-la-Tete-de-Chien_02-Standard_NEU.pdf", pdf: true }]
+    links: [{ label: "Sépaq · Wegdaten", url: "https://www.sepaq.com/pq/mva/annexes/randonnee_pedestre.dot?language_id=1" }, { label: "Route, Fotos & Höhenprofil", url: "https://www.alltrails.com/fr/randonnee/canada/quebec/sentier-du-pic-de-la-tete-de-chien" }, { label: "Anfahrt ab Exode", url: "https://www.google.com/maps/dir/?api=1&origin=1516%20Route%20de%20Tadoussac%2C%20Sainte-Rose-du-Nord%2C%20QC%20G0V%201T0%2C%20Canada&destination=360%20Rang%20Saint-Louis%2C%20Saint-Fulgence%2C%20QC%20G0V%201S0%2C%20Canada&travelmode=driving" }, { label: "Touren-PDF · NEU", url: "file.php?name=03-03_Pic-de-la-Tete-de-Chien_02-Standard_NEU.pdf", pdf: true }]
   }
 ];
 
@@ -238,6 +238,18 @@ const ideaChoiceGroups = {
       { id: "steak-seafood", label: "Steak & Seafood", text: "Ein klassischer nordamerikanischer Restaurantabend mit Steaks, Hummer, Fisch und kräftigen Beilagen – vertraut und feierlich.", atmosphere: "klassisch, gemütlich, großzügig", food: "Steak, Fisch, Meeresfrüchte", price: "gehoben · $$$–$$$$", example: "Beispiel: Gibbys" },
       { id: "brasserie", label: "Lebendige Brasserie", text: "Eine Brasserie ist ein ungezwungenes französisch geprägtes Restaurant: lebhaft, guter Service, breite Karte und längeres Sitzen ohne steife Fine-Dining-Atmosphäre.", atmosphere: "lebendig, französisch, gesellig", food: "Tatar, Austern, Ente, Steak frites, Fisch", price: "mittel bis gehoben · $$–$$$", example: "Beispiele: Holder oder L’Express" },
       { id: "montreal-classics", label: "Typisch Montréal & unkompliziert", text: "Keine einzelne Küche, sondern Montréals Mischung aus frankokanadischen, jüdischen und nordamerikanischen Einflüssen – bewusst locker statt festlich.", atmosphere: "casual, lokal, lebhaft", food: "Smoked Meat, Poutine, Bagels oder Deli-Klassiker", price: "günstig bis mittel · $–$$", example: "Beispiele: Schwartz’s oder Reuben’s" }
+    ]
+  },
+  "fjordtag-varianten": {
+    ratingTitle: "Möchten wir einen besonderen Fjord-Erlebnistag?",
+    ratingHint: "Bewertet zuerst die grundsätzliche Idee. Die Sterne gelten für einen bewusst geplanten Fjordtag – unabhängig davon, welche Variante es am Ende wird.",
+    title: "Welche Fjord-Variante bevorzugst du?",
+    hint: "Wählt euren persönlichen Favoriten. Wetter, Wind und Verfügbarkeit entscheiden später, welche der vorbereiteten Varianten tatsächlich möglich ist.",
+    options: [
+      { id: "kayak", label: "A · Seekajak", text: "Drei Stunden direkt auf dem Saguenay-Fjord. Keine Vorerfahrung nötig; Tandemkajaks und Sicherheitsbriefing sind vorgesehen.", duration: "ca. 3 Std.", effort: "mittel · Oberkörper", weather: "nur bei ruhigem Wetter", price: "zuletzt 79 CAD p. P. + Steuer", example: "intimster Blick aus Wasserhöhe" },
+      { id: "majestueuse", label: "B · La Majestueuse", text: "Entspannte vierstündige Schifffahrt mit großer Reichweite und Aufenthalt in L’Anse-Saint-Jean.", duration: "ca. 4 Std.", effort: "sehr leicht", weather: "auch bei mehr Wind interessant", price: "2026: 77 CAD p. P.", example: "Erholungsfavorit zwischen den Wanderungen" },
+      { id: "side-by-side", label: "C · Elektro-Side-by-Side", text: "Geführte Fahrt mit elektrischem Polaris Ranger durch borealen Wald zu einem Aussichtspunkt über dem Fjord.", duration: "ca. 3 Std.", effort: "leicht", weather: "robuster bei Wind und Nässe", price: "ab 245 CAD · Bezugsgröße prüfen", example: "vollwertiger Wetter-Joker" },
+      { id: "rain", label: "D · Echter Regenplan", text: "Musée de la Nature, Mittagessen im Dorf und kurze trockene Fenster am Quai oder auf dem Sentier de la Plate-forme.", duration: "flexibel", effort: "leicht", weather: "Dauerregen oder Sturm", price: "Museums- und Essenskosten", example: "ohne erzwungenen Outdoor-Tag" }
     ]
   }
 };
@@ -426,6 +438,9 @@ function renderIdeaChoiceGroup(ideaId, data, profiles) {
     const details = [
       option.atmosphere ? `<span><b>Atmosphäre</b>${escapeHtml(option.atmosphere)}</span>` : "",
       option.food ? `<span><b>Typisch</b>${escapeHtml(option.food)}</span>` : "",
+      option.duration ? `<span><b>Dauer</b>${escapeHtml(option.duration)}</span>` : "",
+      option.effort ? `<span><b>Belastung</b>${escapeHtml(option.effort)}</span>` : "",
+      option.weather ? `<span><b>Wetter</b>${escapeHtml(option.weather)}</span>` : "",
       option.price ? `<span><b>Preisniveau</b>${escapeHtml(option.price)}</span>` : "",
       option.example ? `<span><b>Orientierung</b>${escapeHtml(option.example)}</span>` : ""
     ].filter(Boolean).join("");
@@ -491,6 +506,45 @@ async function saveIdeaAction(ideaId, body) {
   return payload;
 }
 
+function renderSainteRoseEditorial(ideaId) {
+  if (ideaId === "fjordtag-varianten") return `
+    <section class="trip-editorial fjord-editorial">
+      <div class="editorial-intro"><p class="eyebrow">Samstag · 25. September</p><h2>Vier vorbereitete Wege zum Fjord</h2><p>Der Tag wird bewusst noch nicht fest gebucht. Statt vor Ort neu zu recherchieren, wählen wir aus vier vollständig vorbereiteten Varianten – passend zu Wetter, Wind und gemeinsamer Präferenz.</p></div>
+      <div class="weather-matrix" aria-label="Entscheidung nach Wetter">
+        <article><span>Trocken · wenig Wind</span><strong>A · Seekajak</strong><small>aktiv und intensiv</small></article>
+        <article><span>Trocken oder bewölkt · mehr Wind</span><strong>B · La Majestueuse</strong><small>entspannt, große Reichweite</small></article>
+        <article><span>Windig oder nass · Outdoor möglich</span><strong>C · Elektro-Side-by-Side</strong><small>wetterrobuster Joker</small></article>
+        <article><span>Dauerregen oder stürmisch</span><strong>D · Dorf &amp; Museum</strong><small>echter Regenplan</small></article>
+      </div>
+      <div class="variant-detail-grid">
+        <article><b class="variant-letter">A</b><h3>Seekajak</h3><p>Start direkt am Quai von Sainte-Rose-du-Nord. Die Tour „Découverte“ dauert nach aktuellem Anbieterstand drei Stunden. Tandemkajaks, Sicherheitsbriefing und Begleitung sind enthalten; Vorerfahrung ist nicht nötig.</p><ul><li>Treffpunkt: 136 Rue du Quai</li><li>Referenzstarts: 9:00 oder 13:00 Uhr</li><li>Saison laut Anbieter: Mai bis Oktober</li><li>Stärke: unmittelbares Fjorderlebnis aus Wasserhöhe</li></ul><a href="https://aventurerosedesvents.com/index.php/todo/sortie-courte-en-kayak-de-mer/" target="_blank" rel="noopener">Fotos, Ablauf &amp; Buchung ↗</a></article>
+        <article><b class="variant-letter">B</b><h3>La Majestueuse</h3><p>Die entspannte Schiffsalternative zeigt eine deutlich größere Strecke des Fjords. Der veröffentlichte Herbstfahrplan 2026 sah eine Rundfahrt ab Sainte-Rose mit Aufenthalt in L’Anse-Saint-Jean vor.</p><ul><li>Referenz: 11:15–15:15 Uhr</li><li>L’Anse-Saint-Jean: 12:30–14:00 Uhr</li><li>Cap Liberté, Cap Trinité und Cap Éternité</li><li>Stärke: perfekter Erholungstag zwischen zwei Wanderungen</li></ul><a href="https://navettesdufjord.com/croisieres/croisiere-la-majestueuse-automne/" target="_blank" rel="noopener">Fotos, Route &amp; Fahrplan ↗</a></article>
+        <article><b class="variant-letter">C</b><h3>Elektro-Side-by-Side</h3><p>Geführte Tour mit einem 100 % elektrischen Polaris Ranger Kinetic. Sie verbindet borealen Wald, einen Aussichtspunkt über den Fjord und lokale Erläuterungen.</p><ul><li>Start: Rang Sainte-Marie</li><li>Referenzstarts: 9:00 oder 13:00 Uhr</li><li>Helm, Handschuhe, Regenkleidung und Fahrtraining inklusive</li><li>Preisangabe „ab 245 CAD“ vor Buchung genau klären</li></ul><a href="https://www.nomadequad.com/service-page/d%C3%A9couvrez-le-fjord-du-saguenay-1" target="_blank" rel="noopener">Fotos, Ablauf &amp; Anbieter ↗</a></article>
+        <article><b class="variant-letter">D</b><h3>Echter Regenplan</h3><p>Kein falscher „Regenheldentag“: Bei Dauerregen oder Sturm bleiben die Wege kurz und flexibel. Museum, Café und Unterkunft sind dann ein vollwertiger Plan – kein Notbehelf.</p><ul><li>Musée de la Nature · 199 Rue de la Montagne</li><li>Mittagessen oder Café im Dorf</li><li>Quai und Ortskern in kurzen trockenen Fenstern</li><li>Optional: Sentier de la Plate-forme · 3,7 km</li></ul><a href="https://museedelanature.com/tarifs-et-horaire/" target="_blank" rel="noopener">Museum &amp; Öffnungszeiten ↗</a><a href="https://www.ste-rosedunord.qc.ca/visiter-sainte-rose/attraits-touristique/lete-a-sainte-rose/sentiers-de-randonnee/" target="_blank" rel="noopener">Lokale Wege &amp; Fotos ↗</a></article>
+      </div>
+      <aside class="pretrip-check"><div><p class="eyebrow">Vor der Reise prüfen</p><h3>September 2027</h3></div><ul><li>Verfügbarkeit und genaue Startzeiten</li><li>Preise und Bezugsgröße beim Side-by-Side</li><li>Fahrplan der La Majestueuse</li><li>Stornierungs- und Wetterregeln</li><li>Wind, Niederschlag und Temperatur am Vortag</li></ul></aside>
+    </section>`;
+
+  if (ideaId === "montagne-du-chapeau") return `
+    <section class="trip-editorial hike-editorial">
+      <div class="editorial-intro"><p class="eyebrow">Favorit für Freitag · 24. September</p><h2>Der lange Waldtag vor Beginn der Jagdperiode</h2><p>Die naturbelassene Hin-und-zurück-Wanderung führt zum Belvédère über der Vallée de la Rivière Sainte-Marguerite. Gemeinde und Balise nennen 12,2–12,3 Kilometer und 459 Höhenmeter.</p></div>
+      <div class="editorial-columns"><article><h3>Dafür spricht</h3><ul><li>Starker Tal- und Indian-Summer-Blick</li><li>Große zusammenhängende Waldflächen</li><li>Vollwertiger Wandertag nahe der Unterkunft</li><li>Freitag passt besser zur Jagdwarnung ab 25.09.</li></ul></article><article><h3>Dagegen spricht</h3><ul><li>Bei Nässe stellenweise rutschig</li><li>Mit vier bis fünf Stunden der längste Wandertag</li><li>Trailstatus und Jagdregeln müssen aktuell geprüft werden</li></ul></article></div>
+      <div class="route-actions"><a href="https://baliseqc.ca/3S/explorer/saguenay-lac-saint-jean/sainte-rose-du-nord-LR0491" target="_blank" rel="noopener"><strong>Route, Fotos &amp; Höhenprofil</strong><small>Balise Québec mit interaktiver Karte und GPS</small></a><a href="https://www.google.com/maps/dir/?api=1&origin=1516%20Route%20de%20Tadoussac%2C%20Sainte-Rose-du-Nord%2C%20QC%20G0V%201T0%2C%20Canada&destination=48.3997%2C-70.4767&travelmode=driving" target="_blank" rel="noopener"><strong>Anfahrt öffnen</strong><small>ca. 20–22 km · 20–25 Minuten als Planungswert</small></a></div>
+      <aside class="day-addon"><strong>Nach der Wanderung</strong><p>Rose Café am Quai für Kaffee oder Dessert. Bei Restenergie reicht ein kurzer Halt am Quai; keine zweite große Aktivität anhängen.</p><a href="https://www.google.com/maps/search/?api=1&query=Rose+Caf%C3%A9+Sainte-Rose-du-Nord" target="_blank" rel="noopener">Rose Café auf Google Maps ↗</a></aside>
+      <aside class="pretrip-check"><div><p class="eyebrow">Vor dem Start prüfen</p><h3>Sicher in den Wald</h3></div><ul><li>Öffnung, Wegzustand und Sperrungen</li><li>Aktuelle Jagdperiode und lokale Regeln</li><li>Wetter, Wind und Niederschlag</li><li>Offline-Karte, Wasser, Proviant und sichtbare Kleidung</li></ul></aside>
+    </section>`;
+
+  if (ideaId === "pic-tete-de-chien") return `
+    <section class="trip-editorial hike-editorial">
+      <div class="editorial-intro"><p class="eyebrow">Favorit für Sonntag · 26. September</p><h2>Kompakter, steiler und mit weitem Monts-Valin-Panorama</h2><p>Vom Centre de découverte führt die Nationalparkwanderung über Wald und Lac des Pères zum aussichtsreichen oberen Bereich. Sépaq nennt 8 Kilometer, 340 Höhenmeter und die Einstufung „schwierig“.</p></div>
+      <div class="editorial-columns"><article><h3>Dafür spricht</h3><ul><li>Sehr starkes Herbst-, Berg- und Seenpanorama</li><li>Lac des Pères als schöner Zwischenstopp</li><li>Offizieller Sépaq-GPX und gute Parkinfrastruktur</li><li>Anderer Charakter als Montagne du Chapeau</li></ul></article><article><h3>Dagegen spricht</h3><ul><li>Etwa 34 Minuten Anfahrt ab Exode</li><li>Steilere Passagen trotz kürzerer Strecke</li><li>Oben stark von Wind, Wolken und Sicht abhängig</li></ul></article></div>
+      <div class="route-actions"><a href="https://www.alltrails.com/fr/randonnee/canada/quebec/sentier-du-pic-de-la-tete-de-chien" target="_blank" rel="noopener"><strong>Route, Fotos &amp; Höhenprofil</strong><small>Interaktive Tourenansicht</small></a><a href="https://www.sepaq.com/resources/docs/pq/mva/gpx/mva_sentier_ete_pic-de-la-tete-de-chien.gpx" target="_blank" rel="noopener"><strong>Offiziellen GPX laden</strong><small>Sépaq-Routendatei</small></a><a href="https://www.google.com/maps/dir/?api=1&origin=1516%20Route%20de%20Tadoussac%2C%20Sainte-Rose-du-Nord%2C%20QC%20G0V%201T0%2C%20Canada&destination=360%20Rang%20Saint-Louis%2C%20Saint-Fulgence%2C%20QC%20G0V%201S0%2C%20Canada&travelmode=driving" target="_blank" rel="noopener"><strong>Anfahrt öffnen</strong><small>ca. 41,9 km · 34 Minuten als Planungswert</small></a></div>
+      <aside class="day-addon"><strong>Rückweg ohne Zeitdruck</strong><p>Wenn Öffnungszeit und Energie passen, kurzer Bäckereistopp bei Chez Roger oder ein Halt am Saguenay in Saint-Fulgence. Keine weitere lange Wanderung anhängen.</p><a href="https://www.google.com/maps/search/?api=1&query=Chez+Roger+Boulangerie+Saint-Fulgence+Quebec" target="_blank" rel="noopener">Chez Roger auf Google Maps ↗</a></aside>
+      <aside class="pretrip-check"><div><p class="eyebrow">Vor dem Start prüfen</p><h3>Nur bei sinnvoller Sicht</h3></div><ul><li>Öffnung, Wegzustand und Sperrungen</li><li>Sicht, Wind und Niederschlag in höheren Lagen</li><li>Parkzugang und mögliche Gebühr</li><li>Offline-Karte/GPX, Wasser und September-Kleidung</li></ul></aside>
+    </section>`;
+  return "";
+}
+
 async function initializeIdeaDetail() {
   const root = document.querySelector("#idea-detail");
   if (!root) return;
@@ -511,8 +565,9 @@ async function initializeIdeaDetail() {
     const videoPreview = videoId ? `<a class="idea-video-preview" href="https://www.youtube.com/watch?v=${encodeURIComponent(videoId)}" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/${encodeURIComponent(videoId)}/hqdefault.jpg" alt="Videoeindruck zu ${escapeHtml(idea.title)}" loading="lazy"><span class="play-mark">▶</span><strong>Videoeindruck öffnen</strong></a>` : "";
     const attachment = idea.attachment ? `<div class="source-links attachment-link"><a href="idea-file.php?idea=${encodeURIComponent(idea.id)}" target="_blank" rel="noopener">Anhang · ${escapeHtml(idea.attachment.name)} ↗</a></div>` : "";
     const author = idea.author && profileDirectory[idea.author] ? `<div class="idea-author"><i class="avatar ${profileDirectory[idea.author].avatar}"></i><span><small>Vorgeschlagen von</small><strong>${escapeHtml(profileDirectory[idea.author].name)}</strong></span></div>` : "";
-    const interestHint = destination?.id === "montreal" ? `<div class="detail-interest-hint"><strong>Interessenstufe:</strong> 5 = unbedingt · 4 = gerne · 3 = neutral · 2 = eher nicht · 1 = kann entfallen</div>` : "";
-    root.innerHTML = `<article class="idea-detail-card"><div class="idea-detail-icon">${idea.icon}</div><p class="eyebrow">${escapeHtml(idea.place || destination?.sectionTitle || "Reiseidee")}</p><h1>${escapeHtml(idea.title)}</h1>${author}<p class="idea-detail-copy">${escapeHtml(idea.text)}</p>${facts}${videoPreview}${warning}${links}${attachment}${interestHint}</article><div id="idea-community" class="community-loading">Bewertungen und Kommentare werden geladen …</div>`;
+    const editorial = renderSainteRoseEditorial(ideaId);
+    const interestHint = (destination?.id === "montreal" || ideaChoiceGroups[ideaId]) ? `<div class="detail-interest-hint"><strong>Interessenstufe:</strong> 5 = unbedingt · 4 = gerne · 3 = neutral · 2 = eher nicht · 1 = kann entfallen</div>` : "";
+    root.innerHTML = `<article class="idea-detail-card ${editorial ? "sainte-detail-hero" : ""}"><div class="idea-detail-icon">${idea.icon}</div><p class="eyebrow">${escapeHtml(idea.place || destination?.sectionTitle || "Reiseidee")}</p><h1>${escapeHtml(idea.title)}</h1>${author}<p class="idea-detail-copy">${escapeHtml(idea.text)}</p>${facts}${videoPreview}${warning}${links}${attachment}${interestHint}</article>${editorial}<div id="idea-community" class="community-loading">Bewertungen und Kommentare werden geladen …</div>`;
     const community = document.querySelector("#idea-community");
     const redraw = () => { community.innerHTML = renderIdeaCommunity(ideaId, data); };
     redraw();
