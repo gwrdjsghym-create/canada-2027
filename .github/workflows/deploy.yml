@@ -60,6 +60,8 @@ jobs:
             'put 05-orford.php' \
             'put 05-transfer-29-09.php' \
             'put transfer-vote-29-09.php' \
+            'put 05-aktivitaeten.php' \
+            'put orford-activities-vote.php' \
             'put styles.css' \
             'put app.js' \
             'put auth-lib.php' \
