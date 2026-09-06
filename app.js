@@ -506,6 +506,72 @@ async function saveIdeaAction(ideaId, body) {
   return payload;
 }
 
+function renderMauricieEditorial(ideaId) {
+  const plans = {
+    "lac-solitaire": {
+      kicker: "Dienstag · ausgewogene Wanderoption", title: "Kompakt, aussichtsreich und trotzdem ein echter Bergtag",
+      intro: "Route #13 startet am Service Centre Rivière-à-la-Pêche. Die Runde führt durch regenerierenden Wald und bietet Blicke auf Lac Solitaire und Lac aux Chevaux. Trotz der kurzen Distanz sorgen viele An- und Abstiege für einen vollwertigen Wandertag.",
+      pros: ["Kurze Anfahrt ab Nature Nature", "Passt gut in einen halben Tag", "Aussichten trotz kompakter Runde"],
+      cons: ["396 Höhenmeter auf nur 6,1 Kilometern", "Wurzeln und Felsen", "Bei Nässe rutschig"],
+      links: [["Route, Fotos & GPS", "https://www.wikiloc.com/hiking-trails/canada-n-p-la-mauricie-lac-solitaire-route-13-41081699", "Community-Aufzeichnung; verbindlich sind die aktuellen Parkdaten"], ["Parks Canada", "https://parks.canada.ca/pn-np/qc/mauricie/activ/sentiers-trails", "Aktuelle Daten zu Route #13"], ["Anfahrt", "https://www.google.com/maps/dir/?api=1&origin=46.7256101,-72.7707375&destination=Riviere-a-la-Peche+Service+Centre,+La+Mauricie+National+Park&travelmode=driving", "ca. 15–20 Minuten als Planungswert"]],
+      addon: "Auf dem Rückweg passt L’Olivia für Gebäck oder Kaffee. Alternativ ist Saint-Jean-des-Piles ein kurzer Dorf- und Flussstopp ohne große Zusatzfahrt.", addonLink: ["L’Olivia öffnen", "https://www.loliviarestaurant.ca/"],
+      checks: ["Öffnung, Wegzustand und Sperrungen", "Wetter und Niederschlag", "Parkplatz, Gebühr und Reservierung", "Offline-Karte, Wasser und Proviant"]
+    },
+    "ruisseau-bouchard": {
+      kicker: "Dienstag · sportliche Wanderoption", title: "Mehr Bach, Fels und Aussicht – aber deutlich fordernder",
+      intro: "Route #14 beginnt ebenfalls am Service Centre Rivière-à-la-Pêche. Sie führt über felsige Waldrücken, zu mehreren Aussichtspunkten und am Bouchard Creek entlang. Die 9,1 Kilometer unterschätzen die Belastung durch wiederholte Gegenanstiege.",
+      pros: ["Landschaftlich vielseitiger", "Mehr Aussichtspunkte", "Bouchard Creek und kleine Kaskaden"],
+      cons: ["528 Höhenmeter und Gegenanstiege", "Felsiger Untergrund", "Bei Nässe klar anspruchsvoller"],
+      links: [["Route, Fotos & GPS", "https://www.wikiloc.com/hiking-trails/parc-national-de-la-mauricie-sentier-14-ruisseau-bouchard-113852713", "Community-Track; offiziell gelten 9,1 km und 528 Hm"], ["Foto-Tourbericht", "https://audeladupaysage.com/en/2024/07/06/ruisseau-bouchard-trail-en/", "Eindrücke vom Weg und Untergrund"], ["Anfahrt", "https://www.google.com/maps/dir/?api=1&origin=46.7256101,-72.7707375&destination=Riviere-a-la-Peche+Service+Centre,+La+Mauricie+National+Park&travelmode=driving", "ca. 15–20 Minuten als Planungswert"]],
+      addon: "Nur wählen, wenn alle trittsicher und fit sind. Auf dem Rückweg bieten sich L’Olivia oder ein kurzer Halt in Saint-Jean-des-Piles an.", addonLink: ["Parks-Canada-Wegdaten", "https://parks.canada.ca/pn-np/qc/mauricie/activ/sentiers-trails"],
+      checks: ["Aktuelle Markierung der Route #14", "Wegzustand und Sperrungen", "Wetter, Wasser und Proviant", "Offline-Karte und Parkzugang"]
+    },
+    "cascades-falaises": {
+      kicker: "Mittwoch · flexibler Parktag", title: "Erst Wasser, dann Aussicht – und jederzeit kürzbar",
+      intro: "Les Cascades und Les Falaises sind zwei getrennte Rundwege im westlichen Parkteil. Les Cascades bleibt nahe am Wasser; Les Falaises steigt zu Blicken über den Lac Wapizagonke an. So lässt sich der Tag bei Wetterwechsel oder müden Beinen gut dosieren.",
+      pros: ["Kaskaden und Wasserpassagen", "Aussicht auf Lac Wapizagonke", "Zweiter Weg bleibt optional"],
+      cons: ["Längere Anfahrt", "Zwei unterschiedliche Startbereiche", "Brücken- oder Wegsperrungen möglich"],
+      links: [["Foto-Tourbericht", "https://audeladupaysage.com/en/2024/07/12/falaises-cascades-trails-en/", "Viele Eindrücke beider Wege"], ["Karte & aktuelle Wege", "https://parks.canada.ca/pn-np/qc/mauricie/visit/cartes-maps/rando-hiking", "Offizielle Parkinformationen"], ["Anfahrt", "https://www.google.com/maps/dir/?api=1&origin=46.7256101,-72.7707375&destination=Shewenegan+Picnic+Area,+La+Mauricie+National+Park&travelmode=driving", "ca. 60–80 Minuten als Planungswert"]],
+      addon: "Plan: zuerst Les Cascades; Les Falaises nur ergänzen, wenn Zeit, Wetter und Beine passen. Picknick und Gebäck besser vorher mitnehmen.", addonLink: ["Videoeindruck öffnen", "https://www.youtube.com/watch?v=N5s8ygi9YUU"],
+      checks: ["Zufahrt zum westlichen Parkteil", "Brücken- und Wegmeldungen", "Startpunkte beider Wege", "Picknick, Wasser und Offline-Karte"]
+    },
+    "canoe-intro": {
+      kicker: "Mittwoch · Einsteigeroption", title: "Unser sicherer Einstieg ins kanadische Paddeln",
+      intro: "Für vier Personen ohne Kanuerfahrung ist eine kurze geführte Einführung der richtige Anfang: Grundschläge, Ein- und Aussteigen, Verhalten bei Wind und eine ufernahe Runde in zwei Zweierkanus. See, Anbieter und Treffpunkt werden erst mit dem Programm 2027 festgelegt.",
+      pros: ["Anleitung statt Versuch und Irrtum", "Kurze, kontrollierbare Runde", "Technik und Sicherheit auf ruhigem Wasser"],
+      cons: ["Konkretes Angebot 2027 noch offen", "Wind- und temperaturabhängig", "Ende September kann das Wasser kalt sein"],
+      links: [["Paddeln & Verleih", "https://parks.canada.ca/pn-np/qc/mauricie/activ/nautique-nautical", "Offizielle Übersicht von Parks Canada"], ["Parkkarten", "https://parks.canada.ca/pn-np/qc/mauricie/visit/cartes-maps", "Seen, Zugänge und Einrichtungen"], ["Videoeindrücke", "https://www.youtube.com/results?search_query=La+Mauricie+National+Park+canoe", "Kanu im Nationalpark ansehen"]],
+      addon: "Bewusst keine erfundene Route: Die Strecke hängt von Guide, Wind und Treffpunkt ab. Im Ostsektor passt anschließend Saint-Jean-des-Piles, im Westsektor ein kurzer Aussichtsstopp.", addonLink: ["Allgemeine Anfahrt", "https://www.google.com/maps/dir/?api=1&origin=46.7256101,-72.7707375&destination=La+Mauricie+National+Park,+Quebec&travelmode=driving"],
+      checks: ["Geführtes Angebot und Sprache 2027", "Treffpunkt, Startzeit und Preis", "Schwimmwesten und Ausrüstung", "Wind, Wassertemperatur und Stornoregel"]
+    },
+    "waber-falls": {
+      kicker: "Besondere Wunschoption · nur unter Bedingungen", title: "Ein großer Expeditionstag – keine Einsteigertour",
+      intro: "Über den Lac Wapizagonke paddeln und anschließend zu den 27 Meter hohen Waber Falls wandern: landschaftlich ein Höhepunkt, aber mit 9,2 Kilometern Paddeln, 7,2 Kilometern Wandern und fehlendem Mobilfunk ein langer, anspruchsvoller Tag.",
+      pros: ["Einzigartiges Wasserfall-Erlebnis", "Kanu und Wanderung kombiniert", "Großes Naturhighlight"],
+      cons: ["Für Anfänger ohne Guide ungeeignet", "Kein Mobilfunk und Hilfe unter Umständen weit entfernt", "Langer Tag plus lange Anfahrt"],
+      links: [["Offizielle Tourdaten", "https://parks.canada.ca/pn-np/qc/mauricie/activ/nautique-nautical/waber", "Parks Canada zu Ablauf und Anforderungen"], ["Fotos & Erfahrungsbericht", "https://tourismemauricie.com/blogue/chutes-waber-comment-se-rendre-dans-ce-coin-paradisiaque-du-parc-national-de-la-mauricie", "So sieht der Expeditionstag aus"], ["Anfahrt", "https://www.google.com/maps/dir/?api=1&origin=46.7256101,-72.7707375&destination=Wapizagonke+Picnic+Area,+La+Mauricie+National+Park&travelmode=driving", "ca. 70–90 Minuten als Planungswert"]],
+      addon: "Eigenes Picknick und Reserveverpflegung sind Pflicht. Danach höchstens ein kurzer Aussichtsstopp – keine weitere Wanderung anhängen.", addonLink: ["Videoeindruck öffnen", "https://www.youtube.com/watch?v=INFMAA3HvGQ"],
+      checks: ["Guide oder erfolgreiche Einführung", "Ausdrückliche Empfehlung des Parkpersonals", "Ruhiges Wasser und stabiles Wetter", "Notfallplan, Schwimmwesten und Reserveverpflegung"]
+    },
+    "shawinigan": {
+      kicker: "Mittwoch · Schlechtwetter- und Genussoption", title: "Ein starker Plan B mit Technik, Stadt und gutem Essen",
+      intro: "Shawinigan ist der bewusste Kontrast zum Nationalpark: interaktive Energie- und Industriegeschichte, Aussichtsturm, das Ufer des Saint-Maurice sowie Restaurants und Mikrobrauereien. Der Umfang lässt sich von einem halben Tag bis zum Tagesprogramm dosieren.",
+      pros: ["Gute Regenreserve", "Auch als halber Tag möglich", "Essen und Stadtspaziergang leicht kombinierbar"],
+      cons: ["Weniger Natur als die anderen Optionen", "Saisonzeiten Ende September offen", "Rückfahrt am Abend einplanen"],
+      links: [["Cité de l’énergie", "https://www.citedelenergie.com/", "Ausstellungen, Turm und aktuelle Öffnung"], ["Fotos & Aktivitäten", "https://www.tourismeshawinigan.com/en/", "Offizielle Inspiration für Shawinigan"], ["Anfahrt", "https://www.google.com/maps/dir/?api=1&origin=46.7256101,-72.7707375&destination=La+Cite+de+l'Energie,+Shawinigan,+QC&travelmode=driving", "ca. 25–35 Minuten als Planungswert"]],
+      addon: "Als Genussstopp passt ROSE Boulangerie de village in Sainte-Flore. Bei gutem Wetter kann ein kurzer Aussichtspunkt aus dem Shawinigan-Roadtrip ergänzt werden.", addonLink: ["Roadtrip & Fotostopps", "https://www.tourismeshawinigan.com/road-trip-shawinigan/"],
+      checks: ["Öffnungstage der Cité Ende September", "Führungs- und Turmzeiten", "Restaurantzeiten", "Wetter und gewünschter Tagesumfang"]
+    }
+  };
+  const plan = plans[ideaId];
+  if (!plan) return "";
+  const pros = plan.pros.map((item) => `<li>${escapeHtml(item)}</li>`).join("");
+  const cons = plan.cons.map((item) => `<li>${escapeHtml(item)}</li>`).join("");
+  const links = plan.links.map(([label, url, note]) => `<a href="${escapeHtml(url)}" target="_blank" rel="noopener"><strong>${escapeHtml(label)}</strong><small>${escapeHtml(note)}</small></a>`).join("");
+  const checks = plan.checks.map((item) => `<li>${escapeHtml(item)}</li>`).join("");
+  return `<section class="trip-editorial mauricie-editorial"><div class="editorial-intro"><p class="eyebrow">${escapeHtml(plan.kicker)}</p><h2>${escapeHtml(plan.title)}</h2><p>${escapeHtml(plan.intro)}</p></div><div class="editorial-columns"><article><h3>Dafür spricht</h3><ul>${pros}</ul></article><article><h3>Dagegen spricht</h3><ul>${cons}</ul></article></div><div class="route-actions">${links}</div><div class="day-addon"><strong>So passt es in unseren Tag</strong><p>${escapeHtml(plan.addon)}</p><a href="${escapeHtml(plan.addonLink[1])}" target="_blank" rel="noopener">${escapeHtml(plan.addonLink[0])} ↗</a></div><aside class="pretrip-check"><div><p class="eyebrow">Vor der Reise prüfen</p><h3>September 2027</h3></div><ul>${checks}</ul></aside></section>`;
+}
+
 function renderSainteRoseEditorial(ideaId) {
   if (ideaId === "fjordtag-varianten") return `
     <section class="trip-editorial fjord-editorial">
@@ -565,9 +631,10 @@ async function initializeIdeaDetail() {
     const videoPreview = videoId ? `<a class="idea-video-preview" href="https://www.youtube.com/watch?v=${encodeURIComponent(videoId)}" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/${encodeURIComponent(videoId)}/hqdefault.jpg" alt="Videoeindruck zu ${escapeHtml(idea.title)}" loading="lazy"><span class="play-mark">▶</span><strong>Videoeindruck öffnen</strong></a>` : "";
     const attachment = idea.attachment ? `<div class="source-links attachment-link"><a href="idea-file.php?idea=${encodeURIComponent(idea.id)}" target="_blank" rel="noopener">Anhang · ${escapeHtml(idea.attachment.name)} ↗</a></div>` : "";
     const author = idea.author && profileDirectory[idea.author] ? `<div class="idea-author"><i class="avatar ${profileDirectory[idea.author].avatar}"></i><span><small>Vorgeschlagen von</small><strong>${escapeHtml(profileDirectory[idea.author].name)}</strong></span></div>` : "";
-    const editorial = renderSainteRoseEditorial(ideaId);
+    const editorial = renderMauricieEditorial(ideaId) || renderSainteRoseEditorial(ideaId);
+    const editorialHero = editorial ? (destination?.id === "mauricie" ? "mauricie-detail-hero" : "sainte-detail-hero") : "";
     const interestHint = (destination?.id === "montreal" || ideaChoiceGroups[ideaId]) ? `<div class="detail-interest-hint"><strong>Interessenstufe:</strong> 5 = unbedingt · 4 = gerne · 3 = neutral · 2 = eher nicht · 1 = kann entfallen</div>` : "";
-    root.innerHTML = `<article class="idea-detail-card ${editorial ? "sainte-detail-hero" : ""}"><div class="idea-detail-icon">${idea.icon}</div><p class="eyebrow">${escapeHtml(idea.place || destination?.sectionTitle || "Reiseidee")}</p><h1>${escapeHtml(idea.title)}</h1>${author}<p class="idea-detail-copy">${escapeHtml(idea.text)}</p>${facts}${videoPreview}${warning}${links}${attachment}${interestHint}</article>${editorial}<div id="idea-community" class="community-loading">Bewertungen und Kommentare werden geladen …</div>`;
+    root.innerHTML = `<article class="idea-detail-card ${editorialHero}"><div class="idea-detail-icon">${idea.icon}</div><p class="eyebrow">${escapeHtml(idea.place || destination?.sectionTitle || "Reiseidee")}</p><h1>${escapeHtml(idea.title)}</h1>${author}<p class="idea-detail-copy">${escapeHtml(idea.text)}</p>${facts}${videoPreview}${warning}${links}${attachment}${interestHint}</article>${editorial}<div id="idea-community" class="community-loading">Bewertungen und Kommentare werden geladen …</div>`;
     const community = document.querySelector("#idea-community");
     const redraw = () => { community.innerHTML = renderIdeaCommunity(ideaId, data); };
     redraw();
