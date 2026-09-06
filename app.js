@@ -77,7 +77,78 @@ const route = [
 
 const ideas = [
   { id: "whale-tour", destination: "quebec", type: "booked", icon: "🐋", place: "Tadoussac · 27. September", title: "Walbeobachtung per Schiff", text: "Fester Bestandteil des Wechsels nach Québec City. Anbieter und genaue Abfahrtszeit werden ergänzt." },
-  { id: "montreal-ideas", destination: "montreal", type: "idea", icon: "🏙️", place: "Montréal", title: "Zwei volle Tage gestalten", text: "Stadtviertel, Kulinarik und mögliche Tageskombinationen sammeln wir im Montréal-Chat." },
+  {
+    id: "montreal-old-city", destination: "montreal", type: "idea", icon: "🏛️", place: "Cluster A · direkt am Hotel", title: "Vieux-Montréal & Alter Hafen",
+    text: "Kopfsteinpflaster, Rue Saint-Paul, Place d’Armes, Place Jacques-Cartier und die Uferpromenade – der klassische Einstieg beginnt praktisch vor der Hoteltür.",
+    facts: ["1 Block", "leicht–mittel", "vieles zu Fuß"],
+    links: [{ label: "Tourisme Montréal", url: "https://www.mtl.org/en/city/about-montreal/neighbourhoods/old-montreal" }, { label: "Old Port offiziell", url: "https://www.oldportofmontreal.com/" }, { label: "Video · Old Port", url: "https://www.youtube.com/watch?v=8-KWazizDXM" }, { label: "Geführt · GetYourGuide", url: "https://www.getyourguide.com/montreal-l195/montreal-the-original-old-montreal-walking-tour-t6615/" }]
+  },
+  {
+    id: "montreal-basilica", destination: "montreal", type: "idea", icon: "⛪", place: "Cluster A · gut kombinierbar", title: "Notre-Dame & Pointe-à-Callière",
+    text: "Basilika und Montréal-Geschichte als Vertiefung der Altstadt. Beides lässt sich einzeln wählen oder zu einem historischen Schwerpunkt verbinden.",
+    facts: ["½–1 Block", "indoor", "nahe Uville"],
+    links: [{ label: "Notre-Dame-Basilika", url: "https://www.basiliquenotredame.ca/en" }, { label: "Pointe-à-Callière", url: "https://pacmusee.qc.ca/en/" }, { label: "Tourisme Montréal", url: "https://www.mtl.org/en/city/about-montreal/neighbourhoods/old-montreal" }]
+  },
+  {
+    id: "montreal-mountain", destination: "montreal", type: "idea", icon: "🌄", place: "Cluster B · Aussicht & Viertel", title: "Mont Royal & Plateau",
+    text: "Der Kondiaronk-Aussichtspunkt liefert das große Stadtpanorama. Danach zeigen Plateau und Boulevard Saint-Laurent das typische Montréal mit Treppenhäusern, Murals und Cafés.",
+    facts: ["1–2 Blöcke", "mittel", "wetterabhängig"],
+    links: [{ label: "Mont Royal", url: "https://www.mtl.org/en/what-to-do/activities/mount-royal-park" }, { label: "Plateau & Mile End", url: "https://www.mtl.org/en/city/about-montreal/neighbourhoods/plateau-and-mile-end" }, { label: "Video · Plateau & Mile End", url: "https://www.youtube.com/watch?v=1cKSOxaq1NA" }]
+  },
+  {
+    id: "montreal-mile-end-food", destination: "montreal", type: "idea", icon: "🥯", place: "Cluster C · geführt oder individuell", title: "Mile End Food Tour",
+    text: "Bagels, Poutine und weitere Kostproben verbinden das Viertel mit einem Mittagessen. Eine geführte Tour erklärt die kulinarischen und kulturellen Hintergründe.",
+    facts: ["1 Block", "ca. 3 Std.", "ersetzt Mittagessen"],
+    links: [{ label: "Mile End entdecken", url: "https://www.mtl.org/en/experience/mile-end" }, { label: "Touren bei GetYourGuide", url: "https://www.getyourguide.com/montreal-l195/" }, { label: "Video · Mile End", url: "https://www.youtube.com/watch?v=YoUNstkZovg" }]
+  },
+  {
+    id: "montreal-jean-talon", destination: "montreal", type: "idea", icon: "🍎", place: "Cluster C · Markt & Little Italy", title: "Jean-Talon Market",
+    text: "Einer der großen offenen Märkte Nordamerikas mit Produkten aus Québec und internationaler Küche. Little Italy liegt direkt darum herum.",
+    facts: ["1 Block", "leicht", "teilweise überdacht"],
+    links: [{ label: "Markt offiziell", url: "https://www.marchespublics-mtl.com/en/markets/jean-talon-market" }, { label: "Tourisme Montréal", url: "https://www.mtl.org/en/what-to-do/shopping/jean-talon-market-mtl" }, { label: "Geführte Touren", url: "https://www.getyourguide.com/jean-talon-market-l105091/" }, { label: "Video · Markt", url: "https://www.youtube.com/watch?v=69-9SvOtxTY" }]
+  },
+  {
+    id: "montreal-bike", destination: "montreal", type: "idea", icon: "🚲", place: "Geführte Alternative · mehrere Cluster", title: "Plateau, Mile End & Markt per Rad",
+    text: "Eine geführte Fahrrad- oder E-Bike-Tour verbindet in rund drei Stunden mehrere Viertel, Parks, Murals und den Jean-Talon Market. Zeitlich besonders effizient.",
+    facts: ["1 Block", "ca. 3 Std.", "geführt"],
+    links: [{ label: "Tour · GetYourGuide", url: "https://www.getyourguide.com/montreal-l195/bikee-bike-tour-plateaumileend-jean-talon-market-by-fitz-t102548/" }, { label: "Montréal On Wheels", url: "https://www.mtl.org/en/what-to-do/tours/montreal-on-wheels" }, { label: "Video · Fahrradtour", url: "https://www.youtube.com/watch?v=Z40_9B_xDt0" }]
+  },
+  {
+    id: "montreal-downtown", destination: "montreal", type: "idea", icon: "🏙️", place: "Cluster D · Stadt & Schlechtwetter", title: "Downtown & Golden Square Mile",
+    text: "McGill, elegante Architektur, Museen und das unterirdische RÉSO. Interessant, aber für einen ersten Besuch eher Ergänzung als unverzichtbares Hauptziel.",
+    facts: ["1 Block", "leicht", "regenfest kombinierbar"],
+    links: [{ label: "Golden Square Mile", url: "https://www.mtl.org/en/experience/golden-square-mile" }, { label: "Unterwegs in Montréal", url: "https://www.mtl.org/en/what-to-do/getting-around" }]
+  },
+  {
+    id: "montreal-olympic", destination: "montreal", type: "idea", icon: "🌿", place: "Cluster E · eigener Schwerpunkt", title: "Olympiapark & Espace pour la vie",
+    text: "Biodôme, Botanischer Garten und Olympiapark können einen halben bis ganzen Tag füllen. Nur sinnvoll, wenn dafür deutliches gemeinsames Interesse besteht.",
+    facts: ["1–2 Blöcke", "leicht", "teilweise indoor"],
+    links: [{ label: "Espace pour la vie", url: "https://espacepourlavie.ca/en" }, { label: "Olympiapark", url: "https://parcolympique.qc.ca/en/" }]
+  },
+  {
+    id: "montreal-canal", destination: "montreal", type: "idea", icon: "🌊", place: "Cluster F · entspannte Alternative", title: "Lachine Canal & Atwater Market",
+    text: "Wasser, Markt und ehemalige Industriearchitektur ergeben ein ruhigeres Montréal-Erlebnis – zu Fuß, per Rad oder mit einer längeren Pause am Kanal.",
+    facts: ["1 Block", "leicht–mittel", "wetterabhängig"],
+    links: [{ label: "Lachine Canal · Parks Canada", url: "https://parks.canada.ca/lhn-nhs/qc/canallachine" }, { label: "Atwater Market", url: "https://www.marchespublics-mtl.com/en/markets/atwater-market" }]
+  },
+  {
+    id: "montreal-guided-old", destination: "montreal", type: "idea", icon: "🎙️", place: "Geführte Alternative · Altstadt", title: "Old Montréal Walking Tour",
+    text: "Eine kompakte Führung liefert Geschichte, Architektur und Geschichten hinter den Fassaden. Danach bleiben Basilika, Museum oder Hafen individuell möglich.",
+    facts: ["½ Block", "ca. 2 Std.", "kleine Gruppe möglich"],
+    links: [{ label: "GetYourGuide · Original Tour", url: "https://www.getyourguide.com/montreal-l195/montreal-the-original-old-montreal-walking-tour-t6615/" }, { label: "Kleine Gruppe", url: "https://www.getyourguide.com/montreal-l195/explore-old-montreal-extra-small-group-walking-tour-t444539/" }]
+  },
+  {
+    id: "montreal-evening", destination: "montreal", type: "idea", icon: "🌙", place: "Samstag oder Sonntag · Abend", title: "Geführter oder besonderer Abend",
+    text: "AURA, Twilight Walk, Ghost Walk, Grande Roue, Nachtfahrt oder Bootsfahrt: ein Abend darf das eigentliche Montréal-Erlebnis fortsetzen.",
+    facts: ["1–4 Std.", "Abend", "Termine 2027 prüfen"],
+    links: [{ label: "AURA", url: "https://www.aurabasiliquemontreal.com/en/" }, { label: "Twilight Walk", url: "https://www.getyourguide.com/montreal-l195/montreal-old-montreal-at-twilight-walking-tour-t763147/" }, { label: "Night Tour", url: "https://www.getyourguide.com/montreal-l195/montreal-small-group-night-sightseeing-tour-t152023/" }, { label: "Ghost Walk", url: "https://www.getyourguide.com/montreal-l195/traditional-ghost-walk-montreal-ghosts-t25171/" }]
+  },
+  {
+    id: "montreal-dinner", destination: "montreal", type: "idea", icon: "🍽️", place: "Drei Abende · eigener Entscheid", title: "Welcher Dinner-Stil passt zu uns?",
+    text: "Fine Dining, Québec-Küche, Steak & Seafood, lebendige Brasserie oder unkompliziert typisch Montréal. Erst den Stil wählen, dann Restaurants passend zur Tagesroute reservieren.",
+    facts: ["3 Abendessen", "Lage folgt Route", "Reservierung später"],
+    links: [{ label: "Monarque", url: "https://restaurantmonarque.ca/en/" }, { label: "Gibbys", url: "https://www.gibbys.com/en/" }, { label: "Restaurants · Tourisme Montréal", url: "https://www.mtl.org/en/what-to-do/food" }]
+  },
   {
     id: "transfer-20-09", destination: "mauricie", type: "idea", icon: "🚙", featured: true,
     place: "Transfer · Montag, 20. September", title: "Pointe-du-Lac oder Trois-Rivières?",
@@ -298,6 +369,17 @@ function formatCommentDate(value) {
   } catch { return ""; }
 }
 
+function youtubeVideoId(links = []) {
+  for (const link of links) {
+    try {
+      const url = new URL(link.url);
+      if (url.hostname.includes("youtube.com") && url.searchParams.get("v")) return url.searchParams.get("v");
+      if (url.hostname === "youtu.be") return url.pathname.slice(1);
+    } catch {}
+  }
+  return "";
+}
+
 function renderStars(value, interactive, profileId) {
   return `<div class="stars" role="${interactive ? "radiogroup" : "img"}" aria-label="${value ? `${value} von 5 Sternen` : "Noch keine Bewertung"}">${[1,2,3,4,5].map((star) => interactive
     ? `<button type="button" data-rating="${star}" aria-label="${star} Stern${star === 1 ? "" : "e"}" aria-pressed="${value === star}" class="${star <= value ? "filled" : ""}">★</button>`
@@ -373,9 +455,12 @@ async function initializeIdeaDetail() {
     const facts = idea.facts?.length ? `<div class="dialog-facts">${idea.facts.map((fact) => `<span>${escapeHtml(fact)}</span>`).join("")}</div>` : "";
     const warning = idea.warning ? `<aside class="safety-note"><strong>Sicherheitshinweis</strong>${escapeHtml(idea.warning)}</aside>` : "";
     const links = idea.links?.length ? `<div class="source-links">${idea.links.map((link) => `<a href="${escapeHtml(link.url)}" target="_blank" rel="noopener">${link.pdf ? "PDF · " : ""}${escapeHtml(link.label)} ↗</a>`).join("")}</div>` : "";
+    const videoId = youtubeVideoId(idea.links);
+    const videoPreview = videoId ? `<a class="idea-video-preview" href="https://www.youtube.com/watch?v=${encodeURIComponent(videoId)}" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/${encodeURIComponent(videoId)}/hqdefault.jpg" alt="Videoeindruck zu ${escapeHtml(idea.title)}" loading="lazy"><span class="play-mark">▶</span><strong>Videoeindruck öffnen</strong></a>` : "";
     const attachment = idea.attachment ? `<div class="source-links attachment-link"><a href="idea-file.php?idea=${encodeURIComponent(idea.id)}" target="_blank" rel="noopener">Anhang · ${escapeHtml(idea.attachment.name)} ↗</a></div>` : "";
     const author = idea.author && profileDirectory[idea.author] ? `<div class="idea-author"><i class="avatar ${profileDirectory[idea.author].avatar}"></i><span><small>Vorgeschlagen von</small><strong>${escapeHtml(profileDirectory[idea.author].name)}</strong></span></div>` : "";
-    root.innerHTML = `<article class="idea-detail-card"><div class="idea-detail-icon">${idea.icon}</div><p class="eyebrow">${escapeHtml(idea.place || destination?.sectionTitle || "Reiseidee")}</p><h1>${escapeHtml(idea.title)}</h1>${author}<p class="idea-detail-copy">${escapeHtml(idea.text)}</p>${facts}${warning}${links}${attachment}</article><div id="idea-community" class="community-loading">Bewertungen und Kommentare werden geladen …</div>`;
+    const interestHint = destination?.id === "montreal" ? `<div class="detail-interest-hint"><strong>Interessenstufe:</strong> 5 = unbedingt · 4 = gerne · 3 = neutral · 2 = eher nicht · 1 = kann entfallen</div>` : "";
+    root.innerHTML = `<article class="idea-detail-card"><div class="idea-detail-icon">${idea.icon}</div><p class="eyebrow">${escapeHtml(idea.place || destination?.sectionTitle || "Reiseidee")}</p><h1>${escapeHtml(idea.title)}</h1>${author}<p class="idea-detail-copy">${escapeHtml(idea.text)}</p>${facts}${videoPreview}${warning}${links}${attachment}${interestHint}</article><div id="idea-community" class="community-loading">Bewertungen und Kommentare werden geladen …</div>`;
     const community = document.querySelector("#idea-community");
     const redraw = () => { community.innerHTML = renderIdeaCommunity(ideaId, data); };
     redraw();
