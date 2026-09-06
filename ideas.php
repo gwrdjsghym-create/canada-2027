@@ -7,6 +7,7 @@ header('Cache-Control: no-store');
 
 const STATIC_IDEA_IDS = ['whale-tour','montreal-old-city','montreal-basilica','montreal-mountain','montreal-mile-end-food','montreal-jean-talon','montreal-bike','montreal-downtown','montreal-olympic','montreal-canal','montreal-guided-old','montreal-evening','montreal-dinner','transfer-20-09','lac-solitaire','ruisseau-bouchard','cascades-falaises','canoe-intro','waber-falls','shawinigan','montagne-du-chapeau','fjordtag-varianten','pic-tete-de-chien'];
 const DESTINATION_IDS = ['montreal','mauricie','sainte-rose','quebec','orford'];
+const IDEA_CHOICE_OPTIONS = ['montreal-evening' => ['aura','twilight','night-tour','ghost-walk']];
 const MAX_UPLOAD_BYTES = 10485760;
 $dataDir = __DIR__ . '/data';
 $uploadDir = $dataDir . '/uploads';
@@ -23,7 +24,7 @@ function idea_clean($value, int $limit): string {
     return function_exists('mb_substr') ? mb_substr($text, 0, $limit) : substr($text, 0, $limit);
 }
 
-function idea_empty_data(): array { return ['ratings' => [], 'comments' => [], 'customIdeas' => []]; }
+function idea_empty_data(): array { return ['ratings' => [], 'choices' => [], 'comments' => [], 'customIdeas' => []]; }
 
 function idea_read(string $file): array {
     if (!is_file($file)) return idea_empty_data();
@@ -48,7 +49,8 @@ function idea_view(array $data, string $ideaId, string $currentProfile): array {
     $values = array_values(array_filter($ratings, fn($rating) => is_int($rating) && $rating >= 1 && $rating <= 5));
     $comments = array_values(array_filter((array) ($data['comments'][$ideaId] ?? []), fn($comment) => is_array($comment)));
     usort($comments, fn($a, $b) => strcmp((string) ($a['createdAt'] ?? ''), (string) ($b['createdAt'] ?? '')));
-    return ['idea' => idea_custom($data, $ideaId), 'ratings' => $ratings, 'average' => $values ? round(array_sum($values) / count($values), 1) : null, 'ratingCount' => count($values), 'comments' => $comments, 'currentProfile' => $currentProfile, 'profiles' => CANADA_PROFILES];
+    $choices = is_array($data['choices'][$ideaId] ?? null) ? $data['choices'][$ideaId] : [];
+    return ['idea' => idea_custom($data, $ideaId), 'ratings' => $ratings, 'choices' => $choices, 'average' => $values ? round(array_sum($values) / count($values), 1) : null, 'ratingCount' => count($values), 'comments' => $comments, 'currentProfile' => $currentProfile, 'profiles' => CANADA_PROFILES];
 }
 
 function idea_parse_links(string $value): array {
@@ -147,6 +149,12 @@ if ($action === 'create-idea') {
     if ($rating < 1 || $rating > 5) { flock($handle, LOCK_UN); fclose($handle); idea_respond(422, ['error' => 'Bitte 1 bis 5 Sterne wählen']); }
     if (!isset($data['ratings'][$ideaId]) || !is_array($data['ratings'][$ideaId])) $data['ratings'][$ideaId] = [];
     $data['ratings'][$ideaId][$currentProfile] = $rating;
+} elseif ($action === 'choice') {
+    $choice = idea_clean($body['choice'] ?? '', 40);
+    $allowedChoices = IDEA_CHOICE_OPTIONS[$ideaId] ?? [];
+    if (!in_array($choice, $allowedChoices, true)) { flock($handle, LOCK_UN); fclose($handle); idea_respond(422, ['error' => 'Bitte eine der angebotenen Varianten wählen']); }
+    if (!isset($data['choices'][$ideaId]) || !is_array($data['choices'][$ideaId])) $data['choices'][$ideaId] = [];
+    $data['choices'][$ideaId][$currentProfile] = $choice;
 } elseif ($action === 'comment') {
     $text = idea_clean($body['text'] ?? '', 1000);
     $parentId = idea_clean($body['parentId'] ?? '', 80);
@@ -182,7 +190,7 @@ if ($action === 'create-idea') {
     if (($custom['author'] ?? '') !== $currentProfile) { flock($handle, LOCK_UN); fclose($handle); idea_respond(403, ['error' => 'Du kannst nur deine eigene Idee löschen']); }
     $stored = basename((string) ($custom['attachment']['stored'] ?? ''));
     $data['customIdeas'] = array_values(array_filter((array) $data['customIdeas'], fn($idea) => ($idea['id'] ?? '') !== $ideaId));
-    unset($data['ratings'][$ideaId], $data['comments'][$ideaId]);
+    unset($data['ratings'][$ideaId], $data['choices'][$ideaId], $data['comments'][$ideaId]);
     if ($stored !== '' && is_file($uploadDir . '/' . $stored)) unlink($uploadDir . '/' . $stored);
 } else {
     flock($handle, LOCK_UN); fclose($handle);

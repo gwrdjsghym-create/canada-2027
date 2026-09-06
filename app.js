@@ -139,8 +139,8 @@ const ideas = [
   },
   {
     id: "montreal-evening", destination: "montreal", type: "idea", icon: "🌙", place: "Samstag oder Sonntag · Abend", title: "Geführter oder besonderer Abend",
-    text: "AURA, Twilight Walk, Ghost Walk, Grande Roue, Nachtfahrt oder Bootsfahrt: ein Abend darf das eigentliche Montréal-Erlebnis fortsetzen.",
-    facts: ["1–4 Std.", "Abend", "Termine 2027 prüfen"],
+    text: "Vier unterschiedliche Abendideen stehen zur Wahl: AURA, Twilight Walk, Night Tour oder Ghost Walk. Zuerst entscheiden wir, ob wir überhaupt einen besonderen Abend möchten – danach wählen wir unseren Favoriten.",
+    facts: ["4 Varianten", "1–4 Std.", "Termine 2027 prüfen"],
     links: [{ label: "AURA", url: "https://www.aurabasiliquemontreal.com/en/" }, { label: "Twilight Walk", url: "https://www.getyourguide.com/montreal-l195/montreal-old-montreal-at-twilight-walking-tour-t763147/" }, { label: "Night Tour", url: "https://www.getyourguide.com/montreal-l195/montreal-small-group-night-sightseeing-tour-t152023/" }, { label: "Ghost Walk", url: "https://www.getyourguide.com/montreal-l195/traditional-ghost-walk-montreal-ghosts-t25171/" }]
   },
   {
@@ -213,6 +213,19 @@ const ideas = [
     links: [{ label: "Sépaq", url: "https://www.sepaq.com/pq/mva/annexes/randonnee_pedestre.dot?language_id=1" }, { label: "Touren-PDF · NEU", url: "file.php?name=03-03_Pic-de-la-Tete-de-Chien_02-Standard_NEU.pdf", pdf: true }]
   }
 ];
+
+const ideaChoiceGroups = {
+  "montreal-evening": {
+    title: "Welche Abendidee bevorzugst du?",
+    hint: "Wähle unabhängig von deiner Sternebewertung genau einen persönlichen Favoriten. Du kannst deine Auswahl später jederzeit ändern.",
+    options: [
+      { id: "aura", label: "AURA", text: "Immersive Licht- und Klangshow in der Notre-Dame-Basilika." },
+      { id: "twilight", label: "Twilight Walk", text: "Geführter Rundgang durch die Altstadt in der Abendstimmung." },
+      { id: "night-tour", label: "Night Tour", text: "Kleingruppen-Nachttour mit Aussicht von der Grande Roue." },
+      { id: "ghost-walk", label: "Ghost Walk", text: "Unterhaltsame Geschichten und Legenden bei einem abendlichen Geisterrundgang." }
+    ]
+  }
+};
 
 const tabs = document.querySelector("#destination-tabs");
 const routeList = document.querySelector("#route-list");
@@ -386,9 +399,25 @@ function renderStars(value, interactive, profileId) {
     : `<span class="${star <= value ? "filled" : ""}" aria-hidden="true">★</span>`).join("")}</div>`;
 }
 
+function renderIdeaChoiceGroup(ideaId, data, profiles) {
+  const group = ideaChoiceGroups[ideaId];
+  if (!group) return "";
+  const choices = data.choices || {};
+  const currentChoice = choices[data.currentProfile] || "";
+  const optionLabels = Object.fromEntries(group.options.map((option) => [option.id, option.label]));
+  const options = group.options.map((option) => {
+    const voters = Object.entries(choices).filter(([, choice]) => choice === option.id).map(([profileId]) => profiles[profileId]).filter(Boolean);
+    const voterText = voters.length ? voters.map((profile) => profile.name).join(", ") : "Noch keine Stimme";
+    return `<button type="button" class="choice-option ${currentChoice === option.id ? "selected" : ""}" data-choice="${option.id}" aria-pressed="${currentChoice === option.id}"><span class="choice-check">${currentChoice === option.id ? "✓" : ""}</span><strong>${escapeHtml(option.label)}</strong><small>${escapeHtml(option.text)}</small><span class="choice-voters">${escapeHtml(voterText)}</span></button>`;
+  }).join("");
+  const roster = Object.entries(profiles).map(([profileId, profile]) => `<div class="choice-person ${profileId === data.currentProfile ? "current" : ""}"><i class="avatar ${profile.avatar}"></i><span><strong>${escapeHtml(profile.name)}${profileId === data.currentProfile ? " · du" : ""}</strong><small>${choices[profileId] ? escapeHtml(optionLabels[choices[profileId]] || choices[profileId]) : "noch offen"}</small></span></div>`).join("");
+  return `<section class="choice-panel"><div class="choice-head"><p class="eyebrow">2 · Variantenentscheidung</p><h2>${escapeHtml(group.title)}</h2><p>${escapeHtml(group.hint)}</p></div><div class="choice-options" role="group" aria-label="${escapeHtml(group.title)}">${options}</div><div class="choice-roster" aria-label="Aktueller Stand">${roster}</div></section>`;
+}
+
 function renderIdeaCommunity(ideaId, data) {
   const profiles = data.profiles || {};
   const canDeleteIdea = data.idea?.author === data.currentProfile;
+  const hasChoiceGroup = Boolean(ideaChoiceGroups[ideaId]);
   const ratingRows = Object.entries(profiles).map(([id, profile]) => {
     const rating = Number(data.ratings?.[id] || 0);
     const isCurrent = id === data.currentProfile;
@@ -414,8 +443,9 @@ function renderIdeaCommunity(ideaId, data) {
   }).join("") : `<div class="comments-empty"><span>💬</span><p>Noch kein Kommentar. Startet eure Unterhaltung zu dieser Idee.</p></div>`;
 
   return `<section class="community-panel">
-    <div class="community-head"><div><p class="eyebrow">Eure Einschätzung</p><h2>Vier Stimmen, eine Entscheidung</h2></div><div class="average-rating"><strong>${data.average ? `★ ${String(data.average).replace(".", ",")}` : "☆ –"}</strong><small>${data.ratingCount || 0} von 4 bewertet</small></div></div>
+    <div class="community-head"><div><p class="eyebrow">${hasChoiceGroup ? "1 · Grundsatzentscheidung" : "Eure Einschätzung"}</p><h2>${hasChoiceGroup ? "Möchten wir so einen Abend?" : "Vier Stimmen, eine Entscheidung"}</h2>${hasChoiceGroup ? "<p class=\"decision-help\">Bewertet hier nur die grundsätzliche Idee – noch nicht die einzelne Variante.</p>" : ""}</div><div class="average-rating"><strong>${data.average ? `★ ${String(data.average).replace(".", ",")}` : "☆ –"}</strong><small>${data.ratingCount || 0} von 4 bewertet</small></div></div>
     <div class="rating-grid">${ratingRows}</div>
+    ${renderIdeaChoiceGroup(ideaId, data, profiles)}
     <div class="discussion"><div class="discussion-head"><p class="eyebrow">Im Gespräch</p><h2>Kommentare</h2></div><form class="new-comment" data-comment-form><textarea name="text" maxlength="1000" required placeholder="Was denkst du über diese Idee?"></textarea><button type="submit">Als ${escapeHtml(profiles[data.currentProfile]?.name || "Profil")} kommentieren</button></form><div class="comments-list">${comments}</div></div>
     ${canDeleteIdea ? `<div class="idea-owner-actions"><button type="button" data-delete-idea>Eigene Idee löschen</button><small>Bewertungen, Kommentare und ein möglicher Anhang werden ebenfalls gelöscht.</small></div>` : ""}
   </section>`;
@@ -480,6 +510,14 @@ async function initializeIdeaDetail() {
         if (!window.confirm("Möchtest du deinen Kommentar wirklich löschen?")) return;
         community.classList.add("saving");
         try { data = await saveIdeaAction(ideaId, { action: "delete-comment", commentId: deleteButton.dataset.deleteComment }); redraw(); }
+        catch (error) { window.alert(error.message); }
+        community.classList.remove("saving");
+        return;
+      }
+      const choiceButton = event.target.closest("[data-choice]");
+      if (choiceButton) {
+        community.classList.add("saving");
+        try { data = await saveIdeaAction(ideaId, { action: "choice", choice: choiceButton.dataset.choice }); redraw(); }
         catch (error) { window.alert(error.message); }
         community.classList.remove("saving");
         return;
