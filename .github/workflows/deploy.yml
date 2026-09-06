@@ -58,6 +58,8 @@ jobs:
             'put 04-quebec-city.php' \
             'put 05-orford.html' \
             'put 05-orford.php' \
+            'put 05-transfer-29-09.php' \
+            'put transfer-vote-29-09.php' \
             'put styles.css' \
             'put app.js' \
             'put auth-lib.php' \
