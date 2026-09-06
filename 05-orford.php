@@ -16,8 +16,19 @@ $transferSection = <<<'HTML'
 </section>
 HTML;
 
+$activitiesSection = <<<'HTML'
+<section class="section" aria-labelledby="orford-activities-title">
+  <div class="section-head">
+    <div><p class="eyebrow">30. September &amp; 1. Oktober</p><h2 id="orford-activities-title">Zwei Tage – zuerst die Bausteine wählen</h2></div>
+    <span class="local-note">Gemeinsame Auswahl</span>
+  </div>
+  <p style="max-width:820px;color:var(--muted);margin:-8px 0 20px">Noch kein fertiger Tagesplan: Vergleicht großer Wandertag, leichter Indian-Summer-Parktag, Magog &amp; Marais, Saint-Benoît-du-Lac, Lac-Kreuzfahrt und Spa. Jeder bewertet zuerst nur das Interesse; aus den Favoriten bauen wir danach drei konkrete Zweitages-Varianten – entspannt, ausgewogen und erlebnisreich.</p>
+  <a class="new-idea-button" href="05-aktivitaeten.php" style="display:inline-flex"><span>↗</span> Aktivitäten vergleichen &amp; abstimmen</a>
+</section>
+HTML;
+
 $needle = '<section class="section ideas" id="ideas">';
 if (str_contains($html, $needle)) {
-    $html = str_replace($needle, $transferSection . "\n" . $needle, $html);
+    $html = str_replace($needle, $transferSection . "\n" . $activitiesSection . "\n" . $needle, $html);
 }
 echo $html;
