@@ -25,7 +25,7 @@ $heroMeta = [
 ];
 $hero = $heroMeta[$destination] ?? $heroMeta['montreal'];
 ?>
-<!doctype html><html lang="de"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#143b2b"><meta name="description" content="Canada 2027 – Reiseplanung"><meta name="robots" content="noindex,nofollow"><title>Canada 2027</title><link rel="stylesheet" href="styles.css?v=20260906-5"></head><body class="destination-page" data-destination="<?= htmlspecialchars($destination, ENT_QUOTES) ?>">
+<!doctype html><html lang="de"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#143b2b"><meta name="description" content="Canada 2027 – Reiseplanung"><meta name="robots" content="noindex,nofollow"><title>Canada 2027</title><link rel="stylesheet" href="styles.css?v=20260906-6"></head><body class="destination-page" data-destination="<?= htmlspecialchars($destination, ENT_QUOTES) ?>">
 <header class="topbar"><a class="brand" href="index.php"><span class="brand-mark">🍁</span><span><strong>Canada 2027</strong><small>17. September – 2. Oktober</small></span></a><nav class="desktop-nav"><a href="index.php">Übersicht</a><a class="active" href="#ideas">Ideen</a></nav><a class="profile-chip" href="login.php?switch=1&amp;next=<?= rawurlencode($_SERVER['REQUEST_URI'] ?? '/index.php') ?>" aria-label="Profil wechseln"><i class="avatar <?= $profile['avatar'] ?>"></i><span><?= $profile['name'] ?></span></a></header>
 <section class="destination-hero" id="top"><div class="destination-hero-inner"><a class="back-link" href="index.php">← Reiseübersicht</a><p class="eyebrow"><?= htmlspecialchars($hero['number'], ENT_QUOTES) ?> · Destination</p><h1 id="destination-title"></h1><p id="destination-summary"></p><div class="destination-hero-chips"><?php foreach ($hero['chips'] as $chip): ?><span><?= htmlspecialchars($chip, ENT_QUOTES) ?></span><?php endforeach; ?></div></div></section>
 <main><nav class="destination-tabs destination-switcher" id="destination-tabs" role="tablist" aria-label="Destination auswählen"></nav>
@@ -77,8 +77,21 @@ $hero = $heroMeta[$destination] ?? $heroMeta['montreal'];
   <p style="max-width:780px;color:var(--muted);margin:-8px 0 20px">Der lange Wechsel von Nature Nature nach Exode wird bewusst genutzt. Vergleicht B2 mit mehreren flexiblen Stopps gegen C mit Val-Jalbert als großem Hauptziel – inklusive Google-Routen, Zeiten, Kosten, Quellen, Video sowie gemeinsamer Sterne- und Kommentar-Abstimmung.</p>
   <a class="new-idea-button" href="03-transfer-23-09.php" style="display:inline-flex"><span>↗</span> Transfervarianten vergleichen &amp; abstimmen</a>
 </section>
+<section class="section sainte-day-plan" aria-labelledby="sainte-day-plan-title">
+  <div class="section-head">
+    <div><p class="eyebrow">Drei Tage · drei unterschiedliche Landschaften</p><h2 id="sainte-day-plan-title">Unser Plan am Saguenay</h2></div>
+    <span class="local-note">Details statt PDF-Blättern</span>
+  </div>
+  <p class="sainte-day-intro">Jeder Tag öffnet eine vollständige Planungsseite mit Route, Entscheidungshilfe, Anbieter- und Fotolinks. Beim Fjordtag stimmen wir zusätzlich über vier wetterabhängige Varianten ab.</p>
+  <div class="sainte-day-grid">
+    <a href="idea.php?id=montagne-du-chapeau"><span class="day-number">24</span><p>Freitag · Wandertag</p><h3>Montagne du Chapeau</h3><small>12,3 km · 459 Hm · Wald und Talblick</small><b>Planung öffnen →</b></a>
+    <a class="featured" href="idea.php?id=fjordtag-varianten"><span class="day-number">25</span><p>Samstag · Entscheidungstag</p><h3>Vier Wege zum Fjord</h3><small>Seekajak · Schiff · Elektro-Side-by-Side · Regenplan</small><b>Vergleichen &amp; abstimmen →</b></a>
+    <a href="idea.php?id=pic-tete-de-chien"><span class="day-number">26</span><p>Sonntag · Bergtag</p><h3>Pic-de-la-Tête-de-Chien</h3><small>8 km · 340 Hm · Monts-Valin-Panorama</small><b>Planung öffnen →</b></a>
+  </div>
+  <div class="pdf-archive-note"><span>PDF</span><p><strong>Die Dokumente bleiben erhalten.</strong> Auf den jeweiligen Detailseiten stehen sie weiterhin als Download bereit.</p></div>
+</section>
 <?php endif; ?>
 <section class="section ideas" id="ideas"><div class="section-head ideas-head"><div><p class="eyebrow">Gemeinsam entscheiden</p><h2 id="ideas-title"></h2></div><a class="new-idea-button" href="new-idea.php?destination=<?= rawurlencode($destination) ?>"><span>＋</span> Neue Idee</a></div>
 <?php if ($destination === 'montreal'): ?><div class="interest-scale"><strong>So stimmen wir ab:</strong><span>★★★★★ unbedingt</span><span>★★★★ gerne</span><span>★★★ neutral</span><span>★★ eher nicht</span><span>★ kann entfallen</span><small>Die Zeitangabe auf jeder Karte enthält auch Wege und kurze Pausen. Details, Links und Kommentare öffnen sich beim Antippen.</small></div><?php endif; ?>
 <div class="idea-toolbar"><div class="filters"><button class="filter active" data-filter="all">Alle</button><button class="filter" data-filter="booked">Gebucht</button><button class="filter" data-filter="idea">Ideen</button></div><a id="comparison-link" class="comparison-link" href="#" target="_blank" hidden>PDF-Übersicht ↗</a></div><div class="idea-grid" id="idea-grid"></div></section></main>
-<nav class="mobile-nav"><a href="index.php"><span>⌁</span>Reise</a><a class="active" href="#ideas"><span>★</span>Ideen</a><a href="index.php#travellers"><span>♙</span>Wir vier</a></nav><dialog id="details-dialog"><button class="close-dialog" aria-label="Schließen">×</button><div id="dialog-content"></div></dialog><script src="app.js?v=20260906-4"></script></body></html>
+<nav class="mobile-nav"><a href="index.php"><span>⌁</span>Reise</a><a class="active" href="#ideas"><span>★</span>Ideen</a><a href="index.php#travellers"><span>♙</span>Wir vier</a></nav><dialog id="details-dialog"><button class="close-dialog" aria-label="Schließen">×</button><div id="dialog-content"></div></dialog><script src="app.js?v=20260906-6"></script></body></html>
