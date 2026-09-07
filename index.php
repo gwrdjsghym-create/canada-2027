@@ -14,7 +14,7 @@ $profile = CANADA_PROFILES[$profileId];
     <meta name="description" content="Gemeinsame Reiseplanung für Canada 2027" />
     <meta name="robots" content="noindex,nofollow" />
     <title>Canada 2027</title>
-    <link rel="stylesheet" href="styles.css?v=20260907-1" />
+    <link rel="stylesheet" href="styles.css?v=20260907-2" />
   </head>
   <body>
     <header class="topbar">
@@ -42,7 +42,7 @@ $profile = CANADA_PROFILES[$profileId];
           <a class="hero-cta" href="#route">Die Route entdecken <span>↓</span></a>
         </div>
         <div class="hero-side">
-          <div class="canada-landscape" aria-hidden="true"><span class="sun"></span><span class="mountain mountain-one"></span><span class="mountain mountain-two"></span><span class="forest-line">▲ ▲ ▲ ▲ ▲</span><span class="maple-leaf">🍁</span></div>
+          <div class="canada-landscape" role="img" aria-label="Indian Summer am Lac Tremblant in Québec"><span class="hero-photo-caption">Lac Tremblant · Québec</span></div>
           <div class="countdown-card" aria-label="Countdown bis zum Reisestart">
             <span class="countdown-kicker">Noch bis zum Abflug</span>
             <div class="countdown" id="countdown"><span><strong id="countdown-days">–</strong><small>Tage</small></span><span><strong id="countdown-hours">–</strong><small>Std.</small></span><span><strong id="countdown-minutes">–</strong><small>Min.</small></span></div>
