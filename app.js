@@ -722,17 +722,86 @@ async function initializeNewIdea() {
 
 const checklistRoot = document.querySelector("#checklist-root");
 const checklistDialog = document.querySelector("#checklist-dialog");
-const checklistStorageKey = "canada-2027-checklists-v1";
+const checklistStorageKey = "canada-2027-checklists-v2";
+const checklistSchemaVersion = 2;
 const checklistDefaults = {
+  all: {
+    title: "Für uns vier",
+    avatars: '<i class="avatar avatar-andrea"></i><i class="avatar avatar-lars"></i><i class="avatar avatar-christina"></i><i class="avatar avatar-manfred"></i>',
+    lists: [
+      { id: "all-bookings", title: "Buchungen & Reiseordner", icon: "🗂️", items: [
+        { id: "all-master-plan", text: "Reiseplan mit Adressen und Buchungsnummern offline speichern", done: false },
+        { id: "all-vouchers", text: "Flüge, Hotels, Mietwagen und Walbeobachtung: Voucher sammeln", done: false },
+        { id: "all-whale-check", text: "Walbeobachtung: Abfahrt, Boarding und Treffpunkt final prüfen", done: false },
+        { id: "all-emergency", text: "Notfallkontakte, Versicherungsnummern und Sperrnummern sammeln", done: false },
+        { id: "all-copies", text: "Dokumentkopien verschlüsselt offline und getrennt vom Original sichern", done: false },
+        { id: "all-sharing", text: "Reiseverlauf und Unterkünfte mit Kontaktperson zu Hause teilen", done: false }
+      ]},
+      { id: "all-roadtrip", title: "Mietwagen & Roadtrip", icon: "🚙", items: [
+        { id: "all-drivers", text: "Fahrer, Führerscheine und internationale Führerscheine festlegen", done: false },
+        { id: "all-rental", text: "Mietvertrag, Versicherungen, Selbstbehalt und Zusatzfahrer prüfen", done: false },
+        { id: "all-card", text: "Kreditkarte des Hauptfahrers samt PIN und Limit prüfen", done: false },
+        { id: "all-car-photos", text: "Bei Übernahme Schäden, Tankstand und Kilometerstand fotografieren", done: false },
+        { id: "all-rules", text: "Québec-Verkehrsregeln, Parken und Maut vor Abfahrt ansehen", done: false },
+        { id: "all-car-kit", text: "Handyhalterung, Ladekabel, USB-Adapter und Offline-Karten", done: false },
+        { id: "all-return", text: "Rückgabeort, Uhrzeit und Tankregel notieren", done: false }
+      ]},
+      { id: "all-kitchen-box", title: "Unsere rollende Küchenbox", icon: "📦", items: [
+        { id: "all-box", text: "Stabile Klappbox oder Kiste mit Deckel in Montréal besorgen", done: false },
+        { id: "all-salt-pepper", text: "Salz und Pfeffer in kleinen, dichten Streuern", done: false },
+        { id: "all-oil", text: "Kleine auslaufsichere Flasche Speiseöl", done: false },
+        { id: "all-coffee", text: "Kaffee, Tee, Zucker oder Süßstoff", done: false },
+        { id: "all-coffee-system", text: "Kaffeefilter oder Zubereiter erst nach Unterkunftscheck kaufen", done: false },
+        { id: "all-breakfast", text: "Müsli oder Haferflocken als flexibler Frühstücksgrundstock", done: false },
+        { id: "all-staples", text: "Reis, Pasta oder Couscous als schnell kochende Reserve", done: false },
+        { id: "all-seasoning", text: "Brühwürfel und kleine Auswahl Kräuter oder Gewürze", done: false },
+        { id: "all-condiments", text: "Senf, Ketchup oder Ahornsirup nur nach tatsächlichem Bedarf", done: false },
+        { id: "all-cleaning", text: "Spülmittel, Schwamm, Geschirrtuch und Küchenrolle", done: false },
+        { id: "all-bags", text: "Müllbeutel, Zip-Beutel, Clips und wiederverwendbare Dosen", done: false },
+        { id: "all-cooler", text: "Kühltasche plus Kühlakkus für Fahrtage", done: false },
+        { id: "all-bottles", text: "Trinkflaschen und Thermobecher für alle vier", done: false },
+        { id: "all-tools", text: "Dosenöffner, Flaschenöffner, Messer und Brett in Unterkünften prüfen", done: false },
+        { id: "all-buy-canada", text: "Lebensmittel möglichst in Kanada kaufen; Mitgebrachtes deklarieren", done: false }
+      ]},
+      { id: "all-first-shop", title: "Erster gemeinsamer Einkauf", icon: "🛒", items: [
+        { id: "all-shop-place", text: "Supermarktstopp nach Mietwagenübernahme einplanen", done: false },
+        { id: "all-water", text: "Wasser und Getränke für die ersten Fahrtage", done: false },
+        { id: "all-milk", text: "Milch oder Pflanzendrink sowie Joghurt nach Bedarf", done: false },
+        { id: "all-fruit", text: "Obst und haltbare Snacks für Auto und Wanderungen", done: false },
+        { id: "all-bread", text: "Brot oder Wraps und einfacher Belag für flexible Pausen", done: false },
+        { id: "all-emergency-meal", text: "Eine unkomplizierte Notfallmahlzeit für späte Ankunft", done: false },
+        { id: "all-receipts", text: "Gemeinsame Einkäufe in der Kosten-App erfassen", done: false }
+      ]},
+      { id: "all-hiking", title: "Gemeinsame Wander-Ausrüstung", icon: "🥾", items: [
+        { id: "all-first-aid", text: "Erste-Hilfe-Set, Blasenpflaster und Rettungsdecke", done: false },
+        { id: "all-headlamps", text: "Stirnlampen oder Taschenlampen mit Ersatzakku", done: false },
+        { id: "all-navigation", text: "Touren, Karten und Notfallnummern offline speichern", done: false },
+        { id: "all-weather-gear", text: "Regenhüllen, Sitzunterlage und wasserdichte Packbeutel", done: false },
+        { id: "all-sun-insects", text: "Sonnencreme und Insektenschutz gemeinsam einpacken", done: false },
+        { id: "all-whistle", text: "Pfeife, Powerbank und kleines Reparaturset", done: false },
+        { id: "all-trail-check", text: "Am Wandertag Wetter, Trailstatus und Jagdhinweise prüfen", done: false },
+        { id: "all-route-share", text: "Route, Startzeit und Umkehrzeit gemeinsam festlegen", done: false }
+      ]},
+      { id: "all-final-check", title: "Kurz vor Abreise erneut prüfen", icon: "⏰", items: [
+        { id: "all-entry-2027", text: "Einreise-, eTA- und Zollregeln mit Stand 2027 prüfen", done: false },
+        { id: "all-flight-check", text: "Online-Check-in, Gepäckregeln und Sitzplätze prüfen", done: false },
+        { id: "all-weather", text: "Wetter, Waldbrandlage, Luftqualität und Straßensperren prüfen", done: false },
+        { id: "all-parks", text: "Parköffnungen, Trailstatus und Reservierungen prüfen", done: false },
+        { id: "all-roaming", text: "eSIM oder Roaming aktivieren und Offline-Karten laden", done: false },
+        { id: "all-money", text: "Zahlungskarten, Limits, PIN und kleine CAD-Reserve prüfen", done: false }
+      ]}
+    ]
+  },
   al: {
     title: "Andrea & Lars",
     avatars: '<i class="avatar avatar-andrea"></i><i class="avatar avatar-lars"></i>',
     lists: [
       { id: "al-entry", title: "Einreise & Dokumente", icon: "🛂", items: [
-        { id: "al-eta", text: "eTA für beide beantragen", done: false },
-        { id: "al-passports", text: "Reisepässe und Gültigkeit prüfen", done: false },
+        { id: "al-eta", text: "eTA nur auf der offiziellen Canada.ca-Seite beantragen", done: false },
+        { id: "al-passports", text: "Reisepässe, Gültigkeit und Schreibweise auf Tickets prüfen", done: false },
         { id: "al-insurance", text: "Auslandsreisekrankenversicherung prüfen", done: false },
-        { id: "al-licence", text: "Führerschein und Mietwagenunterlagen klären", done: false }
+        { id: "al-licence", text: "Führerschein plus internationalen Führerschein vorbereiten", done: false },
+        { id: "al-doc-copies", text: "Pass-, eTA- und Versicherungsdaten offline sichern", done: false }
       ]},
       { id: "al-flight", title: "Flüge & Anreise", icon: "✈️", items: [
         { id: "al-fra", text: "Anreise Wuppertal/Langen nach Frankfurt festlegen", done: false },
@@ -740,9 +809,24 @@ const checklistDefaults = {
         { id: "al-luggage", text: "Gepäck, Sitzplätze und Transfer prüfen", done: false }
       ]},
       { id: "al-pack", title: "Packliste Indian Summer", icon: "🎒", items: [
-        { id: "al-layers", text: "Wärmende Schichten und Regenjacken", done: false },
-        { id: "al-shoes", text: "Wanderschuhe und Tagesrucksäcke", done: false },
-        { id: "al-adapter", text: "Kanada-Adapter und Ladegeräte", done: false }
+        { id: "al-layers", text: "Zwiebellook: Funktionsshirt, Fleece und warme Schicht", done: false },
+        { id: "al-rain", text: "Wasserdichte Regenjacken und leichte Regenhosen", done: false },
+        { id: "al-shoes", text: "Eingelaufene Wanderschuhe und bequeme Stadtschuhe", done: false },
+        { id: "al-hat", text: "Mütze, Handschuhe, Sonnenbrille und Kappe", done: false },
+        { id: "al-daypack", text: "Tagesrucksäcke, Trinkflaschen und Regenhüllen", done: false },
+        { id: "al-adapter", text: "Adapter Typ A/B; Geräte auf 120 Volt prüfen", done: false }
+      ]},
+      { id: "al-health", title: "Gesundheit & Persönliches", icon: "🩹", items: [
+        { id: "al-vaccines", text: "Standardimpfungen rechtzeitig ärztlich prüfen lassen", done: false },
+        { id: "al-meds", text: "Persönliche Medikamente plus Reserve und Medikamentenplan", done: false },
+        { id: "al-glasses", text: "Brille, Ersatzbrille oder Kontaktlinsen einpacken", done: false },
+        { id: "al-pharmacy", text: "Persönliche Reiseapotheke und Blasenversorgung ergänzen", done: false }
+      ]},
+      { id: "al-tech", title: "Technik & Geld", icon: "🔌", items: [
+        { id: "al-phones", text: "Handys, Ladegeräte und Powerbanks vorbereiten", done: false },
+        { id: "al-offline", text: "Offline-Karten, Buchungen und wichtige Kontakte laden", done: false },
+        { id: "al-cards", text: "Kreditkarten, PIN, Auslandslimit und Ersatzkarte prüfen", done: false },
+        { id: "al-esim", text: "eSIM oder Roaming für Kanada auswählen", done: false }
       ]}
     ]
   },
@@ -751,20 +835,31 @@ const checklistDefaults = {
     avatars: '<i class="avatar avatar-christina"></i><i class="avatar avatar-manfred"></i>',
     lists: [
       { id: "cm-entry", title: "Einreise & Dokumente", icon: "🛂", items: [
-        { id: "cm-eta", text: "eTA für beide beantragen", done: false },
-        { id: "cm-passports", text: "Reisepässe und Gültigkeit prüfen", done: false },
+        { id: "cm-eta", text: "eTA nur auf der offiziellen Canada.ca-Seite beantragen", done: false },
+        { id: "cm-passports", text: "Reisepässe, Gültigkeit und Schreibweise auf Tickets prüfen", done: false },
         { id: "cm-insurance", text: "Auslandsreisekrankenversicherung prüfen", done: false },
-        { id: "cm-health", text: "Medikamente und ärztliche Unterlagen vorbereiten", done: false }
+        { id: "cm-health", text: "Medikamente und ärztliche Unterlagen vorbereiten", done: false },
+        { id: "cm-doc-copies", text: "Pass-, eTA- und Versicherungsdaten offline sichern", done: false }
       ]},
       { id: "cm-health-list", title: "Gesundheit & Reiseapotheke", icon: "🩹", items: [
-        { id: "cm-vaccines", text: "Standardimpfungen prüfen", done: false },
-        { id: "cm-medicine", text: "Persönliche Medikamente ausreichend einpacken", done: false },
-        { id: "cm-pharmacy", text: "Kleine Reiseapotheke zusammenstellen", done: false }
+        { id: "cm-vaccines", text: "Standardimpfungen rechtzeitig ärztlich prüfen lassen", done: false },
+        { id: "cm-medicine", text: "Persönliche Medikamente plus Reserve und Medikamentenplan", done: false },
+        { id: "cm-pharmacy", text: "Persönliche Reiseapotheke und Blasenversorgung ergänzen", done: false },
+        { id: "cm-glasses", text: "Brille, Ersatzbrille oder Kontaktlinsen einpacken", done: false }
       ]},
       { id: "cm-pack", title: "Packliste Indian Summer", icon: "🧳", items: [
-        { id: "cm-layers", text: "Zwiebellook für kühle Morgen und Abende", done: false },
-        { id: "cm-shoes", text: "Wanderschuhe und bequeme Stadtschuhe", done: false },
-        { id: "cm-adapter", text: "Kanada-Adapter und Ladegeräte", done: false }
+        { id: "cm-layers", text: "Zwiebellook: Funktionsshirt, Fleece und warme Schicht", done: false },
+        { id: "cm-rain", text: "Wasserdichte Regenjacken und leichte Regenhosen", done: false },
+        { id: "cm-shoes", text: "Eingelaufene Wanderschuhe und bequeme Stadtschuhe", done: false },
+        { id: "cm-hat", text: "Mütze, Handschuhe, Sonnenbrille und Kappe", done: false },
+        { id: "cm-daypack", text: "Tagesrucksäcke, Trinkflaschen und Regenhüllen", done: false },
+        { id: "cm-adapter", text: "Adapter Typ A/B; Geräte auf 120 Volt prüfen", done: false }
+      ]},
+      { id: "cm-tech", title: "Technik & Geld", icon: "🔌", items: [
+        { id: "cm-phones", text: "Handys, Ladegeräte und Powerbanks vorbereiten", done: false },
+        { id: "cm-offline", text: "Offline-Karten, Buchungen und wichtige Kontakte laden", done: false },
+        { id: "cm-cards", text: "Kreditkarten, PIN, Auslandslimit und Ersatzkarte prüfen", done: false },
+        { id: "cm-esim", text: "eSIM oder Roaming für Kanada auswählen", done: false }
       ]}
     ]
   }
@@ -780,6 +875,26 @@ function escapeHtml(value) {
 
 function cloneChecklistDefaults() {
   return JSON.parse(JSON.stringify(checklistDefaults));
+}
+
+function upgradeChecklistData(stored) {
+  const upgraded = cloneChecklistDefaults();
+  ["all", "al", "cm"].forEach((groupId) => {
+    const storedGroup = stored?.[groupId];
+    if (!storedGroup?.lists) return;
+    const existingLists = new Map(storedGroup.lists.map((list) => [list.id, list]));
+    upgraded[groupId].lists = upgraded[groupId].lists.map((defaultList) => {
+      const existing = existingLists.get(defaultList.id);
+      if (!existing) return defaultList;
+      const existingItems = new Map(existing.items.map((item) => [item.id, item]));
+      const items = defaultList.items.map((item) => existingItems.get(item.id) || item);
+      existing.items.forEach((item) => { if (!defaultList.items.some((entry) => entry.id === item.id)) items.push(item); });
+      existingLists.delete(defaultList.id);
+      return { ...defaultList, ...existing, items };
+    });
+    upgraded[groupId].lists.push(...existingLists.values());
+  });
+  return upgraded;
 }
 
 let checklistData = checklistRoot ? cloneChecklistDefaults() : null;
@@ -800,10 +915,12 @@ async function loadSharedChecklists(silent = false) {
     if (!response.ok) throw new Error("Checklist load failed");
     const payload = await response.json();
     if (payload.data?.al && payload.data?.cm) {
-      checklistData = payload.data;
+      const needsUpgrade = Number(payload.schemaVersion || 0) < checklistSchemaVersion || !payload.data.all;
+      checklistData = needsUpgrade ? upgradeChecklistData(payload.data) : payload.data;
       checklistUpdatedAt = payload.updatedAt;
       localStorage.setItem(checklistStorageKey, JSON.stringify(checklistData));
       renderChecklists();
+      if (needsUpgrade) await saveChecklists();
     } else {
       setSyncStatus("Vorlage bereit · beim ersten Ändern entsperren", "syncing");
     }
@@ -811,7 +928,7 @@ async function loadSharedChecklists(silent = false) {
   } catch {
     try {
       const backup = JSON.parse(localStorage.getItem(checklistStorageKey));
-      if (backup?.al && backup?.cm) checklistData = backup;
+      if (backup?.al && backup?.cm) checklistData = backup.all ? backup : upgradeChecklistData(backup);
     } catch {}
     renderChecklists();
     setSyncStatus("Offline · später synchronisieren", "offline");
@@ -848,11 +965,12 @@ async function saveChecklists() {
 
 function renderChecklists() {
   if (!checklistRoot || !checklistData) return;
-  const choices = Object.entries(checklistData).map(([coupleId, couple]) => {
+  const choices = ["all", "al", "cm"].filter((groupId) => checklistData[groupId]).map((coupleId) => {
+    const couple = checklistData[coupleId];
     const allItems = couple.lists.flatMap((list) => list.items);
     const done = allItems.filter((item) => item.done).length;
     const progress = allItems.length ? Math.round(done / allItems.length * 100) : 0;
-    return `<button class="checklist-choice ${activeChecklistCouple === coupleId ? "active" : ""}" type="button" data-toggle-couple="${coupleId}" aria-expanded="${activeChecklistCouple === coupleId}">
+    return `<button class="checklist-choice ${coupleId === "all" ? "shared" : ""} ${activeChecklistCouple === coupleId ? "active" : ""}" type="button" data-toggle-couple="${coupleId}" aria-expanded="${activeChecklistCouple === coupleId}">
       <span class="couple-avatars">${checklistDefaults[coupleId].avatars}</span>
       <span><strong>${escapeHtml(couple.title)}</strong><small>${done} von ${allItems.length} erledigt</small></span>
       <b>${progress}%</b>
@@ -867,7 +985,7 @@ function renderChecklists() {
     const done = allItems.filter((item) => item.done).length;
     const progress = allItems.length ? Math.round(done / allItems.length * 100) : 0;
     panel = `<section class="checklist-group" data-couple="${coupleId}">
-      <header class="couple-head"><div class="couple-avatars">${checklistDefaults[coupleId].avatars}</div><div><p>Unsere Vorbereitung</p><h3>${escapeHtml(couple.title)}</h3></div><span class="progress-number">${progress}%</span></header>
+      <header class="couple-head"><div class="couple-avatars">${checklistDefaults[coupleId].avatars}</div><div><p>${coupleId === "all" ? "Gemeinsam organisiert" : "Persönliche Vorbereitung"}</p><h3>${escapeHtml(couple.title)}</h3></div><span class="progress-number">${progress}%</span></header>
       <div class="progress-track"><i style="width:${progress}%"></i></div>
       <div class="topic-grid">${couple.lists.map((list) => `
         <article class="checklist-topic" data-list="${list.id}">
