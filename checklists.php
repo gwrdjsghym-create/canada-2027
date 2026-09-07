@@ -23,9 +23,10 @@ function clean_text($value, int $limit): string {
 }
 
 function validate_data($input): ?array {
-    if (!is_array($input) || !isset($input['al'], $input['cm'])) return null;
+    if (!is_array($input) || !isset($input['all'], $input['al'], $input['cm'])) return null;
     $result = [];
-    foreach (['al', 'cm'] as $coupleId) {
+    $titles = ['all' => 'Für uns vier', 'al' => 'Andrea & Lars', 'cm' => 'Christina & Manfred'];
+    foreach (['all', 'al', 'cm'] as $coupleId) {
         $couple = $input[$coupleId];
         if (!is_array($couple) || !isset($couple['lists']) || !is_array($couple['lists'])) return null;
         $lists = [];
@@ -52,7 +53,7 @@ function validate_data($input): ?array {
             ];
         }
         $result[$coupleId] = [
-            'title' => $coupleId === 'al' ? 'Andrea & Lars' : 'Christina & Manfred',
+            'title' => $titles[$coupleId],
             'avatars' => '',
             'lists' => $lists
         ];
@@ -79,7 +80,7 @@ $data = validate_data($body['data'] ?? null);
 if ($data === null) respond(422, ['error' => 'Invalid checklist data']);
 
 if (!is_dir($dataDir) && !mkdir($dataDir, 0755, true) && !is_dir($dataDir)) respond(500, ['error' => 'Storage unavailable']);
-$payload = ['data' => $data, 'updatedAt' => gmdate('c')];
+$payload = ['schemaVersion' => 2, 'data' => $data, 'updatedAt' => gmdate('c')];
 $encoded = json_encode($payload, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);
 if (file_put_contents($dataFile, $encoded, LOCK_EX) === false) respond(500, ['error' => 'Could not save']);
 respond(200, $payload);
