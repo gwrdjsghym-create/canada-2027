@@ -261,6 +261,9 @@ body[data-destination="orford"] .destination-hero { background-image: url("https
 .idea-facts span { padding: 5px 9px; border-radius: 99px; color: var(--forest); background: rgba(255,255,255,.78); font-size: .78rem; font-weight: 800; }
 .source-links { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 18px; }
 .source-links a, #dialog-content a { color: var(--pine); text-decoration: underline; text-decoration-color: rgba(29,96,66,.35); text-underline-offset: 3px; font-size: .85rem; font-weight: 800; }
+#dialog-content a.primary-button { color: #fff; text-decoration: none; text-decoration-color: transparent; }
+#dialog-content li:has(> a.primary-button) { margin: 18px 0 0 -20px; list-style: none; }
+#dialog-content li:has(> a.primary-button)::marker { content: ""; }
 .safety-note { margin: 0 0 16px; padding: 13px 14px; border-left: 4px solid var(--maple); border-radius: 10px; color: #69341f; background: #fff4ec; font-size: .86rem; }
 .safety-note strong { display: block; margin-bottom: 4px; color: #8c3519; }
 .status-label { font-size: .75rem; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; }
