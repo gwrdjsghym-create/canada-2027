@@ -66,6 +66,7 @@ jobs:
             'put app.js' \
             'put abstimmungen.php' \
             'put dashboard.js' \
+            'put decision-status.php' \
             'put auth-lib.php' \
             'put auth.php' \
             'put login.php' \
