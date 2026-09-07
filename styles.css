@@ -73,9 +73,11 @@ h2 { font-family: Georgia, serif; font-size: clamp(2rem, 4vw, 3rem); font-weight
 .checklist-head > div > p:last-child { max-width: 650px; margin: 10px 0 0; color: var(--muted); }
 .local-note { flex: 0 0 auto; padding: 8px 12px; border-radius: 99px; color: var(--forest); background: var(--sky); font-size: .75rem; font-weight: 800; }
 .checklist-groups { display: block; }
-.checklist-choices { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; }
+.checklist-choices { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 12px; }
 .checklist-choice { display: grid; grid-template-columns: auto 1fr auto; gap: 13px; align-items: center; min-width: 0; padding: 17px; border: 1px solid var(--line); border-radius: 20px; color: var(--ink); background: linear-gradient(145deg,#fff,#f3f8f3); text-align: left; cursor: pointer; transition: transform .2s,border-color .2s,box-shadow .2s; }
 .checklist-choice:nth-child(2) { background: linear-gradient(145deg,#fff,#fff5e9); }
+.checklist-choice.shared { background: linear-gradient(145deg,#fff8ed,#eef7f2); }
+.checklist-choice.shared.active { background: var(--forest); }
 .checklist-choice:hover, .checklist-choice.active { transform: translateY(-2px); border-color: var(--pine); box-shadow: 0 12px 28px rgba(15,42,31,.09); }
 .checklist-choice.active { color: #fff; background: var(--forest); }
 .checklist-choice > span:nth-child(2) { min-width: 0; }
@@ -87,6 +89,7 @@ h2 { font-family: Georgia, serif; font-size: clamp(2rem, 4vw, 3rem); font-weight
 .checklist-choice.active b { color: #ffc85b; }
 .checklist-choice .couple-avatars { display: flex; padding-left: 8px; }
 .checklist-choice .avatar { width: 42px; height: 42px; flex-basis: 42px; margin-left: -9px; border-width: 2px; }
+.checklist-choice.shared .avatar { width: 34px; height: 34px; flex-basis: 34px; }
 .checklist-group { min-width: 0; margin-top: 14px; padding: 20px; border: 1px solid var(--line); border-radius: 24px; background: linear-gradient(155deg,#fff 0%,#f7faf6 100%); }
 .couple-head { display: grid; grid-template-columns: auto 1fr auto; gap: 12px; align-items: center; }
 .couple-avatars { display: flex; padding-left: 8px; }
@@ -462,7 +465,7 @@ dialog::backdrop { background: rgba(10,28,21,.55); backdrop-filter: blur(4px); }
   .canada-landscape { min-height: 170px; }
   .countdown strong { font-size: 1.7rem; }
   .checklist-section { padding-inline: 12px; }
-  .checklist-choices { gap: 8px; }
+  .checklist-choices { grid-template-columns: 1fr; gap: 8px; }
   .checklist-choice { grid-template-columns: 1fr auto; padding: 13px 10px; }
   .checklist-choice .couple-avatars { grid-column: 1 / -1; }
   .checklist-choice strong { font-size: .88rem; }
