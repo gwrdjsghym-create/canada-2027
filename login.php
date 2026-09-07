@@ -58,7 +58,7 @@ if (!empty($_SESSION['canada_authenticated']) && !$chooseProfile) {
 }
 ?>
 <!doctype html>
-<html lang="de"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#b3262d"><meta name="robots" content="noindex,nofollow"><title>Anmeldung · Canada 2027</title><link rel="stylesheet" href="styles.css?v=20260907-4"></head>
+<html lang="de"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#b3262d"><meta name="robots" content="noindex,nofollow"><title>Anmeldung · Canada 2027</title><link rel="stylesheet" href="styles.css?v=20260907-5"></head>
 <body class="login-page">
   <main class="login-shell">
     <section class="login-card">
