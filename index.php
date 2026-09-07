@@ -14,7 +14,7 @@ $profile = CANADA_PROFILES[$profileId];
     <meta name="description" content="Gemeinsame Reiseplanung für Canada 2027" />
     <meta name="robots" content="noindex,nofollow" />
     <title>Canada 2027</title>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css?v=20260907-1" />
   </head>
   <body>
     <header class="topbar">
@@ -24,6 +24,7 @@ $profile = CANADA_PROFILES[$profileId];
       </a>
       <nav class="desktop-nav" aria-label="Hauptnavigation">
         <a class="active" href="#top">Start</a>
+        <a href="abstimmungen.php">Abstimmen</a>
         <a href="#checklists">Checklisten</a>
         <a href="#route">Destinationen</a>
         <a href="#travellers">Reisende</a>
@@ -79,7 +80,7 @@ $profile = CANADA_PROFILES[$profileId];
     </main>
 
     <nav class="mobile-nav" aria-label="Mobile Navigation">
-      <a href="#top"><span>🍁</span>Start</a><a href="#checklists"><span>✓</span>Listen</a><a href="#route"><span>⌘</span>Ziele</a><a href="#travellers"><span>♙</span>Wir vier</a>
+      <a href="#route"><span>⌁</span>Reise</a><a href="abstimmungen.php"><span>★</span>Abstimmen</a><a href="#checklists"><span>✓</span>Listen</a><a href="#travellers"><span>♙</span>Wir vier</a>
     </nav>
 
     <dialog id="details-dialog"><button class="close-dialog" aria-label="Detailansicht schließen">×</button><div id="dialog-content"></div></dialog>
