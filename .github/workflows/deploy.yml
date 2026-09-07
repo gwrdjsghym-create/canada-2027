@@ -64,6 +64,8 @@ jobs:
             'put orford-activities-vote.php' \
             'put styles.css' \
             'put app.js' \
+            'put abstimmungen.php' \
+            'put dashboard.js' \
             'put auth-lib.php' \
             'put auth.php' \
             'put login.php' \
