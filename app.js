@@ -193,9 +193,9 @@ const ideas = [
     links: [{ label: "Info-PDF", url: "file.php?name=06_Shawinigan-und-Cite-de-lEnergie.pdf", pdf: true }]
   },
   {
-    id: "montagne-du-chapeau", destination: "sainte-rose", type: "idea", icon: "🥾", place: "Sainte-Rose-du-Nord · Freitag", title: "Montagne du Chapeau",
-    text: "Längere Waldwanderung zum Belvédère über dem Tal der Rivière Sainte-Marguerite – besonders reizvoll im Indian Summer.",
-    facts: ["12,3 km", "459 Hm", "4–5 Std.", "anspruchsvoll"],
+    id: "montagne-du-chapeau", destination: "sainte-rose", type: "idea", icon: "🥾", place: "Sainte-Rose-du-Nord · Freitag", title: "Wandertag: Waldtour oder Fjordrunde",
+    text: "Für den 24. September wählen wir zwischen der langen Montagne du Chapeau und der kürzeren Rundtour Sentier de la Plate-forme mit drei Fjordblicken.",
+    facts: ["12,3 oder 3,7 km", "lang oder kompakt", "2 Varianten", "gemeinsam abstimmen"],
     warning: "Vor der Tour Trailstatus und aktuelle Jagdhinweise prüfen; sichtbare Kleidung ist Ende September sinnvoll.",
     links: [{ label: "Tourenansicht · Rando Québec", url: "https://www.onyva.quebec/espace-decouverte/activites/randonnee-au-sentier-de-la-montagne-du-chapeau/" }, { label: "Offizielle Karte & GPS · Balise Québec", url: "https://baliseqc.ca/3S/explorer/saguenay-lac-saint-jean/sainte-rose-du-nord-LR0491" }, { label: "Anfahrt ab Exode", url: "https://www.google.com/maps/dir/?api=1&origin=1516%20Route%20de%20Tadoussac%2C%20Sainte-Rose-du-Nord%2C%20QC%20G0V%201T0%2C%20Canada&destination=48.3997%2C-70.4767&travelmode=driving" }, { label: "Touren-PDF · NEU", url: "file.php?name=03-01_Montagne-du-Chapeau_02-Standard_NEU.pdf", pdf: true }]
   },
@@ -215,6 +215,16 @@ const ideas = [
 ];
 
 const ideaChoiceGroups = {
+  "montagne-du-chapeau": {
+    ratingTitle: "Möchten wir den Freitag als Wandertag nutzen?",
+    ratingHint: "Bewertet zuerst die grundsätzliche Idee eines Wandertags. Welche der beiden Strecken ihr bevorzugt, wählt ihr anschließend getrennt.",
+    title: "Welche Wanderung bevorzugst du für den 24. September?",
+    hint: "Beide Varianten starten nahe Sainte-Rose-du-Nord. Die Auswahl kann später passend zu Wetter, Wegzustand und gemeinsamer Tagesform geändert werden.",
+    options: [
+      { id: "chapeau", label: "A · Montagne du Chapeau", text: "Langer, anspruchsvoller Waldtag zum Belvédère über der Rivière Sainte-Marguerite.", duration: "4–5 Std.", effort: "anspruchsvoll", weather: "nur bei stabilem Wetter", price: "kostenlos", example: "12,2–12,3 km · 459 Hm" },
+      { id: "plateforme", label: "B · Sentier de la Plate-forme", text: "Kompakte Rundtour direkt am Dorf mit drei Aussichtspunkten über den Saguenay-Fjord.", duration: "ca. 1½–2 Std.", effort: "leicht bis mittel", weather: "flexibler und leichter abzukürzen", price: "kostenlos", example: "3,7 km · optional + 1,7 km Quaiweg" }
+    ]
+  },
   "montreal-evening": {
     ratingTitle: "Möchten wir so einen Abend?",
     ratingHint: "Bewertet hier nur die grundsätzliche Idee – noch nicht die einzelne Variante.",
@@ -593,10 +603,13 @@ function renderSainteRoseEditorial(ideaId) {
 
   if (ideaId === "montagne-du-chapeau") return `
     <section class="trip-editorial hike-editorial">
-      <div class="editorial-intro"><p class="eyebrow">Favorit für Freitag · 24. September</p><h2>Der lange Waldtag vor Beginn der Jagdperiode</h2><p>Die naturbelassene Hin-und-zurück-Wanderung führt zum Belvédère über der Vallée de la Rivière Sainte-Marguerite. Gemeinde und Balise nennen 12,2–12,3 Kilometer und 459 Höhenmeter.</p></div>
-      <div class="editorial-columns"><article><h3>Dafür spricht</h3><ul><li>Starker Tal- und Indian-Summer-Blick</li><li>Große zusammenhängende Waldflächen</li><li>Vollwertiger Wandertag nahe der Unterkunft</li><li>Freitag passt besser zur Jagdwarnung ab 25.09.</li></ul></article><article><h3>Dagegen spricht</h3><ul><li>Bei Nässe stellenweise rutschig</li><li>Mit vier bis fünf Stunden der längste Wandertag</li><li>Trailstatus und Jagdregeln müssen aktuell geprüft werden</li></ul></article></div>
-      <div class="route-actions"><a href="https://www.onyva.quebec/espace-decouverte/activites/randonnee-au-sentier-de-la-montagne-du-chapeau/" target="_blank" rel="noopener"><strong>Übersichtliche Tourenansicht</strong><small>Rando Québec mit Beschreibung und Bildern</small></a><a href="https://baliseqc.ca/3S/explorer/saguenay-lac-saint-jean/sainte-rose-du-nord-LR0491" target="_blank" rel="noopener"><strong>Offizielle Karte &amp; GPS</strong><small>Balise Québec für Routendaten und Track</small></a><a href="https://www.google.com/maps/dir/?api=1&origin=1516%20Route%20de%20Tadoussac%2C%20Sainte-Rose-du-Nord%2C%20QC%20G0V%201T0%2C%20Canada&destination=48.3997%2C-70.4767&travelmode=driving" target="_blank" rel="noopener"><strong>Anfahrt öffnen</strong><small>ca. 20–22 km · 20–25 Minuten als Planungswert</small></a></div>
-      <aside class="day-addon"><strong>Nach der Wanderung</strong><p>Rose Café am Quai für Kaffee oder Dessert. Bei Restenergie reicht ein kurzer Halt am Quai; keine zweite große Aktivität anhängen.</p><a href="https://www.google.com/maps/search/?api=1&query=Rose+Caf%C3%A9+Sainte-Rose-du-Nord" target="_blank" rel="noopener">Rose Café auf Google Maps ↗</a></aside>
+      <div class="editorial-intro"><p class="eyebrow">Freitag · 24. September</p><h2>Zwei sehr unterschiedliche Wanderungen zur Wahl</h2><p>Die Montagne du Chapeau bleibt die große Waldtour. Neu kommt mit dem Sentier de la Plate-forme eine echte, deutlich kürzere Rundtour direkt bei Sainte-Rose-du-Nord hinzu. So entscheiden wir nicht erst vor Ort zwischen „ganz oder gar nicht“.</p></div>
+      <div class="variant-detail-grid">
+        <article><b class="variant-letter">A</b><h3>Montagne du Chapeau</h3><p>Naturbelassene Hin-und-zurück-Wanderung zum Belvédère über der Vallée de la Rivière Sainte-Marguerite. Die Gemeinde nennt 12,2 Kilometer; unsere Tourenquelle 12,3 Kilometer und 459 Höhenmeter.</p><ul><li>12,2–12,3 km · 459 Hm</li><li>ca. 4–5 Stunden</li><li>anspruchsvoll und bei Nässe stellenweise rutschig</li><li>starker Tal- und Indian-Summer-Blick</li></ul><a href="https://www.onyva.quebec/espace-decouverte/activites/randonnee-au-sentier-de-la-montagne-du-chapeau/" target="_blank" rel="noopener">Beschreibung &amp; Bilder ↗</a><a href="https://baliseqc.ca/3S/explorer/saguenay-lac-saint-jean/sainte-rose-du-nord-LR0491" target="_blank" rel="noopener">Offizielle Karte &amp; GPS ↗</a></article>
+        <article><b class="variant-letter">B</b><h3>Sentier de la Plate-forme</h3><p>Die kompakte Rundtour beginnt an der Rue de la Montagne und verbindet drei Aussichtspunkte über dem Saguenay-Fjord. Sie ist die bessere Wahl bei weniger Zeit, wechselhaftem Wetter oder dem Wunsch nach einem entspannteren Wandertag.</p><ul><li>3,7 km · Rundtour</li><li>ca. 1½–2 Stunden mit Fotostopps</li><li>leicht bis mittel</li><li>optional anschließend 1,7 km Sentiers du Quai</li></ul><a href="https://www.ste-rosedunord.qc.ca/visiter-sainte-rose/attraits-touristique/lete-a-sainte-rose/sentiers-de-randonnee/" target="_blank" rel="noopener">Beschreibung der Gemeinde ↗</a><a href="https://medias.baliseqc.ca/upload/cartes/LR0491_01.pdf?v=1731961430" target="_blank" rel="noopener">Offizielle Karte der Rundtour ↗</a></article>
+      </div>
+      <div class="route-actions"><a href="https://www.google.com/maps/dir/?api=1&origin=1516%20Route%20de%20Tadoussac%2C%20Sainte-Rose-du-Nord%2C%20QC%20G0V%201T0%2C%20Canada&destination=48.3997%2C-70.4767&travelmode=driving" target="_blank" rel="noopener"><strong>Anfahrt Montagne du Chapeau</strong><small>ca. 20–22 km · 20–25 Minuten als Planungswert</small></a><a href="https://www.google.com/maps/dir/?api=1&origin=1516%20Route%20de%20Tadoussac%2C%20Sainte-Rose-du-Nord%2C%20QC%20G0V%201T0%2C%20Canada&destination=Rue%20de%20la%20Montagne%2C%20Sainte-Rose-du-Nord%2C%20QC%2C%20Canada&travelmode=driving" target="_blank" rel="noopener"><strong>Anfahrt Sentier de la Plate-forme</strong><small>Parkplatz am Einstieg · Rue de la Montagne</small></a></div>
+      <aside class="day-addon"><strong>So bleibt auch Variante B ein schöner Tag</strong><p>Nach der Fjordrunde können wir ohne Zeitdruck den Quaiweg ergänzen, im Dorf einkehren oder länger an den Aussichtspunkten bleiben. Die kurze Strecke ist damit kein Notprogramm, sondern ein bewusst entspannter Fjordtag.</p><a href="https://www.google.com/maps/search/?api=1&query=Rose+Caf%C3%A9+Sainte-Rose-du-Nord" target="_blank" rel="noopener">Rose Café auf Google Maps ↗</a></aside>
       <aside class="pretrip-check"><div><p class="eyebrow">Vor dem Start prüfen</p><h3>Sicher in den Wald</h3></div><ul><li>Öffnung, Wegzustand und Sperrungen</li><li>Aktuelle Jagdperiode und lokale Regeln</li><li>Wetter, Wind und Niederschlag</li><li>Offline-Karte, Wasser, Proviant und sichtbare Kleidung</li></ul></aside>
     </section>`;
 
