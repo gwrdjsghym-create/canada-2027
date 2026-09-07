@@ -14,7 +14,7 @@ $profile = CANADA_PROFILES[$profileId];
     <meta name="description" content="Gemeinsame Reiseplanung für Canada 2027" />
     <meta name="robots" content="noindex,nofollow" />
     <title>Canada 2027</title>
-    <link rel="stylesheet" href="styles.css?v=20260907-4" />
+    <link rel="stylesheet" href="styles.css?v=20260907-5" />
   </head>
   <body>
     <header class="topbar">
