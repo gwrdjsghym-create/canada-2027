@@ -62,7 +62,7 @@ $profile = CANADA_PROFILES[$profileId];
 
       <section class="section checklist-section" id="checklists">
         <div class="section-head checklist-head">
-          <div><p class="eyebrow">Gut vorbereitet</p><h2>Unsere Checklisten</h2><p>Wählt zuerst euer Reisepaar. Die eigentlichen Listen öffnen sich erst nach dem Antippen.</p></div>
+          <div><p class="eyebrow">Gut vorbereitet</p><h2>Unsere Checklisten</h2><p>Persönliche Dinge bleiben bei den Reisepaaren. Buchungen, Wandern und unsere rollende Küchen- und Einkaufskiste planen wir gemeinsam für alle vier.</p></div>
           <span class="local-note" id="sync-status">Gemeinsam synchronisiert</span>
         </div>
         <div class="checklist-groups" id="checklist-root"></div>
@@ -88,6 +88,6 @@ $profile = CANADA_PROFILES[$profileId];
       <button class="close-checklist-dialog" aria-label="Fenster schließen">×</button>
       <form id="new-list-form"><p class="eyebrow">Neue Themenliste</p><h2>Was möchtet ihr vorbereiten?</h2><label for="new-list-title">Name der Liste</label><input id="new-list-title" name="title" required maxlength="60" placeholder="z. B. Wanderausrüstung" /><input id="new-list-couple" name="couple" type="hidden" /><button class="primary-button" type="submit">Liste hinzufügen</button></form>
     </dialog>
-    <script src="app.js?v=20260905-7"></script>
+    <script src="app.js?v=20260907-1"></script>
   </body>
 </html>
