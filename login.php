@@ -58,7 +58,7 @@ if (!empty($_SESSION['canada_authenticated']) && !$chooseProfile) {
 }
 ?>
 <!doctype html>
-<html lang="de"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#b3262d"><meta name="robots" content="noindex,nofollow"><title>Anmeldung · Canada 2027</title><link rel="stylesheet" href="styles.css?v=20260907-5"></head>
+<html lang="de"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#b3262d"><meta name="robots" content="noindex,nofollow"><title>Anmeldung · Canada 2027</title><link rel="stylesheet" href="styles.css?v=20260908-10"></head>
 <body class="login-page">
   <main class="login-shell">
     <section class="login-card">
@@ -66,6 +66,7 @@ if (!empty($_SESSION['canada_authenticated']) && !$chooseProfile) {
       <p class="eyebrow">Unsere Reise · Unser Bereich</p>
       <h1>Canada 2027</h1>
       <?php if ($chooseProfile): ?>
+        <button class="tutorial-launch login-tutorial-launch" id="open-tutorial" type="button"><span aria-hidden="true">🍁</span><span><strong>So funktioniert unsere Reiseplanung</strong><small>Kurz erklärt – ca. 2 Minuten</small></span></button>
         <p class="login-copy">Wer plant gerade mit?</p>
         <div class="profile-grid">
           <?php foreach (CANADA_PROFILES as $id => $profile): ?>
@@ -85,4 +86,26 @@ if (!empty($_SESSION['canada_authenticated']) && !$chooseProfile) {
       <?php endif; ?>
     </section>
   </main>
+  <?php if ($chooseProfile): ?>
+    <dialog id="tutorial-dialog" class="tutorial-dialog" aria-labelledby="tutorial-title">
+      <article class="tutorial-shell">
+        <button class="tutorial-close" type="button" aria-label="Tutorial schließen">×</button>
+        <header class="tutorial-header"><span aria-hidden="true">🍁</span><strong>Tutorial</strong></header>
+        <div class="tutorial-content" aria-live="polite">
+          <p class="tutorial-step-label" id="tutorial-step-label"></p>
+          <h2 id="tutorial-title"></h2>
+          <p class="tutorial-subtitle" id="tutorial-subtitle"></p>
+          <figure class="tutorial-visual"><img id="tutorial-image" src="" alt="" /></figure>
+          <p class="tutorial-copy" id="tutorial-copy"></p>
+          <p class="tutorial-finale" id="tutorial-finale" hidden>Jetzt kann Kanada kommen!</p>
+        </div>
+        <footer class="tutorial-footer">
+          <button class="tutorial-secondary" id="tutorial-back" type="button"></button>
+          <div class="tutorial-progress"><div id="tutorial-dots" role="tablist" aria-label="Tutorial-Schritte"></div><span id="tutorial-counter"></span></div>
+          <button class="tutorial-next" id="tutorial-next" type="button"></button>
+        </footer>
+      </article>
+    </dialog>
+    <script src="app.js?v=20260908-5"></script>
+  <?php endif; ?>
 </body></html>
