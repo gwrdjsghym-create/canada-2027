@@ -71,7 +71,7 @@ $profile = CANADA_PROFILES[$profileId];
       <section class="section travellers" id="travellers">
         <div><p class="eyebrow">Reisegruppe</p><h2>Wir vier</h2><p>Ideen bewerten und gemeinsam besprechen: Jede Stimme und jeder Kommentar wird dem ausgewählten Profil zugeordnet.</p></div>
         <div class="people" aria-label="Reisende">
-          <span><i class="avatar avatar-lars" role="img" aria-label="Memoji von Lars"></i>Lars</span>
+          <button class="person-poster-trigger" type="button" data-poster="assets/lars-canada-2027.webp" data-person="Lars" aria-label="Comicbild von Lars öffnen"><i class="avatar avatar-lars" aria-hidden="true"></i>Lars</button>
           <button class="person-poster-trigger" type="button" data-poster="assets/andrea-canada-2027.webp" data-person="Andrea" aria-label="Comicbild von Andrea öffnen"><i class="avatar avatar-andrea" aria-hidden="true"></i>Andrea</button>
           <button class="person-poster-trigger" type="button" data-poster="assets/manfred-canada-2027.webp" data-person="Manfred" aria-label="Comicbild von Manfred öffnen"><i class="avatar avatar-manfred" aria-hidden="true"></i>Manfred</button>
           <button class="person-poster-trigger" type="button" data-poster="assets/christina-canada-2027.webp" data-person="Christina" aria-label="Comicbild von Christina öffnen"><i class="avatar avatar-christina" aria-hidden="true"></i>Christina</button>
