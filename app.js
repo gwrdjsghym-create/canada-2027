@@ -150,12 +150,6 @@ const ideas = [
     links: [{ label: "Monarque · Fine Dining", url: "https://restaurantmonarque.ca/en/" }, { label: "Gibbys · Steak & Seafood", url: "https://www.gibbys.com/en/" }, { label: "Québec-Küche erklärt", url: "https://www.mtl.org/en/experience/traditional-quebecois-cuisine" }, { label: "Montréal-Klassiker erklärt", url: "https://www.mtl.org/en/experience/musts-for-foodies-visiting-montreal" }, { label: "Restaurantübersicht · Tourisme Montréal", url: "https://www.mtl.org/en/what-to-do/food" }]
   },
   {
-    id: "transfer-20-09", destination: "mauricie", type: "idea", icon: "🚙", featured: true,
-    place: "Transfer · Montag, 20. September", title: "Pointe-du-Lac oder Trois-Rivières?",
-    text: "Drei Varianten für den ersten Mietwagentag – mit Einkauf, realistischen Zeiten, Google-Routen, Entscheidungshilfe sowie gemeinsamer Sterne- und Kommentar-Abstimmung.",
-    href: "02-transfer-20-09.php"
-  },
-  {
     id: "lac-solitaire", destination: "mauricie", type: "idea", icon: "🥾", place: "The Laurentians · Dienstag", title: "Lac-Solitaire",
     text: "Kompakter, aber höhenreicher Rundweg durch regenerierenden Wald und um den See – unsere bevorzugte kürzere Variante.",
     facts: ["6,1 km", "396 Hm", "ca. 2,5 Std.", "mittelschwer"],
@@ -400,7 +394,6 @@ if (activeDestination !== "all") {
   if (summary) summary.textContent = activeData.summary;
   const comparison = document.querySelector("#comparison-link");
   const comparisonPdfs = {
-    mauricie: { file: "00_Vergleich_Aktivitaeten_Mauricie.pdf", label: "PDF · Vergleich aller Aktivitäten ↗" },
     "sainte-rose": { file: "03-00_Sainte-Rose-du-Nord_Uebersicht.pdf", label: "PDF · Übersicht Sainte-Rose-du-Nord ↗" }
   };
   if (comparison) {
