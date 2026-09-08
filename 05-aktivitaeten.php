@@ -44,7 +44,7 @@ $csrf = canada_csrf();
 </section>
 
 <section class="activity-grid">
-<article class="activity-card featured">
+<article class="activity-card featured" id="activity-hike">
 <div class="activity-image"><img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Mont%20Orford%20durant%20l%27automne.jpg?width=1200" alt="Herbstblick am Mont Orford" loading="lazy"><span class="label">A · großer Wandertag</span><span class="photo-credit">Wikimedia Commons · Tangque · CC BY-SA 4.0</span></div>
 <div class="activity-body"><p class="eyebrow">A · sportlich</p><h2>Pic de l’Ours via L’Escalier-du-Nord</h2><p class="activity-sub">Hin &amp; zurück · Pic de la Roche-Fendue → Pic de l’Ours</p>
 <div class="facts"><div class="fact"><small>AllTrails</small><strong>12,9 km</strong></div><div class="fact"><small>GPS-Anstieg</small><strong>+624 m</strong></div><div class="fact"><small>Sépaq-Zeit</small><strong>ca. 6 Std.</strong></div><div class="fact"><small>Anspruch</small><strong>schwer</strong></div></div>
@@ -74,7 +74,7 @@ $csrf = canada_csrf();
 <details><summary>Einordnung für unsere Reise öffnen</summary><div class="details-grid"><div><strong>Dafür spricht</strong><ul><li>stärkstes Naturerlebnis der Region</li><li>passt hervorragend zur Reisezeit</li><li>klare Tagestour statt Programm-Mix</li></ul></div><div><strong>Dagegen spricht</strong><ul><li>nach fast zwei Reisewochen körperlich fordernd</li><li>bei Nässe/Restfeuchte deutlich schwieriger</li><li>zweiter Orford-Tag sollte danach leichter sein</li></ul></div></div></details>
 </div></article>
 
-<article class="activity-card">
+<article class="activity-card" id="activity-park">
 <div class="activity-image"><img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Sentier%20de%20la%20Boucle%20des%20Trois-%C3%89tangs%2C%20Mont%20Orford.jpg?width=1200" alt="Weg an der Boucle des Trois-Étangs" loading="lazy"><span class="label">B · leichte Wanderung</span><span class="photo-credit">Wikimedia Commons · Slayy queen · CC0</span></div>
 <div class="activity-body"><p class="eyebrow">B · leicht / kombinierbar</p><h2>Boucle des Trois-Étangs</h2><p class="activity-sub">Rundweg ab Centre de services Le Cerisier</p>
 <div class="facts"><div class="fact"><small>AllTrails</small><strong>5,3 km</strong></div><div class="fact"><small>GPS-Anstieg</small><strong>+82 m</strong></div><div class="fact"><small>Sépaq-Zeit</small><strong>ca. 2 Std.</strong></div><div class="fact"><small>Anspruch</small><strong>leicht</strong></div></div>
@@ -104,7 +104,7 @@ $csrf = canada_csrf();
 <details><summary>Einordnung für unsere Reise öffnen</summary><div class="details-grid"><div><strong>Dafür spricht</strong><ul><li>sehr geringe Belastung</li><li>schöne echte Parkwanderung</li><li>perfekt mit Magog oder Gondel kombinierbar</li></ul></div><div><strong>Dagegen spricht</strong><ul><li>kein Gipfel-Erlebnis</li><li>weniger spektakulär als A</li><li>Gondel nur als saisonale Zusatzoption</li></ul></div></div></details>
 </div></article>
 
-<article class="activity-card">
+<article class="activity-card" id="activity-magog">
 <div class="activity-image placeholder">🌾<span class="label">C · Natur + Stadt</span></div>
 <div class="activity-body"><p class="eyebrow">C · entspannt / ausgewogen</p><h2>Magog &amp; Marais de la Rivière aux Cerises</h2><p class="activity-sub">Stege, Aussichtsturm, Seeufer und anschließend Magog</p>
 <div class="facts"><div class="fact"><small>Zeit</small><strong>3–5 Std.</strong></div><div class="fact"><small>Anspruch</small><strong>leicht</strong></div><div class="fact"><small>Wetter</small><strong>mittel</strong></div><div class="fact"><small>Kosten</small><strong>niedrig</strong></div></div>
@@ -114,7 +114,7 @@ $csrf = canada_csrf();
 <details><summary>Was erwartet uns?</summary><div class="details-grid"><div><strong>Marais</strong><ul><li>leichte Wege und Stege</li><li>Beobachtungsturm</li><li>Interpretationszentrum</li></ul></div><div><strong>Danach</strong><ul><li>Magog am Lac Memphrémagog</li><li>Café oder Lunch</li><li>Maison Merry optional</li></ul></div></div></details>
 </div></article>
 
-<article class="activity-card">
+<article class="activity-card" id="activity-abbey">
 <div class="activity-image placeholder">⛪<span class="label">D · Kultur + Genuss</span></div>
 <div class="activity-body"><p class="eyebrow">D · regional</p><h2>Abbaye Saint-Benoît-du-Lac</h2><p class="activity-sub">Benediktinerabtei, See, Käse, Cidre und ruhige Wege</p>
 <div class="facts"><div class="fact"><small>Zeit</small><strong>2–3 Std.</strong></div><div class="fact"><small>Anspruch</small><strong>sehr leicht</strong></div><div class="fact"><small>Wetter</small><strong>gering</strong></div><div class="fact"><small>Fahrt</small><strong>regionaler Ausflug</strong></div></div>
@@ -124,7 +124,7 @@ $csrf = canada_csrf();
 <details><summary>Was lässt sich dort machen?</summary><div class="details-grid"><div><strong>Besuch</strong><ul><li>Abteikirche und Architektur</li><li>Führungen je nach Saison</li><li>ruhige Wege durch das Gelände</li></ul></div><div><strong>Genuss</strong><ul><li>Käse</li><li>Cidre</li><li>Kompotte und weitere Klosterprodukte</li></ul></div></div></details>
 </div></article>
 
-<article class="activity-card">
+<article class="activity-card" id="activity-cruise">
 <div class="activity-image placeholder">⛴️<span class="label">E · See-Erlebnis</span></div>
 <div class="activity-body"><p class="eyebrow">E · entspannt / buchbar</p><h2>Lac Memphrémagog mit Le Grand Cru</h2><p class="activity-sub">Escapades Memphrémagog · Abfahrt am Quai MacPherson</p>
 <div class="facts"><div class="fact"><small>Dauer</small><strong>1½–3 Std.</strong></div><div class="fact"><small>Anspruch</small><strong>sehr leicht</strong></div><div class="fact"><small>Wetter</small><strong>mittel</strong></div><div class="fact"><small>Status</small><strong>2027 prüfen</strong></div></div>
@@ -134,7 +134,7 @@ $csrf = canada_csrf();
 <details><summary>Einordnung öffnen</summary><div class="details-grid"><div><strong>Dafür spricht</strong><ul><li>wenig körperliche Belastung</li><li>neue Perspektive auf den See</li><li>gut mit Magog kombinierbar</li></ul></div><div><strong>Offen</strong><ul><li>Fahrplan Ende Sept./Anfang Okt. 2027</li><li>konkretes Format</li><li>Preis und Reservierung</li></ul></div></div></details>
 </div></article>
 
-<article class="activity-card">
+<article class="activity-card" id="activity-spa">
 <div class="activity-image placeholder">♨️<span class="label">F · Regeneration</span></div>
 <div class="activity-body"><p class="eyebrow">F · Schlechtwetter / Erholung</p><h2>Spa Nordic Station</h2><p class="activity-sub">Saunen, Dampfbad, Warm-/Kaltbecken und Rivière aux Cerises</p>
 <div class="facts"><div class="fact"><small>Zeit</small><strong>3–5 Std.</strong></div><div class="fact"><small>Anspruch</small><strong>minimal</strong></div><div class="fact"><small>Wetter</small><strong>sehr robust</strong></div><div class="fact"><small>2026</small><strong>ab ~59 CAD</strong></div></div>
@@ -164,9 +164,9 @@ $csrf = canada_csrf();
 
 <section class="vote-section" id="vote">
 <p class="eyebrow">Gemeinsam auswählen</p><h2>Worauf habt ihr grundsätzlich Lust?</h2><p>Bewertet die Bausteine einzeln. Erst aus den Favoriten bauen wir danach drei konkrete Zweitagespläne: entspannt, ausgewogen und erlebnisreich.</p>
-<div class="score-row"><?php foreach(['a'=>'A · Escalier','b'=>'B · Trois-Étangs','c'=>'C · Magog/Marais','d'=>'D · Abtei','e'=>'E · Schiff','f'=>'F · Spa'] as $key=>$label): ?><span class="score-pill"><?= htmlspecialchars($label) ?>: <b id="avg-<?= $key ?>">–</b></span><?php endforeach; ?></div>
+<div class="score-row"><?php foreach(['hike'=>'A · Escalier','park'=>'B · Trois-Étangs','magog'=>'C · Magog/Marais','abbey'=>'D · Abtei','cruise'=>'E · Schiff','spa'=>'F · Spa'] as $key=>$label): ?><span class="score-pill"><?= htmlspecialchars($label) ?>: <b id="avg-<?= $key ?>">–</b></span><?php endforeach; ?></div>
 <div class="vote-grid">
-<?php foreach(['a'=>'A · Escalier-du-Nord','b'=>'B · Trois-Étangs','c'=>'C · Magog & Marais','d'=>'D · Abbaye','e'=>'E · Lac-Kreuzfahrt','f'=>'F · Spa'] as $key=>$label): ?>
+<?php foreach(['hike'=>'A · Escalier-du-Nord','park'=>'B · Trois-Étangs','magog'=>'C · Magog & Marais','abbey'=>'D · Abbaye','cruise'=>'E · Lac-Kreuzfahrt','spa'=>'F · Spa'] as $key=>$label): ?>
 <article class="vote-card" data-variant="<?= $key ?>"><h3><?= htmlspecialchars($label) ?></h3><div class="group-ratings" id="ratings-<?= $key ?>"></div><div class="rating-help">Tippe auf 1–5 Sterne.</div><div class="comment-list" id="comments-<?= $key ?>"></div><form class="comment-form" data-variant="<?= $key ?>"><input maxlength="1000" placeholder="Kommentar schreiben …" required><button>Posten</button></form><div class="status" id="status-<?= $key ?>"></div></article>
 <?php endforeach; ?>
 </div>
@@ -188,7 +188,7 @@ $csrf = canada_csrf();
 <nav class="mobile-nav"><a href="index.php"><span>⌁</span>Reise</a><a class="active" href="05-orford.php"><span>★</span>Orford</a><a href="#vote"><span>★</span>Abstimmen</a></nav>
 <script>
 const csrf=document.querySelector('meta[name="csrf-token"]').content;
-const variants=['a','b','c','d','e','f'];let state=null;
+const variants=['hike','park','magog','abbey','cruise','spa'];let state=null;
 async function api(method='GET',body=null){const options={method,headers:{'Accept':'application/json'}};if(body){options.headers['Content-Type']='application/json';options.headers['X-CSRF-Token']=csrf;options.body=JSON.stringify(body)}const response=await fetch('orford-activities-vote.php',options);const data=await response.json().catch(()=>({error:'Ungültige Serverantwort'}));if(!response.ok)throw new Error(data.error||'Speichern fehlgeschlagen');return data}
 function esc(value){return String(value??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
 function stars(rating,variant){let html='<div class="stars">';for(let i=1;i<=5;i++)html+=`<button type="button" class="star-button ${i<=(rating||0)?'active':''}" data-rate="${i}" data-variant="${variant}" aria-label="${i} Sterne">★</button>`;return html+'</div>'}
