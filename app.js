@@ -1097,6 +1097,22 @@ document.querySelector("#new-list-form")?.addEventListener("submit", (event) => 
 document.querySelector(".close-checklist-dialog")?.addEventListener("click", () => checklistDialog.close());
 checklistDialog?.addEventListener("click", (event) => { if (event.target === checklistDialog) checklistDialog.close(); });
 
+const travellerPosterDialog = document.querySelector("#traveller-poster-dialog");
+const travellerPosterImage = document.querySelector("#traveller-poster-image");
+document.querySelectorAll("[data-poster]").forEach((trigger) => {
+  trigger.addEventListener("click", () => {
+    if (!travellerPosterDialog || !travellerPosterImage) return;
+    travellerPosterImage.src = trigger.dataset.poster;
+    travellerPosterImage.alt = `Canada-2027-Comicbild von ${trigger.dataset.person}`;
+    travellerPosterDialog.showModal();
+  });
+});
+document.querySelector(".close-poster-dialog")?.addEventListener("click", () => travellerPosterDialog?.close());
+travellerPosterDialog?.addEventListener("click", (event) => { if (event.target === travellerPosterDialog) travellerPosterDialog.close(); });
+travellerPosterDialog?.addEventListener("close", () => {
+  if (travellerPosterImage) { travellerPosterImage.src = ""; travellerPosterImage.alt = ""; }
+});
+
 function updateCountdown() {
   const days = document.querySelector("#countdown-days");
   if (!days) return;

@@ -14,7 +14,7 @@ $profile = CANADA_PROFILES[$profileId];
     <meta name="description" content="Gemeinsame Reiseplanung für Canada 2027" />
     <meta name="robots" content="noindex,nofollow" />
     <title>Canada 2027</title>
-    <link rel="stylesheet" href="styles.css?v=20260907-5" />
+    <link rel="stylesheet" href="styles.css?v=20260908-6" />
   </head>
   <body>
     <header class="topbar">
@@ -72,8 +72,8 @@ $profile = CANADA_PROFILES[$profileId];
         <div><p class="eyebrow">Reisegruppe</p><h2>Wir vier</h2><p>Ideen bewerten und gemeinsam besprechen: Jede Stimme und jeder Kommentar wird dem ausgewählten Profil zugeordnet.</p></div>
         <div class="people" aria-label="Reisende">
           <span><i class="avatar avatar-lars" role="img" aria-label="Memoji von Lars"></i>Lars</span>
-          <span><i class="avatar avatar-andrea" role="img" aria-label="Memoji von Andrea"></i>Andrea</span>
-          <span><i class="avatar avatar-manfred" role="img" aria-label="Memoji von Manfred"></i>Manfred</span>
+          <button class="person-poster-trigger" type="button" data-poster="assets/andrea-canada-2027.webp" data-person="Andrea" aria-label="Comicbild von Andrea öffnen"><i class="avatar avatar-andrea" aria-hidden="true"></i>Andrea</button>
+          <button class="person-poster-trigger" type="button" data-poster="assets/manfred-canada-2027.webp" data-person="Manfred" aria-label="Comicbild von Manfred öffnen"><i class="avatar avatar-manfred" aria-hidden="true"></i>Manfred</button>
           <span><i class="avatar avatar-christina" role="img" aria-label="Memoji von Christina"></i>Christina</span>
         </div>
       </section>
@@ -88,6 +88,10 @@ $profile = CANADA_PROFILES[$profileId];
       <button class="close-checklist-dialog" aria-label="Fenster schließen">×</button>
       <form id="new-list-form"><p class="eyebrow">Neue Themenliste</p><h2>Was möchtet ihr vorbereiten?</h2><label for="new-list-title">Name der Liste</label><input id="new-list-title" name="title" required maxlength="60" placeholder="z. B. Wanderausrüstung" /><input id="new-list-couple" name="couple" type="hidden" /><button class="primary-button" type="submit">Liste hinzufügen</button></form>
     </dialog>
-    <script src="app.js?v=20260907-1"></script>
+    <dialog id="traveller-poster-dialog" class="traveller-poster-dialog" aria-label="Comicbild des Mitreisenden">
+      <button class="close-poster-dialog" type="button" aria-label="Comicbild schließen">×</button>
+      <figure><img id="traveller-poster-image" src="" alt="" /></figure>
+    </dialog>
+    <script src="app.js?v=20260908-3"></script>
   </body>
 </html>
