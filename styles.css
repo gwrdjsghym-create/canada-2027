@@ -296,12 +296,12 @@ body[data-destination="orford"] .destination-hero { background-image: url("https
 .destination-page .mobile-nav { grid-template-columns: repeat(3,1fr); }
 dialog { width: min(620px, calc(100% - 30px)); padding: 30px; border: 0; border-radius: 24px; color: var(--ink); background: var(--paper); box-shadow: var(--shadow); }
 dialog::backdrop { background: rgba(10,28,21,.55); backdrop-filter: blur(4px); }
-.traveller-poster-dialog { width: min(900px,calc(100% - 24px)); max-width: none; max-height: calc(100dvh - 24px); padding: 12px; overflow: visible; border: 1px solid rgba(255,255,255,.35); border-radius: 28px; background: rgba(255,253,248,.98); box-shadow: 0 30px 90px rgba(3,25,20,.38); opacity: 0; transform: translateY(10px) scale(.98); transition: opacity .2s ease, transform .2s ease, overlay .2s allow-discrete, display .2s allow-discrete; }
-.traveller-poster-dialog[open] { opacity: 1; transform: translateY(0) scale(1); }
-@starting-style { .traveller-poster-dialog[open] { opacity: 0; transform: translateY(10px) scale(.98); } }
+.traveller-poster-dialog { position: fixed; top: 50%; left: 50%; width: min(900px,calc(100vw - 24px),calc(100dvh - 24px)); max-width: none; max-height: calc(100dvh - 24px); margin: 0; padding: 12px; overflow: visible; border: 1px solid rgba(255,255,255,.35); border-radius: 28px; background: rgba(255,253,248,.98); box-shadow: 0 30px 90px rgba(3,25,20,.38); opacity: 0; transform: translate(-50%,-50%) scale(.98); transition: opacity .2s ease, transform .2s ease, overlay .2s allow-discrete, display .2s allow-discrete; }
+.traveller-poster-dialog[open] { opacity: 1; transform: translate(-50%,-50%) scale(1); }
+@starting-style { .traveller-poster-dialog[open] { opacity: 0; transform: translate(-50%,-50%) scale(.98); } }
 .traveller-poster-dialog::backdrop { background: rgba(7,24,19,.72); backdrop-filter: blur(7px); }
 .traveller-poster-dialog figure { display: grid; place-items: center; width: 100%; height: 100%; margin: 0; }
-.traveller-poster-dialog img { display: block; width: auto; max-width: 100%; height: auto; max-height: calc(100dvh - 48px); aspect-ratio: 1; object-fit: contain; border-radius: 19px; background: var(--cream); }
+.traveller-poster-dialog img { display: block; width: 100%; max-width: 100%; height: auto; max-height: calc(100dvh - 48px); aspect-ratio: 1; object-fit: contain; border-radius: 19px; background: var(--cream); }
 .close-poster-dialog { position: absolute; z-index: 2; top: 20px; right: 20px; display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid rgba(255,255,255,.7); border-radius: 50%; color: #fff; background: rgba(8,38,30,.78); box-shadow: 0 5px 18px rgba(0,0,0,.22); cursor: pointer; font-size: 1.75rem; line-height: 1; }
 .close-poster-dialog:hover, .close-poster-dialog:focus-visible { background: var(--maple); outline: 3px solid rgba(255,255,255,.8); outline-offset: 2px; }
 @media (max-width: 560px) { .traveller-poster-dialog { width: calc(100% - 16px); max-height: calc(100dvh - 16px); padding: 8px; border-radius: 22px; } .traveller-poster-dialog img { max-height: calc(100dvh - 32px); border-radius: 15px; } .close-poster-dialog { top: 15px; right: 15px; width: 42px; height: 42px; } }
