@@ -74,7 +74,7 @@ $profile = CANADA_PROFILES[$profileId];
           <span><i class="avatar avatar-lars" role="img" aria-label="Memoji von Lars"></i>Lars</span>
           <button class="person-poster-trigger" type="button" data-poster="assets/andrea-canada-2027.webp" data-person="Andrea" aria-label="Comicbild von Andrea öffnen"><i class="avatar avatar-andrea" aria-hidden="true"></i>Andrea</button>
           <button class="person-poster-trigger" type="button" data-poster="assets/manfred-canada-2027.webp" data-person="Manfred" aria-label="Comicbild von Manfred öffnen"><i class="avatar avatar-manfred" aria-hidden="true"></i>Manfred</button>
-          <span><i class="avatar avatar-christina" role="img" aria-label="Memoji von Christina"></i>Christina</span>
+          <button class="person-poster-trigger" type="button" data-poster="assets/christina-canada-2027.webp" data-person="Christina" aria-label="Comicbild von Christina öffnen"><i class="avatar avatar-christina" aria-hidden="true"></i>Christina</button>
         </div>
       </section>
     </main>

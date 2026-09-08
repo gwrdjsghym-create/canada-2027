@@ -85,6 +85,7 @@ jobs:
             'put assets/christina-manfred-memoji.png assets/christina-manfred-memoji.png' \
             'put assets/andrea-canada-2027.webp assets/andrea-canada-2027.webp' \
             'put assets/manfred-canada-2027.webp assets/manfred-canada-2027.webp' \
+            'put assets/christina-canada-2027.webp assets/christina-canada-2027.webp' \
             '-mkdir pdfs' \
             'put pdfs/00_Vergleich_Aktivitaeten_Mauricie.pdf pdfs/00_Vergleich_Aktivitaeten_Mauricie.pdf' \
             'put pdfs/01_Lac-Solitaire.pdf pdfs/01_Lac-Solitaire.pdf' \
