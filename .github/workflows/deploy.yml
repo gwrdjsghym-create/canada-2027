@@ -87,6 +87,14 @@ jobs:
             'put assets/manfred-canada-2027.webp assets/manfred-canada-2027.webp' \
             'put assets/christina-canada-2027.webp assets/christina-canada-2027.webp' \
             'put assets/lars-canada-2027.webp assets/lars-canada-2027.webp' \
+            'put assets/tutorial-step-1.webp assets/tutorial-step-1.webp' \
+            'put assets/tutorial-step-2.webp assets/tutorial-step-2.webp' \
+            'put assets/tutorial-step-3.webp assets/tutorial-step-3.webp' \
+            'put assets/tutorial-step-4.webp assets/tutorial-step-4.webp' \
+            'put assets/tutorial-step-5.webp assets/tutorial-step-5.webp' \
+            'put assets/tutorial-step-6.webp assets/tutorial-step-6.webp' \
+            'put assets/tutorial-step-7.webp assets/tutorial-step-7.webp' \
+            'put assets/tutorial-step-8.webp assets/tutorial-step-8.webp' \
             '-mkdir pdfs' \
             'put pdfs/00_Vergleich_Aktivitaeten_Mauricie.pdf pdfs/00_Vergleich_Aktivitaeten_Mauricie.pdf' \
             'put pdfs/01_Lac-Solitaire.pdf pdfs/01_Lac-Solitaire.pdf' \

@@ -14,7 +14,7 @@ $profile = CANADA_PROFILES[$profileId];
     <meta name="description" content="Gemeinsame Reiseplanung für Canada 2027" />
     <meta name="robots" content="noindex,nofollow" />
     <title>Canada 2027</title>
-    <link rel="stylesheet" href="styles.css?v=20260908-8" />
+    <link rel="stylesheet" href="styles.css?v=20260908-9" />
   </head>
   <body>
     <header class="topbar">
@@ -40,6 +40,7 @@ $profile = CANADA_PROFILES[$profileId];
           <h1 id="hero-title">Vier Menschen.<br /><em>Ein kanadischer Herbst.</em></h1>
           <p class="hero-copy">Von Montréal über den Saguenay bis nach Orford – Wälder in Ahornrot, klare Seen und gemeinsam ausgesuchte Abenteuer.</p>
           <a class="hero-cta" href="#route">Die Route entdecken <span>↓</span></a>
+          <button class="tutorial-launch" id="open-tutorial" type="button"><span aria-hidden="true">🍁</span><span><strong>So funktioniert unsere Reiseplanung</strong><small>Kurz erklärt – ca. 2 Minuten</small></span></button>
         </div>
         <div class="hero-side">
           <div class="canada-landscape" role="img" aria-label="Indian Summer am Lac Tremblant in Québec"><span class="hero-photo-caption">Lac Tremblant · Québec</span></div>
@@ -92,6 +93,25 @@ $profile = CANADA_PROFILES[$profileId];
       <button class="close-poster-dialog" type="button" aria-label="Comicbild schließen">×</button>
       <figure><img id="traveller-poster-image" src="" alt="" /></figure>
     </dialog>
-    <script src="app.js?v=20260908-3"></script>
+    <dialog id="tutorial-dialog" class="tutorial-dialog" aria-labelledby="tutorial-title">
+      <article class="tutorial-shell">
+        <button class="tutorial-close" type="button" aria-label="Tutorial schließen">×</button>
+        <header class="tutorial-header"><span aria-hidden="true">🍁</span><strong>Tutorial</strong></header>
+        <div class="tutorial-content" aria-live="polite">
+          <p class="tutorial-step-label" id="tutorial-step-label"></p>
+          <h2 id="tutorial-title"></h2>
+          <p class="tutorial-subtitle" id="tutorial-subtitle"></p>
+          <figure class="tutorial-visual"><img id="tutorial-image" src="" alt="" /></figure>
+          <p class="tutorial-copy" id="tutorial-copy"></p>
+          <p class="tutorial-finale" id="tutorial-finale" hidden>Jetzt kann Kanada kommen!</p>
+        </div>
+        <footer class="tutorial-footer">
+          <button class="tutorial-secondary" id="tutorial-back" type="button"></button>
+          <div class="tutorial-progress"><div id="tutorial-dots" role="tablist" aria-label="Tutorial-Schritte"></div><span id="tutorial-counter"></span></div>
+          <button class="tutorial-next" id="tutorial-next" type="button"></button>
+        </footer>
+      </article>
+    </dialog>
+    <script src="app.js?v=20260908-4"></script>
   </body>
 </html>

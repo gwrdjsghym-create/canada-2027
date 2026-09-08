@@ -1113,6 +1113,129 @@ travellerPosterDialog?.addEventListener("close", () => {
   if (travellerPosterImage) { travellerPosterImage.src = ""; travellerPosterImage.alt = ""; }
 });
 
+const tutorialSteps = [
+  {
+    title: "Willkommen bei Canada 2027",
+    subtitle: "Gemeinsam planen, entdecken und abstimmen",
+    text: "Diese Seite ist unser gemeinsamer Reiseplan für Kanada 2027. Hier findet ihr Route, Unterkünfte, Aktivitäten und Ideen – und könnt selbst kommentieren, abstimmen und Vorschläge ergänzen.",
+    image: "assets/tutorial-step-1.webp",
+    alt: "Andrea, Christina, Manfred und Lars gemeinsam vor einer kanadischen Landschaft"
+  },
+  {
+    title: "Destination auswählen",
+    subtitle: "Den passenden Reiseabschnitt öffnen",
+    text: "Einfach auf einen Punkt im Zeitstrahl klicken. Jeder Reiseabschnitt hat eine eigene Seite – von Montréal bis Orford. Dort findet ihr alle Informationen zu diesem Teil der Reise.",
+    image: "assets/tutorial-step-2.webp",
+    alt: "Zeitstrahl der Canada-2027-Reise von Montréal bis Orford"
+  },
+  {
+    title: "Informieren & entdecken",
+    subtitle: "Links und interaktive Elemente nutzen",
+    text: "Auf den Seiten könnt ihr Bilder, Karten, Videos, GPS-Tracks, Restaurantseiten und andere Links öffnen. Viele Karten und Schaltflächen sind interaktiv.",
+    image: "assets/tutorial-step-3.webp",
+    alt: "Beispiele für interaktive Karten, Videos und Webseiten"
+  },
+  {
+    title: "Webseiten übersetzen",
+    subtitle: "Fremdsprachige Seiten direkt in Safari lesen",
+    text: "Viele kanadische Seiten sind auf Französisch oder Englisch. In Safari könnt ihr die Seite direkt übersetzen: 1. aA öffnen → 2. Website übersetzen → 3. Deutsch wählen.",
+    image: "assets/tutorial-step-4.webp",
+    alt: "Drei Schritte zum Übersetzen einer Webseite in Safari: aA öffnen, Website übersetzen und Deutsch wählen"
+  },
+  {
+    title: "Kommentieren",
+    subtitle: "Fragen, Meinungen und Hinweise teilen",
+    text: "Unter Vorschlägen könnt ihr direkt Fragen, Meinungen oder Hinweise schreiben und auf Kommentare der anderen antworten. So bleibt alles an der richtigen Stelle.",
+    image: "assets/tutorial-step-5.webp",
+    alt: "Beispiel einer Unterhaltung im Kommentarbereich"
+  },
+  {
+    title: "Abstimmen",
+    subtitle: "Favoriten sichtbar machen",
+    text: "Aktivitäten und Varianten können bewertet oder ausgewählt werden. So sehen wir schnell, was allen gefällt. Wichtig: Eine Abstimmung ist noch keine Buchung.",
+    image: "assets/tutorial-step-6.webp",
+    alt: "Andrea, Christina, Manfred und Lars bei der gemeinsamen Auswahl von Reisevarianten"
+  },
+  {
+    title: "Eigene Ideen veröffentlichen",
+    subtitle: "Neue Vorschläge ganz einfach ergänzen",
+    text: "Über ‚Neue Idee‘ könnt ihr eigene Vorschläge ergänzen – zum Beispiel Wanderungen, Restaurants, Aussichtspunkte oder interessante Links.",
+    image: "assets/tutorial-step-7.webp",
+    alt: "Andrea ergänzt über das Formular Neue Idee einen eigenen Reisevorschlag"
+  },
+  {
+    title: "Checklisten bearbeiten",
+    subtitle: "Aufgaben abhaken und den Überblick behalten",
+    text: "In den Checklisten können gemeinsame Vorbereitungen und persönliche Aufgaben abgehakt werden – von Reisedokumenten bis zur Ausrüstung. Das Tutorial könnt ihr jederzeit wieder über die Startseite öffnen.",
+    image: "assets/tutorial-step-8.webp",
+    alt: "Andrea und Lars neben einer Canada-2027-Checkliste"
+  }
+];
+
+const tutorialDialog = document.querySelector("#tutorial-dialog");
+const tutorialTitle = document.querySelector("#tutorial-title");
+const tutorialSubtitle = document.querySelector("#tutorial-subtitle");
+const tutorialCopy = document.querySelector("#tutorial-copy");
+const tutorialImage = document.querySelector("#tutorial-image");
+const tutorialCounter = document.querySelector("#tutorial-counter");
+const tutorialDots = document.querySelector("#tutorial-dots");
+const tutorialBack = document.querySelector("#tutorial-back");
+const tutorialNext = document.querySelector("#tutorial-next");
+const tutorialFinale = document.querySelector("#tutorial-finale");
+let tutorialStep = 0;
+
+function renderTutorial() {
+  if (!tutorialDialog) return;
+  const step = tutorialSteps[tutorialStep];
+  document.querySelector("#tutorial-step-label").textContent = `Schritt ${tutorialStep + 1}`;
+  tutorialTitle.textContent = step.title;
+  tutorialSubtitle.textContent = step.subtitle;
+  tutorialCopy.textContent = step.text;
+  tutorialImage.src = step.image;
+  tutorialImage.alt = step.alt;
+  tutorialCounter.textContent = `${tutorialStep + 1} / ${tutorialSteps.length}`;
+  tutorialBack.textContent = tutorialStep === 0 ? "Später" : "← Zurück";
+  tutorialNext.textContent = tutorialStep === 0 ? "Los geht’s →" : tutorialStep === tutorialSteps.length - 1 ? "Reise entdecken →" : "Weiter →";
+  tutorialFinale.hidden = tutorialStep !== tutorialSteps.length - 1;
+  tutorialDots.querySelectorAll("button").forEach((dot, index) => {
+    dot.classList.toggle("active", index === tutorialStep);
+    dot.setAttribute("aria-selected", String(index === tutorialStep));
+    dot.setAttribute("aria-label", `Schritt ${index + 1}: ${tutorialSteps[index].title}`);
+  });
+  document.querySelector(".tutorial-content")?.scrollTo({ top: 0, behavior: "instant" });
+}
+
+if (tutorialDots) {
+  tutorialSteps.forEach((step, index) => {
+    const dot = document.createElement("button");
+    dot.type = "button";
+    dot.setAttribute("role", "tab");
+    dot.addEventListener("click", () => { tutorialStep = index; renderTutorial(); });
+    tutorialDots.append(dot);
+  });
+}
+
+document.querySelector("#open-tutorial")?.addEventListener("click", () => {
+  tutorialStep = 0;
+  renderTutorial();
+  tutorialDialog.showModal();
+});
+document.querySelector(".tutorial-close")?.addEventListener("click", () => tutorialDialog?.close());
+tutorialDialog?.addEventListener("click", (event) => { if (event.target === tutorialDialog) tutorialDialog.close(); });
+tutorialBack?.addEventListener("click", () => {
+  if (tutorialStep === 0) tutorialDialog.close();
+  else { tutorialStep -= 1; renderTutorial(); }
+});
+tutorialNext?.addEventListener("click", () => {
+  if (tutorialStep === tutorialSteps.length - 1) {
+    tutorialDialog.close();
+    document.querySelector("#route")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  } else {
+    tutorialStep += 1;
+    renderTutorial();
+  }
+});
+
 function updateCountdown() {
   const days = document.querySelector("#countdown-days");
   if (!days) return;
