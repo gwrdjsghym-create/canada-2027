@@ -205,6 +205,30 @@ const ideas = [
     facts: ["8 km", "340 Hm", "3–4 Std.", "schwierig"],
     warning: "Bei tiefen Wolken, starkem Regen oder Wind nicht erzwingen; dann auf eine kürzere Fjordwanderung ausweichen.",
     links: [{ label: "Sépaq · Wegdaten", url: "https://www.sepaq.com/pq/mva/annexes/randonnee_pedestre.dot?language_id=1" }, { label: "Route, Fotos & Höhenprofil", url: "https://www.alltrails.com/fr/randonnee/canada/quebec/sentier-du-pic-de-la-tete-de-chien" }, { label: "Anfahrt ab Exode", url: "https://www.google.com/maps/dir/?api=1&origin=1516%20Route%20de%20Tadoussac%2C%20Sainte-Rose-du-Nord%2C%20QC%20G0V%201T0%2C%20Canada&destination=360%20Rang%20Saint-Louis%2C%20Saint-Fulgence%2C%20QC%20G0V%201S0%2C%20Canada&travelmode=driving" }, { label: "Touren-PDF · NEU", url: "file.php?name=03-03_Pic-de-la-Tete-de-Chien_02-Standard_NEU.pdf", pdf: true }]
+  },
+  {
+    id: "orford-hike", destination: "orford", type: "idea", icon: "⛰️", place: "Orford · großer Wandertag", title: "Pic de l’Ours via L’Escalier-du-Nord",
+    text: "Die anspruchsvolle Gipfeltour für einen ganzen Tag mit den stärksten Herbst- und Panoramablicken.", facts: ["12,9 km", "624 Hm", "ca. 6 Std.", "schwer"], href: "05-aktivitaeten.php#activity-hike"
+  },
+  {
+    id: "orford-park", destination: "orford", type: "idea", icon: "🥾", place: "Orford · leichte Parkwanderung", title: "Boucle des Trois-Étangs",
+    text: "Ein ruhiger Rundweg an drei Teichen, der sich gut mit Magog oder einer weiteren Aktivität verbinden lässt.", facts: ["5,3 km", "82 Hm", "ca. 2 Std.", "leicht"], href: "05-aktivitaeten.php#activity-park"
+  },
+  {
+    id: "orford-magog", destination: "orford", type: "idea", icon: "🌾", place: "Magog · Natur und Stadt", title: "Magog & Marais de la Rivière aux Cerises",
+    text: "Stege und Beobachtungspunkte im Feuchtgebiet, anschließend Seeufer, Cafés und Zentrum von Magog.", facts: ["3–5 Std.", "leicht", "flexibel kürzbar"], href: "05-aktivitaeten.php#activity-magog"
+  },
+  {
+    id: "orford-abbey", destination: "orford", type: "idea", icon: "⛪", place: "Saint-Benoît-du-Lac · Kultur und Genuss", title: "Abbaye Saint-Benoît-du-Lac",
+    text: "Benediktinerabtei am See mit Architektur, ruhigen Wegen sowie Käse, Cidre und weiteren Klosterprodukten.", facts: ["2–3 Std.", "sehr leicht", "wetterrobust"], href: "05-aktivitaeten.php#activity-abbey"
+  },
+  {
+    id: "orford-cruise", destination: "orford", type: "idea", icon: "⛴️", place: "Lac Memphrémagog · See-Erlebnis", title: "Schifffahrt mit Le Grand Cru",
+    text: "Eine entspannte Fahrt auf dem Lac Memphrémagog, die sich besonders gut mit Magog kombinieren lässt.", facts: ["1½–3 Std.", "sehr leicht", "Fahrplan 2027 prüfen"], href: "05-aktivitaeten.php#activity-cruise"
+  },
+  {
+    id: "orford-spa", destination: "orford", type: "idea", icon: "♨️", place: "Magog · Erholung und Schlechtwetter", title: "Spa Nordic Station",
+    text: "Saunen, Dampfbad, Warm- und Kaltbecken als bewusster Regenerationsbaustein nach der Rundreise.", facts: ["3–5 Std.", "minimaler Anspruch", "wetterrobust"], href: "05-aktivitaeten.php#activity-spa"
   }
 ];
 
@@ -333,7 +357,7 @@ function renderIdeas(filter = "all") {
     const rating = summary.average ? `<span class="tile-rating"><b>★ ${String(summary.average).replace(".", ",")}</b><small>${summary.count} von 4</small></span>` : `<span class="tile-rating empty"><b>☆</b><small>Noch offen</small></span>`;
     const discussion = summary.comments ? `<span class="tile-comments">💬 ${summary.comments}</span>` : "";
     const author = idea.author && profileDirectory[idea.author] ? `<span class="tile-author"><i class="avatar ${profileDirectory[idea.author].avatar}"></i>Von ${escapeHtml(profileDirectory[idea.author].name)}</span>` : "";
-    return `<article class="idea-tile ${idea.type}" data-idea="${idea.id}" tabindex="0" role="link" aria-label="${idea.title} öffnen">
+    return `<article class="idea-tile ${idea.type}" data-idea="${idea.id}"${idea.href ? ` data-href="${escapeHtml(idea.href)}"` : ""} tabindex="0" role="link" aria-label="${idea.title} öffnen">
       <div class="tile-top"><span class="idea-icon">${idea.icon}</span><span class="tile-more">Details →</span></div>
       <p class="idea-place">${idea.type === "booked" ? "Fest gebucht" : (idea.place || activeData.label)}</p><h3>${escapeHtml(idea.title)}</h3>${author}
       <div class="idea-facts">${facts}${idea.warning ? `<span class="warning-chip">Sicherheit</span>` : ""}</div>
@@ -350,6 +374,19 @@ async function loadIdeaSummaries() {
     const payload = await response.json();
     ideaSummaries = payload.ideas || {};
     customIdeas = Array.isArray(payload.customIdeas) ? payload.customIdeas : [];
+    if (activeDestination === "orford") {
+      try {
+        const orfordResponse = await fetch("orford-activities-vote.php", { cache: "no-store" });
+        if (orfordResponse.ok) {
+          const orfordPayload = await orfordResponse.json();
+          const mapping = { hike: "orford-hike", park: "orford-park", magog: "orford-magog", abbey: "orford-abbey", cruise: "orford-cruise", spa: "orford-spa" };
+          Object.entries(mapping).forEach(([variant, ideaId]) => {
+            const view = orfordPayload.variants?.[variant] || {};
+            ideaSummaries[ideaId] = { average: view.average, count: view.ratingCount || 0, comments: (view.comments || []).filter((comment) => !comment.deleted).length };
+          });
+        }
+      } catch {}
+    }
     renderIdeas(document.querySelector(".filter.active")?.dataset.filter || "all");
   } catch {}
 }
@@ -377,12 +414,12 @@ document.querySelector(".filters")?.addEventListener("click", (event) => {
 
 ideaGrid?.addEventListener("click", (event) => {
   const tile = event.target.closest("[data-idea]");
-  if (tile) window.location.href = `idea.php?id=${encodeURIComponent(tile.dataset.idea)}`;
+  if (tile) window.location.href = tile.dataset.href || `idea.php?id=${encodeURIComponent(tile.dataset.idea)}`;
 });
 
 ideaGrid?.addEventListener("keydown", (event) => {
   if ((event.key === "Enter" || event.key === " ") && event.target.matches("[data-idea]")) {
-    event.preventDefault(); window.location.href = `idea.php?id=${encodeURIComponent(event.target.dataset.idea)}`;
+    event.preventDefault(); window.location.href = event.target.dataset.href || `idea.php?id=${encodeURIComponent(event.target.dataset.idea)}`;
   }
 });
 
