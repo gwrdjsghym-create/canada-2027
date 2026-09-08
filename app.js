@@ -1202,7 +1202,7 @@ function renderTutorial() {
     dot.setAttribute("aria-selected", String(index === tutorialStep));
     dot.setAttribute("aria-label", `Schritt ${index + 1}: ${tutorialSteps[index].title}`);
   });
-  document.querySelector(".tutorial-content")?.scrollTo({ top: 0, behavior: "instant" });
+  document.querySelector(".tutorial-content")?.scrollTo({ top: 0, behavior: "auto" });
 }
 
 if (tutorialDots) {
