@@ -112,6 +112,6 @@ $profile = CANADA_PROFILES[$profileId];
         </footer>
       </article>
     </dialog>
-    <script src="app.js?v=20260908-4"></script>
+    <script src="app.js?v=20260908-5"></script>
   </body>
 </html>
