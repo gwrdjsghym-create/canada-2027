@@ -130,6 +130,7 @@ h2 { font-family: Georgia, serif; font-size: clamp(2rem, 4vw, 3rem); font-weight
 .destination-hero::before { content: ""; position: absolute; inset: 0; z-index: 0; background: linear-gradient(90deg,rgba(9,34,25,.94) 0%,rgba(9,34,25,.77) 42%,rgba(9,34,25,.4) 72%,rgba(9,34,25,.2) 100%); }
 .destination-hero::after { content: "🍁"; position: absolute; z-index: 0; right: 5%; bottom: -38px; opacity: .12; filter: saturate(.8); font-size: 11rem; transform: rotate(14deg); }
 .destination-hero-inner { position: relative; z-index: 1; width: min(1180px, calc(100% - 48px)); margin: 0 auto; padding: 50px 0 46px; }
+.hero-photo-credit { position: absolute; z-index: 2; right: 14px; bottom: 10px; padding: 4px 7px; border-radius: 8px; color: rgba(255,255,255,.9); background: rgba(0,0,0,.5); font-size: .62rem; }
 .destination-hero .back-link { display: inline-block; margin-bottom: 20px; color: rgba(255,255,255,.88); font-weight: 750; }
 .destination-hero .eyebrow { color: #fff; font-size: .88rem; letter-spacing: .2em; }
 .destination-hero h1 { max-width: 920px; font-size: clamp(2.45rem, 5vw, 4.65rem); text-wrap: balance; }
@@ -142,7 +143,7 @@ h2 { font-family: Georgia, serif; font-size: clamp(2rem, 4vw, 3rem); font-weight
 body[data-destination="montreal"] .destination-hero { background-image: url("https://images.unsplash.com/photo-1718880442789-8e5c382d0627?auto=format&fit=crop&w=2000&q=84"); background-position: center 55%; }
 body[data-destination="mauricie"] .destination-hero { background-image: url("https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=2000&q=84"); background-position: center 58%; }
 body[data-destination="sainte-rose"] .destination-hero { background-image: url("https://images.unsplash.com/photo-1734666190850-9990bdee363e?auto=format&fit=crop&w=2000&q=84"); background-position: center 48%; }
-body[data-destination="orford"] .destination-hero { background-image: url("https://images.unsplash.com/photo-1473445361085-b9a07f55608b?auto=format&fit=crop&w=2000&q=84"); background-position: center 52%; }
+body[data-destination="orford"] .destination-hero { background-image: url("assets/orford-hero-autumn.jpg"); background-position: center 48%; }
 .route-list { position: relative; margin-top: 20px; padding-left: 28px; }
 .route-list::before { content: ""; position: absolute; left: 9px; top: 18px; bottom: 18px; width: 2px; background: var(--line); }
 .route-card { position: relative; display: grid; grid-template-columns: 122px 1fr auto; gap: 20px; align-items: center; padding: 20px; margin-bottom: 12px; border: 1px solid #bfd3c7; border-radius: 20px; background: #f3f8f3; transition: transform .2s, border-color .2s; }
@@ -230,6 +231,11 @@ body[data-destination="orford"] .destination-hero { background-image: url("https
 .transfer-decision-card:hover .decision-cta, .transfer-decision-card:focus-visible .decision-cta { filter: brightness(1.06); }
 .transfer-decision-card:focus-visible { outline: 3px solid rgba(20,112,92,.25); outline-offset: 3px; }
 .idea-tile { position: relative; min-height: 190px; padding: 18px; overflow: hidden; border: 1px solid #dce4de; border-radius: 20px; background: var(--cream); cursor: pointer; transition: transform .2s, border-color .2s, box-shadow .2s; }
+.idea-tile.has-cover { padding-top: 142px; background: #fff; }
+.idea-cover { position: absolute; inset: 0 0 auto; height: 124px; overflow: hidden; background: #dfe9e2; }
+.idea-cover img { width: 100%; height: 100%; object-fit: cover; transition: transform .25s ease; }
+.idea-tile:hover .idea-cover img, .idea-tile:focus-visible .idea-cover img { transform: scale(1.035); }
+.idea-cover small { position: absolute; right: 7px; bottom: 6px; max-width: calc(100% - 14px); padding: 3px 6px; border-radius: 7px; color: #fff; background: rgba(0,0,0,.56); font-size: .56rem; line-height: 1.2; }
 .idea-tile:hover, .idea-tile:focus-visible { transform: translateY(-3px); border-color: #a9bdb0; box-shadow: 0 12px 30px rgba(15,42,31,.09); outline: none; }
 .idea-tile.booked { color: #fff; border-color: transparent; background: linear-gradient(145deg, #98401f, #cc6535); }
 .tile-top { display: flex; justify-content: space-between; align-items: center; }
@@ -250,6 +256,29 @@ body[data-destination="orford"] .destination-hero { background-image: url("https
 .tile-rating small, .tile-comments { color: var(--muted); font-size: .75rem; font-weight: 750; }
 .booked .tile-rating small, .booked .tile-comments { color: rgba(255,255,255,.75); }
 .tile-rating.empty b { color: #aeb8b2; }
+
+.orford-lead { max-width: 900px; margin: -8px 0 20px; color: var(--muted); font-size: 1rem; line-height: 1.65; }
+.orford-orientation-grid,.orford-dayplans,.orford-dining-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 12px; }
+.orford-orientation-grid { grid-template-columns: repeat(4,minmax(0,1fr)); }
+.orford-orientation-grid article,.orford-dayplans article,.orford-dining-grid article { padding: 18px; border: 1px solid var(--line); border-radius: 19px; background: #f8faf7; }
+.orford-orientation-grid span { font-size: 1.65rem; }
+.orford-orientation-grid h3,.orford-dayplans h3,.orford-dining-grid h3 { margin: 7px 0 6px; font-size: 1.12rem; }
+.orford-orientation-grid p,.orford-dayplans li,.orford-dining-grid p { color: var(--muted); font-size: .88rem; line-height: 1.5; }
+.orford-video-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; margin-top: 16px; }
+.orford-video-grid a { position: relative; overflow: hidden; min-height: 210px; border-radius: 19px; color: #fff; background: #092f2b; }
+.orford-video-grid img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .68; }
+.orford-video-grid a::after { content: ""; position: absolute; inset: 42% 0 0; background: linear-gradient(transparent,rgba(3,25,22,.92)); }
+.orford-video-grid strong,.orford-video-grid small { position: absolute; z-index: 2; left: 14px; right: 14px; }
+.orford-video-grid strong { bottom: 30px; }
+.orford-video-grid small { bottom: 12px; color: rgba(255,255,255,.82); }
+.orford-dayplans article { position: relative; }
+.orford-dayplans article.recommended { border-color: #d7b967; background: #fff9e9; }
+.orford-dayplans ol { margin: 12px 0 0; padding-left: 20px; }
+.orford-dayplans li + li { margin-top: 9px; }
+.plan-badge { display: inline-flex; float: right; padding: 5px 8px; border-radius: 99px; color: #6f5316; background: #f5df9c; font-size: .68rem; font-weight: 900; }
+.orford-dining-grid article > b { color: var(--maple); font-size: .75rem; text-transform: uppercase; letter-spacing: .05em; }
+.orford-dining-grid a { color: var(--pine); font-size: .82rem; font-weight: 850; }
+.orford-fineprint { margin: 14px 0 0; color: var(--muted); font-size: .78rem; }
 .dialog-facts { display: flex; flex-wrap: wrap; gap: 7px; margin: 18px 0; }
 .dialog-facts span { padding: 6px 10px; border-radius: 99px; color: var(--forest); background: var(--sky); font-size: .79rem; font-weight: 800; }
 .idea-card { display: flex; flex-direction: column; min-height: 265px; padding: 22px; border-radius: 22px; background: var(--cream); }
@@ -467,7 +496,10 @@ dialog::backdrop { background: rgba(10,28,21,.55); backdrop-filter: blur(4px); }
   .destination-switcher { margin-top: 12px; }
   .idea-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .idea-tile { min-height: 170px; padding: 15px; }
+  .idea-tile.has-cover { padding-top: 139px; }
   .idea-tile h3 { font-size: 1.08rem; }
+  .orford-orientation-grid,.orford-dayplans,.orford-dining-grid { grid-template-columns: 1fr 1fr; }
+  .orford-orientation-grid article:last-child,.orford-dayplans article:last-child,.orford-dining-grid article:last-child { grid-column: 1 / -1; }
   .idea-place { margin-top: 16px; }
   .idea-card.featured-option { grid-column: auto; }
   .checklist-group { padding: 16px; }
@@ -486,6 +518,12 @@ dialog::backdrop { background: rgba(10,28,21,.55); backdrop-filter: blur(4px); }
   .evening-grid { grid-template-columns: 1fr; }
   .evening-grid article { min-height: 220px; }
   .video-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+}
+
+@media (max-width: 560px) {
+  .orford-orientation-grid,.orford-dayplans,.orford-dining-grid,.orford-video-grid { grid-template-columns: 1fr; }
+  .orford-orientation-grid article:last-child,.orford-dayplans article:last-child,.orford-dining-grid article:last-child { grid-column: auto; }
+  .orford-video-grid a { min-height: 180px; }
 }
 
 @media (max-width: 420px) {
