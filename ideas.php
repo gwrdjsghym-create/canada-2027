@@ -5,7 +5,7 @@ $currentProfile = canada_require_api();
 header('Content-Type: application/json; charset=utf-8');
 header('Cache-Control: no-store');
 
-const STATIC_IDEA_IDS = ['whale-tour','montreal-old-city','montreal-basilica','montreal-mountain','montreal-mile-end-food','montreal-jean-talon','montreal-bike','montreal-downtown','montreal-olympic','montreal-canal','montreal-guided-old','montreal-evening','montreal-dinner','transfer-20-09','lac-solitaire','ruisseau-bouchard','cascades-falaises','canoe-intro','waber-falls','shawinigan','montagne-du-chapeau','fjordtag-varianten','pic-tete-de-chien'];
+const STATIC_IDEA_IDS = ['whale-tour','quebec-old-town','quebec-history-tour','quebec-montmorency','quebec-orleans','quebec-citadelle','quebec-food-tour','quebec-museum','quebec-night','quebec-dinner','montreal-old-city','montreal-basilica','montreal-mountain','montreal-mile-end-food','montreal-jean-talon','montreal-bike','montreal-downtown','montreal-olympic','montreal-canal','montreal-guided-old','montreal-evening','montreal-dinner','transfer-20-09','lac-solitaire','ruisseau-bouchard','cascades-falaises','canoe-intro','waber-falls','shawinigan','montagne-du-chapeau','fjordtag-varianten','pic-tete-de-chien'];
 const DESTINATION_IDS = ['montreal','mauricie','sainte-rose','quebec','orford'];
 const IDEA_CHOICE_OPTIONS = [
     'montreal-evening' => ['aura','twilight','night-tour','ghost-walk'],
