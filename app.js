@@ -1160,7 +1160,7 @@ const tutorialSteps = [
     title: "Eigene Ideen veröffentlichen",
     subtitle: "Neue Vorschläge ganz einfach ergänzen",
     text: "Über ‚Neue Idee‘ könnt ihr eigene Vorschläge ergänzen – zum Beispiel Wanderungen, Restaurants, Aussichtspunkte oder interessante Links.",
-    image: "assets/tutorial-step-7.webp",
+    image: "assets/tutorial-step-7.webp?v=20260909-1",
     alt: "Andrea ergänzt über das Formular Neue Idee einen eigenen Reisevorschlag"
   },
   {
