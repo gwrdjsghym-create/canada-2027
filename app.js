@@ -232,6 +232,57 @@ const ideas = [
   }
 ];
 
+const montrealIdeaPhotos = {
+  "montreal-old-city": [
+    { src: "assets/montreal-old-city-1.webp", alt: "Historische Straße in Vieux-Montréal mit dem Marché Bonsecours", label: "Vieux-Montréal", source: "https://www.hollandamerica.com/en/gb/cruise-destinations/canada-new-england-cruises" },
+    { src: "assets/montreal-old-city-2.webp", alt: "Alter Hafen von Montréal in der Abendstimmung", label: "Alter Hafen", source: "https://www.pelago.com/en-AU/activity/pp5p8kglx-romantic-walking-tour-for-couples-in-montreal-montreal/" }
+  ],
+  "montreal-basilica": [
+    { src: "assets/montreal-basilica-1.webp", alt: "Farbenprächtiger Innenraum der Notre-Dame-Basilika in Montréal", label: "Notre-Dame", source: "https://generationvoyage.fr/activites/basilique-notre-dame-montreal-a334035/" },
+    { src: "assets/montreal-basilica-2.webp", alt: "Pointe-à-Callière Museum in der Altstadt von Montréal", label: "Pointe-à-Callière", source: "https://www.quebecvacances.com/en/attractions/pointe-a-calliere-cite-darcheologie-et-dhistoire-de-montreal" }
+  ],
+  "montreal-mountain": [
+    { src: "assets/montreal-mountain-1.webp", alt: "Blick vom Kondiaronk-Aussichtspunkt über Montréal", label: "Mont Royal", source: "https://montreal.ca/en/places/kondiaronk-lookout" },
+    { src: "assets/montreal-mountain-2.webp", alt: "Typische farbige Häuser mit Außentreppen im Plateau Mont-Royal", label: "Le Plateau", source: "https://www.dailyinspirato.com/seeking-inspirato-series/2019/10/seeking-inspirato-in-montreal" }
+  ],
+  "montreal-mile-end-food": [
+    { src: "assets/montreal-mile-end-food-1.webp", alt: "Frisch gebackene Montréal-Bagels", label: "Montréal-Bagel", source: "https://www.afar.com/places/the-original-fairmount-bagel-bakery-montreal" },
+    { src: "assets/montreal-mile-end-food-2.webp", alt: "Poutine mit Pommes, Käsebruch und Bratensauce", label: "Poutine", source: "https://www.themain.com/guide/best-poutine-in-montreal" }
+  ],
+  "montreal-jean-talon": [
+    { src: "assets/montreal-jean-talon-1.webp", alt: "Eingang zum Jean-Talon Market in Montréal", label: "Jean-Talon Market", source: "https://thehaphazardtraveler.com/unique-things-to-do-montreal/" },
+    { src: "assets/montreal-jean-talon-2.webp", alt: "Farbenreicher Obst- und Gemüsestand auf dem Jean-Talon Market", label: "Marktstände", source: "https://www.timeout.com/montreal/shopping/best-montreal-farmers-market" }
+  ],
+  "montreal-bike": [
+    { src: "assets/montreal-bike-1.webp", alt: "Geführte Fahrradtour durch ein Montréaler Viertel mit Wandkunst", label: "Geführte Radtour", source: "https://powertraveller.com/hidden-gems-bike-tour-plateau-mile-end-jean-talon-market/" },
+    { src: "assets/montreal-bike-2.webp", alt: "Radfahrer vor einem großen Montréaler Wandbild", label: "Murals per Rad", source: "https://www.germainhotels.com/en/blog/a-discovery-run-through-the-streets-of-montreal" }
+  ],
+  "montreal-downtown": [
+    { src: "assets/montreal-downtown-1.webp", alt: "Historisches Universitätsgebäude auf dem McGill-Campus", label: "McGill", source: "https://www.mcgill.ca/education/media-gallery/detail/1827/1834" },
+    { src: "assets/montreal-downtown-2.webp", alt: "Heller Verbindungsgang in Montréals unterirdischer Stadt RÉSO", label: "RÉSO", source: "https://www.getyourguide.com/montreal-l195/montreal-discover-reso-the-underground-city-t914093/" }
+  ],
+  "montreal-olympic": [
+    { src: "assets/montreal-olympic-1.webp", alt: "Olympiastadion und Biodôme im Olympiapark von Montréal", label: "Olympiapark", source: "https://www.getyourguide.com/montreal-l195/montreal-skip-the-line-biodome-private-tour-with-tickets-t943736/" },
+    { src: "assets/montreal-olympic-2.webp", alt: "Chinesischer Garten im Botanischen Garten von Montréal", label: "Botanischer Garten", source: "https://www.tourbytransit.com/montreal/things-to-do/Montreal-botanical-garden" }
+  ],
+  "montreal-canal": [
+    { src: "assets/montreal-canal-1.webp", alt: "Rad- und Spazierweg am Lachine Canal", label: "Lachine Canal", source: "https://www.nationalgeographic.com/travel/article/montreal-bike-hike-kayak-tour-adventure" },
+    { src: "assets/montreal-canal-2.webp", alt: "Historische Backsteinfassade des Atwater Market", label: "Atwater Market", source: "https://labbize.com/English/index.html" }
+  ],
+  "montreal-guided-old": [
+    { src: "assets/montreal-guided-old-1.webp", alt: "Kleine geführte Gruppe auf der Place d’Armes in Vieux-Montréal", label: "Place d’Armes", source: "https://www.expedia-aarp.com/things-to-do/montreal-explore-old-montreal-small-group-walking-tour.a47980237.activity-details" },
+    { src: "assets/montreal-guided-old-2.webp", alt: "Stadtführung vor dem Marché Bonsecours in der Altstadt", label: "Altstadtführung", source: "https://mtldetours.ca/tour/explore-old-montreal-walking-tour/" }
+  ],
+  "montreal-evening": [
+    { src: "assets/montreal-evening-1.webp", alt: "Licht- und Klangshow AURA in der Notre-Dame-Basilika", label: "AURA", source: "https://www.basiliquenotredame.ca/en/press-and-media" },
+    { src: "assets/montreal-evening-2.webp", alt: "Beleuchteter Alter Hafen von Montréal bei Nacht", label: "Montréal bei Nacht", source: "https://www.simonsulyma.com/2018/06/charming-vieux-port-montreal-dark.html" }
+  ],
+  "montreal-dinner": [
+    { src: "assets/montreal-dinner-1.webp", alt: "Auswahl moderner Gerichte mit regionalen Zutaten aus Québec", label: "Regional & modern", source: "https://www.caribougourmand.com/" },
+    { src: "assets/montreal-dinner-2.webp", alt: "Elegant angerichtetes Gericht in einem Montréaler Restaurant", label: "Besonderer Abend", source: "https://www.opentable.com/r/moneme-montreal" }
+  ]
+};
+
 const ideaChoiceGroups = {
   "montagne-du-chapeau": {
     ratingTitle: "Möchten wir den Freitag als Wandertag nutzen?",
@@ -460,6 +511,12 @@ function youtubeVideoId(links = []) {
   return "";
 }
 
+function renderIdeaPhotoGallery(ideaId) {
+  const photos = montrealIdeaPhotos[ideaId];
+  if (!photos?.length) return "";
+  return `<div class="idea-photo-gallery" aria-label="Bilder zu dieser Idee">${photos.map((photo) => `<a href="${escapeHtml(photo.source)}" target="_blank" rel="noopener"><img src="${escapeHtml(photo.src)}" alt="${escapeHtml(photo.alt)}" width="900" height="600" loading="lazy"><span>${escapeHtml(photo.label)} ↗</span></a>`).join("")}</div>`;
+}
+
 function renderStars(value, interactive, profileId) {
   return `<div class="stars" role="${interactive ? "radiogroup" : "img"}" aria-label="${value ? `${value} von 5 Sternen` : "Noch keine Bewertung"}">${[1,2,3,4,5].map((star) => interactive
     ? `<button type="button" data-rating="${star}" aria-label="${star} Stern${star === 1 ? "" : "e"}" aria-pressed="${value === star}" class="${star <= value ? "filled" : ""}">★</button>`
@@ -668,6 +725,7 @@ async function initializeIdeaDetail() {
     if (back && destination) back.href = `${destination.page}#ideas`;
     document.title = `${idea.title} · Canada 2027`;
     const facts = idea.facts?.length ? `<div class="dialog-facts">${idea.facts.map((fact) => `<span>${escapeHtml(fact)}</span>`).join("")}</div>` : "";
+    const photoGallery = renderIdeaPhotoGallery(ideaId);
     const warning = idea.warning ? `<aside class="safety-note"><strong>Sicherheitshinweis</strong>${escapeHtml(idea.warning)}</aside>` : "";
     const links = idea.links?.length ? `<div class="source-links">${idea.links.map((link) => `<a href="${escapeHtml(link.url)}" target="_blank" rel="noopener">${link.pdf ? "PDF · " : ""}${escapeHtml(link.label)} ↗</a>`).join("")}</div>` : "";
     const videoId = youtubeVideoId(idea.links);
@@ -677,7 +735,7 @@ async function initializeIdeaDetail() {
     const editorial = renderMauricieEditorial(ideaId) || renderSainteRoseEditorial(ideaId);
     const editorialHero = editorial ? (destination?.id === "mauricie" ? "mauricie-detail-hero" : "sainte-detail-hero") : "";
     const interestHint = (destination?.id === "montreal" || ideaChoiceGroups[ideaId]) ? `<div class="detail-interest-hint"><strong>Interessenstufe:</strong> 5 = unbedingt · 4 = gerne · 3 = neutral · 2 = eher nicht · 1 = kann entfallen</div>` : "";
-    root.innerHTML = `<article class="idea-detail-card ${editorialHero}"><div class="idea-detail-icon">${idea.icon}</div><p class="eyebrow">${escapeHtml(idea.place || destination?.sectionTitle || "Reiseidee")}</p><h1>${escapeHtml(idea.title)}</h1>${author}<p class="idea-detail-copy">${escapeHtml(idea.text)}</p>${facts}${videoPreview}${warning}${links}${attachment}${interestHint}</article>${editorial}<div id="idea-community" class="community-loading">Bewertungen und Kommentare werden geladen …</div>`;
+    root.innerHTML = `<article class="idea-detail-card ${editorialHero}"><div class="idea-detail-icon">${idea.icon}</div><p class="eyebrow">${escapeHtml(idea.place || destination?.sectionTitle || "Reiseidee")}</p><h1>${escapeHtml(idea.title)}</h1>${author}<p class="idea-detail-copy">${escapeHtml(idea.text)}</p>${photoGallery}${facts}${videoPreview}${warning}${links}${attachment}${interestHint}</article>${editorial}<div id="idea-community" class="community-loading">Bewertungen und Kommentare werden geladen …</div>`;
     const community = document.querySelector("#idea-community");
     const redraw = () => { community.innerHTML = renderIdeaCommunity(ideaId, data); };
     redraw();

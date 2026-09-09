@@ -340,6 +340,13 @@ dialog::backdrop { background: rgba(10,28,21,.55); backdrop-filter: blur(4px); }
 .idea-detail-icon { display: grid; place-items: center; width: 58px; height: 58px; margin-bottom: 24px; border-radius: 18px; background: var(--cream); font-size: 2rem; }
 .idea-detail-card h1 { position: relative; z-index: 1; max-width: 720px; color: var(--forest); font-size: clamp(2.4rem,7vw,4.6rem); }
 .idea-detail-copy { position: relative; z-index: 1; max-width: 720px; margin: 20px 0; color: var(--muted); font-size: 1.08rem; }
+.idea-photo-gallery { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; margin: 22px 0 20px; }
+.idea-photo-gallery a { position: relative; display: block; overflow: hidden; border: 1px solid rgba(20,59,43,.12); border-radius: 18px; background: var(--cream); box-shadow: 0 10px 24px rgba(15,42,31,.08); text-decoration: none; }
+.idea-photo-gallery img { display: block; width: 100%; height: auto; aspect-ratio: 3/2; object-fit: cover; transition: transform .25s ease; }
+.idea-photo-gallery span { position: absolute; left: 10px; bottom: 10px; padding: 7px 10px; border-radius: 99px; color: #fff; background: rgba(8,38,30,.84); backdrop-filter: blur(6px); font-size: .76rem; font-weight: 800; }
+.idea-photo-gallery a:hover img, .idea-photo-gallery a:focus-visible img { transform: scale(1.025); }
+.idea-photo-gallery a:focus-visible { outline: 3px solid rgba(179,38,45,.35); outline-offset: 3px; }
+@media (max-width:480px) { .idea-photo-gallery { gap: 8px; margin: 18px 0; } .idea-photo-gallery a { border-radius: 14px; } .idea-photo-gallery span { left: 7px; bottom: 7px; max-width: calc(100% - 14px); padding: 6px 8px; font-size: .64rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; } }
 .idea-author { position: relative; z-index: 1; display: inline-flex; align-items: center; gap: 10px; margin-top: 16px; padding: 8px 12px 8px 8px; border-radius: 16px; background: var(--cream); }
 .idea-author .avatar { width: 42px; height: 42px; flex-basis: 42px; border-width: 2px; box-shadow: none; }
 .idea-author small, .idea-author strong { display: block; }
