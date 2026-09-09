@@ -514,7 +514,7 @@ function youtubeVideoId(links = []) {
 function renderIdeaPhotoGallery(ideaId) {
   const photos = montrealIdeaPhotos[ideaId];
   if (!photos?.length) return "";
-  return `<div class="idea-photo-gallery" aria-label="Bilder zu dieser Idee">${photos.map((photo) => `<a href="${escapeHtml(photo.source)}" target="_blank" rel="noopener"><img src="${escapeHtml(photo.src)}" alt="${escapeHtml(photo.alt)}" width="900" height="600" loading="lazy"><span>${escapeHtml(photo.label)} ↗</span></a>`).join("")}</div>`;
+  return `<div class="idea-photo-gallery" aria-label="Bilder zu dieser Idee">${photos.map((photo) => `<figure><img src="${escapeHtml(photo.src)}" alt="${escapeHtml(photo.alt)}" width="900" height="600" loading="lazy"><figcaption>${escapeHtml(photo.label)}</figcaption></figure>`).join("")}</div>`;
 }
 
 function renderStars(value, interactive, profileId) {
