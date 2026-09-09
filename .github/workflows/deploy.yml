@@ -95,6 +95,30 @@ jobs:
             'put assets/tutorial-step-6.webp assets/tutorial-step-6.webp' \
             'put assets/tutorial-step-7.webp assets/tutorial-step-7.webp' \
             'put assets/tutorial-step-8.webp assets/tutorial-step-8.webp' \
+            'put assets/montreal-old-city-1.webp assets/montreal-old-city-1.webp' \
+            'put assets/montreal-old-city-2.webp assets/montreal-old-city-2.webp' \
+            'put assets/montreal-basilica-1.webp assets/montreal-basilica-1.webp' \
+            'put assets/montreal-basilica-2.webp assets/montreal-basilica-2.webp' \
+            'put assets/montreal-mountain-1.webp assets/montreal-mountain-1.webp' \
+            'put assets/montreal-mountain-2.webp assets/montreal-mountain-2.webp' \
+            'put assets/montreal-mile-end-food-1.webp assets/montreal-mile-end-food-1.webp' \
+            'put assets/montreal-mile-end-food-2.webp assets/montreal-mile-end-food-2.webp' \
+            'put assets/montreal-jean-talon-1.webp assets/montreal-jean-talon-1.webp' \
+            'put assets/montreal-jean-talon-2.webp assets/montreal-jean-talon-2.webp' \
+            'put assets/montreal-bike-1.webp assets/montreal-bike-1.webp' \
+            'put assets/montreal-bike-2.webp assets/montreal-bike-2.webp' \
+            'put assets/montreal-downtown-1.webp assets/montreal-downtown-1.webp' \
+            'put assets/montreal-downtown-2.webp assets/montreal-downtown-2.webp' \
+            'put assets/montreal-olympic-1.webp assets/montreal-olympic-1.webp' \
+            'put assets/montreal-olympic-2.webp assets/montreal-olympic-2.webp' \
+            'put assets/montreal-canal-1.webp assets/montreal-canal-1.webp' \
+            'put assets/montreal-canal-2.webp assets/montreal-canal-2.webp' \
+            'put assets/montreal-guided-old-1.webp assets/montreal-guided-old-1.webp' \
+            'put assets/montreal-guided-old-2.webp assets/montreal-guided-old-2.webp' \
+            'put assets/montreal-evening-1.webp assets/montreal-evening-1.webp' \
+            'put assets/montreal-evening-2.webp assets/montreal-evening-2.webp' \
+            'put assets/montreal-dinner-1.webp assets/montreal-dinner-1.webp' \
+            'put assets/montreal-dinner-2.webp assets/montreal-dinner-2.webp' \
             '-mkdir pdfs' \
             'put pdfs/00_Vergleich_Aktivitaeten_Mauricie.pdf pdfs/00_Vergleich_Aktivitaeten_Mauricie.pdf' \
             'put pdfs/01_Lac-Solitaire.pdf pdfs/01_Lac-Solitaire.pdf' \
