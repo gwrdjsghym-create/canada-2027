@@ -119,6 +119,24 @@ jobs:
             'put assets/montreal-evening-2.webp assets/montreal-evening-2.webp' \
             'put assets/montreal-dinner-1.webp assets/montreal-dinner-1.webp' \
             'put assets/montreal-dinner-2.webp assets/montreal-dinner-2.webp' \
+            'put assets/quebec-old-town-1.webp assets/quebec-old-town-1.webp' \
+            'put assets/quebec-old-town-2.webp assets/quebec-old-town-2.webp' \
+            'put assets/quebec-history-tour-1.webp assets/quebec-history-tour-1.webp' \
+            'put assets/quebec-history-tour-2.webp assets/quebec-history-tour-2.webp' \
+            'put assets/quebec-montmorency-1.webp assets/quebec-montmorency-1.webp' \
+            'put assets/quebec-montmorency-2.webp assets/quebec-montmorency-2.webp' \
+            'put assets/quebec-orleans-1.webp assets/quebec-orleans-1.webp' \
+            'put assets/quebec-orleans-2.webp assets/quebec-orleans-2.webp' \
+            'put assets/quebec-citadelle-1.webp assets/quebec-citadelle-1.webp' \
+            'put assets/quebec-citadelle-2.webp assets/quebec-citadelle-2.webp' \
+            'put assets/quebec-food-tour-1.webp assets/quebec-food-tour-1.webp' \
+            'put assets/quebec-food-tour-2.webp assets/quebec-food-tour-2.webp' \
+            'put assets/quebec-museum-1.webp assets/quebec-museum-1.webp' \
+            'put assets/quebec-museum-2.webp assets/quebec-museum-2.webp' \
+            'put assets/quebec-night-1.webp assets/quebec-night-1.webp' \
+            'put assets/quebec-night-2.webp assets/quebec-night-2.webp' \
+            'put assets/quebec-dinner-1.webp assets/quebec-dinner-1.webp' \
+            'put assets/quebec-dinner-2.webp assets/quebec-dinner-2.webp' \
             '-mkdir pdfs' \
             'put pdfs/00_Vergleich_Aktivitaeten_Mauricie.pdf pdfs/00_Vergleich_Aktivitaeten_Mauricie.pdf' \
             'put pdfs/01_Lac-Solitaire.pdf pdfs/01_Lac-Solitaire.pdf' \

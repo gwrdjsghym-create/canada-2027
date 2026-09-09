@@ -292,7 +292,7 @@ const ideas = [
   }
 ];
 
-const montrealIdeaPhotos = {
+const ideaPhotos = {
   "montreal-old-city": [
     { src: "assets/montreal-old-city-1.webp", alt: "Historische Straße in Vieux-Montréal mit dem Marché Bonsecours", label: "Vieux-Montréal", source: "https://www.hollandamerica.com/en/gb/cruise-destinations/canada-new-england-cruises" },
     { src: "assets/montreal-old-city-2.webp", alt: "Alter Hafen von Montréal in der Abendstimmung", label: "Alter Hafen", source: "https://www.pelago.com/en-AU/activity/pp5p8kglx-romantic-walking-tour-for-couples-in-montreal-montreal/" }
@@ -340,6 +340,42 @@ const montrealIdeaPhotos = {
   "montreal-dinner": [
     { src: "assets/montreal-dinner-1.webp", alt: "Auswahl moderner Gerichte mit regionalen Zutaten aus Québec", label: "Regional & modern", source: "https://www.caribougourmand.com/" },
     { src: "assets/montreal-dinner-2.webp", alt: "Elegant angerichtetes Gericht in einem Montréaler Restaurant", label: "Besonderer Abend", source: "https://www.opentable.com/r/moneme-montreal" }
+  ],
+  "quebec-old-town": [
+    { src: "assets/quebec-old-town-1.webp", alt: "Historische Gasse in Vieux-Québec mit Blick auf das Château Frontenac", label: "Petit-Champlain & Château Frontenac" },
+    { src: "assets/quebec-old-town-2.webp", alt: "Das Château Frontenac erhebt sich über den Bäumen von Québec", label: "Château Frontenac" }
+  ],
+  "quebec-history-tour": [
+    { src: "assets/quebec-history-tour-1.webp", alt: "Historisches Stadttor Porte Saint-Louis in der Befestigung von Québec", label: "Porte Saint-Louis" },
+    { src: "assets/quebec-history-tour-2.webp", alt: "Beleuchtete historische Gasse mit alten Steinhäusern in Vieux-Québec", label: "Historische Gassen von Vieux-Québec" }
+  ],
+  "quebec-montmorency": [
+    { src: "assets/quebec-montmorency-1.webp", alt: "Blick von oben auf die Montmorency-Fälle und den Sankt-Lorenz-Strom", label: "Montmorency-Fälle von oben" },
+    { src: "assets/quebec-montmorency-2.webp", alt: "Die Montmorency-Fälle stürzen neben einer bewaldeten Felswand in die Tiefe", label: "Montmorency-Fälle aus der Nähe" }
+  ],
+  "quebec-orleans": [
+    { src: "assets/quebec-orleans-1.webp", alt: "Landwirtschaftliche Felder in warmen Herbstfarben auf der Île d’Orléans", label: "Herbstliche Felder auf der Île d’Orléans" },
+    { src: "assets/quebec-orleans-2.webp", alt: "Dorf und Uferlandschaft von Saint-Laurent auf der Île d’Orléans", label: "Saint-Laurent-de-l’Île-d’Orléans" }
+  ],
+  "quebec-citadelle": [
+    { src: "assets/quebec-citadelle-1.webp", alt: "Wachparade vor den historischen Gebäuden der Citadelle von Québec", label: "Wachparade an der Citadelle" },
+    { src: "assets/quebec-citadelle-2.webp", alt: "Grüne Parklandschaft mit Wegen und Blumen auf den Plains of Abraham", label: "Plains of Abraham" }
+  ],
+  "quebec-food-tour": [
+    { src: "assets/quebec-food-tour-1.webp", alt: "Poutine mit Pommes frites, Käsebruch, Sauce und Kräutern", label: "Québec-Klassiker: Poutine" },
+    { src: "assets/quebec-food-tour-2.webp", alt: "Schild für Tire d’érable auf Schnee, eine traditionelle Ahornspezialität", label: "Tire d’érable auf Schnee" }
+  ],
+  "quebec-museum": [
+    { src: "assets/quebec-museum-1.webp", alt: "Detail einer historischen Alltagsszene in einer Ausstellung des Musée de la civilisation", label: "Einblick in eine Ausstellung" },
+    { src: "assets/quebec-museum-2.webp", alt: "Aufwendig perlenverzierte indigene Ausstellungsobjekte im Musée de la civilisation", label: "Indigene Geschichte im Museum" }
+  ],
+  "quebec-night": [
+    { src: "assets/quebec-night-1.webp", alt: "Beleuchtete historische Gasse in Vieux-Québec am Abend", label: "Vieux-Québec am Abend" },
+    { src: "assets/quebec-night-2.webp", alt: "Nächtliche Skyline von Québec mit beleuchtetem Château Frontenac, gesehen von Lévis", label: "Blick von Lévis auf Québec bei Nacht" }
+  ],
+  "quebec-dinner": [
+    { src: "assets/quebec-dinner-1.webp", alt: "Modern eingerichteter Speisesaal eines Restaurants in Québec City", label: "Moderner Restaurantabend in Québec" },
+    { src: "assets/quebec-dinner-2.webp", alt: "Gemütlicher Speisesaal in einem historischen Gebäude von Vieux-Québec", label: "Speisen in historischen Mauern" }
   ]
 };
 
@@ -572,7 +608,7 @@ function youtubeVideoId(links = []) {
 }
 
 function renderIdeaPhotoGallery(ideaId) {
-  const photos = montrealIdeaPhotos[ideaId];
+  const photos = ideaPhotos[ideaId];
   if (!photos?.length) return "";
   return `<div class="idea-photo-gallery" aria-label="Bilder zu dieser Idee">${photos.map((photo) => `<figure><img src="${escapeHtml(photo.src)}" alt="${escapeHtml(photo.alt)}" width="900" height="600" loading="lazy"><figcaption>${escapeHtml(photo.label)}</figcaption></figure>`).join("")}</div>`;
 }
