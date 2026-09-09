@@ -6,7 +6,7 @@ $currentProfile = canada_require_api();
 header('Content-Type: application/json; charset=utf-8');
 header('Cache-Control: no-store');
 
-const ORFORD_ACTIVITY_VARIANTS = ['hike','park','magog','abbey','cruise','spa'];
+const ORFORD_ACTIVITY_VARIANTS = ['hike','montchauve','park','magog','abbey','cruise','spa'];
 $dataDir = __DIR__ . '/data';
 $dataFile = $dataDir . '/orford-activities.json';
 
