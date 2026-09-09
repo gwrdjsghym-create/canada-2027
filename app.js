@@ -78,6 +78,66 @@ const route = [
 const ideas = [
   { id: "whale-tour", destination: "quebec", type: "booked", icon: "🐋", place: "Tadoussac · 27. September", title: "Walbeobachtung per Schiff", text: "Fester Bestandteil des Wechsels nach Québec City. Anbieter und genaue Abfahrtszeit werden ergänzt." },
   {
+    id: "quebec-old-town", destination: "quebec", type: "idea", icon: "🏘️", place: "Vieux-Québec · Stadtklassiker", title: "Altstadt, Petit-Champlain & Château",
+    text: "Das klassische Québec-Erlebnis: Place Royale und Petit-Champlain in der Unterstadt, anschließend per Funiculaire oder zu Fuß hinauf zum Château Frontenac und zur Terrasse Dufferin.",
+    facts: ["2½–4 Std.", "viel zu Fuß", "direkt ab Hotel"],
+    links: [{ label: "Old Québec · offiziell", url: "https://www.quebec-cite.com/en/old-quebec-city" }, { label: "Petit-Champlain & Place Royale", url: "https://www.quebec-cite.com/en/old-quebec-city/petit-champlain" }]
+  },
+  {
+    id: "quebec-history-tour", destination: "quebec", type: "idea", icon: "🎙️", place: "Vieux-Québec · geführt", title: "Historische Altstadtführung",
+    text: "Eine etwa zweistündige Führung liefert den historischen Zusammenhang hinter Stadtmauer, Plätzen und Gebäuden. Möglich sind eine klassische Führung oder lebendigeres Storytelling mit historischen Figuren.",
+    facts: ["ca. 2 Std.", "geführt", "Termine 2027 prüfen"],
+    links: [{ label: "Tours Voir Québec", url: "https://www.toursvoirquebec.com/en/tours/the-grand-tour/" }, { label: "Cicérone", url: "https://cicerone.ca/en/tour/visitors/" }]
+  },
+  {
+    id: "quebec-montmorency", destination: "quebec", type: "idea", icon: "💦", place: "Außerhalb der Stadt · Natur", title: "Chute Montmorency",
+    text: "Der 83 Meter hohe Wasserfall bietet Aussichtspunkte, Hängebrücke, Treppen und saisonal eine Seilbahn. Mit unserem Mietwagen bleibt die Tour kompakt genug für eine Kombination mit der Altstadt.",
+    facts: ["2½–3 Std. gesamt", "25–30 Min. Fahrt", "wetterabhängig"],
+    links: [{ label: "Sépaq · offizielle Parkseite", url: "https://www.sepaq.com/destinations/parc-chute-montmorency/" }, { label: "Route ab Hotel", url: "https://www.google.com/maps/dir/?api=1&origin=Hotel+Port-Royal+Quebec+City&destination=Parc+de+la+Chute-Montmorency&travelmode=driving" }]
+  },
+  {
+    id: "quebec-orleans", destination: "quebec", type: "idea", icon: "🍎", place: "Außerhalb der Stadt · Landschaft & Genuss", title: "Île d’Orléans",
+    text: "Ländliches Québec mit Dörfern, Landwirtschaft, Cidre, Käse und Blicken auf den Sankt-Lorenz-Strom. Schön, aber wegen unseres einzigen vollen Tages eine bewusste Entscheidung gegen mehr Stadtzeit.",
+    facts: ["3½–5 Std.", "Mietwagen", "hoher Zeitbedarf"],
+    links: [{ label: "Île d’Orléans entdecken", url: "https://www.quebec-cite.com/en/ile-d-orleans" }]
+  },
+  {
+    id: "quebec-citadelle", destination: "quebec", type: "idea", icon: "🏰", place: "Oberstadt · Geschichte", title: "Citadelle & Plains of Abraham",
+    text: "Festungsanlage, Militärgeschichte und das Schlachtfeld von 1759. Die Citadelle ist eine aktive Militärbasis und nur im Rahmen einer Führung zugänglich; die Plains lassen sich frei erkunden.",
+    facts: ["1½–3 Std.", "Führung nötig", "mittel"],
+    links: [{ label: "La Citadelle · offiziell", url: "https://www.lacitadelle.qc.ca/en/admission-hours" }, { label: "Plains of Abraham", url: "https://www.plainsofabraham.ca/" }]
+  },
+  {
+    id: "quebec-food-tour", destination: "quebec", type: "idea", icon: "🥐", place: "Altstadt · Genuss", title: "Kulinarische Québec-Tour",
+    text: "Eine geführte Food Tour verbindet Kostproben mit Geschichten über Québec. Sie ersetzt einen großen Teil des Mittagessens und kann je nach Anbieter stärker kulinarisch oder historisch ausgerichtet sein.",
+    facts: ["ca. 3 Std.", "geführt", "ersetzt Mittagessen"],
+    links: [{ label: "Cicérone · kulinarische Touren", url: "https://cicerone.ca/en/tour/visitors/" }, { label: "Québec City · Food Tours", url: "https://www.quebec-cite.com/en/what-to-do-quebec-city/food-tours" }]
+  },
+  {
+    id: "quebec-museum", destination: "quebec", type: "idea", icon: "🏛️", place: "Vieux-Port · Kultur & Schlechtwetter", title: "Musée de la civilisation",
+    text: "Das Museum liegt nur wenige Minuten vom Hotel entfernt und behandelt Québec, Gesellschaft, Geschichte und Kultur. Es ist die stärkste wetterfeste Alternative, ohne den Tag mit langer Anfahrt zu belasten.",
+    facts: ["1½–2½ Std.", "nahe Hotel", "regenfest"],
+    links: [{ label: "Musée de la civilisation", url: "https://www.mcq.org/" }]
+  },
+  {
+    id: "quebec-night", destination: "quebec", type: "idea", icon: "🌙", place: "Dienstagabend · Aussicht & Atmosphäre", title: "Québec bei Nacht",
+    text: "Drei sehr unterschiedliche Möglichkeiten: ein freier Spaziergang durch die beleuchtete Altstadt, die kurze Lévis-Fähre mit Skylineblick oder eine geführte Ghost Tour. Das Abendessen muss dazu zeitlich passen.",
+    facts: ["45–90 Min.", "3 Varianten", "nach dem Dinner"],
+    links: [{ label: "Québec–Lévis-Fähre", url: "https://www.quebec-cite.com/en/what-to-do-quebec-city/quebec-city-levis-ferry" }, { label: "Ghost Tours of Québec", url: "https://ghosttoursofquebec.com/" }]
+  },
+  {
+    id: "quebec-museum", destination: "quebec", type: "idea", icon: "🏛️", place: "Vieux-Port · Schlechtwetter", title: "Musée de la civilisation",
+    text: "Direkt beim Hotel und keine bloße Notlösung: Das Museum widmet sich Québec, Gesellschaft, Geschichte und Kultur. Bei Dauerregen ist es der stärkste Ersatz für einen längeren Außenblock.",
+    facts: ["1½–2½ Std.", "wenige Minuten", "indoor"],
+    links: [{ label: "Musée de la civilisation", url: "https://www.mcq.org/" }]
+  },
+  {
+    id: "quebec-dinner", destination: "quebec", type: "idea", icon: "🍽️", place: "Montag oder Dienstag · Abend", title: "Ein besonderes Québec-Dinner",
+    text: "Traditionelle Québec-Küche, moderne regionale Küche, Bistro, Steak & Seafood oder Fine Dining: Zuerst entscheiden wir, wie wichtig uns ein bewusst geplantes Restaurant-Erlebnis ist.",
+    facts: ["2 Abende", "6 Restaurantstile", "Reservierung später"],
+    links: [{ label: "Destination Québec cité · Restaurants", url: "https://www.quebec-cite.com/en/restaurants-quebec-city" }, { label: "L’Échaudé", url: "https://echaude.com/" }]
+  },
+  {
     id: "montreal-old-city", destination: "montreal", type: "idea", icon: "🏛️", place: "Cluster A · direkt am Hotel", title: "Vieux-Montréal & Alter Hafen",
     text: "Kopfsteinpflaster, Rue Saint-Paul, Place d’Armes, Place Jacques-Cartier und die Uferpromenade – der klassische Einstieg beginnt praktisch vor der Hoteltür.",
     facts: ["1 Block", "leicht–mittel", "vieles zu Fuß"],
@@ -388,7 +448,7 @@ function renderIdeas(filter = "all") {
   if (!ideaGrid || !ideaTitle) return;
   const destinationIdeas = [...ideas, ...customIdeas].filter((idea) => idea.destination === activeDestination);
   const filtered = filter === "all" ? destinationIdeas : destinationIdeas.filter((idea) => idea.type === filter);
-  ideaTitle.textContent = `Ideen für ${activeData.label}`;
+  ideaTitle.textContent = activeDestination === "quebec" ? "Ideen-Pool für Québec" : `Ideen für ${activeData.label}`;
   if (!filtered.length) {
     ideaGrid.innerHTML = `<div class="ideas-empty"><span>✦</span><div><strong>Noch keine ${filter === "booked" ? "Buchungen" : "Ideen"} für ${activeData.label}</strong><p>Neue Vorschläge aus dem zugehörigen Projektchat erscheinen später genau hier.</p></div></div>`;
     return;
