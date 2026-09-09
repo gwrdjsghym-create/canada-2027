@@ -40,13 +40,13 @@ const route = [
   },
   {
     id: "to-sainte-rose", type: "transfer", destination: "sainte-rose", date: "Donnerstag · 23. September", title: "Nature Nature → Sainte-Rose-du-Nord",
-    text: "Längster reiner Fahrtag der Rundreise. Stopps, Pausen und Verpflegung werden separat geplant.", tags: ["ca. 389 km", "ca. 4 Std. 47 Min."],
-    details: ["Check-out bei Nature Nature", "Route und sinnvolle Pausen noch ausarbeiten", "Ankunft bei Exode en Nature", "Verpflegung und Einkauf für den Aufenthalt prüfen"]
+    text: "Der längste reine Fahrtag ist vollständig vorbereitet: zur Wahl stehen ein flexibler Roadtrip über den Lac Saint-Jean und Val-Jalbert als großes Hauptziel.", tags: ["2 Varianten", "Einkauf eingeplant", "Abstimmung offen"],
+    details: ["B2: Bostonnais, Lac Saint-Jean, Blaubeer-Stopp und Einkauf", "C: Val-Jalbert mit historischem Dorf und Wasserfall", "Beide Varianten enthalten den Großeinkauf in Chicoutimi", "<a href=\"03-transfer-23-09.php\" class=\"primary-button inline-button\">Varianten vergleichen &amp; abstimmen →</a>"]
   },
   {
     id: "sainte-rose", type: "stay", destination: "sainte-rose", date: "23.–27. September · 4 Nächte", title: "Sainte-Rose-du-Nord",
     text: "Ankunftstag und drei volle Tage am Saguenay. Unterkunft: Exode en Nature.", tags: ["3 volle Tage", "Exode en Nature"],
-    details: ["Freitag, Samstag und Sonntag vollständig vor Ort", "Montag: frühe Weiterfahrt zur gebuchten Walbeobachtung", "Ausflüge und Schlechtwetteroptionen folgen"]
+    details: ["Freitag: Wanderwahl zwischen Montagne du Chapeau und Fjordrunde", "Samstag: Fjordtag mit vier vorbereiteten Varianten", "Sonntag: Pic-de-la-Tête-de-Chien mit Wetteralternative", "Montag: frühe Weiterfahrt zur gebuchten Walbeobachtung"]
   },
   {
     id: "whales", type: "transfer", destination: "quebec", date: "Montag · 27. September", title: "Sainte-Rose → Tadoussac → Québec City",
@@ -60,13 +60,13 @@ const route = [
   },
   {
     id: "to-orford", type: "transfer", destination: "orford", date: "Mittwoch · 29. September", title: "Québec City → Orford",
-    text: "Fahrt vom Hotel Port-Royal zum letzten Aufenthalt der Rundreise.", tags: ["ca. 259 km", "ca. 2 Std. 59 Min."],
-    details: ["Check-out im Hotel Port-Royal", "Route, Pausen und mögliche Stopps noch planen", "Check-in im Espace 4 Saisons"]
+    text: "Für den Wechsel zum letzten Aufenthalt stehen drei vorbereitete Varianten zur Wahl – von der einfachen Mittagspause bis zum Gartenbesuch.", tags: ["3 Varianten", "Check-in ab 16:00", "Abstimmung offen"],
+    details: ["A: entspannte Poutine-Pause in Drummondville", "B: Fromagerie du Presbytère – unsere Empfehlung", "C: Parc Marie-Victorin als erlebnisreiche Variante", "<a href=\"05-transfer-29-09.php\" class=\"primary-button inline-button\">Varianten vergleichen &amp; abstimmen →</a>"]
   },
   {
     id: "orford", type: "stay", destination: "orford", date: "29. September–2. Oktober · 3 Nächte", title: "Orford",
     text: "Ankunftstag und zwei volle Tage. Unterkunft: Espace 4 Saisons.", tags: ["2 volle Tage", "Espace 4 Saisons"],
-    details: ["Donnerstag und Freitag vollständig vor Ort", "Samstag: Rückreise und Mietwagenrückgabe", "Aktivitäten folgen"]
+    details: ["Drei Wanderstufen von leicht bis anspruchsvoll", "Magog, Marais, Abtei, Schifffahrt und Spa als weitere Bausteine", "Drei Beispielpläne und gemeinsame Aktivitätsabstimmung sind vorbereitet", "Samstag: Rückreise und Mietwagenrückgabe"]
   },
   {
     id: "return", type: "transfer", destination: "orford", date: "Samstag · 2. Oktober", title: "Orford → Montréal → Frankfurt → Wuppertal",
