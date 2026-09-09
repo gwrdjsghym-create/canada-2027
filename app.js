@@ -262,27 +262,31 @@ const ideas = [
   },
   {
     id: "orford-hike", destination: "orford", type: "idea", icon: "⛰️", place: "Orford · großer Wandertag", title: "Pic de l’Ours via L’Escalier-du-Nord",
-    text: "Die anspruchsvolle Gipfeltour für einen ganzen Tag mit den stärksten Herbst- und Panoramablicken.", facts: ["12,9 km", "624 Hm", "ca. 6 Std.", "schwer"], href: "05-aktivitaeten.php#activity-hike"
+    text: "Die anspruchsvolle Gipfeltour für einen ganzen Tag mit den stärksten Herbst- und Panoramablicken.", facts: ["12 km", "455 Hm", "ca. 6 Std.", "schwer"], image: "assets/orford-hero-autumn.jpg", imageAlt: "Mont-Orford in herbstlichen Farben", imageCredit: "Estcroissant · CC BY-SA 4.0", href: "05-aktivitaeten.php#activity-hike"
+  },
+  {
+    id: "orford-montchauve", destination: "orford", type: "idea", icon: "🥾", place: "Orford · mittlere Rundtour", title: "Boucle du Mont-Chauve",
+    text: "Der Mittelweg zwischen Spaziergang und großem Gipfeltag: eine vierstündige Runde ab Le Bonnallie.", facts: ["10,6 km", "310 Hm", "ca. 4 Std.", "mittel"], image: "assets/orford-hero-autumn.jpg", imageAlt: "Herbstlandschaft am Mont-Orford", imageCredit: "Estcroissant · CC BY-SA 4.0", href: "05-aktivitaeten.php#activity-montchauve"
   },
   {
     id: "orford-park", destination: "orford", type: "idea", icon: "🥾", place: "Orford · leichte Parkwanderung", title: "Boucle des Trois-Étangs",
-    text: "Ein ruhiger Rundweg an drei Teichen, der sich gut mit Magog oder einer weiteren Aktivität verbinden lässt.", facts: ["5,3 km", "82 Hm", "ca. 2 Std.", "leicht"], href: "05-aktivitaeten.php#activity-park"
+    text: "Ein ruhiger Rundweg an drei Teichen, der sich gut mit Magog oder einer weiteren Aktivität verbinden lässt.", facts: ["5,5 km", "50 Hm", "ca. 2 Std.", "leicht"], image: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Sentier%20de%20la%20Boucle%20des%20Trois-%C3%89tangs%2C%20Mont%20Orford.jpg?width=900", imageAlt: "Wanderweg an der Boucle des Trois-Étangs", imageCredit: "Slayy queen · CC0", href: "05-aktivitaeten.php#activity-park"
   },
   {
     id: "orford-magog", destination: "orford", type: "idea", icon: "🌾", place: "Magog · Natur und Stadt", title: "Magog & Marais de la Rivière aux Cerises",
-    text: "Stege und Beobachtungspunkte im Feuchtgebiet, anschließend Seeufer, Cafés und Zentrum von Magog.", facts: ["3–5 Std.", "leicht", "flexibel kürzbar"], href: "05-aktivitaeten.php#activity-magog"
+    text: "Stege und Beobachtungspunkte im Feuchtgebiet, anschließend Seeufer, Cafés und Zentrum von Magog.", facts: ["3–5 Std.", "leicht", "flexibel kürzbar"], image: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Centre%20d%27interpr%C3%A9tation.jpg?width=900", imageAlt: "Besucherzentrum am Marais de la Rivière aux Cerises", imageCredit: "Gabyzou99 · CC0", href: "05-aktivitaeten.php#activity-magog"
   },
   {
     id: "orford-abbey", destination: "orford", type: "idea", icon: "⛪", place: "Saint-Benoît-du-Lac · Kultur und Genuss", title: "Abbaye Saint-Benoît-du-Lac",
-    text: "Benediktinerabtei am See mit Architektur, ruhigen Wegen sowie Käse, Cidre und weiteren Klosterprodukten.", facts: ["2–3 Std.", "sehr leicht", "wetterrobust"], href: "05-aktivitaeten.php#activity-abbey"
+    text: "Benediktinerabtei am See mit Architektur, ruhigen Wegen sowie Käse, Cidre und weiteren Klosterprodukten.", facts: ["2–3 Std.", "sehr leicht", "wetterrobust"], image: "assets/orford-abbey.jpg", imageAlt: "Abbaye Saint-Benoît-du-Lac", imageCredit: "Mimiliz · CC BY-SA 3.0", href: "05-aktivitaeten.php#activity-abbey"
   },
   {
     id: "orford-cruise", destination: "orford", type: "idea", icon: "⛴️", place: "Lac Memphrémagog · See-Erlebnis", title: "Schifffahrt mit Le Grand Cru",
-    text: "Eine entspannte Fahrt auf dem Lac Memphrémagog, die sich besonders gut mit Magog kombinieren lässt.", facts: ["1½–3 Std.", "sehr leicht", "Fahrplan 2027 prüfen"], href: "05-aktivitaeten.php#activity-cruise"
+    text: "Eine entspannte Fahrt auf dem Lac Memphrémagog, die sich besonders gut mit Magog kombinieren lässt.", facts: ["1½–3½ Std.", "sehr leicht", "Fahrplan 2027 prüfen"], image: "assets/orford-lake.jpg", imageAlt: "Lac Memphrémagog bei Magog", imageCredit: "Pierre Bona · CC BY-SA 3.0", href: "05-aktivitaeten.php#activity-cruise"
   },
   {
     id: "orford-spa", destination: "orford", type: "idea", icon: "♨️", place: "Magog · Erholung und Schlechtwetter", title: "Spa Nordic Station",
-    text: "Saunen, Dampfbad, Warm- und Kaltbecken als bewusster Regenerationsbaustein nach der Rundreise.", facts: ["3–5 Std.", "minimaler Anspruch", "wetterrobust"], href: "05-aktivitaeten.php#activity-spa"
+    text: "Saunen, Dampfbad, Warm- und Kaltbecken als bewusster Regenerationsbaustein nach der Rundreise.", facts: ["ohne Zeitlimit", "minimaler Anspruch", "wetterrobust"], image: "assets/orford-spa.jpg", imageAlt: "Thermalbereich der Spa Nordic Station", imageCredit: "Spa Nordic Station", href: "05-aktivitaeten.php#activity-spa"
   }
 ];
 
@@ -498,7 +502,9 @@ function renderIdeas(filter = "all") {
     const rating = summary.average ? `<span class="tile-rating"><b>★ ${String(summary.average).replace(".", ",")}</b><small>${summary.count} von 4</small></span>` : `<span class="tile-rating empty"><b>☆</b><small>Noch offen</small></span>`;
     const discussion = summary.comments ? `<span class="tile-comments">💬 ${summary.comments}</span>` : "";
     const author = idea.author && profileDirectory[idea.author] ? `<span class="tile-author"><i class="avatar ${profileDirectory[idea.author].avatar}"></i>Von ${escapeHtml(profileDirectory[idea.author].name)}</span>` : "";
-    return `<article class="idea-tile ${idea.type}" data-idea="${idea.id}"${idea.href ? ` data-href="${escapeHtml(idea.href)}"` : ""} tabindex="0" role="link" aria-label="${idea.title} öffnen">
+    const cover = idea.image ? `<div class="idea-cover"><img src="${escapeHtml(idea.image)}" alt="${escapeHtml(idea.imageAlt || idea.title)}" loading="lazy">${idea.imageCredit ? `<small>${escapeHtml(idea.imageCredit)}</small>` : ""}</div>` : "";
+    return `<article class="idea-tile ${idea.type}${idea.image ? " has-cover" : ""}" data-idea="${idea.id}"${idea.href ? ` data-href="${escapeHtml(idea.href)}"` : ""} tabindex="0" role="link" aria-label="${idea.title} öffnen">
+      ${cover}
       <div class="tile-top"><span class="idea-icon">${idea.icon}</span><span class="tile-more">Details →</span></div>
       <p class="idea-place">${idea.type === "booked" ? "Fest gebucht" : (idea.place || activeData.label)}</p><h3>${escapeHtml(idea.title)}</h3>${author}
       <div class="idea-facts">${facts}${idea.warning ? `<span class="warning-chip">Sicherheit</span>` : ""}</div>
@@ -520,7 +526,7 @@ async function loadIdeaSummaries() {
         const orfordResponse = await fetch("orford-activities-vote.php", { cache: "no-store" });
         if (orfordResponse.ok) {
           const orfordPayload = await orfordResponse.json();
-          const mapping = { hike: "orford-hike", park: "orford-park", magog: "orford-magog", abbey: "orford-abbey", cruise: "orford-cruise", spa: "orford-spa" };
+          const mapping = { hike: "orford-hike", montchauve: "orford-montchauve", park: "orford-park", magog: "orford-magog", abbey: "orford-abbey", cruise: "orford-cruise", spa: "orford-spa" };
           Object.entries(mapping).forEach(([variant, ideaId]) => {
             const view = orfordPayload.variants?.[variant] || {};
             ideaSummaries[ideaId] = { average: view.average, count: view.ratingCount || 0, comments: (view.comments || []).filter((comment) => !comment.deleted).length };
