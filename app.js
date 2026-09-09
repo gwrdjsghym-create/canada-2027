@@ -126,12 +126,6 @@ const ideas = [
     links: [{ label: "Québec–Lévis-Fähre", url: "https://www.quebec-cite.com/en/what-to-do-quebec-city/quebec-city-levis-ferry" }, { label: "Ghost Tours of Québec", url: "https://ghosttoursofquebec.com/" }]
   },
   {
-    id: "quebec-museum", destination: "quebec", type: "idea", icon: "🏛️", place: "Vieux-Port · Schlechtwetter", title: "Musée de la civilisation",
-    text: "Direkt beim Hotel und keine bloße Notlösung: Das Museum widmet sich Québec, Gesellschaft, Geschichte und Kultur. Bei Dauerregen ist es der stärkste Ersatz für einen längeren Außenblock.",
-    facts: ["1½–2½ Std.", "wenige Minuten", "indoor"],
-    links: [{ label: "Musée de la civilisation", url: "https://www.mcq.org/" }]
-  },
-  {
     id: "quebec-dinner", destination: "quebec", type: "idea", icon: "🍽️", place: "Montag oder Dienstag · Abend", title: "Ein besonderes Québec-Dinner",
     text: "Traditionelle Québec-Küche, moderne regionale Küche, Bistro, Steak & Seafood oder Fine Dining: Zuerst entscheiden wir, wie wichtig uns ein bewusst geplantes Restaurant-Erlebnis ist.",
     facts: ["2 Abende", "6 Restaurantstile", "Reservierung später"],

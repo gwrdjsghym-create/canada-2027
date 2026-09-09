@@ -27,131 +27,45 @@ jobs:
           sudo apt-get update
           sudo apt-get install --yes sshpass
 
+      - name: Website prüfen und vorbereiten
+        env:
+          SITE_PIN: ${{ secrets.SITE_PIN }}
+        run: |
+          set -euo pipefail
+          test -n "$SITE_PIN"
+          for file in *.php; do php -l "$file"; done
+
+          RELEASE_VERSION="${GITHUB_SHA::12}"
+          RELEASE_VERSION="$RELEASE_VERSION" perl -0pi -e 's{(styles\.css|app\.js|dashboard\.js)\?v=[^"&<\s]+}{$1 . "?v=" . $ENV{RELEASE_VERSION}}ge' -- *.php
+          perl -0pi -e 's{target="_blank"(?!\s+rel=)}{target="_blank" rel="noopener"}g' -- *.php
+
+          PIN_SALT="$(openssl rand -hex 16)"
+          PIN_HASH="$(PIN_SALT="$PIN_SALT" php -r 'echo hash_pbkdf2("sha256", getenv("SITE_PIN"), getenv("PIN_SALT"), 210000, 64);')"
+          printf "<?php return ['pinSalt' => '%s', 'pinHash' => '%s', 'pinIterations' => 210000];\n" "$PIN_SALT" "$PIN_HASH" > site-config.php
+
       - name: Website zu IONOS übertragen
         env:
           SSHPASS: ${{ secrets.SFTP_PASSWORD }}
           SFTP_HOST: ${{ secrets.SFTP_HOST }}
           SFTP_USERNAME: ${{ secrets.SFTP_USERNAME }}
-          SITE_PIN: ${{ secrets.SITE_PIN }}
         run: |
-          test -n "$SITE_PIN"
-          for file in *.php; do php -l "$file"; done
-          PIN_SALT="$(openssl rand -hex 16)"
-          PIN_HASH="$(PIN_SALT="$PIN_SALT" php -r 'echo hash_pbkdf2("sha256", getenv("SITE_PIN"), getenv("PIN_SALT"), 210000, 64);')"
-          printf "<?php return ['pinSalt' => '%s', 'pinHash' => '%s', 'pinIterations' => 210000];\n" "$PIN_SALT" "$PIN_HASH" > site-config.php
-
-          printf '%s\n' \
-            'put .htaccess' \
-            'put index.html' \
-            'put index.php' \
-            'put 01-montreal.html' \
-            'put 01-montreal.php' \
-            'put 02-the-laurentians.html' \
-            'put 02-the-laurentians.php' \
-            'put 02-transfer-20-09.php' \
-            'put transfer-vote-20-09.php' \
-            'put 03-sainte-rose-du-nord.html' \
-            'put 03-sainte-rose-du-nord.php' \
-            'put 03-transfer-23-09.php' \
-            'put transfer-vote.php' \
-            'put 04-quebec-city.html' \
-            'put 04-quebec-city.php' \
-            'put 05-orford.html' \
-            'put 05-orford.php' \
-            'put 05-transfer-29-09.php' \
-            'put transfer-vote-29-09.php' \
-            'put 05-aktivitaeten.php' \
-            'put orford-activities-vote.php' \
-            'put styles.css' \
-            'put app.js' \
-            'put abstimmungen.php' \
-            'put dashboard.js' \
-            'put decision-status.php' \
-            'put auth-lib.php' \
-            'put auth.php' \
-            'put login.php' \
-            'put logout.php' \
-            'put site-config.php' \
-            'put protected-asset.php' \
-            'put checklists.php' \
-            'put ideas.php' \
-            'put idea.php' \
-            'put new-idea.php' \
-            'put idea-file.php' \
-            'put file.php' \
-            'put destination-template.php' \
-            '-mkdir assets' \
-            'put assets/andrea-lars-memoji.png assets/andrea-lars-memoji.png' \
-            'put assets/christina-manfred-memoji.png assets/christina-manfred-memoji.png' \
-            'put assets/andrea-canada-2027.webp assets/andrea-canada-2027.webp' \
-            'put assets/manfred-canada-2027.webp assets/manfred-canada-2027.webp' \
-            'put assets/christina-canada-2027.webp assets/christina-canada-2027.webp' \
-            'put assets/lars-canada-2027.webp assets/lars-canada-2027.webp' \
-            'put assets/tutorial-step-1.webp assets/tutorial-step-1.webp' \
-            'put assets/tutorial-step-2.webp assets/tutorial-step-2.webp' \
-            'put assets/tutorial-step-3.webp assets/tutorial-step-3.webp' \
-            'put assets/tutorial-step-4.webp assets/tutorial-step-4.webp' \
-            'put assets/tutorial-step-5.webp assets/tutorial-step-5.webp' \
-            'put assets/tutorial-step-6.webp assets/tutorial-step-6.webp' \
-            'put assets/tutorial-step-7.webp assets/tutorial-step-7.webp' \
-            'put assets/tutorial-step-8.webp assets/tutorial-step-8.webp' \
-            'put assets/montreal-old-city-1.webp assets/montreal-old-city-1.webp' \
-            'put assets/montreal-old-city-2.webp assets/montreal-old-city-2.webp' \
-            'put assets/montreal-basilica-1.webp assets/montreal-basilica-1.webp' \
-            'put assets/montreal-basilica-2.webp assets/montreal-basilica-2.webp' \
-            'put assets/montreal-mountain-1.webp assets/montreal-mountain-1.webp' \
-            'put assets/montreal-mountain-2.webp assets/montreal-mountain-2.webp' \
-            'put assets/montreal-mile-end-food-1.webp assets/montreal-mile-end-food-1.webp' \
-            'put assets/montreal-mile-end-food-2.webp assets/montreal-mile-end-food-2.webp' \
-            'put assets/montreal-jean-talon-1.webp assets/montreal-jean-talon-1.webp' \
-            'put assets/montreal-jean-talon-2.webp assets/montreal-jean-talon-2.webp' \
-            'put assets/montreal-bike-1.webp assets/montreal-bike-1.webp' \
-            'put assets/montreal-bike-2.webp assets/montreal-bike-2.webp' \
-            'put assets/montreal-downtown-1.webp assets/montreal-downtown-1.webp' \
-            'put assets/montreal-downtown-2.webp assets/montreal-downtown-2.webp' \
-            'put assets/montreal-olympic-1.webp assets/montreal-olympic-1.webp' \
-            'put assets/montreal-olympic-2.webp assets/montreal-olympic-2.webp' \
-            'put assets/montreal-canal-1.webp assets/montreal-canal-1.webp' \
-            'put assets/montreal-canal-2.webp assets/montreal-canal-2.webp' \
-            'put assets/montreal-guided-old-1.webp assets/montreal-guided-old-1.webp' \
-            'put assets/montreal-guided-old-2.webp assets/montreal-guided-old-2.webp' \
-            'put assets/montreal-evening-1.webp assets/montreal-evening-1.webp' \
-            'put assets/montreal-evening-2.webp assets/montreal-evening-2.webp' \
-            'put assets/montreal-dinner-1.webp assets/montreal-dinner-1.webp' \
-            'put assets/montreal-dinner-2.webp assets/montreal-dinner-2.webp' \
-            'put assets/quebec-old-town-1.webp assets/quebec-old-town-1.webp' \
-            'put assets/quebec-old-town-2.webp assets/quebec-old-town-2.webp' \
-            'put assets/quebec-history-tour-1.webp assets/quebec-history-tour-1.webp' \
-            'put assets/quebec-history-tour-2.webp assets/quebec-history-tour-2.webp' \
-            'put assets/quebec-montmorency-1.webp assets/quebec-montmorency-1.webp' \
-            'put assets/quebec-montmorency-2.webp assets/quebec-montmorency-2.webp' \
-            'put assets/quebec-orleans-1.webp assets/quebec-orleans-1.webp' \
-            'put assets/quebec-orleans-2.webp assets/quebec-orleans-2.webp' \
-            'put assets/quebec-citadelle-1.webp assets/quebec-citadelle-1.webp' \
-            'put assets/quebec-citadelle-2.webp assets/quebec-citadelle-2.webp' \
-            'put assets/quebec-food-tour-1.webp assets/quebec-food-tour-1.webp' \
-            'put assets/quebec-food-tour-2.webp assets/quebec-food-tour-2.webp' \
-            'put assets/quebec-museum-1.webp assets/quebec-museum-1.webp' \
-            'put assets/quebec-museum-2.webp assets/quebec-museum-2.webp' \
-            'put assets/quebec-night-1.webp assets/quebec-night-1.webp' \
-            'put assets/quebec-night-2.webp assets/quebec-night-2.webp' \
-            'put assets/quebec-dinner-1.webp assets/quebec-dinner-1.webp' \
-            'put assets/quebec-dinner-2.webp assets/quebec-dinner-2.webp' \
-            '-mkdir pdfs' \
-            'put pdfs/00_Vergleich_Aktivitaeten_Mauricie.pdf pdfs/00_Vergleich_Aktivitaeten_Mauricie.pdf' \
-            'put pdfs/01_Lac-Solitaire.pdf pdfs/01_Lac-Solitaire.pdf' \
-            'put pdfs/02_Ruisseau-Bouchard.pdf pdfs/02_Ruisseau-Bouchard.pdf' \
-            'put pdfs/03_Cascades-und-Falaises.pdf pdfs/03_Cascades-und-Falaises.pdf' \
-            'put pdfs/04_Kanu-Einfuehrung.pdf pdfs/04_Kanu-Einfuehrung.pdf' \
-            'put pdfs/05_Chutes-Waber.pdf pdfs/05_Chutes-Waber.pdf' \
-            'put pdfs/06_Shawinigan-und-Cite-de-lEnergie.pdf pdfs/06_Shawinigan-und-Cite-de-lEnergie.pdf' \
-            'put pdfs/03-00_Sainte-Rose-du-Nord_Uebersicht.pdf pdfs/03-00_Sainte-Rose-du-Nord_Uebersicht.pdf' \
-            '-rm pdfs/03-01_Montagne-du-Chapeau_24-09-2027.pdf' \
-            'put pdfs/03-01_Montagne-du-Chapeau_02-Standard_NEU.pdf pdfs/03-01_Montagne-du-Chapeau_02-Standard_NEU.pdf' \
-            'put pdfs/03-02_Fjordtag_25-09-2027_Varianten.pdf pdfs/03-02_Fjordtag_25-09-2027_Varianten.pdf' \
-            '-rm pdfs/03-03_Pic-de-la-Tete-de-Chien_26-09-2027.pdf' \
-            'put pdfs/03-03_Pic-de-la-Tete-de-Chien_02-Standard_NEU.pdf pdfs/03-03_Pic-de-la-Tete-de-Chien_02-Standard_NEU.pdf' \
-            'bye' > "$RUNNER_TEMP/sftp-commands"
+          set -euo pipefail
+          {
+            printf '%s\n' 'put .htaccess'
+            find . -maxdepth 1 -type f \( -name '*.html' -o -name '*.php' -o -name '*.css' -o -name '*.js' \) -printf '%f\n' | sort | while IFS= read -r file; do
+              printf 'put "%s"\n' "$file"
+            done
+            for directory in assets pdfs; do
+              printf -- '-mkdir "%s"\n' "$directory"
+              find "$directory" -maxdepth 1 -type f -printf '%p\n' | sort | while IFS= read -r file; do
+                printf 'put "%s" "%s"\n' "$file" "$file"
+              done
+            done
+            printf '%s\n' \
+              '-rm assets/andrea-lars-memoji.png' \
+              '-rm assets/christina-manfred-memoji.png' \
+              'bye'
+          } > "$RUNNER_TEMP/sftp-commands"
 
           sshpass -e sftp \
             -P 22 \
