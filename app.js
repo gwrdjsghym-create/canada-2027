@@ -262,11 +262,11 @@ const ideas = [
   },
   {
     id: "orford-hike", destination: "orford", type: "idea", icon: "⛰️", place: "Orford · großer Wandertag", title: "Pic de l’Ours via L’Escalier-du-Nord",
-    text: "Die anspruchsvolle Gipfeltour für einen ganzen Tag mit den stärksten Herbst- und Panoramablicken.", facts: ["12 km", "455 Hm", "ca. 6 Std.", "schwer"], image: "assets/orford-hero-autumn.jpg", imageAlt: "Mont-Orford in herbstlichen Farben", imageCredit: "Estcroissant · CC BY-SA 4.0", href: "05-aktivitaeten.php#activity-hike"
+    text: "Die anspruchsvolle Gipfeltour für einen ganzen Tag mit den stärksten Herbst- und Panoramablicken.", facts: ["12 km", "455 Hm", "ca. 6 Std.", "schwer"], image: "assets/orford-hero-autumn.jpg?v=2", imageAlt: "Mont-Orford in herbstlichen Farben", imageCredit: "Estcroissant · CC BY-SA 4.0", href: "05-aktivitaeten.php#activity-hike"
   },
   {
     id: "orford-montchauve", destination: "orford", type: "idea", icon: "🥾", place: "Orford · mittlere Rundtour", title: "Boucle du Mont-Chauve",
-    text: "Der Mittelweg zwischen Spaziergang und großem Gipfeltag: eine vierstündige Runde ab Le Bonnallie.", facts: ["10,6 km", "310 Hm", "ca. 4 Std.", "mittel"], image: "assets/orford-hero-autumn.jpg", imageAlt: "Herbstlandschaft am Mont-Orford", imageCredit: "Estcroissant · CC BY-SA 4.0", href: "05-aktivitaeten.php#activity-montchauve"
+    text: "Der Mittelweg zwischen Spaziergang und großem Gipfeltag: eine vierstündige Runde ab Le Bonnallie.", facts: ["10,6 km", "310 Hm", "ca. 4 Std.", "mittel"], image: "assets/orford-hero-autumn.jpg?v=2", imageAlt: "Herbstlandschaft am Mont-Orford", imageCredit: "Estcroissant · CC BY-SA 4.0", href: "05-aktivitaeten.php#activity-montchauve"
   },
   {
     id: "orford-park", destination: "orford", type: "idea", icon: "🥾", place: "Orford · leichte Parkwanderung", title: "Boucle des Trois-Étangs",
@@ -278,15 +278,15 @@ const ideas = [
   },
   {
     id: "orford-abbey", destination: "orford", type: "idea", icon: "⛪", place: "Saint-Benoît-du-Lac · Kultur und Genuss", title: "Abbaye Saint-Benoît-du-Lac",
-    text: "Benediktinerabtei am See mit Architektur, ruhigen Wegen sowie Käse, Cidre und weiteren Klosterprodukten.", facts: ["2–3 Std.", "sehr leicht", "wetterrobust"], image: "assets/orford-abbey.jpg", imageAlt: "Abbaye Saint-Benoît-du-Lac", imageCredit: "Mimiliz · CC BY-SA 3.0", href: "05-aktivitaeten.php#activity-abbey"
+    text: "Benediktinerabtei am See mit Architektur, ruhigen Wegen sowie Käse, Cidre und weiteren Klosterprodukten.", facts: ["2–3 Std.", "sehr leicht", "wetterrobust"], image: "assets/orford-abbey.jpg?v=2", imageAlt: "Abbaye Saint-Benoît-du-Lac", imageCredit: "Mimiliz · CC BY-SA 3.0", href: "05-aktivitaeten.php#activity-abbey"
   },
   {
     id: "orford-cruise", destination: "orford", type: "idea", icon: "⛴️", place: "Lac Memphrémagog · See-Erlebnis", title: "Schifffahrt mit Le Grand Cru",
-    text: "Eine entspannte Fahrt auf dem Lac Memphrémagog, die sich besonders gut mit Magog kombinieren lässt.", facts: ["1½–3½ Std.", "sehr leicht", "Fahrplan 2027 prüfen"], image: "assets/orford-lake.jpg", imageAlt: "Lac Memphrémagog bei Magog", imageCredit: "Pierre Bona · CC BY-SA 3.0", href: "05-aktivitaeten.php#activity-cruise"
+    text: "Eine entspannte Fahrt auf dem Lac Memphrémagog, die sich besonders gut mit Magog kombinieren lässt.", facts: ["1½–3½ Std.", "sehr leicht", "Fahrplan 2027 prüfen"], image: "assets/orford-lake.jpg?v=2", imageAlt: "Lac Memphrémagog bei Magog", imageCredit: "Pierre Bona · CC BY-SA 3.0", href: "05-aktivitaeten.php#activity-cruise"
   },
   {
     id: "orford-spa", destination: "orford", type: "idea", icon: "♨️", place: "Magog · Erholung und Schlechtwetter", title: "Spa Nordic Station",
-    text: "Saunen, Dampfbad, Warm- und Kaltbecken als bewusster Regenerationsbaustein nach der Rundreise.", facts: ["ohne Zeitlimit", "minimaler Anspruch", "wetterrobust"], image: "assets/orford-spa.jpg", imageAlt: "Thermalbereich der Spa Nordic Station", imageCredit: "Spa Nordic Station", href: "05-aktivitaeten.php#activity-spa"
+    text: "Saunen, Dampfbad, Warm- und Kaltbecken als bewusster Regenerationsbaustein nach der Rundreise.", facts: ["ohne Zeitlimit", "minimaler Anspruch", "wetterrobust"], image: "assets/orford-spa.jpg?v=2", imageAlt: "Thermalbereich der Spa Nordic Station", imageCredit: "Spa Nordic Station", href: "05-aktivitaeten.php#activity-spa"
   }
 ];
 
