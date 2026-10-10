@@ -11,7 +11,7 @@ const route = [
   {
     id: "outbound", type: "transfer", destination: "montreal", date: "Freitag · 17. September", title: "Wuppertal → Frankfurt → Montréal",
     text: "Der Direktflug nach Montréal ist fest gebucht: Air Canada AC845 startet um 09:55 Uhr in Frankfurt und landet um 12:00 Uhr Ortszeit in Montréal.", tags: ["Flug fest gebucht", "AC845 · nonstop", "09:55–12:00"], confirmed: true,
-    details: ["17.09.2027 · Air Canada AC845 · Frankfurt (FRA) → Montréal (YUL)", "Abflug 09:55 Uhr · Ankunft 12:00 Uhr Ortszeit · nonstop", "Airbus A330-300 · Economy Standard", "4 Reisende: Lars, Andrea, Christina und Manfred", "Preferred Seats 18D, 18E, 18F und 18G", "Gepäck je Person: 1 × 23 kg Aufgabegepäck, Handgepäck 55 × 40 × 23 cm und persönlicher Gegenstand 43 × 33 × 16 cm", "Transfer YUL–Uville Hotel: laut Reiseplanung ca. 20 km / 22 Min.", "Noch offen: Anreise nach Frankfurt und Transfer vom Flughafen zum Hotel"]
+    details: ["17.09.2027 · Air Canada AC845 · Frankfurt (FRA) → Montréal (YUL)", "Abflug 09:55 Uhr · Ankunft 12:00 Uhr Ortszeit · nonstop", "Airbus A330-300 · Economy Standard", "4 Reisende: Lars, Andrea, Christina und Manfred", "Preferred Seats 18D, 18E, 18F und 18G", "Gepäck je Person: 1 × 23 kg Aufgabegepäck, Handgepäck 55 × 40 × 23 cm und persönlicher Gegenstand 43 × 33 × 16 cm", "Gesamtpreis für 4 Personen: 4.134 € inklusive Preferred Seats (93,02 € je Person und Strecke)", "Transfer YUL–Uville Hotel: laut Reiseplanung ca. 20 km / 22 Min.", "Noch offen: Anreise nach Frankfurt und Transfer vom Flughafen zum Hotel"]
   },
   {
     id: "montreal", type: "stay", destination: "montreal", date: "17.–20. September · 3 Nächte", title: "Montréal",
