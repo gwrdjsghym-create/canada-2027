@@ -10,8 +10,8 @@ const destinations = [
 const route = [
   {
     id: "outbound", type: "transfer", destination: "montreal", date: "Freitag · 17. September", title: "Wuppertal → Frankfurt → Montréal",
-    text: "Anreise, Flug und Transfer zum Uville Hotel. Flug und Zubringer sind noch nicht gebucht.", tags: ["noch offen", "ca. 20 km Transfer"],
-    details: ["Anreise zum Flughafen Frankfurt festlegen", "Flug Frankfurt–Montréal buchen", "Einreise und Gepäck einplanen", "Transfer YUL–Uville Hotel: laut Reiseplanung ca. 20 km / 22 Min."]
+    text: "Der Direktflug nach Montréal ist fest gebucht: Air Canada AC845 startet um 09:55 Uhr in Frankfurt und landet um 12:00 Uhr Ortszeit in Montréal.", tags: ["Flug fest gebucht", "AC845 · nonstop", "09:55–12:00"], confirmed: true,
+    details: ["17.09.2027 · Air Canada AC845 · Frankfurt (FRA) → Montréal (YUL)", "Abflug 09:55 Uhr · Ankunft 12:00 Uhr Ortszeit · nonstop", "Airbus A330-300 · Economy Standard", "4 Reisende: Lars, Andrea, Christina und Manfred", "Preferred Seats 18D, 18E, 18F und 18G", "Gepäck je Person: 1 × 23 kg Aufgabegepäck, Handgepäck 55 × 40 × 23 cm und persönlicher Gegenstand 43 × 33 × 16 cm", "Gesamtpreis für 4 Personen: 4.134 € inklusive Preferred Seats (93,02 € je Person und Strecke)", "Transfer YUL–Uville Hotel: laut Reiseplanung ca. 20 km / 22 Min.", "Noch offen: Anreise nach Frankfurt und Transfer vom Flughafen zum Hotel"]
   },
   {
     id: "montreal", type: "stay", destination: "montreal", date: "17.–20. September · 3 Nächte", title: "Montréal",
@@ -70,8 +70,8 @@ const route = [
   },
   {
     id: "return", type: "transfer", destination: "orford", date: "Samstag · 2. Oktober", title: "Orford → Montréal → Frankfurt → Wuppertal",
-    text: "Mietwagenrückgabe, Rückflug und Heimreise. Die Zeiten sind noch offen.", tags: ["ca. 133 km bis Montréal", "Flug offen"],
-    details: ["Fahrt zum Flughafen Montréal", "Ford Expedition zurückgeben", "Rückflug nach Frankfurt buchen", "Weiterreise nach Wuppertal festlegen"]
+    text: "Der Rückflug ist fest gebucht: Air Canada AC844 startet am Samstag um 16:45 Uhr in Montréal und landet am Sonntag um 06:00 Uhr in Frankfurt.", tags: ["Flug fest gebucht", "AC844 · nonstop", "Ankunft 03.10. · 06:00"], confirmed: true,
+    details: ["02.10.2027 · Air Canada AC844 · Montréal (YUL) → Frankfurt (FRA)", "Abflug 16:45 Uhr · Ankunft am 03.10.2027 um 06:00 Uhr · nonstop", "Airbus A330-300 · Economy Standard", "4 Reisende: Lars, Andrea, Christina und Manfred", "Preferred Seats 18D, 18E, 18F und 18G", "Gepäck je Person: 1 × 23 kg Aufgabegepäck, Handgepäck 55 × 40 × 23 cm und persönlicher Gegenstand 43 × 33 × 16 cm", "Fahrt Orford–Flughafen Montréal: ca. 133 km", "Noch offen: Abfahrtszeit in Orford, Tankstopp, Mietwagenrückgabe und Weiterreise ab Frankfurt"]
   }
 ];
 
@@ -1002,8 +1002,8 @@ const checklistDefaults = {
       ]},
       { id: "al-flight", title: "Flüge & Anreise", icon: "✈️", items: [
         { id: "al-fra", text: "Anreise Wuppertal/Langen nach Frankfurt festlegen", done: false },
-        { id: "al-flights", text: "Flüge Frankfurt–Montréal buchen", done: false },
-        { id: "al-luggage", text: "Gepäck, Sitzplätze und Transfer prüfen", done: false }
+        { id: "al-flights", text: "Flüge Frankfurt–Montréal sind gebucht (AC845 / AC844)", done: true },
+        { id: "al-luggage", text: "Gepäck und Preferred Seats 18D–18G sind bestätigt; Flughafentransfers noch planen", done: false }
       ]},
       { id: "al-pack", title: "Packliste Indian Summer", icon: "🎒", items: [
         { id: "al-layers", text: "Zwiebellook: Funktionsshirt, Fleece und warme Schicht", done: false },
