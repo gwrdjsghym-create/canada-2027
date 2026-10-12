@@ -593,3 +593,48 @@ dialog::backdrop { background: rgba(10,28,21,.55); backdrop-filter: blur(4px); }
 @keyframes tutorial-in{from{opacity:0;transform:translateY(12px) scale(.985)}to{opacity:1;transform:none}}
 @media(max-width:780px){.tutorial-dialog{padding:10px}.tutorial-shell{width:100%;max-height:calc(100dvh - 20px);border-radius:24px}.tutorial-header{padding:14px 58px 5px 18px}.tutorial-content{padding:0 18px 12px}.tutorial-content h2{font-size:clamp(1.75rem,7vw,2.55rem)}.tutorial-subtitle{font-size:.9rem}.tutorial-visual{margin-bottom:12px;border-radius:16px}.tutorial-visual img{max-height:42dvh}.tutorial-copy{font-size:.9rem}.tutorial-footer{grid-template-columns:1fr 1fr;padding:12px 14px calc(12px + env(safe-area-inset-bottom));gap:8px}.tutorial-progress{grid-column:1/-1;grid-row:1;min-width:0}.tutorial-secondary{grid-column:1;grid-row:2}.tutorial-next{grid-column:2;grid-row:2;padding:0 14px}.tutorial-close{top:7px;right:8px}.tutorial-launch{max-width:100%}}
 @media(max-width:420px){.tutorial-dialog{padding:0}.tutorial-shell{height:100dvh;max-height:none;border-radius:0}.tutorial-header{padding-top:calc(12px + env(safe-area-inset-top))}.tutorial-content{padding-inline:14px}.tutorial-content h2{font-size:1.85rem}.tutorial-subtitle{margin-bottom:10px}.tutorial-visual img{max-height:36dvh}.tutorial-copy{font-size:.88rem;line-height:1.48}.tutorial-footer{padding-bottom:calc(10px + env(safe-area-inset-bottom))}.tutorial-secondary,.tutorial-next{min-height:44px;font-size:.84rem}.tutorial-progress button{width:9px;height:9px}.tutorial-close{top:calc(5px + env(safe-area-inset-top));right:7px}}
+
+
+/* Montréal airport transfer guide */
+.airport-guide-page{background:linear-gradient(180deg,#f6f1e5 0,#f8f6ef 42%,#edf3ef 100%);color:var(--ink)}
+.airport-guide-hero{padding:54px 24px 46px;background:linear-gradient(135deg,#123f35 0%,#1b604f 62%,#d1a348 160%);color:#fff}
+.airport-guide-hero-inner,.airport-guide-main{width:min(1180px,calc(100% - 32px));margin:auto}
+.airport-guide-hero .back-link{color:#dceee7}
+.airport-guide-hero h1{max-width:820px;margin:18px 0 12px;font-size:clamp(2.4rem,5vw,4.7rem);line-height:.98}
+.airport-guide-hero p:not(.eyebrow){max-width:720px;font-size:1.12rem;color:#e5f0eb}
+.airport-guide-hero .destination-hero-chips span{background:rgba(255,255,255,.13);border-color:rgba(255,255,255,.25);color:#fff}
+.airport-guide-main{padding:28px 0 80px}
+.airport-quick-card{display:grid;grid-template-columns:1.5fr .8fr;gap:28px;align-items:center;background:#fffaf0;border:2px solid #ddb85e}
+.airport-quick-card h2{margin:5px 0 10px}
+.airport-address{padding:20px;border-radius:18px;background:#173f35;color:#fff;display:grid;gap:5px}
+.airport-address small{color:#bad7cd;text-transform:uppercase;letter-spacing:.12em;font-weight:800}
+.airport-address strong{font-size:1.3rem}
+.airport-address span{line-height:1.55}
+.airport-steps{list-style:none;padding:0;margin:20px 0 0;display:grid;gap:14px;counter-reset:none}
+.airport-steps>li{display:grid;grid-template-columns:54px 1fr;gap:18px;padding:22px;border:1px solid #d8e1dc;border-radius:18px;background:#fff}
+.airport-steps>li>span{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;background:#174d40;color:#fff;font-weight:900;font-size:1.15rem}
+.airport-steps h3{margin:2px 0 7px;font-size:1.16rem}
+.airport-steps p{margin:0;color:var(--muted);line-height:1.55}
+.say-card{margin-top:14px;padding:14px 16px;border-radius:13px;background:#edf5f1;display:grid;gap:4px}
+.say-card small{text-transform:uppercase;letter-spacing:.1em;color:#527268;font-weight:800}
+.say-card strong{color:#174d40}
+.airport-choice-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.airport-choice-grid article{padding:22px;border:1px solid #d8e1dc;border-radius:18px;background:#fff}
+.airport-choice-grid article.recommended{border:2px solid #28755f;background:#f1f8f4}
+.airport-choice-grid article>span{display:inline-block;padding:5px 10px;border-radius:999px;background:#e8eee9;color:#36594e;font-size:.77rem;text-transform:uppercase;letter-spacing:.08em;font-weight:900}
+.airport-choice-grid .recommended>span{background:#1d624f;color:#fff}
+.airport-choice-grid h3{margin:15px 0 8px}
+.airport-choice-grid ul{margin:0;padding-left:20px;color:var(--muted);line-height:1.65}
+.rental-route{display:grid;grid-template-columns:1fr auto 1fr auto 1fr auto 1fr;gap:12px;align-items:stretch}
+.rental-route>div{display:flex;gap:12px;padding:17px;border:1px solid #d8e1dc;border-radius:16px;background:#fff}
+.rental-route>div>b{width:28px;height:28px;flex:0 0 28px;border-radius:50%;display:grid;place-items:center;background:#174d40;color:#fff}
+.rental-route>div span{display:grid;gap:5px}
+.rental-route small{color:var(--muted);line-height:1.35}
+.rental-route>i{align-self:center;font-style:normal;font-size:1.4rem;color:#a17721}
+.airport-update-note{margin:18px 0 0;padding:15px 17px;border-radius:13px;background:#fff4da;color:#70571c}
+.airport-sources>div:last-child{display:flex;flex-wrap:wrap;gap:10px}
+.airport-sources a{padding:11px 14px;border:1px solid #b8cec5;border-radius:11px;background:#fff;color:#174d40;font-weight:800;text-decoration:none}
+.airport-guide-link{margin:0 0 22px;padding:17px 18px;display:grid;grid-template-columns:auto 1fr auto;gap:15px;align-items:center;border:1px solid #a9c9bd;border-radius:17px;background:#edf7f2;color:inherit;text-decoration:none}
+.airport-guide-link>span{font-size:1.8rem}.airport-guide-link small{display:block;color:#397364;font-weight:850;text-transform:uppercase;letter-spacing:.08em}.airport-guide-link strong{display:block;margin:3px 0}.airport-guide-link p{margin:0;color:var(--muted)}.airport-guide-link>b{font-size:1.5rem;color:#174d40}
+@media(max-width:850px){.airport-quick-card,.airport-choice-grid{grid-template-columns:1fr}.rental-route{grid-template-columns:1fr}.rental-route>i{transform:rotate(90deg);justify-self:center}.airport-guide-hero{padding:38px 8px}.airport-guide-main{padding-top:18px}.airport-guide-link p{display:none}}
+@media(max-width:560px){.airport-steps>li{grid-template-columns:42px 1fr;padding:17px;gap:12px}.airport-steps>li>span{width:38px;height:38px}.airport-guide-link{grid-template-columns:auto 1fr}.airport-guide-link>b{display:none}}
