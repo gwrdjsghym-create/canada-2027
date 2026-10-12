@@ -106,6 +106,6 @@ if (!empty($_SESSION['canada_authenticated']) && !$chooseProfile) {
         </footer>
       </article>
     </dialog>
-    <script src="app.js?v=20261010-1"></script>
+    <script src="app.js?v=20261012-1"></script>
   <?php endif; ?>
 </body></html>
