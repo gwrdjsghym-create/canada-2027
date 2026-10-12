@@ -1,7 +1,7 @@
 const destinations = [
   { id: "all", label: "Gesamte Reise", sectionTitle: "Canada 2027", page: "index.php" },
   { id: "montreal", label: "Montréal", dates: "17.–20.09.", sectionTitle: "01 – Montréal | 17.–20.09.2027", page: "01-montreal.php", summary: "Anreise aus Wuppertal und zwei volle Tage in Montréal." },
-  { id: "mauricie", label: "Nature Nature", dates: "20.–23.09.", sectionTitle: "02 – The Laurentians | 20.–23.09.2027", page: "02-the-laurentians.php", summary: "Anreise aus Montréal und zwei Naturtage rund um den Nationalpark La Mauricie." },
+  { id: "mauricie", label: "Nature Nature", dates: "20.–23.09.", sectionTitle: "02 – Mauricie | 20.–23.09.2027", page: "02-the-laurentians.php", summary: "Anreise aus Montréal und zwei Naturtage rund um den Nationalpark La Mauricie." },
   { id: "sainte-rose", label: "Sainte-Rose-du-Nord", dates: "23.–27.09.", sectionTitle: "03 – Sainte-Rose-du-Nord | 23.–27.09.2027", page: "03-sainte-rose-du-nord.php", summary: "Anreise von Nature Nature und drei volle Tage am Saguenay." },
   { id: "quebec", label: "Québec City", dates: "27.–29.09.", sectionTitle: "04 – Québec City | 27.–29.09.2027", page: "04-quebec-city.php", summary: "Anreise über Tadoussac mit der gebuchten Walbeobachtung und ein voller Tag in Québec City." },
   { id: "orford", label: "Orford", dates: "29.09.–02.10.", sectionTitle: "05 – Orford | 29.09.–02.10.2027", page: "05-orford.php", summary: "Anreise aus Québec City, zwei volle Tage und anschließend die Heimreise." }
@@ -204,25 +204,25 @@ const ideas = [
     links: [{ label: "Monarque · Fine Dining", url: "https://restaurantmonarque.ca/en/" }, { label: "Gibbys · Steak & Seafood", url: "https://www.gibbys.com/en/" }, { label: "Québec-Küche erklärt", url: "https://www.mtl.org/en/experience/traditional-quebecois-cuisine" }, { label: "Montréal-Klassiker erklärt", url: "https://www.mtl.org/en/experience/musts-for-foodies-visiting-montreal" }, { label: "Restaurantübersicht · Tourisme Montréal", url: "https://www.mtl.org/en/what-to-do/food" }]
   },
   {
-    id: "lac-solitaire", destination: "mauricie", type: "idea", icon: "🥾", place: "The Laurentians · Dienstag", title: "Lac-Solitaire",
+    id: "lac-solitaire", destination: "mauricie", type: "idea", icon: "🥾", place: "Mauricie · Dienstag", title: "Lac-Solitaire",
     text: "Kompakter, aber höhenreicher Rundweg durch regenerierenden Wald und um den See – unsere bevorzugte kürzere Variante.",
     facts: ["6,1 km", "396 Hm", "ca. 2,5 Std.", "mittelschwer"],
     links: [{ label: "Parks Canada", url: "https://parks.canada.ca/pn-np/qc/mauricie/activ/sentiers-trails" }, { label: "Touren-PDF", url: "file.php?name=01_Lac-Solitaire.pdf", pdf: true }]
   },
   {
-    id: "ruisseau-bouchard", destination: "mauricie", type: "idea", icon: "⛰️", place: "The Laurentians · Dienstag", title: "Ruisseau-Bouchard",
+    id: "ruisseau-bouchard", destination: "mauricie", type: "idea", icon: "⛰️", place: "Mauricie · Dienstag", title: "Ruisseau-Bouchard",
     text: "Die längere Alternative mit Aussicht am Lac aux Chevaux und einem schönen Rückweg entlang des Bouchard Creek.",
     facts: ["9,1 km", "528 Hm", "ca. 3,5 Std.", "mittelschwer"],
     links: [{ label: "Parks Canada", url: "https://parks.canada.ca/pn-np/qc/mauricie/activ/sentiers-trails" }, { label: "Touren-PDF", url: "file.php?name=02_Ruisseau-Bouchard.pdf", pdf: true }]
   },
   {
-    id: "cascades-falaises", destination: "mauricie", type: "idea", icon: "💦", place: "The Laurentians · Mittwoch", title: "Les Cascades & Les Falaises",
+    id: "cascades-falaises", destination: "mauricie", type: "idea", icon: "💦", place: "Mauricie · Mittwoch", title: "Les Cascades & Les Falaises",
     text: "Zwei kurze Wege, die sich flexibel verbinden lassen: Wasserfälle und schwimmende Brücke sowie Aussicht über den Lac Wapizagonke.",
     facts: ["2,4 km · 103 Hm", "4,0 km · 268 Hm", "ca. 2,5 Std. gesamt"],
     links: [{ label: "Wege", url: "https://parks.canada.ca/pn-np/qc/mauricie/activ/sentiers-trails" }, { label: "Karte & Höhenprofil", url: "https://publications.gc.ca/collections/collection_2018/pc/R64-517-2017.pdf" }, { label: "Touren-PDF", url: "file.php?name=03_Cascades-und-Falaises.pdf", pdf: true }]
   },
   {
-    id: "canoe-intro", destination: "mauricie", type: "idea", icon: "🛶", place: "The Laurentians · Mittwoch", title: "Kanu-Einführung",
+    id: "canoe-intro", destination: "mauricie", type: "idea", icon: "🛶", place: "Mauricie · Mittwoch", title: "Kanu-Einführung",
     text: "Da wir noch nie Kanu gefahren sind, bevorzugen wir eine geführte Einführung. Alternativ 60–90 Minuten in Ufernähe mit zwei Zweierkanus oder Doppelkajaks.",
     facts: ["anfängergeeignet", "60–90 Min.", "Saison 2027 prüfen"],
     links: [{ label: "Paddeln & Verleih", url: "https://parks.canada.ca/pn-np/qc/mauricie/activ/nautique-nautical" }, { label: "Info-PDF", url: "file.php?name=04_Kanu-Einfuehrung.pdf", pdf: true }]
